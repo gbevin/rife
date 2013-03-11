@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: subsites.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<globalvar name="globalvar1">
+		<default>default value1</default>
+	</globalvar>
+	<globalvar name="globalvar2">
+		<default>default value2</default>
+	</globalvar>
+	<globalvar name="globalvar3"/>
+	<globalvar name="globalvar4">
+		<default>default value4</default>
+	</globalvar>
+	
+	<globalexit name="globalexit1" destid="GLOBALDEST1"/>
+	<globalexit name="globalexit2" destid="GLOBALDEST2" reflect="false"/>
+	<globalexit name="globalexitarrival" destid="ARRIVAL_SUBSITE"/>
+	
+	<element id="GLOBALDEST1" file="element/subsites/globaldest1.xml" url="/subsites/globaldest1"/>
+	<element id="GLOBALDEST2" file="element/subsites/globaldest2.xml" url="/subsites/globaldest2"/>
+	
+	<element id="SUBSITEPARENT1" file="element/subsites/parent1.xml"/>
+	<element id="SUBSITEPARENT2" file="element/subsites/parent2.xml"/>
+	
+	<!-- absolute exit destination id -->
+	<element id="ABSOLUTE_SOURCE" file="element/subsites/absolute_source.xml" url="/absolute">
+		<flowlink srcexit="exit1" destid=".GLOBALEXIT_STRAIGHT^GLOBALVAR_STRAIGHT.ABSOLUTE_TARGET"/>
+	</element>
+	
+	<!-- global exits -->
+	<element id="GLOBALEXIT_ARRIVAL" file="element/subsites/globalexit/arrival.xml" url="/globalexit/arrival"/>
+	<subsite id="GLOBALEXIT_ISOLATION" file="site/subsite/globalexit/isolation.xml" urlprefix="/globalexit/isolation" inherits="SUBSITEPARENT1"/>
+	<subsite id="GLOBALEXIT_OVERLOADING" file="site/subsite/globalexit/overloading.xml" urlprefix="/globalexit/overloading" inherits="SUBSITEPARENT2"/>
+	<subsite id="GLOBALEXIT_STRAIGHT" file="site/subsite/globalexit/straight.xml" urlprefix="/globalexit/straight"/>
+
+	<!-- global vars -->
+	<subsite id="GLOBALVAR_OVERRIDDEN" file="site/subsite/globalvar/overridden.xml" urlprefix="/globalvar/overridden" inherits="SUBSITEPARENT1"/>
+	<subsite id="GLOBALVAR_DEFAULTTRIGGEREDCHILD" file="site/subsite/globalvar/defaulttriggeredchild.xml" urlprefix="/globalvar/defaulttriggeredchild" inherits="SUBSITEPARENT2"/>
+	<subsite id="GLOBALVAR_STRAIGHT" file="site/subsite/globalvar/straight.xml" urlprefix="/globalvar/straight"/>
+	
+	<!-- inheritance -->
+	<globalvar name="globalvar_inheritance1"/>
+	<globalvar name="globalvar_inheritance2"/>
+	<globalvar name="globalvar_inheritance3">
+		<default>default value</default>
+	</globalvar>
+	
+	<subsite id="INHERITANCE" file="site/subsite/inheritance.xml" urlprefix="/inheritance" inherits="SUBSITEPARENT1"/>
+	
+	<!-- arrival -->
+	<arrival destid="ARRIVAL_SOURCE"/>
+
+	<element id="ARRIVAL_SOURCE" file="element/subsites/arrivaltest_source.xml" url="/arrival_target_subsite">
+		<flowlink srcexit="exit1" destid="ARRIVAL_TARGET_SUBSITE"/>
+		<datalink srcoutput="output1" destid="ARRIVAL_TARGET_SUBSITE" destinput="input1"/>
+		<datalink srcoutput="output2" destid="ARRIVAL_TARGET_SUBSITE" destinput="input2"/>
+	</element>
+	<subsite id="ARRIVAL_TARGET_SUBSITE" file="site/subsite/arrival.xml" urlprefix="/subsite/arrival"/>
+
+	<element id="ARRIVALTEST_NOURL" file="element/subsites/arrivaltest_source.xml" url="/arrival_nourl">
+		<flowlink srcexit="exit1" destid="ARRIVAL_NOURL"/>
+		<datalink srcoutput="output1" destid="ARRIVAL_NOURL" destinput="input1"/>
+		<datalink srcoutput="output2" destid="ARRIVAL_NOURL" destinput="input2"/>
+	</element>
+	<subsite id="ARRIVAL_NOURL" file="site/subsite/arrival_nourl.xml" urlprefix="/subsite/arrival_nourl"/>
+	
+	<element id="ARRIVAL_INHERITANCE_SOURCE" file="element/subsites/arrivaltest_source.xml" url="/arrival_inheritance">
+		<flowlink srcexit="exit1" destid="ARRIVAL_INHERITANCE"/>
+		<datalink srcoutput="output1" destid="ARRIVAL_INHERITANCE" destinput="input1"/>
+		<datalink srcoutput="output2" destid="ARRIVAL_INHERITANCE" destinput="input2"/>
+	</element>
+	<subsite id="ARRIVAL_INHERITANCE" file="site/subsite/arrival.xml" urlprefix="/subsite/arrival_inheritance" inherits="SUBSITEPARENT1"/>
+
+	<subsite id="ARRIVAL_SUBSITE" file="site/subsite/arrival_subsite.xml" urlprefix="/subsite/arrival_subsite"/>
+	
+	<subsite id="ARRIVAL_SUBSITE_TRAILING_SLASH" file="site/subsite/arrival_subsite.xml" urlprefix="/subsite/arrival_subsite_slash/"/>
+	
+	<element id="ARRIVAL_REDIRECT" file="element/subsites/arrivaltest_source.xml" url="/arrival_redirect">
+		<flowlink srcexit="exit1" destid="ARRIVAL_TARGET_REDIRECT"/>
+		<datalink srcoutput="output1" destid="ARRIVAL_TARGET_REDIRECT" destinput="input1"/>
+		<datalink srcoutput="output2" destid="ARRIVAL_TARGET_REDIRECT" destinput="input2"/>
+	</element>
+	<subsite id="ARRIVAL_TARGET_REDIRECT" file="site/subsite/arrival_redirect.xml" urlprefix="/subsite/arrival_redirect"/>
+	
+	<element id="ARRIVAL_REDIRECT_NOURL" file="element/subsites/arrivaltest_source.xml" url="/arrival_redirect_nourl">
+		<flowlink srcexit="exit1" destid="ARRIVAL_TARGET_REDIRECT_NOURL"/>
+		<datalink srcoutput="output1" destid="ARRIVAL_TARGET_REDIRECT_NOURL" destinput="input1"/>
+		<datalink srcoutput="output2" destid="ARRIVAL_TARGET_REDIRECT_NOURL" destinput="input2"/>
+	</element>
+	<subsite id="ARRIVAL_TARGET_REDIRECT_NOURL" file="site/subsite/arrival_redirect_nourl.xml" urlprefix="/subsite/arrival_redirect_nourl"/>
+	
+	<subsite id="ARRIVAL_DEFAULT_TEMPLATE" file="site/subsite/arrival_default_template.xml" urlprefix="/subsite/arrival_default_template"/>
+
+	<!-- departure -->
+	<subsite id="DEPARTURE" file="site/subsite/departure.xml" urlprefix="/departure"/>
+
+	<!-- url oddities -->
+	<subsite id="MULTIPLE_SLASH" file="site/subsite/multiple_slash.xml" urlprefix="/subsite/multiple_slash///"/>
+	
+	<!-- nofile -->
+	<subsite id="NOFILE" urlprefix="nofile">
+		<element id="SIMPLE" implementation="com.uwyn.rife.engine.testelements.engine.Simple" url="simple"/>
+	</subsite>
+	
+	<!-- annotations -->
+	<element implementation="com.uwyn.rife.engine.testelements.subsites.AnnotationsSource"/>
+	<subsite id="ANNOTATIONS">
+		<element implementation="com.uwyn.rife.engine.testelements.subsites.AnnotationsDest"/>
+	</subsite>
+</site>
+

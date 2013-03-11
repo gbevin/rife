@@ -1,0 +1,52 @@
+<form name="[!V 'formname'/]" enctype="multipart/form-data" method="post" action="\[!V 'SUBMISSION:FORM:[!V 'submission'/]'/]">
+\<!--V 'SUBMISSION:PARAMS:[!V 'submission'/]'/-->
+<table id="[!V 'formname'/]_table">
+<colgroup>
+	<col width="*" />
+	<col width="*" />
+	<col width="100%" />
+</colgroup>
+<!--V 'fields'--><!--/V-->
+<!--B 'field'-->
+	<tr\[!V '[!V 'property'/]-alignment']\[!/V]>
+		<td class="form_required"><!--V 'mandatory'--><!--/V--><!--B 'mandatory'-->*<!--/B--></td>
+		<td nowrap="nowrap"><div class="form_label">\<!--V 'L10N:[!V 'property'/]'-->[!V 'property'/]\<!--/V--></div><div class="form_legend">\<!--V 'L10N:[!V 'property'/]-legend'-->\<!--/V--></div></td>
+		<td>
+			\<!--V 'L10N:[!V 'property'/]-help'-->\<!--/V-->
+			<!--V 'existing_field'--><!--/V-->
+			<div class="\[!V 'MARK:[!V 'property'/]']form_field\[!/V]">
+				\<!--V 'ERRORS:[!V 'property'/]'/-->
+				<!--V 'form_field'/-->
+			</div>
+		</td>
+	
+		<!--B 'existing_field-url'--><div><a href="\[!V 'existing_[!V 'property'/]']\[!/V]" target="_blank">\<!--V 'existing_[!V 'property'/]'-->\<!--/V--></a></div><!--/B-->
+		<!--B 'existing_field-email'--><div><a href="mailto:\[!V 'existing_[!V 'property'/]']\[!/V]">\<!--V 'existing_[!V 'property'/]'-->\<!--/V--></a></div><!--/B-->
+		<!--B 'existing_field-text'--><div class="textpreview">\<!--V 'existing_[!V 'property'/]'-->\<!--/V--></div><!--/B-->
+		<!--B 'existing_field-xhtml'--><div class="xhtmlpreview">\<!--V 'existing_[!V 'property'/]'-->\<!--/V--></div><!--/B-->
+		<!--B 'existing_field-image'--><div><img src="\[!V 'existing_[!V 'property'/]-src'/]" width="\[!V 'existing_[!V 'property'/]-width'/]" height="\[!V 'existing_[!V 'property'/]-height'/]" alt="" /></div><!--V 'existing_field-legend'--><!--/V--><!--/B-->
+		<!--B 'existing_field-raw'--><a href="\[!V 'existing_[!V 'property'/]-url']\[!/V]">\<!--V 'existing_[!V 'property'/]-name'-->\<!--/V--></a><!--V 'existing_field-legend'--><!--/V--><!--/B-->
+		<!--B 'existing_field-legend'--><div class="form_legend">\<!--V 'existing_[!V 'property'/]-legend'-->\<!--/V--></div><!--/B-->
+		<!--B 'existing_field-generic'--><!--/B-->
+	
+		<!--B 'form_field-textlimited'-->\<!--V 'FORM:INPUT:[!V 'property'/]'-->class="[!V 'classname_encoded'/]-[!V 'property'/]-input" size="30"\<!--/V--><!--/B-->
+		<!--B 'form_field-numeric'-->\<!--V 'FORM:INPUT:[!V 'property'/]'-->class="[!V 'classname_encoded'/]-[!V 'property'/]-input" size="10"\<!--/V--><!--/B-->
+		<!--B 'form_field-textarea'-->\<!--V 'FORM:TEXTAREA:[!V 'property'/]'-->class="[!V 'classname_encoded'/]-[!V 'property'/]-textarea" cols="80" rows="10"\<!--/V-->\<!--BV '[!V 'property'/]-alignment'--> valign="top"\<!--/BV--><!--/B-->
+		<!--B 'form_field-list'-->\<!--V 'FORM:SELECT:[!V 'property'/]'-->class="[!V 'classname_encoded'/]-[!V 'property'/]-select"\<!--/V--><!--/B-->
+		<!--B 'form_field-checkbox'-->\<!--V 'FORM:CHECKBOX:[!V 'property'/]'-->class="[!V 'classname_encoded'/]-[!V 'property'/]-checkbox"\<!--/V--><!--/B-->
+		<!--B 'form_field-file'--><input type="file" name="[!V 'property'/]" class="[!V 'classname_encoded'/]-[!V 'property'/]-file"/><!--/B-->
+		<!--B 'form_field-generic'-->\<!--V 'FORM:INPUT:[!V 'property'/]'-->class="[!V 'classname_encoded'/]-[!V 'property'/]-input"\<!--/V--><!--/B-->
+	</tr>
+<!--/B-->
+<tr>
+	<td colspan="3" class="form_legend">( <span class="form_required">*</span> = \[!V 'L10N:form_label-mandatory']form_label-mandatory\[!/V] )</td>
+</tr>
+<tr>
+	<td colspan="2">&nbsp;</td>
+	<td><input type="submit" value="\[!V 'L10N:[!V 'form_button_l10n_key'/]'][!V 'form_button_l10n_key'/]\[!/V]" /></td>
+</tr>
+</table>
+</form>
+
+<form name="cancel" action="\[!V 'EXIT:FORM:[!V 'exit_prefix'/][!V 'classname'/]-browse'/]" method="get">\<!--V 'EXIT:PARAMS:[!V 'exit_prefix'/][!V 'classname'/]-browse'/--><input name="submit" type="submit" value="\[!V 'L10N:button_label-cancel']button_label-cancel\[!/V]" /></form>
+

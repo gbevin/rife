@@ -1,0 +1,16 @@
+<html>
+	<head>
+		<title>Template with spaced blockappends</title>
+	</head>
+
+	<body>
+		<h1>This is a template with spaced blockappends.</h1>
+		<r:v name="BLOCK"/>
+		[!    	
+			BV 'BLOCK']first block<!--/BV  	--> space1 <!--  BA 'BLOCK'		   -->second ${v value2/}block${/ba} space2 
+		${ba 'BLOCK'}third <!--V value3-->default value 3<!--/V-->block
+		[!/BA   	
+		
+			]
+	</body>
+</html>

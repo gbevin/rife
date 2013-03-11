@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: game.html 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<title>Perform a guess</title>
+</head>
+
+<body>
+    <p>Guess a number from 0 to 100</p>
+    
+    <r:v name="warning"></r:v>
+    
+    <r:b name="invalid">
+    	<p><font color="#990000">The guess is invalid.</font></p>
+    </r:b>
+    
+    <p><i><r:v name="msg"></r:v></i></p>
+    <r:b name="lower">The answer is lower.</r:b>
+    <r:b name="higher">The answer is higher.</r:b>
+    
+    <form action="${v SUBMISSION:FORM:performGuess/}" method="post">
+    	<r:v name="SUBMISSION:PARAMS:performGuess"/>
+        <input type="text" name="guess" value="${v PARAM:guess}${/v}" /><br />
+        <input type="submit" value="Guess" /><br />
+    </form>
+    <script language="javascript">document.forms[0].guess.focus();</script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: inputspreserved.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE element SYSTEM "/dtd/element.dtd">
+
+<element implementation="com.uwyn.rife.engine.testelements.submission.InputsPreserved">
+	<input name="input1"/>
+	<input name="input2"/>
+	<input name="input3">
+		<default>input3default</default>
+	</input>
+
+	<submission name="submission1">
+		<param name="parameter"/>
+	</submission>
+	
+	<submission name="submission2">
+		<param name="login"/>
+		<param name="password"/>
+	</submission>
+	
+	<submission name="submission3">
+		<param name="login"/>
+		<param name="password"/>
+	</submission>
+
+	<submission name="submission4"/>
+
+	<submission name="submission5">
+		<param name="login"/>
+		<param name="password"/>
+	</submission>
+
+	<submission name="submission6"/>
+</element>
+

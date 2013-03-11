@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: add.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE element SYSTEM "/dtd/element.dtd">
+
+<element implementation="tutorial.friends.Add">
+	<submission name="friend_data">
+		<bean name="friend" classname="tutorial.friends.backend.Friend"/>
+	</submission>
+</element>

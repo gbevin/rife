@@ -1,0 +1,1 @@
+/*B 'QUERY'*/DROP GENERATOR /*V 'NAME'-*//*-B*/

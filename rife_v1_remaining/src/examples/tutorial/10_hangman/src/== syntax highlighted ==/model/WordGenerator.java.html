@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+    <meta name="generator" content="JHighlight v1.0 (http://jhighlight.dev.java.net)" />
+    <title>10_hangman/src/model/WordGenerator.java</title>
+    <link rel="Help" href="http://jhighlight.dev.java.net" />
+    <style type="text/css">
+code {
+color: rgb(0,0,0); font-family: monospace; font-size: 12px; white-space: nowrap;
+}
+.java_type {
+color: rgb(0,44,221);
+}
+.java_comment {
+color: rgb(147,147,147); background-color: rgb(247,247,247);
+}
+.java_operator {
+color: rgb(0,124,31);
+}
+.java_separator {
+color: rgb(0,33,255);
+}
+.java_plain {
+color: rgb(0,0,0);
+}
+h1 {
+font-family: sans-serif; font-size: 16pt; font-weight: bold; color: rgb(0,0,0); background: rgb(210,210,210); border: solid 1px black; padding: 5px; text-align: center;
+}
+.java_javadoc_comment {
+color: rgb(147,147,147); background-color: rgb(247,247,247); font-style: italic;
+}
+.java_keyword {
+color: rgb(0,0,0); font-weight: bold;
+}
+.java_literal {
+color: rgb(188,0,0);
+}
+.java_javadoc_tag {
+color: rgb(147,147,147); background-color: rgb(247,247,247); font-style: italic; font-weight: bold;
+}
+    </style>
+</head>
+<body>
+<h1>10_hangman/src/model/WordGenerator.java</h1><code><span class="java_comment">/*</span><br />
+<span class="java_comment">&nbsp;*&nbsp;$Id:&nbsp;WordGenerator.java&nbsp;3364&nbsp;2006-07-10&nbsp;10:33:29Z&nbsp;gbevin&nbsp;$&nbsp;$Revision:&nbsp;3364&nbsp;$</span><br />
+<span class="java_comment">&nbsp;*&nbsp;$Date:&nbsp;2006-04-16&nbsp;15:36:52&nbsp;+0200&nbsp;(Sun,&nbsp;16&nbsp;Apr&nbsp;2006)&nbsp;$</span><br />
+<span class="java_comment">&nbsp;*</span><br />
+<span class="java_comment">&nbsp;*&nbsp;====================================================================&nbsp;Licensed</span><br />
+<span class="java_comment">&nbsp;*&nbsp;under&nbsp;the&nbsp;Apache&nbsp;License,&nbsp;Version&nbsp;2.0&nbsp;(the&nbsp;&quot;License&quot;);&nbsp;you&nbsp;may&nbsp;not&nbsp;use&nbsp;this</span><br />
+<span class="java_comment">&nbsp;*&nbsp;file&nbsp;except&nbsp;in&nbsp;compliance&nbsp;with&nbsp;the&nbsp;License.&nbsp;You&nbsp;may&nbsp;obtain&nbsp;a&nbsp;copy&nbsp;of&nbsp;the</span><br />
+<span class="java_comment">&nbsp;*&nbsp;License&nbsp;at</span><br />
+<span class="java_comment">&nbsp;*</span><br />
+<span class="java_comment">&nbsp;*&nbsp;http://www.apache.org/licenses/LICENSE-2.0</span><br />
+<span class="java_comment">&nbsp;*</span><br />
+<span class="java_comment">&nbsp;*&nbsp;Unless&nbsp;required&nbsp;by&nbsp;applicable&nbsp;law&nbsp;or&nbsp;agreed&nbsp;to&nbsp;in&nbsp;writing,&nbsp;software</span><br />
+<span class="java_comment">&nbsp;*&nbsp;distributed&nbsp;under&nbsp;the&nbsp;License&nbsp;is&nbsp;distributed&nbsp;on&nbsp;an&nbsp;&quot;AS&nbsp;IS&quot;&nbsp;BASIS,&nbsp;WITHOUT</span><br />
+<span class="java_comment">&nbsp;*&nbsp;WARRANTIES&nbsp;OR&nbsp;CONDITIONS&nbsp;OF&nbsp;ANY&nbsp;KIND,&nbsp;either&nbsp;express&nbsp;or&nbsp;implied.&nbsp;See&nbsp;the</span><br />
+<span class="java_comment">&nbsp;*&nbsp;License&nbsp;for&nbsp;the&nbsp;specific&nbsp;language&nbsp;governing&nbsp;permissions&nbsp;and&nbsp;limitations&nbsp;under</span><br />
+<span class="java_comment">&nbsp;*&nbsp;the&nbsp;License.</span><br />
+<span class="java_comment">&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_keyword">package</span><span class="java_plain">&nbsp;model</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain"></span><br />
+<span class="java_keyword">import</span><span class="java_plain">&nbsp;com</span><span class="java_separator">.</span><span class="java_plain">uwyn</span><span class="java_separator">.</span><span class="java_plain">rife</span><span class="java_separator">.</span><span class="java_plain">tools</span><span class="java_separator">.</span><span class="java_type">FileUtils</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_keyword">import</span><span class="java_plain">&nbsp;com</span><span class="java_separator">.</span><span class="java_plain">uwyn</span><span class="java_separator">.</span><span class="java_plain">rife</span><span class="java_separator">.</span><span class="java_plain">tools</span><span class="java_separator">.</span><span class="java_plain">exceptions</span><span class="java_separator">.</span><span class="java_type">FileUtilsErrorException</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_keyword">import</span><span class="java_plain">&nbsp;java</span><span class="java_separator">.</span><span class="java_plain">io</span><span class="java_separator">.</span><span class="java_type">Serializable</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_keyword">import</span><span class="java_plain">&nbsp;java</span><span class="java_separator">.</span><span class="java_plain">net</span><span class="java_separator">.</span><span class="java_plain">URL</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_keyword">import</span><span class="java_plain">&nbsp;java</span><span class="java_separator">.</span><span class="java_plain">util</span><span class="java_separator">.</span><span class="java_type">Arrays</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_keyword">import</span><span class="java_plain">&nbsp;java</span><span class="java_separator">.</span><span class="java_plain">util</span><span class="java_separator">.</span><span class="java_type">Collections</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_keyword">import</span><span class="java_plain">&nbsp;java</span><span class="java_separator">.</span><span class="java_plain">util</span><span class="java_separator">.</span><span class="java_type">List</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain"></span><br />
+<span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;The&nbsp;word&nbsp;generator&nbsp;is&nbsp;responsible&nbsp;for&nbsp;reading&nbsp;in&nbsp;a&nbsp;list&nbsp;of&nbsp;words&nbsp;from&nbsp;a&nbsp;data</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;file&nbsp;and&nbsp;serving&nbsp;them&nbsp;up&nbsp;in&nbsp;a&nbsp;random&nbsp;order.&nbsp;The&nbsp;generator&nbsp;keeps&nbsp;a&nbsp;state</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;record&nbsp;of&nbsp;which&nbsp;words&nbsp;it&nbsp;has&nbsp;served&nbsp;and&nbsp;randomises&nbsp;them&nbsp;again&nbsp;when&nbsp;the&nbsp;last</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;word&nbsp;has&nbsp;been&nbsp;served.</span><br />
+<span class="java_javadoc_comment">&nbsp;*</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@author</span><span class="java_javadoc_comment">&nbsp;Chris&nbsp;Turner</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@author</span><span class="java_javadoc_comment">&nbsp;Geert&nbsp;Bevin</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@version</span><span class="java_javadoc_comment">&nbsp;1.0</span><br />
+<span class="java_javadoc_comment">&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_keyword">class</span><span class="java_plain">&nbsp;</span><span class="java_type">WordGenerator</span><span class="java_plain">&nbsp;</span><span class="java_keyword">implements</span><span class="java_plain">&nbsp;</span><span class="java_type">Serializable</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**&nbsp;List&nbsp;of&nbsp;words&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">private</span><span class="java_plain">&nbsp;</span><span class="java_keyword">final</span><span class="java_plain">&nbsp;</span><span class="java_type">List</span><span class="java_plain">&nbsp;words</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**&nbsp;Index&nbsp;into&nbsp;words&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">private</span><span class="java_plain">&nbsp;</span><span class="java_type">int</span><span class="java_plain">&nbsp;index</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Create&nbsp;the&nbsp;word&nbsp;generator,&nbsp;loading&nbsp;the&nbsp;words&nbsp;and&nbsp;preparing&nbsp;them&nbsp;for</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;serving.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_type">WordGenerator</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_keyword">try</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;URL&nbsp;resource&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;getClass</span><span class="java_separator">().</span><span class="java_plain">getClassLoader</span><span class="java_separator">().</span><span class="java_plain">getResource</span><span class="java_separator">(</span><span class="java_literal">&quot;model/WordList.txt&quot;</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">final</span><span class="java_plain">&nbsp;</span><span class="java_type">String</span><span class="java_plain">&nbsp;wordlist&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_type">FileUtils</span><span class="java_separator">.</span><span class="java_plain">readString</span><span class="java_separator">(</span><span class="java_plain">resource</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">this</span><span class="java_separator">.</span><span class="java_plain">words&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_type">Arrays</span><span class="java_separator">.</span><span class="java_plain">asList</span><span class="java_separator">(</span><span class="java_plain">wordlist</span><span class="java_separator">.</span><span class="java_plain">split</span><span class="java_separator">(</span><span class="java_literal">&quot;\\s+&quot;</span><span class="java_separator">));</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;shuffle</span><span class="java_separator">();</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain">&nbsp;</span><span class="java_keyword">catch</span><span class="java_plain">&nbsp;</span><span class="java_separator">(</span><span class="java_type">FileUtilsErrorException</span><span class="java_plain">&nbsp;e</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">throw</span><span class="java_plain">&nbsp;</span><span class="java_keyword">new</span><span class="java_plain">&nbsp;</span><span class="java_type">RuntimeException</span><span class="java_separator">(</span><span class="java_literal">&quot;Couldn't&nbsp;read&nbsp;word&nbsp;lis.&quot;</span><span class="java_separator">,</span><span class="java_plain">&nbsp;e</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Create&nbsp;the&nbsp;word&nbsp;generator&nbsp;using&nbsp;the&nbsp;supplied&nbsp;array&nbsp;of&nbsp;words&nbsp;as&nbsp;the&nbsp;word</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;source&nbsp;to&nbsp;use.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@param</span><span class="java_javadoc_comment">&nbsp;words</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;words&nbsp;to&nbsp;use</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_type">WordGenerator</span><span class="java_separator">(</span><span class="java_keyword">final</span><span class="java_plain">&nbsp;</span><span class="java_type">String</span><span class="java_separator">[]</span><span class="java_plain">&nbsp;words</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">this</span><span class="java_separator">.</span><span class="java_plain">words&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_type">Arrays</span><span class="java_separator">.</span><span class="java_plain">asList</span><span class="java_separator">(</span><span class="java_plain">words</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;shuffle</span><span class="java_separator">();</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Returns&nbsp;the&nbsp;next&nbsp;word&nbsp;from&nbsp;the&nbsp;word&nbsp;generator.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@return</span><span class="java_javadoc_comment">&nbsp;The&nbsp;next&nbsp;word</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_type">Word</span><span class="java_plain">&nbsp;next</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">if</span><span class="java_plain">&nbsp;</span><span class="java_separator">(</span><span class="java_plain">index&nbsp;</span><span class="java_operator">==</span><span class="java_plain">&nbsp;words</span><span class="java_separator">.</span><span class="java_plain">size</span><span class="java_separator">())</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;shuffle</span><span class="java_separator">();</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">return</span><span class="java_plain">&nbsp;</span><span class="java_keyword">new</span><span class="java_plain">&nbsp;</span><span class="java_type">Word</span><span class="java_separator">((</span><span class="java_type">String</span><span class="java_separator">)</span><span class="java_plain">words</span><span class="java_separator">.</span><span class="java_plain">get</span><span class="java_separator">(</span><span class="java_plain">index</span><span class="java_operator">++</span><span class="java_separator">));</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Get&nbsp;the&nbsp;number&nbsp;of&nbsp;words&nbsp;that&nbsp;were&nbsp;discovered.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@return</span><span class="java_javadoc_comment">&nbsp;The&nbsp;number&nbsp;of&nbsp;words</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_type">int</span><span class="java_plain">&nbsp;size</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">return</span><span class="java_plain">&nbsp;words</span><span class="java_separator">.</span><span class="java_plain">size</span><span class="java_separator">();</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Randomises&nbsp;the&nbsp;list&nbsp;of&nbsp;loaded&nbsp;words&nbsp;and&nbsp;sets&nbsp;the&nbsp;index&nbsp;back&nbsp;to&nbsp;the</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;beginning&nbsp;of&nbsp;the&nbsp;word&nbsp;list.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">private</span><span class="java_plain">&nbsp;</span><span class="java_type">void</span><span class="java_plain">&nbsp;shuffle</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_type">Collections</span><span class="java_separator">.</span><span class="java_plain">shuffle</span><span class="java_separator">(</span><span class="java_plain">words</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_literal">0</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_separator">}</span><span class="java_plain"></span><br />
+</code>
+</body>
+</html>

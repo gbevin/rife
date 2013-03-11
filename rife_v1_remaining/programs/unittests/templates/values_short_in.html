@@ -1,0 +1,17 @@
+<html>
+	<head>
+		<title>Template with short value tags</title>
+	</head>
+
+	<body>
+		[!V  'VALUE1'	
+			/]<r:c>this is a comment</r:c>
+		<h1>This is a template with short value tags.</h1>
+		[!B 'BLOCK1']one<!--V   'VALUE2'/-->two<r:v name="VALUE3"/>three[!/B]
+		<!--B  'BLOCK2'-->three[!V 'VALUE4'/]<!--V 'VALUE5'	    
+			/--><!--/B-->
+		[!B 'BLOCK3']<!--V 'VALUE6'/--><!--/B-->
+		<h2>Some more text.</h2>
+		${v VALUE7/}
+	</body>
+</html>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: precedence.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<!-- PRECEDENCE SIMPLE -->
+	<element id="SIMPLE_PRE" file="element/precedence/simple_pre.xml"/>
+	<element id="SIMPLE_TARGET" file="element/precedence/simple_target.xml" url="/simple" pre="SIMPLE_PRE"/>
+
+	<!-- PRECEDENCE MULTIPLE -->
+	<element id="MULTIPLE_PRE3" file="element/precedence/multiple_pre3.xml"/>
+	<element id="MULTIPLE_PRE2" file="element/precedence/multiple_pre2.xml" pre="MULTIPLE_PRE3"/>
+	<element id="MULTIPLE_PRE1" file="element/precedence/multiple_pre1.xml" pre="MULTIPLE_PRE2"/>
+	<element id="MULTIPLE_TARGET" file="element/precedence/multiple_target.xml" url="/multiple" pre="MULTIPLE_PRE1"/>
+
+	<!-- PRECEDENCE TARGET INHERITANCE -->
+	<element id="TARGETINHERITANCE_PRE" file="element/precedence/targetinheritance_pre.xml"/>
+	<element id="TARGETINHERITANCE_PARENT" file="element/precedence/targetinheritance_parent.xml"/>
+	<element id="TARGETINHERITANCE_TARGET" file="element/precedence/targetinheritance_target.xml" url="/targetinheritance" pre="TARGETINHERITANCE_PRE" inherits="TARGETINHERITANCE_PARENT"/>
+
+	<!-- PRECEDENCE PRE INHERITANCE -->
+	<element id="PREINHERITANCE_PRE" file="element/precedence/preinheritance_pre.xml" inherits="PREINHERITANCE_PARENT"/>
+	<element id="PREINHERITANCE_PARENT" file="element/precedence/preinheritance_parent.xml"/>
+	<element id="PREINHERITANCE_TARGET" file="element/precedence/preinheritance_target.xml" url="/preinheritance" pre="PREINHERITANCE_PRE"/>
+	
+	<!-- PRECEDENCE GLOBALVARS -->
+	<group>
+		<globalvar name="globalvar1"/>
+		<globalvar name="globalvar2"/>
+		<globalvar name="globalvar3"/>
+		<element id="GLOBALVARS_PRE" file="element/precedence/globalvars_pre.xml"/>
+		<group>
+			<globalvar name="globalvar4"/>
+			<globalvar name="globalvar5"/>
+			<globalvar name="globalvar6"/>
+			<element id="GLOBALVARS_TARGET" file="element/precedence/globalvars_target.xml" url="/globalvars" pre="GLOBALVARS_PRE"/>
+		</group>
+	</group>
+	
+	<!-- PRECEDENCE COOKIES -->
+	<group>
+		<globalcookie name="cookie1"/>
+		<globalcookie name="cookie2"/>
+		<globalcookie name="cookie3"/>
+		<element id="COOKIES_PRE" file="element/precedence/cookies_pre.xml"/>
+		<group>
+			<globalcookie name="cookie5"/>
+			<element id="COOKIES_TARGET" file="element/precedence/cookies_target.xml" url="/cookies" pre="COOKIES_PRE"/>
+		</group>
+	</group>
+
+	<!-- INHERITANCE PRECEDENCE -->
+	<element id="INHERITANCEPRECEDENCE_PRE" file="element/precedence/inheritanceprecedence_pre.xml"/>
+	<element id="INHERITANCEPRECEDENCE_PARENT" file="element/precedence/inheritanceprecedence_parent.xml" pre="INHERITANCEPRECEDENCE_PRE"/>
+	<element id="INHERITANCEPRECEDENCE_TARGET" file="element/precedence/inheritanceprecedence_target.xml" url="/inheritanceprecedence" inherits="INHERITANCEPRECEDENCE_PARENT"/>
+
+	<!-- PRECEDENCE GLOBAL SCOPE -->
+	<subsite id="GLOBAL_SCOPE" file="site/precedence/globalscope.xml" urlprefix="/globalscope"/>
+
+</site>
+

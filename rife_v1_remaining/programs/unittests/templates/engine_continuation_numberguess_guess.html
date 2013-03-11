@@ -1,0 +1,15 @@
+<html>
+<head><title>Perform a guess</title></head>
+<body>
+    <p>Guess a number from 0 to 100</p>
+    <p><i><!--V 'indication'--><!--/V--></i></p>
+    <!--B 'lower'-->The answer is lower.<!--/B-->
+    <!--B 'higher'-->The answer is higher.<!--/B-->
+    <form name="perform_guess" action="[!V 'SUBMISSION:FORM:perform_guess'/]" method="post">
+    <!--V 'SUBMISSION:PARAMS:perform_guess'/-->
+        <input type="text" name="guess" value="[!V 'PARAM:guess'][!/V]" /><br />
+        <input type="submit" value="Guess" /><br />
+    </form>
+</body>
+</html>
+

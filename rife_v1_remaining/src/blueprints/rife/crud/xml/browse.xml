@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crud>
+	<method>browse</method>
+	<title>\<!--V 'L10N:window_title'-->window_title\<!--/V--></title>
+	<subtitle>\<!--V 'L10N:page_title-browse'-->page_title-browse\<!--/V--></subtitle>
+	\<!--V 'crud_content'/-->
+	\<!--BV 'crud_content'-->
+		<rows>
+			\<!--V 'rows'/-->
+			\<!--B 'row'-->
+			<row>
+				<data>
+				<!--V 'columns'--><!--/V-->
+				<!--B 'column'-->
+					<!--V 'form_field'/-->
+					<!--B 'form_field-generic'--><[!V 'property'/]><value>\<!--V '[!V 'property'/]'-->\<!--/V--></value></[!V 'property'/]><!--/B-->
+					<!--B 'form_field-url'--><[!V 'property'/] type="url"><value>\<!--V '[!V 'property'/]'-->\<!--/V--></value></[!V 'property'/]><!--/B-->
+					<!--B 'form_field-email'--><[!V 'property'/] type="email"><value>\<!--V '[!V 'property'/]'-->\<!--/V--></value></[!V 'property'/]><!--/B-->
+					<!--B 'form_field-image'--><[!V 'property'/] type="image"><url>\<!--V '[!V 'property'/]-src'-->\<!--/V--></url><width>\<!--V '[!V 'property'/]-width'-->\<!--/V--></width><height>\<!--V '[!V 'property'/]-height'-->\<!--/V--></height><size>\<!--V '[!V 'property'/]-size'-->\<!--/V--></size></[!V 'property'/]><!--/B-->
+					<!--B 'form_field-raw'--><[!V 'property'/] type="raw"><url>\<!--V '[!V 'property'/]-url'/--></url><name>\<!--V '[!V 'property'/]-name'/--></name><size>\<!--V '[!V 'property'/]-size'-->\<!--/V--></size></[!V 'property'/]><!--/B-->
+				<!--/B-->
+				</data>
+				<actions>
+					<edit>\<!--V 'EXIT:QUERY:[!V 'exit_prefix'/][!V 'classname'/]-edit'/--></edit>
+					<delete>\<!--V 'EXIT:QUERY:[!V 'exit_prefix'/][!V 'classname'/]-delete'/--></delete>
+					<!--V 'move_actions'--><!--/V-->
+					<!--B 'move_actions'-->
+						<up active="\[!V 'move_disabled_up']1\[!/V]\[!B 'move_disabled']0\[!/B]">\<!--V 'EXIT:QUERY:up'/--></up>
+						<down active="\[!V 'move_disabled_down']1\[!/V]">\<!--V 'EXIT:QUERY:down'/--></down>
+					<!--/B-->
+				</actions>
+				<associations><!--V 'associations'--><!--/V--></associations>
+				<!--B 'association'-->
+					<association>
+						<name><!--V 'association_short-classname'/--></name>
+						<count>\<!--V 'association_entrycount[!V 'association_count'/]'/--></count>
+						<actions>
+							<browse>\<!--V 'EXIT:QUERY:[!V 'exit_prefix'/][!V 'association_classname'/]-browse'/--></browse>
+							<add>\<!--V 'EXIT:QUERY:[!V 'exit_prefix'/][!V 'association_classname'/]-add'/--></add>
+						</actions>
+					</association>
+				<!--/B-->
+			</row>
+			\<!--/B-->
+		</rows>
+		\<!--I 'rife.crud.xml.common.ranged_table'/-->
+	\<!--/BV-->
+	\<!--B 'crud_content_none'-->
+		<rows/>
+	\<!--/B-->
+	<urls>
+		<home>\<!--V 'EXIT:QUERY:[!V 'exit_prefix'/][!V 'classname'/]-home'/--></home>
+		<add>\<!--V 'EXIT:QUERY:[!V 'exit_prefix'/][!V 'classname'/]-add'/--></add>
+		<browse>\<!--V 'EXIT:QUERY:[!V 'exit_prefix'/][!V 'classname'/]-browse'/--></browse>
+	</urls>
+</crud>

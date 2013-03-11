@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: test_xml2datasources.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE datasources SYSTEM "/dtd/datasources.dtd">
+
+<datasources>
+    <datasource name="datasource1">
+        <driver>org.postgresql.Driver</driver>
+        <url>jdbc:postgresql://localhost:5432/thedb</url>
+        <user><config param="DATASOURCE_USER"/>1</user>
+        <password><config param="DATASOURCE_PASSWORD"/>1</password>
+        <poolsize>5</poolsize>
+    </datasource>
+    <datasource name="datasource2">
+        <driver>com.mysql.jdbc.Driver</driver>
+        <url>jdbc:mysql://localhost:3306/thedb</url>
+        <user>user2</user>
+        <password>pw2</password>
+        <poolsize>15</poolsize>
+    </datasource>
+    <datasource name="datasource3">
+        <driver>oracle.jdbc.driver.OracleDriver</driver>
+        <url>jdbc:oracle:thin:@10.1.1.2:1521:database</url>
+        <user><config param="DATASOURCE_USER"/></user>
+        <password><config param="DATASOURCE_PASSWORD"/></password>
+    </datasource>
+    <datasource name="datasource4">
+        <driver>org.gjt.mm.mysql.Driver</driver>
+        <url>jdbc:mysql://localhost:3306/thedb</url>
+        <user>user2</user>
+        <password>pw2</password>
+        <poolsize>15</poolsize>
+    </datasource>
+</datasources>

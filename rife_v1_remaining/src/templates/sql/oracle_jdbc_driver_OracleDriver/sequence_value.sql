@@ -1,0 +1,2 @@
+/*B 'OPERATION_NEXT'*/SELECT /*V 'NAME'-*/.nextval FROM DUAL/*-B*/
+/*B 'OPERATION_CURRENT'*/SELECT /*V 'NAME'-*/.currval FROM DUAL/*-B*/

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://purl.org/atom/ns#" xmlns:taxo="http://purl.org/rss/1.0/modules/taxonomy/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:dc="http://purl.org/dc/elements/1.1/"[!V 'namespaces'][!/V][!B 'namespace'] xmlns:[!V 'namespace_key'/]="[!V 'namespace_url'/]"[!/B] version="0.3">
+	<title><!--V 'feed_title'--><!--/V--></title>
+	<link rel="alternate" href="[!V 'feed_link'][!/V]" type="text/html" />
+	<author>
+		<name><!--V 'feed_author'--><!--/V--></name>
+	</author>
+	<copyright><!--V 'feed_copyright'--><!--/V--></copyright>
+	<info><!--V 'feed_description'--><!--/V--></info>
+	<modified><!--V 'feed_publishedDate'--><!--/V--></modified>
+	<dc:creator><!--V 'feed_author'--><!--/V--></dc:creator>
+	<dc:date><!--V 'feed_publishedDate'--><!--/V--></dc:date>
+	<dc:language><!--V 'feed_language'--><!--/V--></dc:language>
+	<dc:rights><!--V 'feed_copyright'--><!--/V--></dc:rights>
+	
+	<!--V 'entries'--><!--/V-->
+	<!--B 'entry'-->
+		<entry>
+			<title><!--V 'entry_title'--><!--/V--></title>
+			<link rel="alternate" href="[!V 'entry_link'][!/V]" type="text/html" />
+			<author>
+				<name><!--V 'entry_author'--><!--/V--></name>
+			</author>
+			<modified><!--V 'entry_publishedDate'--><!--/V--></modified>
+			<content type="[!V 'entry_type'/]"[!V 'entry_escaped_attribute'][!/V][!B 'entry_escaped_attribute'] mode="escaped"[!/B]><!--V 'entry_content'--><!--/V--></content>
+			<id><!--V 'entry_id'--><!--/V--></id>
+			<issued><!--V 'entry_publishedDate'--><!--/V--></issued>
+			<dc:creator><!--V 'entry_author'--><!--/V--></dc:creator>
+			<dc:date><!--V 'entry_publishedDate'--><!--/V--></dc:date>
+		</entry>
+	<!--/B-->
+</feed>

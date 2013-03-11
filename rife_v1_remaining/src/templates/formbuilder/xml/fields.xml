@@ -1,0 +1,14 @@
+<!--B 'VALUE'--><value><!--V 'VALUE'--><!--/V--></value><!--/B-->
+<!--B 'MAXLENGTH'--><maxlength><!--V 'MAXLENGTH'/--></maxlength><!--/B-->
+<!--B 'CHECKED'--><checked>1</checked><!--/B-->
+<!--B 'SELECTED'--><selected>1</selected><!--/B-->
+<!--B 'DISABLED'--><disabled>1</disabled><!--/B-->
+<!--B 'FORM:HIDDEN:'--><field><name><!--V 'NAME'/--></name><type>hidden</type><!--V 'ATTRIBUTES'--><!--/V--></field><!--/B-->
+<!--B 'FORM:INPUT:'--><field><name><!--V 'NAME'/--></name><type>text</type><!--V 'ATTRIBUTES'--><!--/V--></field><!--/B-->
+<!--B 'FORM:SECRET:'--><field><name><!--V 'NAME'/--></name><type>secret</type><!--V 'ATTRIBUTES'--><!--/V--></field><!--/B-->
+<!--B 'FORM:TEXTAREA:'--><field><name><!--V 'NAME'/--></name><type>textarea</type><!--V 'ATTRIBUTES'--><!--/V--></field><!--/B-->
+<!--B 'FORM:RADIO:'--><field><name><!--V 'NAME'/--></name><type>radio</type><!--V 'ATTRIBUTES'--><!--/V--></field><!--/B-->
+<!--B 'FORM:CHECKBOX:'--><field><name><!--V 'NAME'/--></name><type>checkbox</type><!--V 'ATTRIBUTES'--><!--/V--></field><!--/B-->
+<!--B 'FORM:SELECT:'--><field><name><!--V 'NAME'/--></name><type>select</type><!--V 'ATTRIBUTES'--><!--/V--><options><!--V 'OPTIONS'--><!--/V--></options></field><!--/B-->
+<!--B 'FORM:OPTION:'--><option><value><!--V 'VALUE'/--></value><label><!--V 'LABEL'--><!--/V--></label><!--V 'ATTRIBUTES'--><!--/V--></option><!--/B-->
+<!--B 'FORM:DISPLAY:'--><field><value><!--V 'VALUE'--><!--/V--></value><!--V 'ATTRIBUTES'--><!--/V--></field><!--/B-->

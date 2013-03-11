@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+    <meta name="generator" content="JHighlight v1.0 (http://jhighlight.dev.java.net)" />
+    <title>03_numberguess/src/java/tutorial/numberguess/backend/Game.java</title>
+    <link rel="Help" href="http://jhighlight.dev.java.net" />
+    <style type="text/css">
+code {
+color: rgb(0,0,0); font-family: monospace; font-size: 12px; white-space: nowrap;
+}
+.java_type {
+color: rgb(0,44,221);
+}
+.java_comment {
+color: rgb(147,147,147); background-color: rgb(247,247,247);
+}
+.java_operator {
+color: rgb(0,124,31);
+}
+.java_separator {
+color: rgb(0,33,255);
+}
+.java_plain {
+color: rgb(0,0,0);
+}
+h1 {
+font-family: sans-serif; font-size: 16pt; font-weight: bold; color: rgb(0,0,0); background: rgb(210,210,210); border: solid 1px black; padding: 5px; text-align: center;
+}
+.java_javadoc_comment {
+color: rgb(147,147,147); background-color: rgb(247,247,247); font-style: italic;
+}
+.java_keyword {
+color: rgb(0,0,0); font-weight: bold;
+}
+.java_literal {
+color: rgb(188,0,0);
+}
+.java_javadoc_tag {
+color: rgb(147,147,147); background-color: rgb(247,247,247); font-style: italic; font-weight: bold;
+}
+    </style>
+</head>
+<body>
+<h1>03_numberguess/src/java/tutorial/numberguess/backend/Game.java</h1><code><span class="java_comment">/*</span><br />
+<span class="java_comment">&nbsp;*&nbsp;Copyright&nbsp;2001-2008&nbsp;Geert&nbsp;Bevin&nbsp;&lt;gbevin[remove]&nbsp;at&nbsp;uwyn&nbsp;dot&nbsp;com&gt;</span><br />
+<span class="java_comment">&nbsp;*&nbsp;Licensed&nbsp;under&nbsp;the&nbsp;Apache&nbsp;License,&nbsp;Version&nbsp;2.0&nbsp;(the&nbsp;&quot;License&quot;)</span><br />
+<span class="java_comment">&nbsp;*&nbsp;$Id:&nbsp;Game.java&nbsp;3877&nbsp;2007-08-03&nbsp;19:48:10Z&nbsp;gbevin&nbsp;$</span><br />
+<span class="java_comment">&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_keyword">package</span><span class="java_plain">&nbsp;tutorial</span><span class="java_separator">.</span><span class="java_plain">numberguess</span><span class="java_separator">.</span><span class="java_plain">backend</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain"></span><br />
+<span class="java_keyword">import</span><span class="java_plain">&nbsp;java</span><span class="java_separator">.</span><span class="java_plain">util</span><span class="java_separator">.</span><span class="java_type">Calendar</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_keyword">import</span><span class="java_plain">&nbsp;java</span><span class="java_separator">.</span><span class="java_plain">util</span><span class="java_separator">.</span><span class="java_type">Date</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_keyword">import</span><span class="java_plain">&nbsp;java</span><span class="java_separator">.</span><span class="java_plain">util</span><span class="java_separator">.</span><span class="java_type">Random</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain"></span><br />
+<span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;The&nbsp;lifecycle&nbsp;of&nbsp;a&nbsp;number&nbsp;guess&nbsp;game&nbsp;is&nbsp;represented&nbsp;by&nbsp;this&nbsp;class.</span><br />
+<span class="java_javadoc_comment">&nbsp;*</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@author</span><span class="java_javadoc_comment">&nbsp;Geert&nbsp;Bevin&nbsp;(gbevin[remove]&nbsp;at&nbsp;uwyn&nbsp;dot&nbsp;com)</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@version</span><span class="java_javadoc_comment">&nbsp;$Revision:&nbsp;3877&nbsp;$</span><br />
+<span class="java_javadoc_comment">&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_keyword">class</span><span class="java_plain">&nbsp;</span><span class="java_type">Game</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">private</span><span class="java_plain">&nbsp;</span><span class="java_keyword">final</span><span class="java_plain">&nbsp;</span><span class="java_keyword">static</span><span class="java_plain">&nbsp;</span><span class="java_type">Random</span><span class="java_plain">&nbsp;randomNumbers&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_keyword">new</span><span class="java_plain">&nbsp;</span><span class="java_type">Random</span><span class="java_separator">();</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">private</span><span class="java_plain">&nbsp;</span><span class="java_type">Date</span><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;start</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">private</span><span class="java_plain">&nbsp;</span><span class="java_type">int</span><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;answer</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">private</span><span class="java_plain">&nbsp;</span><span class="java_type">int</span><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;guesses</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;When&nbsp;a&nbsp;new&nbsp;instance&nbsp;of&nbsp;the&nbsp;class&nbsp;is&nbsp;created,&nbsp;it's&nbsp;regarded&nbsp;as&nbsp;started</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;a&nbsp;new&nbsp;game.&nbsp;The&nbsp;answer&nbsp;is&nbsp;randomly&nbsp;generated,&nbsp;the&nbsp;start&nbsp;time&nbsp;is</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;registered&nbsp;and&nbsp;the&nbsp;number&nbsp;of&nbsp;guesses&nbsp;is&nbsp;initialized&nbsp;to&nbsp;zero.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_type">Game</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;registerStart</span><span class="java_separator">();</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;generateAnswer</span><span class="java_separator">();</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Registers&nbsp;the&nbsp;start&nbsp;of&nbsp;the&nbsp;game</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">private</span><span class="java_plain">&nbsp;</span><span class="java_keyword">synchronized</span><span class="java_plain">&nbsp;</span><span class="java_type">void</span><span class="java_plain">&nbsp;registerStart</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;start&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_type">Calendar</span><span class="java_separator">.</span><span class="java_plain">getInstance</span><span class="java_separator">().</span><span class="java_plain">getTime</span><span class="java_separator">();</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Generates&nbsp;the&nbsp;number&nbsp;that&nbsp;has&nbsp;to&nbsp;be&nbsp;guessed&nbsp;in&nbsp;this&nbsp;game.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">private</span><span class="java_plain">&nbsp;</span><span class="java_type">void</span><span class="java_plain">&nbsp;generateAnswer</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">synchronized</span><span class="java_plain">&nbsp;</span><span class="java_separator">(</span><span class="java_plain">randomNumbers</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;answer&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;randomNumbers</span><span class="java_separator">.</span><span class="java_plain">nextInt</span><span class="java_separator">(</span><span class="java_literal">101</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Calculates&nbsp;how&nbsp;much&nbsp;seconds&nbsp;that&nbsp;have&nbsp;elapsed&nbsp;since&nbsp;the&nbsp;start&nbsp;of&nbsp;the</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;game.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@return</span><span class="java_javadoc_comment">&nbsp;A&nbsp;&lt;code&gt;long&lt;/code&gt;&nbsp;with&nbsp;the&nbsp;number&nbsp;of&nbsp;elapsed&nbsp;seconds.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_type">long</span><span class="java_plain">&nbsp;getDuration</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_type">Date</span><span class="java_plain">&nbsp;now&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_type">Calendar</span><span class="java_separator">.</span><span class="java_plain">getInstance</span><span class="java_separator">().</span><span class="java_plain">getTime</span><span class="java_separator">();</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_type">long</span><span class="java_plain">&nbsp;duration_milliseconds&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;now</span><span class="java_separator">.</span><span class="java_plain">getTime</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_operator">-</span><span class="java_plain">&nbsp;start</span><span class="java_separator">.</span><span class="java_plain">getTime</span><span class="java_separator">();</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_type">long</span><span class="java_plain">&nbsp;duration_seconds&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;duration_milliseconds&nbsp;</span><span class="java_operator">/</span><span class="java_plain">&nbsp;</span><span class="java_literal">1000</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">return</span><span class="java_plain">&nbsp;duration_seconds</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Retrieves&nbsp;the&nbsp;correct&nbsp;answer.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@return</span><span class="java_javadoc_comment">&nbsp;An&nbsp;&lt;code&gt;int&lt;/code&gt;&nbsp;with&nbsp;the&nbsp;value&nbsp;of&nbsp;the&nbsp;correct&nbsp;answer.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_type">int</span><span class="java_plain">&nbsp;getAnswer</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">return</span><span class="java_plain">&nbsp;answer</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Increases&nbsp;the&nbsp;number&nbsp;of&nbsp;guesses&nbsp;that&nbsp;have&nbsp;been&nbsp;made.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_keyword">synchronized</span><span class="java_plain">&nbsp;</span><span class="java_type">void</span><span class="java_plain">&nbsp;increaseGuesses</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;guesses</span><span class="java_operator">++</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Retrieves&nbsp;the&nbsp;number&nbsp;of&nbsp;guesses&nbsp;that&nbsp;have&nbsp;already&nbsp;been&nbsp;made.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@return</span><span class="java_javadoc_comment">&nbsp;An&nbsp;&lt;code&gt;int&lt;/code&gt;&nbsp;with&nbsp;the&nbsp;number&nbsp;of&nbsp;guesses.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_type">int</span><span class="java_plain">&nbsp;getGuesses</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">return</span><span class="java_plain">&nbsp;guesses</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_separator">}</span><span class="java_plain"></span><br />
+</code>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: element.dtd 3918 2008-04-14 17:35:35Z gbevin $
+  -  PUBLIC ID: -//Rifers.org//RIFE Element 1.6//EN
+  -  SYSTEM ID: http://rifers.org/dtd/element_1_6.dtd
+  -->
+
+<!ELEMENT element		(property | exit | childtrigger | input | inbean | output | outbean | submission | incookie | outcookie | pathinfo)*>
+<!ATTLIST element		implementation CDATA #IMPLIED
+                        extends CDATA #IMPLIED
+                        contenttype CDATA #IMPLIED
+                        pathinfo (loose|strict) #IMPLIED>
+
+<!ELEMENT property		(#PCDATA | config | participant | datasource | template)*>
+<!ATTLIST property		name CDATA #REQUIRED>
+
+<!ELEMENT participant	(#PCDATA | config | participant | datasource | template)*>
+<!ATTLIST participant	name CDATA #REQUIRED>
+
+<!ELEMENT datasource	(#PCDATA | config | participant)*>
+
+<!ELEMENT template		(#PCDATA | config | participant)*>
+<!ATTLIST template		type CDATA #IMPLIED>
+
+<!ELEMENT exit			EMPTY>
+<!ATTLIST exit			name CDATA #REQUIRED>
+
+<!ELEMENT childtrigger	EMPTY>
+<!ATTLIST childtrigger	name CDATA #REQUIRED>
+
+<!ELEMENT input			(default*)>
+<!ATTLIST input			name CDATA #REQUIRED>
+
+<!ELEMENT inbean		EMPTY>
+<!ATTLIST inbean		classname CDATA #REQUIRED
+						prefix CDATA #IMPLIED
+						name CDATA #IMPLIED
+						group CDATA #IMPLIED>
+
+<!ELEMENT output		(default*)>
+<!ATTLIST output		name CDATA #REQUIRED>
+
+<!ELEMENT outbean		EMPTY>
+<!ATTLIST outbean		classname CDATA #REQUIRED
+						prefix CDATA #IMPLIED
+						name CDATA #IMPLIED
+						group CDATA #IMPLIED>
+
+<!ELEMENT submission	(param | bean | file)*>
+<!ATTLIST submission	name CDATA #REQUIRED
+						scope (local|global) "local"
+						continuations (preserve|cancel) "preserve">
+
+<!ELEMENT param			(default*)>
+<!ATTLIST param			name CDATA #IMPLIED
+						regexp CDATA #IMPLIED>
+
+<!ELEMENT bean			EMPTY>
+<!ATTLIST bean			classname CDATA #REQUIRED
+						prefix CDATA #IMPLIED
+						name CDATA #IMPLIED
+						group CDATA #IMPLIED>
+
+<!ELEMENT file			EMPTY>
+<!ATTLIST file		    name CDATA #IMPLIED
+						regexp CDATA #IMPLIED>
+
+<!ELEMENT incookie		(default?)>
+<!ATTLIST incookie		name CDATA #REQUIRED>
+
+<!ELEMENT outcookie		(default?)>
+<!ATTLIST outcookie		name CDATA #REQUIRED>
+
+<!ELEMENT default		(#PCDATA | config)*>
+
+<!ELEMENT config		EMPTY>
+<!ATTLIST config		param CDATA #REQUIRED>
+
+<!ELEMENT pathinfo		EMPTY>
+<!ATTLIST pathinfo		mapping CDATA #REQUIRED>
+

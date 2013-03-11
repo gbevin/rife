@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: friends.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+    <arrival destid="Menu"/>
+	
+   	<globalexit name="menu" destid="Menu"/>
+    
+    <element id="Display" implementation="tutorial.friends.Display" url="/display"/>
+
+    <element id="Menu" extends="rife/template/print.xml" url="/menu">
+		<property name="name">menu</property>
+		
+		<exit name="install"/>
+		<exit name="add"/>
+		<exit name="remove"/>
+		<exit name="display"/>
+	
+        <flowlink srcexit="install" destid="Install"/>
+        <flowlink srcexit="add" destid="Add"/>
+        <flowlink srcexit="remove" destid="Remove"/>
+        <flowlink srcexit="display" destid="Display"/>
+    </element>
+    
+	<element id="Install" file="install.xml" url="/install"/>
+	<element id="Add" file="add.xml" url="/add"/>
+	<element id="Remove" file="remove.xml" url="/remove"/>
+</site>

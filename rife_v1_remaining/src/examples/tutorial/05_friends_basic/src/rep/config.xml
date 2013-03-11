@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: config.xml 3943 2008-04-27 09:09:02Z gbevin $
+  -->
+
+<!DOCTYPE config SYSTEM "/dtd/config.dtd">
+
+<config>
+	<param name="DATASOURCE">derby</param>
+</config>

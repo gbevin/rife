@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: extending.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<!-- EXTENDING SIMPLE -->
+	<element id="SIMPLE" file="element/extending/simple.xml" url="/extending/simple">
+		<flowlink srcexit="exit1" destid="SIMPLE"/>
+		<datalink srcoutput="output1" destid="SIMPLE" destinput="input1"/>
+		<flowlink srcexit="exit2" destid="SIMPLE"/>
+		<datalink srcoutput="output2" destid="SIMPLE" destinput="input2"/>
+	</element>
+	
+	<!-- EXTENDING CLASS OVERRIDING -->
+	<element id="CLASSOVERRIDING" file="element/extending/classoverriding.xml" url="/extending/classoverriding">
+		<flowlink srcexit="exit1" destid="CLASSOVERRIDING"/>
+		<datalink srcoutput="output1" destid="CLASSOVERRIDING" destinput="input1"/>
+		<flowlink srcexit="exit2" destid="CLASSOVERRIDING"/>
+		<datalink srcoutput="output2" destid="CLASSOVERRIDING" destinput="input2"/>
+	</element>
+	
+	<!-- EXTENDING STATICPROPERTIES OVERRIDING -->
+	<element id="STATICPROPERTIESOVERRIDING" file="element/extending/staticpropertiesoverriding.xml" url="/extending/staticpropertiesoverriding"/>
+	
+	<!-- EXTENDING ADDING ELEMENTS -->
+	<element id="ADDING" file="element/extending/adding.xml" url="/extending/adding">
+		<flowlink srcexit="exit1" destid="ADDING"/>
+		<datalink srcoutput="output1" destid="ADDING" destinput="input1"/>
+		<flowlink srcexit="exit2" destid="ADDING"/>
+		<datalink srcoutput="output2" destid="ADDING" destinput="input2"/>
+		<flowlink srcexit="exit3" destid="ADDING"/>
+		<datalink srcoutput="output3" destid="ADDING" destinput="input3"/>
+		<flowlink srcexit="exit4" destid="ADDING"/>
+		<datalink srcoutput="output4" destid="ADDING" destinput="input4"/>
+	</element>
+	
+	<!-- EXTENDING MULTIPLE LEVELS -->
+	<element id="MULTIPLELEVELS" file="element/extending/multiplelevels3.xml" url="/extending/multiplelevels">
+		<flowlink srcexit="exit1" destid="MULTIPLELEVELS"/>
+		<datalink srcoutput="output1" destid="MULTIPLELEVELS" destinput="input1"/>
+		<flowlink srcexit="exit2" destid="MULTIPLELEVELS"/>
+		<datalink srcoutput="output2" destid="MULTIPLELEVELS" destinput="input2"/>
+		<flowlink srcexit="exit3" destid="MULTIPLELEVELS"/>
+		<datalink srcoutput="output3" destid="MULTIPLELEVELS" destinput="input3"/>
+		<flowlink srcexit="exit4" destid="MULTIPLELEVELS"/>
+		<datalink srcoutput="output4" destid="MULTIPLELEVELS" destinput="input4"/>
+	</element>
+</site>
+

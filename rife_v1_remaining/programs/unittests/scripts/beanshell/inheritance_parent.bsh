@@ -1,0 +1,21 @@
+childTriggered(name, values)
+{
+	switch (name)
+	{
+		case "trigger":
+			if (values[0].equals("ok"))
+			{
+				return true;
+			}
+			break;
+		default:
+			return false;
+	}
+}
+
+if (element.hasSubmission("activatechild"))
+{
+	element.setOutput("trigger", "ok");
+}
+
+element.print("<html><body><a href=\""+element.getSubmissionQueryUrl("activatechild")+"\">activate child</a></body></html>");

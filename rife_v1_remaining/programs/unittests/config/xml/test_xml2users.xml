@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: test_xml2users.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE credentials SYSTEM "/dtd/users.dtd">
+
+<credentials>
+	<user login="the_first_login">
+		<password>SHA:eEfrmVcfx6ZyitJ77p50R9tB0KI=</password>
+	</user>
+	<user login="the_second_login" userid="17">
+		<password>MD5:4psxxiXCY6ZJh/xoBDCG3A==</password>
+		<role>role1</role>
+		<role>role2</role>
+	</user>
+	<user login="the_third_login" userid="98">
+		<password>OBF:1s3g1hyl1y101x801wmt1yf21s3m1hkf1hov1s3g1yf41wnd1x8u1y0q1i351s3m</password>
+	</user>
+	<user login="the_fourth_login">
+		<password>the last password</password>
+		<role>role3</role>
+		<role>role2</role>
+		<role>role4</role>
+	</user>
+</credentials>
+

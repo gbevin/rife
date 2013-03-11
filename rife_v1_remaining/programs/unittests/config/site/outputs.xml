@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: outputs.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<element id="OUTPUTS_VALID" file="element/outputs/valid.xml" url="/outputs/valid"/>
+	<element id="OUTPUTS_NORMAL_OUTJECTION" file="element/outputs/normal_outjection.xml" url="/outputs/normal/outjection"/>
+	<element id="OUTPUTS_GENERATED" file="element/outputs/generated.xml" url="/outputs/generated"/>
+	<element id="OUTPUTS_INVALID" file="element/outputs/invalid.xml" url="/outputs/invalid"/>
+
+	<element id="OUTPUTS_BEAN_NORMAL" file="element/outputs/bean_normal.xml" url="/outputs/bean/normal">
+		<flowlink srcexit="exit" destid="OUTPUTS_BEAN_NORMAL"/>
+		<datalink srcoutput="string" destid="OUTPUTS_BEAN_NORMAL" destinput="string"/>
+		<datalink srcoutput="stringbuffer" destid="OUTPUTS_BEAN_NORMAL" destinput="stringbuffer"/>
+		<datalink srcoutput="int" destid="OUTPUTS_BEAN_NORMAL" destinput="int"/>
+		<datalink srcoutput="integer" destid="OUTPUTS_BEAN_NORMAL" destinput="integer"/>
+		<datalink srcoutput="char" destid="OUTPUTS_BEAN_NORMAL" destinput="char"/>
+		<datalink srcoutput="boolean" destid="OUTPUTS_BEAN_NORMAL" destinput="boolean"/>
+		<datalink srcoutput="booleanObject" destid="OUTPUTS_BEAN_NORMAL" destinput="booleanObject"/>
+		<datalink srcoutput="byteObject" destid="OUTPUTS_BEAN_NORMAL" destinput="byteObject"/>
+		<datalink srcoutput="double" destid="OUTPUTS_BEAN_NORMAL" destinput="double"/>
+		<datalink srcoutput="doubleObject" destid="OUTPUTS_BEAN_NORMAL" destinput="doubleObject"/>
+		<datalink srcoutput="float" destid="OUTPUTS_BEAN_NORMAL" destinput="float"/>
+		<datalink srcoutput="floatObject" destid="OUTPUTS_BEAN_NORMAL" destinput="floatObject"/>
+		<datalink srcoutput="long" destid="OUTPUTS_BEAN_NORMAL" destinput="long"/>
+		<datalink srcoutput="longObject" destid="OUTPUTS_BEAN_NORMAL" destinput="longObject"/>
+		<datalink srcoutput="short" destid="OUTPUTS_BEAN_NORMAL" destinput="short"/>
+		<datalink srcoutput="shortObject" destid="OUTPUTS_BEAN_NORMAL" destinput="shortObject"/>
+		<datalink srcoutput="arrayList" destid="OUTPUTS_BEAN_NORMAL" destinput="arrayList"/>
+	</element>
+	<element id="OUTPUTS_BEAN_NORMAL_OUTJECTION" file="element/outputs/bean_normal_outjection.xml" url="/outputs/bean/normal/outjection">
+		<flowlink srcexit="exit" destid="OUTPUTS_BEAN_NORMAL_OUTJECTION"/>
+		<datalink srcoutbean="outbean1" destid="OUTPUTS_BEAN_NORMAL_OUTJECTION" destinbean="inbean1"/>
+	</element>
+	<element id="OUTPUTS_BEAN_PREFIX" file="element/outputs/bean_prefix.xml" url="/outputs/bean/prefix">
+		<flowlink srcexit="exit" destid="OUTPUTS_BEAN_PREFIX"/>
+		<datalink srcoutput="prefix_string" destid="OUTPUTS_BEAN_PREFIX" destinput="prefix_string"/>
+		<datalink srcoutput="prefix_stringbuffer" destid="OUTPUTS_BEAN_PREFIX" destinput="prefix_stringbuffer"/>
+		<datalink srcoutput="prefix_int" destid="OUTPUTS_BEAN_PREFIX" destinput="prefix_int"/>
+		<datalink srcoutput="prefix_integer" destid="OUTPUTS_BEAN_PREFIX" destinput="prefix_integer"/>
+		<datalink srcoutput="prefix_char" destid="OUTPUTS_BEAN_PREFIX" destinput="prefix_char"/>
+		<datalink srcoutput="prefix_boolean" destid="OUTPUTS_BEAN_PREFIX" destinput="prefix_boolean"/>
+		<datalink srcoutput="prefix_booleanObject" destid="OUTPUTS_BEAN_PREFIX" destinput="prefix_booleanObject"/>
+		<datalink srcoutput="prefix_byteObject" destid="OUTPUTS_BEAN_PREFIX" destinput="prefix_byteObject"/>
+		<datalink srcoutput="prefix_double" destid="OUTPUTS_BEAN_PREFIX" destinput="prefix_double"/>
+		<datalink srcoutput="prefix_doubleObject" destid="OUTPUTS_BEAN_PREFIX" destinput="prefix_doubleObject"/>
+		<datalink srcoutput="prefix_float" destid="OUTPUTS_BEAN_PREFIX" destinput="prefix_float"/>
+		<datalink srcoutput="prefix_floatObject" destid="OUTPUTS_BEAN_PREFIX" destinput="prefix_floatObject"/>
+		<datalink srcoutput="prefix_long" destid="OUTPUTS_BEAN_PREFIX" destinput="prefix_long"/>
+		<datalink srcoutput="prefix_longObject" destid="OUTPUTS_BEAN_PREFIX" destinput="prefix_longObject"/>
+		<datalink srcoutput="prefix_short" destid="OUTPUTS_BEAN_PREFIX" destinput="prefix_short"/>
+		<datalink srcoutput="prefix_shortObject" destid="OUTPUTS_BEAN_PREFIX" destinput="prefix_shortObject"/>
+	</element>
+	<element id="OUTPUTS_BEAN_PREFIX_OUTJECTION" file="element/outputs/bean_prefix_outjection.xml" url="/outputs/bean/prefix/outjection">
+		<flowlink srcexit="exit" destid="OUTPUTS_BEAN_PREFIX_OUTJECTION">
+			<datalink srcoutbean="outbean1" destinbean="inbean1"/>
+		</flowlink>
+	</element>
+	<element id="OUTPUTS_BEAN_NORMAL_CLEAR" file="element/outputs/bean_normal_clear.xml" url="/outputs/bean/normal/clear">
+		<flowlink srcexit="exit" destid="OUTPUTS_BEAN_NORMAL_CLEAR"/>
+		<datalink srcoutput="string" destid="OUTPUTS_BEAN_NORMAL_CLEAR" destinput="string"/>
+		<datalink srcoutput="stringbuffer" destid="OUTPUTS_BEAN_NORMAL_CLEAR" destinput="stringbuffer"/>
+		<datalink srcoutput="int" destid="OUTPUTS_BEAN_NORMAL_CLEAR" destinput="int"/>
+		<datalink srcoutput="integer" destid="OUTPUTS_BEAN_NORMAL_CLEAR" destinput="integer"/>
+		<datalink srcoutput="char" destid="OUTPUTS_BEAN_NORMAL_CLEAR" destinput="char"/>
+		<datalink srcoutput="boolean" destid="OUTPUTS_BEAN_NORMAL_CLEAR" destinput="boolean"/>
+		<datalink srcoutput="booleanObject" destid="OUTPUTS_BEAN_NORMAL_CLEAR" destinput="booleanObject"/>
+		<datalink srcoutput="byteObject" destid="OUTPUTS_BEAN_NORMAL_CLEAR" destinput="byteObject"/>
+		<datalink srcoutput="double" destid="OUTPUTS_BEAN_NORMAL_CLEAR" destinput="double"/>
+		<datalink srcoutput="doubleObject" destid="OUTPUTS_BEAN_NORMAL_CLEAR" destinput="doubleObject"/>
+		<datalink srcoutput="float" destid="OUTPUTS_BEAN_NORMAL_CLEAR" destinput="float"/>
+		<datalink srcoutput="floatObject" destid="OUTPUTS_BEAN_NORMAL_CLEAR" destinput="floatObject"/>
+		<datalink srcoutput="long" destid="OUTPUTS_BEAN_NORMAL_CLEAR" destinput="long"/>
+		<datalink srcoutput="longObject" destid="OUTPUTS_BEAN_NORMAL_CLEAR" destinput="longObject"/>
+		<datalink srcoutput="short" destid="OUTPUTS_BEAN_NORMAL_CLEAR" destinput="short"/>
+		<datalink srcoutput="shortObject" destid="OUTPUTS_BEAN_NORMAL_CLEAR" destinput="shortObject"/>
+	</element>
+	<element id="OUTPUTS_BEAN_NORMAL_NAMED_CLEAR" file="element/outputs/bean_normal_named_clear.xml" url="/outputs/bean/normal/named/clear">
+		<flowlink srcexit="exit" destid="OUTPUTS_BEAN_NORMAL_NAMED_CLEAR"/>
+		<datalink srcoutbean="outbean" destid="OUTPUTS_BEAN_NORMAL_NAMED_CLEAR" destinbean="inbean"/>
+	</element>
+	<element id="OUTPUTS_BEAN_PREFIX_CLEAR" file="element/outputs/bean_prefix_clear.xml" url="/outputs/bean/prefix/clear">
+		<flowlink srcexit="exit" destid="OUTPUTS_BEAN_PREFIX_CLEAR"/>
+		<datalink srcoutput="prefix_string" destid="OUTPUTS_BEAN_PREFIX_CLEAR" destinput="prefix_string"/>
+		<datalink srcoutput="prefix_stringbuffer" destid="OUTPUTS_BEAN_PREFIX_CLEAR" destinput="prefix_stringbuffer"/>
+		<datalink srcoutput="prefix_int" destid="OUTPUTS_BEAN_PREFIX_CLEAR" destinput="prefix_int"/>
+		<datalink srcoutput="prefix_integer" destid="OUTPUTS_BEAN_PREFIX_CLEAR" destinput="prefix_integer"/>
+		<datalink srcoutput="prefix_char" destid="OUTPUTS_BEAN_PREFIX_CLEAR" destinput="prefix_char"/>
+		<datalink srcoutput="prefix_boolean" destid="OUTPUTS_BEAN_PREFIX_CLEAR" destinput="prefix_boolean"/>
+		<datalink srcoutput="prefix_booleanObject" destid="OUTPUTS_BEAN_PREFIX_CLEAR" destinput="prefix_booleanObject"/>
+		<datalink srcoutput="prefix_byteObject" destid="OUTPUTS_BEAN_PREFIX_CLEAR" destinput="prefix_byteObject"/>
+		<datalink srcoutput="prefix_double" destid="OUTPUTS_BEAN_PREFIX_CLEAR" destinput="prefix_double"/>
+		<datalink srcoutput="prefix_doubleObject" destid="OUTPUTS_BEAN_PREFIX_CLEAR" destinput="prefix_doubleObject"/>
+		<datalink srcoutput="prefix_float" destid="OUTPUTS_BEAN_PREFIX_CLEAR" destinput="prefix_float"/>
+		<datalink srcoutput="prefix_floatObject" destid="OUTPUTS_BEAN_PREFIX_CLEAR" destinput="prefix_floatObject"/>
+		<datalink srcoutput="prefix_long" destid="OUTPUTS_BEAN_PREFIX_CLEAR" destinput="prefix_long"/>
+		<datalink srcoutput="prefix_longObject" destid="OUTPUTS_BEAN_PREFIX_CLEAR" destinput="prefix_longObject"/>
+		<datalink srcoutput="prefix_short" destid="OUTPUTS_BEAN_PREFIX_CLEAR" destinput="prefix_short"/>
+		<datalink srcoutput="prefix_shortObject" destid="OUTPUTS_BEAN_PREFIX_CLEAR" destinput="prefix_shortObject"/>
+	</element>
+	<element id="OUTPUTS_BEAN_PREFIX_NAMED_CLEAR" file="element/outputs/bean_prefix_named_clear.xml" url="/outputs/bean/prefix/named/clear">
+		<flowlink srcexit="exit" destid="OUTPUTS_BEAN_PREFIX_NAMED_CLEAR"/>
+		<datalink srcoutbean="outbean" destid="OUTPUTS_BEAN_PREFIX_NAMED_CLEAR" destinbean="inbean"/>
+	</element>
+	
+	<element id="OUTPUTS_TYPED" file="element/outputs/typed.xml" url="/outputs/typed">
+		<flowlink srcexit="exit" destid="OUTPUTS_TYPED"/>
+		<datalink srcoutput="outputstring" destid="OUTPUTS_TYPED" destinput="input1"/>
+		<datalink srcoutput="outputchar" destid="OUTPUTS_TYPED" destinput="input2"/>
+		<datalink srcoutput="outputchararray" destid="OUTPUTS_TYPED" destinput="input3"/>
+		<datalink srcoutput="outputint" destid="OUTPUTS_TYPED" destinput="input4"/>
+		<datalink srcoutput="outputlong" destid="OUTPUTS_TYPED" destinput="input5"/>
+		<datalink srcoutput="outputdouble" destid="OUTPUTS_TYPED" destinput="input6"/>
+		<datalink srcoutput="outputfloat" destid="OUTPUTS_TYPED" destinput="input7"/>
+	</element>
+
+	<element id="OUTPUTS_DEFAULTS_SOURCE" file="element/outputs/defaults_source.xml" url="/outputs/defaults">
+		<flowlink srcexit="exit1" destid="OUTPUTS_DEFAULTS_DESTINATION"/>
+		<datalink srcoutput="output1" destid="OUTPUTS_DEFAULTS_DESTINATION" destinput="input1"/>
+		<datalink srcoutput="output2" destid="OUTPUTS_DEFAULTS_DESTINATION" destinput="input2"/>
+		<datalink srcoutput="output3" destid="OUTPUTS_DEFAULTS_DESTINATION" destinput="input3"/>
+		<datalink srcoutput="output4" destid="OUTPUTS_DEFAULTS_DESTINATION" destinput="input4"/>
+	</element>
+	<element id="OUTPUTS_DEFAULTS_DESTINATION" file="element/outputs/defaults_destination.xml" url="/outputs/defaults/destination"/>
+</site>
+

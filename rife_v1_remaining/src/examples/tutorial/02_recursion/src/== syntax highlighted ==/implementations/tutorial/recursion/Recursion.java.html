@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+    <meta name="generator" content="JHighlight v1.0 (http://jhighlight.dev.java.net)" />
+    <title>02_recursion/src/implementations/tutorial/recursion/Recursion.java</title>
+    <link rel="Help" href="http://jhighlight.dev.java.net" />
+    <style type="text/css">
+code {
+color: rgb(0,0,0); font-family: monospace; font-size: 12px; white-space: nowrap;
+}
+.java_type {
+color: rgb(0,44,221);
+}
+.java_comment {
+color: rgb(147,147,147); background-color: rgb(247,247,247);
+}
+.java_operator {
+color: rgb(0,124,31);
+}
+.java_separator {
+color: rgb(0,33,255);
+}
+.java_plain {
+color: rgb(0,0,0);
+}
+h1 {
+font-family: sans-serif; font-size: 16pt; font-weight: bold; color: rgb(0,0,0); background: rgb(210,210,210); border: solid 1px black; padding: 5px; text-align: center;
+}
+.java_javadoc_comment {
+color: rgb(147,147,147); background-color: rgb(247,247,247); font-style: italic;
+}
+.java_keyword {
+color: rgb(0,0,0); font-weight: bold;
+}
+.java_literal {
+color: rgb(188,0,0);
+}
+.java_javadoc_tag {
+color: rgb(147,147,147); background-color: rgb(247,247,247); font-style: italic; font-weight: bold;
+}
+    </style>
+</head>
+<body>
+<h1>02_recursion/src/implementations/tutorial/recursion/Recursion.java</h1><code><span class="java_comment">/*</span><br />
+<span class="java_comment">&nbsp;*&nbsp;Copyright&nbsp;2001-2008&nbsp;Geert&nbsp;Bevin&nbsp;&lt;gbevin[remove]&nbsp;at&nbsp;uwyn&nbsp;dot&nbsp;com&gt;</span><br />
+<span class="java_comment">&nbsp;*&nbsp;Licensed&nbsp;under&nbsp;the&nbsp;Apache&nbsp;License,&nbsp;Version&nbsp;2.0&nbsp;(the&nbsp;&quot;License&quot;)</span><br />
+<span class="java_comment">&nbsp;*&nbsp;$Id:&nbsp;Recursion.java&nbsp;3877&nbsp;2007-08-03&nbsp;19:48:10Z&nbsp;gbevin&nbsp;$</span><br />
+<span class="java_comment">&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_keyword">package</span><span class="java_plain">&nbsp;tutorial</span><span class="java_separator">.</span><span class="java_plain">recursion</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain"></span><br />
+<span class="java_keyword">import</span><span class="java_plain">&nbsp;com</span><span class="java_separator">.</span><span class="java_plain">uwyn</span><span class="java_separator">.</span><span class="java_plain">rife</span><span class="java_separator">.</span><span class="java_plain">engine</span><span class="java_separator">.</span><span class="java_type">Element</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_keyword">import</span><span class="java_plain">&nbsp;com</span><span class="java_separator">.</span><span class="java_plain">uwyn</span><span class="java_separator">.</span><span class="java_plain">rife</span><span class="java_separator">.</span><span class="java_plain">template</span><span class="java_separator">.</span><span class="java_type">InternalValue</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_keyword">import</span><span class="java_plain">&nbsp;com</span><span class="java_separator">.</span><span class="java_plain">uwyn</span><span class="java_separator">.</span><span class="java_plain">rife</span><span class="java_separator">.</span><span class="java_plain">template</span><span class="java_separator">.</span><span class="java_type">Template</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_keyword">import</span><span class="java_plain">&nbsp;java</span><span class="java_separator">.</span><span class="java_plain">util</span><span class="java_separator">.</span><span class="java_type">ArrayList</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_keyword">import</span><span class="java_plain">&nbsp;java</span><span class="java_separator">.</span><span class="java_plain">util</span><span class="java_separator">.</span><span class="java_type">Iterator</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain"></span><br />
+<span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;Demonstrates&nbsp;how&nbsp;the&nbsp;template&nbsp;engine&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;construct&nbsp;complex</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;recursive&nbsp;content&nbsp;through&nbsp;the&nbsp;use&nbsp;of&nbsp;&lt;code&gt;InternalValue&lt;/code&gt;&nbsp;objects&nbsp;and</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;internal&nbsp;template&nbsp;construction.</span><br />
+<span class="java_javadoc_comment">&nbsp;*</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@author</span><span class="java_javadoc_comment">&nbsp;Geert&nbsp;Bevin&nbsp;(gbevin[remove]&nbsp;at&nbsp;uwyn&nbsp;dot&nbsp;com)</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@version</span><span class="java_javadoc_comment">&nbsp;$Revision:&nbsp;3877&nbsp;$</span><br />
+<span class="java_javadoc_comment">&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_keyword">class</span><span class="java_plain">&nbsp;</span><span class="java_type">Recursion</span><span class="java_plain">&nbsp;</span><span class="java_keyword">extends</span><span class="java_plain">&nbsp;</span><span class="java_type">Element</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;The&nbsp;element's&nbsp;entry&nbsp;point.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_type">void</span><span class="java_plain">&nbsp;processElement</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_comment">/*&nbsp;Generate&nbsp;a&nbsp;tree&nbsp;with&nbsp;the&nbsp;following&nbsp;structure&nbsp;:</span><br />
+<span class="java_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span><br />
+<span class="java_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;+-&nbsp;node1</span><br />
+<span class="java_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;|&nbsp;&nbsp;&nbsp;|</span><br />
+<span class="java_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;|&nbsp;&nbsp;&nbsp;+-&nbsp;node1a</span><br />
+<span class="java_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;|&nbsp;&nbsp;&nbsp;+-&nbsp;node1b</span><br />
+<span class="java_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;|&nbsp;&nbsp;&nbsp;+-&nbsp;node1c</span><br />
+<span class="java_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;|</span><br />
+<span class="java_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;+-&nbsp;node2</span><br />
+<span class="java_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;|&nbsp;&nbsp;&nbsp;|</span><br />
+<span class="java_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;|&nbsp;&nbsp;&nbsp;+-&nbsp;node2a</span><br />
+<span class="java_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|</span><br />
+<span class="java_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;+-&nbsp;node2a1</span><br />
+<span class="java_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;+-&nbsp;node2a2</span><br />
+<span class="java_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;|&nbsp;&nbsp;&nbsp;|</span><br />
+<span class="java_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;|&nbsp;&nbsp;&nbsp;+-&nbsp;node2b</span><br />
+<span class="java_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;|</span><br />
+<span class="java_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;+-&nbsp;node3</span><br />
+<span class="java_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</span><br />
+<span class="java_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-&nbsp;node3a</span><br />
+<span class="java_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-&nbsp;node3b</span><br />
+<span class="java_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_type">TreeNode</span><span class="java_plain">&nbsp;tree&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_keyword">new</span><span class="java_plain">&nbsp;</span><span class="java_type">TreeNode</span><span class="java_separator">();</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_type">TreeNode</span><span class="java_plain">&nbsp;node1&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_keyword">new</span><span class="java_plain">&nbsp;</span><span class="java_type">TreeNode</span><span class="java_separator">(</span><span class="java_plain">tree</span><span class="java_separator">,</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;node1&quot;</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_type">TreeNode</span><span class="java_plain">&nbsp;node2&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_keyword">new</span><span class="java_plain">&nbsp;</span><span class="java_type">TreeNode</span><span class="java_separator">(</span><span class="java_plain">tree</span><span class="java_separator">,</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;node2&quot;</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_type">TreeNode</span><span class="java_plain">&nbsp;node3&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_keyword">new</span><span class="java_plain">&nbsp;</span><span class="java_type">TreeNode</span><span class="java_separator">(</span><span class="java_plain">tree</span><span class="java_separator">,</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;node3&quot;</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">new</span><span class="java_plain">&nbsp;</span><span class="java_type">TreeNode</span><span class="java_separator">(</span><span class="java_plain">node1</span><span class="java_separator">,</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;node1a&quot;</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">new</span><span class="java_plain">&nbsp;</span><span class="java_type">TreeNode</span><span class="java_separator">(</span><span class="java_plain">node1</span><span class="java_separator">,</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;node1b&quot;</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">new</span><span class="java_plain">&nbsp;</span><span class="java_type">TreeNode</span><span class="java_separator">(</span><span class="java_plain">node1</span><span class="java_separator">,</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;node1c&quot;</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_type">TreeNode</span><span class="java_plain">&nbsp;node2a&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_keyword">new</span><span class="java_plain">&nbsp;</span><span class="java_type">TreeNode</span><span class="java_separator">(</span><span class="java_plain">node2</span><span class="java_separator">,</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;node2a&quot;</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">new</span><span class="java_plain">&nbsp;</span><span class="java_type">TreeNode</span><span class="java_separator">(</span><span class="java_plain">node2</span><span class="java_separator">,</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;node2b&quot;</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">new</span><span class="java_plain">&nbsp;</span><span class="java_type">TreeNode</span><span class="java_separator">(</span><span class="java_plain">node3</span><span class="java_separator">,</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;node3a&quot;</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">new</span><span class="java_plain">&nbsp;</span><span class="java_type">TreeNode</span><span class="java_separator">(</span><span class="java_plain">node3</span><span class="java_separator">,</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;node3b&quot;</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">new</span><span class="java_plain">&nbsp;</span><span class="java_type">TreeNode</span><span class="java_separator">(</span><span class="java_plain">node2a</span><span class="java_separator">,</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;node2a1&quot;</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">new</span><span class="java_plain">&nbsp;</span><span class="java_type">TreeNode</span><span class="java_separator">(</span><span class="java_plain">node2a</span><span class="java_separator">,</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;node2a2&quot;</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_comment">//&nbsp;obtain&nbsp;an&nbsp;instance&nbsp;of&nbsp;the&nbsp;template&nbsp;that&nbsp;will&nbsp;output&nbsp;the&nbsp;tree</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_type">Template</span><span class="java_plain">&nbsp;template&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;getHtmlTemplate</span><span class="java_separator">(</span><span class="java_literal">&quot;tutorial.recursion&quot;</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_comment">//&nbsp;process&nbsp;the&nbsp;tree&nbsp;for&nbsp;output&nbsp;to&nbsp;the&nbsp;template</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tree</span><span class="java_separator">.</span><span class="java_plain">output</span><span class="java_separator">(</span><span class="java_plain">template</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_comment">//&nbsp;print&nbsp;the&nbsp;template</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print</span><span class="java_separator">(</span><span class="java_plain">template</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;A&nbsp;node&nbsp;in&nbsp;the&nbsp;tree&nbsp;structure&nbsp;that&nbsp;will&nbsp;output&nbsp;itself&nbsp;to&nbsp;a&nbsp;provided</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;template&nbsp;instance.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@author</span><span class="java_javadoc_comment">&nbsp;Geert&nbsp;Bevin&nbsp;(gbevin[remove]&nbsp;at&nbsp;uwyn&nbsp;dot&nbsp;com)</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">class</span><span class="java_plain">&nbsp;</span><span class="java_type">TreeNode</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">private</span><span class="java_plain">&nbsp;</span><span class="java_type">String</span><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_literal">null</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">private</span><span class="java_plain">&nbsp;</span><span class="java_type">ArrayList</span><span class="java_plain">&nbsp;&nbsp;&nbsp;children&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_keyword">new</span><span class="java_plain">&nbsp;</span><span class="java_type">ArrayList</span><span class="java_separator">();</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">private</span><span class="java_plain">&nbsp;</span><span class="java_type">TreeNode</span><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;parent&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_literal">null</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Constructs&nbsp;the&nbsp;root&nbsp;node&nbsp;from&nbsp;which&nbsp;all&nbsp;others&nbsp;will&nbsp;branch.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_type">TreeNode</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">{}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Add&nbsp;a&nbsp;child&nbsp;node&nbsp;to&nbsp;the&nbsp;provided&nbsp;parent&nbsp;node.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Each&nbsp;child&nbsp;has&nbsp;a&nbsp;mandatory&nbsp;&lt;code&gt;title&lt;/code&gt;.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@param</span><span class="java_javadoc_comment">&nbsp;parent&nbsp;the&nbsp;parent&nbsp;node</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@param</span><span class="java_javadoc_comment">&nbsp;title&nbsp;&nbsp;the&nbsp;title&nbsp;of&nbsp;the&nbsp;child&nbsp;node</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_type">TreeNode</span><span class="java_separator">(</span><span class="java_type">TreeNode</span><span class="java_plain">&nbsp;parent</span><span class="java_separator">,</span><span class="java_plain">&nbsp;</span><span class="java_type">String</span><span class="java_plain">&nbsp;title</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">if</span><span class="java_plain">&nbsp;</span><span class="java_separator">(</span><span class="java_literal">null</span><span class="java_plain">&nbsp;</span><span class="java_operator">==</span><span class="java_plain">&nbsp;title</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_keyword">throw</span><span class="java_plain">&nbsp;</span><span class="java_keyword">new</span><span class="java_plain">&nbsp;</span><span class="java_type">IllegalArgumentException</span><span class="java_separator">(</span><span class="java_literal">&quot;title&nbsp;can't&nbsp;be&nbsp;null.&quot;</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parent</span><span class="java_separator">.</span><span class="java_plain">addChild</span><span class="java_separator">(</span><span class="java_keyword">this</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">this</span><span class="java_separator">.</span><span class="java_plain">title&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;title</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Outputs&nbsp;the&nbsp;tree&nbsp;structure&nbsp;to&nbsp;a&nbsp;provided&nbsp;&lt;code&gt;Template&lt;/code&gt;</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;instance.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&lt;p&gt;</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Each&nbsp;node&nbsp;will&nbsp;be&nbsp;appended&nbsp;to&nbsp;the&nbsp;&lt;code&gt;nodes&lt;/code&gt;&nbsp;value&nbsp;and&nbsp;obtain</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;from&nbsp;the&nbsp;&lt;code&gt;node&lt;/code&gt;&nbsp;block.&nbsp;This&nbsp;block&nbsp;contains&nbsp;a</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&lt;code&gt;title&lt;/code&gt;&nbsp;value&nbsp;that&nbsp;will&nbsp;contain&nbsp;the&nbsp;title&nbsp;of&nbsp;the&nbsp;node.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&lt;p&gt;</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Each&nbsp;new&nbsp;depth&nbsp;level&nbsp;will&nbsp;be&nbsp;obtained&nbsp;from&nbsp;the&nbsp;&lt;code&gt;level&lt;/code&gt;</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;block&nbsp;and&nbsp;assigned&nbsp;to&nbsp;the&nbsp;&lt;code&gt;level&lt;/code&gt;&nbsp;value.&nbsp;This&nbsp;value</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;contains&nbsp;the&nbsp;&lt;code&gt;nodes&lt;/code&gt;&nbsp;value&nbsp;to&nbsp;output&nbsp;a&nbsp;collection&nbsp;of</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;sibling&nbsp;nodes&nbsp;and&nbsp;the&nbsp;&lt;code&gt;level&lt;/code&gt;&nbsp;is&nbsp;present&nbsp;in&nbsp;the</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&lt;code&gt;node&lt;/code&gt;&nbsp;block&nbsp;to&nbsp;allow&nbsp;child&nbsp;nodes&nbsp;to&nbsp;be&nbsp;inserted.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&lt;p&gt;</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;The&nbsp;complete&nbsp;tree&nbsp;is&nbsp;displayed&nbsp;by&nbsp;a&nbsp;top-level&nbsp;&lt;code&gt;level&lt;/code&gt;</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;value&nbsp;that&nbsp;will&nbsp;contain&nbsp;all&nbsp;first-level&nbsp;nodes,&nbsp;who&nbsp;will&nbsp;thus&nbsp;in&nbsp;their</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;turn&nbsp;contain&nbsp;their&nbsp;own&nbsp;direct&nbsp;child&nbsp;nodes,&nbsp;and&nbsp;so&nbsp;on&nbsp;...</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@param</span><span class="java_javadoc_comment">&nbsp;&nbsp;template&nbsp;the&nbsp;&lt;code&gt;Template&lt;/code&gt;&nbsp;instance&nbsp;in&nbsp;which&nbsp;the</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;tree&nbsp;structure&nbsp;should&nbsp;be&nbsp;output</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_type">void</span><span class="java_plain">&nbsp;output</span><span class="java_separator">(</span><span class="java_type">Template</span><span class="java_plain">&nbsp;template</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_comment">//&nbsp;if&nbsp;no&nbsp;children&nbsp;are&nbsp;present,&nbsp;clear&nbsp;the&nbsp;level&nbsp;value</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">if</span><span class="java_plain">&nbsp;</span><span class="java_separator">(</span><span class="java_literal">0</span><span class="java_plain">&nbsp;</span><span class="java_operator">==</span><span class="java_plain">&nbsp;children</span><span class="java_separator">.</span><span class="java_plain">size</span><span class="java_separator">())</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;template</span><span class="java_separator">.</span><span class="java_plain">setValue</span><span class="java_separator">(</span><span class="java_literal">&quot;level&quot;</span><span class="java_separator">,</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;&quot;</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain">&nbsp;</span><span class="java_keyword">else</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_comment">//&nbsp;obtain&nbsp;a&nbsp;new&nbsp;internal&nbsp;value&nbsp;to&nbsp;construct&nbsp;a&nbsp;collection</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_comment">//&nbsp;of&nbsp;sibling&nbsp;child&nbsp;nodes&nbsp;in&nbsp;the&nbsp;local&nbsp;scope</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_type">InternalValue</span><span class="java_plain">&nbsp;&nbsp;&nbsp;nodes&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;template</span><span class="java_separator">.</span><span class="java_plain">createInternalValue</span><span class="java_separator">();</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_comment">//&nbsp;iterete&nbsp;over&nbsp;the&nbsp;children</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_type">Iterator</span><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;child_it&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;children</span><span class="java_separator">.</span><span class="java_plain">iterator</span><span class="java_separator">();</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_type">TreeNode</span><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;child&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_literal">null</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">while</span><span class="java_plain">&nbsp;</span><span class="java_separator">(</span><span class="java_plain">child_it</span><span class="java_separator">.</span><span class="java_plain">hasNext</span><span class="java_separator">())</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_comment">//&nbsp;obtain&nbsp;the&nbsp;next&nbsp;child</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;child&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_separator">(</span><span class="java_type">TreeNode</span><span class="java_separator">)</span><span class="java_plain">child_it</span><span class="java_separator">.</span><span class="java_plain">next</span><span class="java_separator">();</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_comment">//&nbsp;and&nbsp;output&nbsp;it&nbsp;before&nbsp;the&nbsp;processing&nbsp;continues</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;child</span><span class="java_separator">.</span><span class="java_plain">output</span><span class="java_separator">(</span><span class="java_plain">template</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_comment">//&nbsp;set&nbsp;the&nbsp;child's&nbsp;title&nbsp;value</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;template</span><span class="java_separator">.</span><span class="java_plain">setValue</span><span class="java_separator">(</span><span class="java_literal">&quot;title&quot;</span><span class="java_separator">,</span><span class="java_plain">&nbsp;encodeHtml</span><span class="java_separator">(</span><span class="java_plain">child</span><span class="java_separator">.</span><span class="java_plain">getTitle</span><span class="java_separator">()));</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_comment">//&nbsp;and&nbsp;append&nbsp;it&nbsp;to&nbsp;the&nbsp;local&nbsp;internal&nbsp;value</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nodes</span><span class="java_separator">.</span><span class="java_plain">appendBlock</span><span class="java_separator">(</span><span class="java_literal">&quot;node&quot;</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_comment">//&nbsp;when&nbsp;all&nbsp;children&nbsp;have&nbsp;been&nbsp;processed,&nbsp;set&nbsp;to&nbsp;nodes&nbsp;value</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_comment">//&nbsp;to&nbsp;the&nbsp;locally&nbsp;constructed&nbsp;internal&nbsp;value</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;template</span><span class="java_separator">.</span><span class="java_plain">setValue</span><span class="java_separator">(</span><span class="java_literal">&quot;nodes&quot;</span><span class="java_separator">,</span><span class="java_plain">&nbsp;nodes</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_comment">//&nbsp;set&nbsp;the&nbsp;level&nbsp;value&nbsp;which&nbsp;includes&nbsp;the&nbsp;sibling&nbsp;nodes&nbsp;in&nbsp;the</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_comment">//&nbsp;same&nbsp;level</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;template</span><span class="java_separator">.</span><span class="java_plain">setBlock</span><span class="java_separator">(</span><span class="java_literal">&quot;level&quot;</span><span class="java_separator">,</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;level&quot;</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Adds&nbsp;a&nbsp;child&nbsp;to&nbsp;the&nbsp;current&nbsp;&lt;code&gt;TreeNode&lt;/code&gt;&nbsp;instance.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@param</span><span class="java_javadoc_comment">&nbsp;child&nbsp;the&nbsp;child&nbsp;&lt;code&gt;TreeNode&lt;/code&gt;</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">private</span><span class="java_plain">&nbsp;</span><span class="java_type">void</span><span class="java_plain">&nbsp;addChild</span><span class="java_separator">(</span><span class="java_type">TreeNode</span><span class="java_plain">&nbsp;child</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;child</span><span class="java_separator">.</span><span class="java_plain">parent&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_keyword">this</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;children</span><span class="java_separator">.</span><span class="java_plain">add</span><span class="java_separator">(</span><span class="java_plain">child</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Retrieves&nbsp;the&nbsp;title&nbsp;of&nbsp;the&nbsp;current&nbsp;&lt;code&gt;TreeNode&lt;/code&gt;&nbsp;instance.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@return</span><span class="java_javadoc_comment">&nbsp;a&nbsp;&lt;code&gt;String&lt;/code&gt;&nbsp;instance&nbsp;with&nbsp;the&nbsp;title;&nbsp;or</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&lt;p&gt;</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&lt;code&gt;null&lt;/code&gt;&nbsp;if&nbsp;this&nbsp;is&nbsp;the&nbsp;root&nbsp;node.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_type">String</span><span class="java_plain">&nbsp;getTitle</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">return</span><span class="java_plain">&nbsp;title</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Retrieves&nbsp;the&nbsp;parent&nbsp;of&nbsp;the&nbsp;current&nbsp;&lt;code&gt;TreeNode&lt;/code&gt;&nbsp;instance.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@return</span><span class="java_javadoc_comment">&nbsp;a&nbsp;&lt;code&gt;TreeNode&lt;/code&gt;&nbsp;instance&nbsp;with&nbsp;the&nbsp;parent;&nbsp;or</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&lt;p&gt;</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&lt;code&gt;null&lt;/code&gt;&nbsp;if&nbsp;this&nbsp;is&nbsp;the&nbsp;root&nbsp;node.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_type">TreeNode</span><span class="java_plain">&nbsp;getParent</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">return</span><span class="java_plain">&nbsp;parent</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_separator">}</span><span class="java_plain"></span><br />
+</code>
+</body>
+</html>

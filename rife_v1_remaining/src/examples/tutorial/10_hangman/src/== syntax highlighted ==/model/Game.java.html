@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+    <meta name="generator" content="JHighlight v1.0 (http://jhighlight.dev.java.net)" />
+    <title>10_hangman/src/model/Game.java</title>
+    <link rel="Help" href="http://jhighlight.dev.java.net" />
+    <style type="text/css">
+code {
+color: rgb(0,0,0); font-family: monospace; font-size: 12px; white-space: nowrap;
+}
+.java_type {
+color: rgb(0,44,221);
+}
+.java_comment {
+color: rgb(147,147,147); background-color: rgb(247,247,247);
+}
+.java_operator {
+color: rgb(0,124,31);
+}
+.java_separator {
+color: rgb(0,33,255);
+}
+.java_plain {
+color: rgb(0,0,0);
+}
+h1 {
+font-family: sans-serif; font-size: 16pt; font-weight: bold; color: rgb(0,0,0); background: rgb(210,210,210); border: solid 1px black; padding: 5px; text-align: center;
+}
+.java_javadoc_comment {
+color: rgb(147,147,147); background-color: rgb(247,247,247); font-style: italic;
+}
+.java_keyword {
+color: rgb(0,0,0); font-weight: bold;
+}
+.java_literal {
+color: rgb(188,0,0);
+}
+.java_javadoc_tag {
+color: rgb(147,147,147); background-color: rgb(247,247,247); font-style: italic; font-weight: bold;
+}
+    </style>
+</head>
+<body>
+<h1>10_hangman/src/model/Game.java</h1><code><span class="java_comment">/*</span><br />
+<span class="java_comment">&nbsp;*&nbsp;$Id:&nbsp;Game.java&nbsp;3364&nbsp;2006-07-10&nbsp;10:33:29Z&nbsp;gbevin&nbsp;$&nbsp;$Revision:&nbsp;3364&nbsp;$</span><br />
+<span class="java_comment">&nbsp;*&nbsp;$Date:&nbsp;2006-04-16&nbsp;15:36:52&nbsp;+0200&nbsp;(Sun,&nbsp;16&nbsp;Apr&nbsp;2006)&nbsp;$</span><br />
+<span class="java_comment">&nbsp;*</span><br />
+<span class="java_comment">&nbsp;*&nbsp;====================================================================&nbsp;Licensed</span><br />
+<span class="java_comment">&nbsp;*&nbsp;under&nbsp;the&nbsp;Apache&nbsp;License,&nbsp;Version&nbsp;2.0&nbsp;(the&nbsp;&quot;License&quot;);&nbsp;you&nbsp;may&nbsp;not&nbsp;use&nbsp;this</span><br />
+<span class="java_comment">&nbsp;*&nbsp;file&nbsp;except&nbsp;in&nbsp;compliance&nbsp;with&nbsp;the&nbsp;License.&nbsp;You&nbsp;may&nbsp;obtain&nbsp;a&nbsp;copy&nbsp;of&nbsp;the</span><br />
+<span class="java_comment">&nbsp;*&nbsp;License&nbsp;at</span><br />
+<span class="java_comment">&nbsp;*</span><br />
+<span class="java_comment">&nbsp;*&nbsp;http://www.apache.org/licenses/LICENSE-2.0</span><br />
+<span class="java_comment">&nbsp;*</span><br />
+<span class="java_comment">&nbsp;*&nbsp;Unless&nbsp;required&nbsp;by&nbsp;applicable&nbsp;law&nbsp;or&nbsp;agreed&nbsp;to&nbsp;in&nbsp;writing,&nbsp;software</span><br />
+<span class="java_comment">&nbsp;*&nbsp;distributed&nbsp;under&nbsp;the&nbsp;License&nbsp;is&nbsp;distributed&nbsp;on&nbsp;an&nbsp;&quot;AS&nbsp;IS&quot;&nbsp;BASIS,&nbsp;WITHOUT</span><br />
+<span class="java_comment">&nbsp;*&nbsp;WARRANTIES&nbsp;OR&nbsp;CONDITIONS&nbsp;OF&nbsp;ANY&nbsp;KIND,&nbsp;either&nbsp;express&nbsp;or&nbsp;implied.&nbsp;See&nbsp;the</span><br />
+<span class="java_comment">&nbsp;*&nbsp;License&nbsp;for&nbsp;the&nbsp;specific&nbsp;language&nbsp;governing&nbsp;permissions&nbsp;and&nbsp;limitations&nbsp;under</span><br />
+<span class="java_comment">&nbsp;*&nbsp;the&nbsp;License.</span><br />
+<span class="java_comment">&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_keyword">package</span><span class="java_plain">&nbsp;model</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain"></span><br />
+<span class="java_keyword">import</span><span class="java_plain">&nbsp;java</span><span class="java_separator">.</span><span class="java_plain">io</span><span class="java_separator">.</span><span class="java_type">Serializable</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_keyword">import</span><span class="java_plain">&nbsp;java</span><span class="java_separator">.</span><span class="java_plain">util</span><span class="java_separator">.</span><span class="java_type">ArrayList</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_keyword">import</span><span class="java_plain">&nbsp;java</span><span class="java_separator">.</span><span class="java_plain">util</span><span class="java_separator">.</span><span class="java_type">List</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain"></span><br />
+<span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;Implementation&nbsp;of&nbsp;the&nbsp;actual&nbsp;hangman&nbsp;game&nbsp;model.&nbsp;The&nbsp;model&nbsp;holds&nbsp;the&nbsp;word</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;generator,&nbsp;the&nbsp;current&nbsp;word,&nbsp;retries&nbsp;remaining&nbsp;and&nbsp;the&nbsp;correctLetters&nbsp;that</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;have&nbsp;been&nbsp;guessed.&nbsp;It&nbsp;also&nbsp;answers&nbsp;questions&nbsp;such&nbsp;as&nbsp;whether&nbsp;all&nbsp;retries&nbsp;have</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;been&nbsp;used.</span><br />
+<span class="java_javadoc_comment">&nbsp;*</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@author</span><span class="java_javadoc_comment">&nbsp;Chris&nbsp;Turner</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@author</span><span class="java_javadoc_comment">&nbsp;Jonathan&nbsp;Locke</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@author</span><span class="java_javadoc_comment">&nbsp;Geert&nbsp;Bevin</span><br />
+<span class="java_javadoc_comment">&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_keyword">class</span><span class="java_plain">&nbsp;</span><span class="java_type">Game</span><span class="java_plain">&nbsp;</span><span class="java_keyword">implements</span><span class="java_plain">&nbsp;</span><span class="java_type">Serializable</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**&nbsp;Number&nbsp;of&nbsp;guesses&nbsp;allowed&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">private</span><span class="java_plain">&nbsp;</span><span class="java_type">int</span><span class="java_plain">&nbsp;guessesAllowed</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**&nbsp;Number&nbsp;of&nbsp;guesses&nbsp;remaining&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">private</span><span class="java_plain">&nbsp;</span><span class="java_type">int</span><span class="java_plain">&nbsp;guessesRemaining</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**&nbsp;The&nbsp;letters&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">private</span><span class="java_plain">&nbsp;</span><span class="java_keyword">final</span><span class="java_plain">&nbsp;</span><span class="java_type">List</span><span class="java_operator">&lt;</span><span class="java_type">Letter</span><span class="java_operator">&gt;</span><span class="java_plain">&nbsp;letters&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_keyword">new</span><span class="java_plain">&nbsp;</span><span class="java_type">ArrayList</span><span class="java_operator">&lt;</span><span class="java_type">Letter</span><span class="java_operator">&gt;</span><span class="java_separator">();</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**&nbsp;The&nbsp;word&nbsp;being&nbsp;guessed&nbsp;by&nbsp;the&nbsp;user&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">private</span><span class="java_plain">&nbsp;</span><span class="java_type">Word</span><span class="java_plain">&nbsp;word</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**&nbsp;Word&nbsp;generator&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">private</span><span class="java_plain">&nbsp;</span><span class="java_type">WordGenerator</span><span class="java_plain">&nbsp;wordGenerator</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Return&nbsp;the&nbsp;number&nbsp;of&nbsp;guesses&nbsp;remaining.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@return</span><span class="java_javadoc_comment">&nbsp;The&nbsp;number&nbsp;of&nbsp;guesses</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_type">int</span><span class="java_plain">&nbsp;getGuessesRemaining</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">return</span><span class="java_plain">&nbsp;guessesRemaining</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@return</span><span class="java_javadoc_comment">&nbsp;The&nbsp;letters&nbsp;in&nbsp;the&nbsp;game</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_type">List</span><span class="java_operator">&lt;</span><span class="java_type">Letter</span><span class="java_operator">&gt;</span><span class="java_plain">&nbsp;getLetters</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">return</span><span class="java_plain">&nbsp;letters</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Get&nbsp;the&nbsp;current&nbsp;word&nbsp;that&nbsp;is&nbsp;being&nbsp;guessed&nbsp;or&nbsp;has&nbsp;been&nbsp;guessed.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@return</span><span class="java_javadoc_comment">&nbsp;The&nbsp;current&nbsp;word</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_type">Word</span><span class="java_plain">&nbsp;getWord</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">return</span><span class="java_plain">&nbsp;word</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Guess&nbsp;the&nbsp;given&nbsp;letter&nbsp;for&nbsp;the&nbsp;current&nbsp;word.&nbsp;If&nbsp;the&nbsp;letter&nbsp;matches&nbsp;then</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;the&nbsp;word&nbsp;is&nbsp;updated&nbsp;otherwise&nbsp;the&nbsp;guesses&nbsp;remaining&nbsp;counter&nbsp;is&nbsp;reduced.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;The&nbsp;letter&nbsp;guessed&nbsp;is&nbsp;also&nbsp;recorded.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@param</span><span class="java_javadoc_comment">&nbsp;letter</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;letter&nbsp;being&nbsp;guessed</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@return</span><span class="java_javadoc_comment">&nbsp;True&nbsp;if&nbsp;guess&nbsp;was&nbsp;correct</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_type">boolean</span><span class="java_plain">&nbsp;guess</span><span class="java_separator">(</span><span class="java_keyword">final</span><span class="java_plain">&nbsp;</span><span class="java_type">Letter</span><span class="java_plain">&nbsp;letter</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">if</span><span class="java_plain">&nbsp;</span><span class="java_separator">(</span><span class="java_operator">!</span><span class="java_plain">letter</span><span class="java_separator">.</span><span class="java_plain">isGuessed</span><span class="java_separator">())</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">final</span><span class="java_plain">&nbsp;</span><span class="java_type">boolean</span><span class="java_plain">&nbsp;correct&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;word</span><span class="java_separator">.</span><span class="java_plain">guess</span><span class="java_separator">(</span><span class="java_plain">letter</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">if</span><span class="java_plain">&nbsp;</span><span class="java_separator">(</span><span class="java_operator">!</span><span class="java_plain">correct</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;guessesRemaining</span><span class="java_operator">--</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">return</span><span class="java_plain">&nbsp;correct</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">return</span><span class="java_plain">&nbsp;</span><span class="java_literal">false</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Check&nbsp;whether&nbsp;the&nbsp;user&nbsp;has&nbsp;used&nbsp;up&nbsp;all&nbsp;of&nbsp;their&nbsp;guesses.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@return</span><span class="java_javadoc_comment">&nbsp;Whether&nbsp;all&nbsp;of&nbsp;the&nbsp;user's&nbsp;guesses&nbsp;have&nbsp;been&nbsp;used</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_type">boolean</span><span class="java_plain">&nbsp;isLost</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">return</span><span class="java_plain">&nbsp;guessesRemaining&nbsp;</span><span class="java_operator">==</span><span class="java_plain">&nbsp;</span><span class="java_literal">0</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Check&nbsp;whether&nbsp;the&nbsp;user&nbsp;has&nbsp;successfully&nbsp;guessed&nbsp;all&nbsp;of&nbsp;the&nbsp;correctLetters</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;in&nbsp;the&nbsp;word.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@return</span><span class="java_javadoc_comment">&nbsp;Whether&nbsp;all&nbsp;of&nbsp;the&nbsp;correctLetters&nbsp;have&nbsp;been&nbsp;guessed&nbsp;or&nbsp;not</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_type">boolean</span><span class="java_plain">&nbsp;isWon</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">return</span><span class="java_plain">&nbsp;word</span><span class="java_separator">.</span><span class="java_plain">isGuessed</span><span class="java_separator">();</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Play&nbsp;another&nbsp;game&nbsp;with&nbsp;same&nbsp;settings</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_type">void</span><span class="java_plain">&nbsp;newGame</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newGame</span><span class="java_separator">(</span><span class="java_plain">guessesAllowed</span><span class="java_separator">,</span><span class="java_plain">&nbsp;wordGenerator</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Initialise&nbsp;the&nbsp;hangman&nbsp;read&nbsp;for&nbsp;a&nbsp;new&nbsp;game.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@param</span><span class="java_javadoc_comment">&nbsp;guessesAllowed</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;guesses&nbsp;allowed</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@param</span><span class="java_javadoc_comment">&nbsp;wordGenerator</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;word&nbsp;generator</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_type">void</span><span class="java_plain">&nbsp;newGame</span><span class="java_separator">(</span><span class="java_keyword">final</span><span class="java_plain">&nbsp;</span><span class="java_type">int</span><span class="java_plain">&nbsp;guessesAllowed</span><span class="java_separator">,</span><span class="java_plain">&nbsp;</span><span class="java_keyword">final</span><span class="java_plain">&nbsp;</span><span class="java_type">WordGenerator</span><span class="java_plain">&nbsp;wordGenerator</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">this</span><span class="java_separator">.</span><span class="java_plain">guessesAllowed&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;guessesAllowed</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">this</span><span class="java_separator">.</span><span class="java_plain">guessesRemaining&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;guessesAllowed</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">this</span><span class="java_separator">.</span><span class="java_plain">word&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;wordGenerator</span><span class="java_separator">.</span><span class="java_plain">next</span><span class="java_separator">();</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">this</span><span class="java_separator">.</span><span class="java_plain">wordGenerator&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;wordGenerator</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_comment">//&nbsp;Add&nbsp;letters</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;letters</span><span class="java_separator">.</span><span class="java_plain">clear</span><span class="java_separator">();</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">for</span><span class="java_plain">&nbsp;</span><span class="java_separator">(</span><span class="java_type">char</span><span class="java_plain">&nbsp;c&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_literal">'a'</span><span class="java_separator">;</span><span class="java_plain">&nbsp;c&nbsp;</span><span class="java_operator">&lt;=</span><span class="java_plain">&nbsp;</span><span class="java_literal">'z'</span><span class="java_separator">;</span><span class="java_plain">&nbsp;c</span><span class="java_operator">++</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;letters</span><span class="java_separator">.</span><span class="java_plain">add</span><span class="java_separator">(</span><span class="java_keyword">new</span><span class="java_plain">&nbsp;</span><span class="java_type">Letter</span><span class="java_separator">(</span><span class="java_plain">c</span><span class="java_separator">));</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_separator">}</span><span class="java_plain"></span><br />
+</code>
+</body>
+</html>

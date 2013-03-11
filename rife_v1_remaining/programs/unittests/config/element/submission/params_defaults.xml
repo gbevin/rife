@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: params_defaults.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE element SYSTEM "/dtd/element.dtd">
+
+<element implementation="com.uwyn.rife.engine.testelements.submission.ParamsDefaults">
+	<submission name="name">
+		<param name="firstname">
+			<default>John</default>
+			<default>Paul</default>
+		</param>
+		<param name="lastname"/>
+		<param name="age">
+			<default>27</default>
+		</param>
+		<param name="configparam">
+			<default><config param="ENGINE_ELEMENT_CONFIG_VALUE"/></default>
+		</param>
+	</submission>
+</element>
+

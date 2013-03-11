@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: dwr.xml 3927 2008-04-21 10:22:16Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<element id="Hello" file="rife/template/print.xml" url="hello">
+		<property name="name">dwr_hello</property>
+	</element>
+	<element id="DwrHello" file="rife/ajax/dwr.xml" url="dwr/hello/*">
+		<property name="xmlConfiguratorPath">dwr/hello.xml</property>
+		<property name="allowGetForSafariButMakeForgeryEasier">true</property>
+		<property name="allowScriptTagRemoting">true</property>
+		<property name="debug">false</property>
+	</element>
+</site>
+

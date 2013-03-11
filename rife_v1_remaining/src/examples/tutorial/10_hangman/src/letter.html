@@ -1,0 +1,12 @@
+<div class="letter"><r:v name="output"></r:v></div>
+
+<r:b name="enabled">
+	<img src="images/${v letter/}_enabled.png" width="30" height="30" />
+</r:b>
+
+<r:b name="disabled">
+	<form action="${v SUBMISSION:FORM:guess/}" method="post">
+		<r:v name="SUBMISSION:PARAMS:guess"/>
+		<input type="image" src="images/${v letter/}_disabled.png" />
+	</form>
+</r:b>

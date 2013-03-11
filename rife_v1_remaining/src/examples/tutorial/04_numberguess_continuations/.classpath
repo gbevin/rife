@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/implementations"/>
+	<classpathentry kind="src" path="src/rep"/>
+	<classpathentry kind="src" path="src/sites"/>
+	<classpathentry kind="src" path="src/templates"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/rife"/>
+	<classpathentry kind="output" path="build"/>
+</classpath>

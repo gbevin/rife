@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: participants.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE rep SYSTEM "/dtd/rep.dtd">
+
+<rep>
+    <participant param="sites/numberguess.xml">ParticipantSite</participant>
+	<!--
+	  -  Comment the first participant and uncomment the one below if you want
+	  -  to use the site structure that's defined in Java instead of a
+	  -  collection of XML files.
+	  -->
+	<!--
+    <participant name="ParticipantSite">tutorial.numberguess.Site</participant>
+	-->
+</rep>

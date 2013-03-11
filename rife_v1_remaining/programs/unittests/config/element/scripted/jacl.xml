@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: jacl.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE element SYSTEM "/dtd/element.dtd">
+
+<element implementation="jacl/simple.jacl">
+	<input name="input1"/>
+	<input name="input2"/>
+	<submission name="login">
+		<param name="login"/>
+		<param name="password"/>
+	</submission>
+</element>
+

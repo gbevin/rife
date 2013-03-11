@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: flawed_unknown_outbean_group.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<element id="ELEMENT1" file="xml/test_xml2elementinfo1.xml" url="/test/element1">
+		<outbean classname="com.uwyn.rife.engine.testelements.submission.BeanImpl" group="unknowngroup"/>
+	</element>
+</site>
+

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: extending_in_site.xml 3958 2008-05-26 12:04:14Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<element implementation="com.uwyn.rife.engine.testelements.extending.Blueprint">
+		<property name="property1">value1</property>
+		<property name="property2">value2</property>
+
+		<input name="switch"/>
+
+		<input name="input1"/>
+		<input name="input2">
+			<default>inputdefault</default>
+		</input>
+
+		<incookie name="incookie1"/>
+		<incookie name="incookie2">
+			<default>incookiedefault</default>
+		</incookie>
+
+		<submission name="submission1">
+			<param name="param1"/>
+			<param name="param2">
+				<default>paramdefault</default>
+			</param>
+		</submission>
+
+		<outcookie name="outcookie1"/>
+		<outcookie name="outcookie2">
+			<default>outcookiedefault</default>
+		</outcookie>
+
+		<exit name="exit1"/>
+		<exit name="exit2"/>
+
+		<output name="output1"/>
+		<output name="output2">
+			<default>outputdefault</default>
+		</output>
+	</element>
+
+	<!-- EXTENDING SIMPLE -->
+	<element id="SIMPLE" extends="Blueprint" url="/extending/simple">
+		<flowlink srcexit="exit1" destid="SIMPLE"/>
+		<datalink srcoutput="output1" destid="SIMPLE" destinput="input1"/>
+		<flowlink srcexit="exit2" destid="SIMPLE"/>
+		<datalink srcoutput="output2" destid="SIMPLE" destinput="input2"/>
+	</element>
+
+	<!-- EXTENDING CLASS OVERRIDING -->
+	<element id="CLASSOVERRIDING" extends="Blueprint" implementation="com.uwyn.rife.engine.testelements.extending.ClassOverriding" url="/extending/classoverriding">
+		<flowlink srcexit="exit1" destid="CLASSOVERRIDING"/>
+		<datalink srcoutput="output1" destid="CLASSOVERRIDING" destinput="input1"/>
+		<flowlink srcexit="exit2" destid="CLASSOVERRIDING"/>
+		<datalink srcoutput="output2" destid="CLASSOVERRIDING" destinput="input2"/>
+	</element>
+
+	<!-- EXTENDING PROPERTIES OVERRIDING -->
+	<element id="PROPERTIESOVERRIDING" extends="Blueprint" url="/extending/propertiesoverriding">
+		<property name="property1">overriddenvalue1</property>
+		<property name="property2">overriddenvalue2</property>
+	</element>
+
+	<!-- EXTENDING ADDING ELEMENTS -->
+	<element id="ADDING" extends="Blueprint" implementation="com.uwyn.rife.engine.testelements.extending.Adding" url="/extending/adding">
+
+		<property name="property3">value3</property>
+		<property name="property4">value4</property>
+
+		<input name="input3"/>
+		<input name="input4">
+			<default>inputdefault</default>
+		</input>
+
+		<incookie name="incookie3"/>
+		<incookie name="incookie4">
+			<default>incookiedefault</default>
+		</incookie>
+
+		<submission name="submission2">
+			<param name="param1"/>
+			<param name="param2">
+				<default>submission2paramdefault</default>
+			</param>
+		</submission>
+
+		<outcookie name="outcookie3"/>
+		<outcookie name="outcookie4">
+			<default>outcookiedefault</default>
+		</outcookie>
+
+		<exit name="exit3"/>
+		<exit name="exit4"/>
+
+		<output name="output3"/>
+		<output name="output4">
+			<default>outputdefault</default>
+		</output>
+
+		<flowlink srcexit="exit1" destid="ADDING"/>
+		<datalink srcoutput="output1" destid="ADDING" destinput="input1"/>
+		<flowlink srcexit="exit2" destid="ADDING"/>
+		<datalink srcoutput="output2" destid="ADDING" destinput="input2"/>
+		<flowlink srcexit="exit3" destid="ADDING"/>
+		<datalink srcoutput="output3" destid="ADDING" destinput="input3"/>
+		<flowlink srcexit="exit4" destid="ADDING"/>
+		<datalink srcoutput="output4" destid="ADDING" destinput="input4"/>
+	</element>
+
+	<!-- EXTENDING MULTIPLE LEVELS -->
+	<element id="MULTIPLELEVELS1" extends="Blueprint">
+
+		<property name="property3">value3</property>
+		<property name="property4">value4</property>
+
+		<input name="input3"/>
+		<input name="input4">
+			<default>inputdefault</default>
+		</input>
+
+		<incookie name="incookie3"/>
+		<incookie name="incookie4">
+			<default>incookiedefault</default>
+		</incookie>
+
+	</element>
+
+	<element id="MULTIPLELEVELS2" extends=".MULTIPLELEVELS1" implementation="com.uwyn.rife.engine.testelements.extending.MultipleLevels">
+
+		<submission name="submission2">
+			<param name="param1"/>
+			<param name="param2">
+				<default>submission2paramdefault</default>
+			</param>
+		</submission>
+
+		<outcookie name="outcookie3"/>
+		<outcookie name="outcookie4">
+			<default>outcookiedefault</default>
+		</outcookie>
+
+	</element>
+
+	<element id="MULTIPLELEVELS" extends="^.MULTIPLELEVELS2" url="/extending/multiplelevels">
+		<exit name="exit3"/>
+		<exit name="exit4"/>
+
+		<output name="output3"/>
+		<output name="output4">
+			<default>outputdefault</default>
+		</output>
+
+		<flowlink srcexit="exit1" destid="MULTIPLELEVELS"/>
+		<datalink srcoutput="output1" destid="MULTIPLELEVELS" destinput="input1"/>
+		<flowlink srcexit="exit2" destid="MULTIPLELEVELS"/>
+		<datalink srcoutput="output2" destid="MULTIPLELEVELS" destinput="input2"/>
+		<flowlink srcexit="exit3" destid="MULTIPLELEVELS"/>
+		<datalink srcoutput="output3" destid="MULTIPLELEVELS" destinput="input3"/>
+		<flowlink srcexit="exit4" destid="MULTIPLELEVELS"/>
+		<datalink srcoutput="output4" destid="MULTIPLELEVELS" destinput="input4"/>
+	</element>
+</site>

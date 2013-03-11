@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: cookies.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<globalcookie name="globalcookie1"/>
+	<globalcookie name="globalcookie2">
+		<default>globalcookievalue2</default>
+	</globalcookie>
+	<globalcookie name="globalcookie3"/>
+	
+	<element id="COOKIES_VALID_SOURCE" url="/cookies/valid/source" file="element/cookies/valid_source.xml"/>
+	<element id="COOKIES_VALID_DESTINATION" url="/cookies/valid/destination" file="element/cookies/valid_destination.xml"/>
+	
+	<element id="COOKIES_VALID_SOURCE_BIJECTION" url="/cookies/valid/source/bijection" implementation="com.uwyn.rife.engine.testelements.cookies.SourceBijection" extends="element/cookies/valid_source.xml"/>
+
+	<element id="COOKIES_INVALID_SOURCE" url="/cookies/invalid/source" file="element/cookies/invalid_source.xml"/>
+	<element id="COOKIES_INVALID_DESTINATION" url="/cookies/invalid/destination" file="element/cookies/invalid_destination.xml"/>
+
+	<element id="COOKIES_DEFAULTS" url="/cookies/defaults" file="element/cookies/defaults.xml"/>
+
+	<element id="INCOOKIES_GENERATED" file="element/cookies/incookiesgenerated.xml" url="/incookies/generated"/>
+
+	<element id="INCOOKIES_INJECTION" implementation="com.uwyn.rife.engine.testelements.cookies.IncookiesInjection" extends="element/cookies/incookiesgenerated.xml" url="/incookies/injection"/>
+
+	<element id="OUTCOOKIES_GENERATED" file="element/cookies/outcookiesgenerated.xml" url="/outcookies/generated"/>
+
+	<element id="OUTCOOKIES_OUTJECTION" implementation="com.uwyn.rife.engine.testelements.cookies.OutcookiesOutjection" extends="element/cookies/outcookiesgenerated.xml" url="/outcookies/outjection"/>
+</site>
+

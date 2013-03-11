@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: test_xml2sitemodel.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<element id="element" file="xml/test_xml2elementmodel.xml" url="/test/element">
+		<datalink srcoutput="Output1" destid="element" destinput="Input1"/>
+		<datalink srcoutput="Output2"  destid="element" destinput="Input2"/>
+		<flowlink srcexit="Exit1"  destid="element"/>
+	</element>
+</site>
+

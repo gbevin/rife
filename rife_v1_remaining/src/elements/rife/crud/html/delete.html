@@ -1,0 +1,46 @@
+\<!--BV 'window_title'-->\<!--V 'L10N:window_title'-->window_title\<!--/V-->\<!--/BV-->
+\<!--BV 'page_title'-->\<!--V 'L10N:page_title-delete'-->page_title-delete\<!--/V-->\<!--/BV-->
+
+\<!--I '[!V 'crud_template_name-blueprint']rife.crud.html.common.blueprint[!/V]'/-->
+
+\<!--BV 'menu_area'-->\<!--V 'ELEMENT:[!V 'id_prefix'/].MENU'/-->\<!--/BV-->
+
+\<!--BV 'crud_content'-->
+	<table id="delete_table">
+	<colgroup>
+		<col width="*" />
+		<col width="100%" />
+	</colgroup>
+	<!--V 'fields'--><!--/V-->
+	<!--B 'field'-->
+		<tr\[!V '[!V 'property'/]-alignment']\[!/V]>
+			<td nowrap="nowrap" class="form_label">\<!--V 'L10N:[!V 'property'/]'-->[!V 'property'/]\<!--/V--></td>
+			<td><!--V 'form_field'/--></td>
+			<!--B 'form_field-generic'-->\<!--V '[!V 'property'/]'/--><!--/B-->
+			<!--B 'form_field-url'--><a href="\[!V '[!V 'property'/]'/]" target="_blank">\<!--V '[!V 'property'/]'/--></a><!--/B-->
+			<!--B 'form_field-email'--><a href="mailto:\[!V '[!V 'property'/]'/]">\<!--V '[!V 'property'/]'/--></a><!--/B-->
+			<!--B 'form_field-text'--><div class="textpreview">\<!--V '[!V 'property'/]'/--></div><!--/B-->
+			<!--B 'form_field-xhtml'--><div class="xhtmlpreview">\<!--V '[!V 'property'/]'/--></div><!--/B-->
+			<!--B 'form_field-image'--><img src="\[!V '[!V 'property'/]-src'/]" width="\[!V '[!V 'property'/]-width'/]" height="\[!V '[!V 'property'/]-height'/]" alt="" /><!--V 'form_field-legend'--><!--/V-->\<!--BV '[!V 'property'/]-alignment'--> valign="top"\<!--/BV--><!--/B-->
+			<!--B 'form_field-raw'--><a href="\[!V '[!V 'property'/]-url'/]">\<!--V '[!V 'property'/]-name'/--></a><!--V 'form_field-legend'--><!--/V-->\<!--BV '[!V 'property'/]-alignment'--> valign="top"\<!--/BV--><!--/B-->
+			<!--B 'form_field-legend'--><div class="form_legend">\<!--V '[!V 'property'/]-legend'/--></div><!--/B-->
+		</tr>
+	<!--/B-->
+	<tr>
+		<td>&nbsp;</td>
+		<td><form name="delete" method="post" action="\[!V 'SUBMISSION:FORM:confirm'/]">\<!--V 'SUBMISSION:PARAMS:confirm'/--><input name="submit" type="submit" value="\[!V 'L10N:button_label-delete']button_label-delete\[!/V]" /></form></td>
+	</tr>
+	</table>
+
+	<form name="cancel" action="\[!V 'EXIT:FORM:[!V 'exit_prefix'/][!V 'classname'/]-browse'/]" method="get">\<!--V 'EXIT:PARAMS:[!V 'exit_prefix'/][!V 'classname'/]-browse'/--><input name="submit" type="submit" value="\[!V 'L10N:button_label-cancel']button_label-cancel\[!/V]" /></form>
+\<!--/BV-->
+
+\<!--B 'crud_content_deleted'-->
+	<p class="success">\<!--V 'L10N:page_content-delete-success_header'-->page_content-delete-success_header\<!--/V--></p>
+	<p>\<!--V 'L10N:page_content-delete-success_message'-->page_content-delete-success_message\<!--/V--></p>
+
+	<form name="browse" action="\[!V 'EXIT:FORM:[!V 'exit_prefix'/][!V 'classname'/]-browse'/]" method="get">\<!--V 'EXIT:PARAMS:[!V 'exit_prefix'/][!V 'classname'/]-browse'/--><input name="submit" type="submit" value="\[!V 'L10N:button_label-browse']button_label-browse\[!/V]" /></form>
+\<!--/B-->
+
+\<!--BV 'document_attributes'--> onload="document.forms[0].submit.focus();"\<!--/BV-->
+\<!--B 'document_attributes_success'--> onload="document.forms[0].submit.focus();"\<!--/B-->

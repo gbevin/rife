@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: users.dtd 3918 2008-04-14 17:35:35Z gbevin $
+  -  PUBLIC ID: -//Rifers.org//RIFE Users 1.0//EN
+  -  SYSTEM ID: http://rifers.org/dtd/users_1_0.dtd
+  -->
+
+<!ELEMENT credentials	(user)*>
+
+<!ELEMENT user		(password,role*)>
+<!ATTLIST user		login CDATA #REQUIRED
+					userid CDATA #IMPLIED>
+
+<!ELEMENT password	(#PCDATA)>
+
+<!ELEMENT role		(#PCDATA)>
+

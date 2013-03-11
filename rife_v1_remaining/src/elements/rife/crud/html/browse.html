@@ -1,0 +1,101 @@
+\<!--BV 'window_title'-->\<!--V 'L10N:window_title'-->window_title\<!--/V-->\<!--/BV-->
+\<!--BV 'page_title'-->\<!--V 'L10N:page_title-browse'-->page_title-browse\<!--/V-->\<!--/BV-->
+
+\<!--I '[!V 'crud_template_name-blueprint']rife.crud.html.common.blueprint[!/V]'/-->
+\<!--I '[!V 'crud_template_name-ranged_table_components']rife.crud.html.common.ranged_table_components[!/V]'/-->
+
+\<!--BV 'menu_area'-->\<!--V 'ELEMENT:[!V 'id_prefix'/].MENU'/-->\<!--/BV-->
+
+\<!--BV 'crud_content'-->
+	\<!--BV 'ranged_table'-->\<!--I '[!V 'crud_template_name-ranged_table']rife.crud.html.common.ranged_table[!/V]'/-->\<!--/BV-->
+	\<!--BV 'ranged_table_area'--><p>\<!--V 'ranged_table'/--></p>\<!--/BV-->
+	\<!--V 'ranged_table_area'-->\<!--/V-->
+
+	<table width="100%" id="browse_table" class="browse_table" cellpadding="0" cellspacing="0">
+	<colgroup>
+		<!--V 'colgroups'--><!--/V-->
+		<!--B 'colgroup'-->
+		<col width="\[!V 'L10N:column_width-[!V 'property'/]']*\[!/V]" />
+		<!--/B-->
+		<col width="\[!V 'L10N:column_width-actions']100%\[!/V]" />
+		<!--V 'colgroups_associations'--><!--/V-->
+		<!--B 'colgroup_association'-->
+		<col width="*" />
+		<!--/B-->
+	</colgroup>
+	<thead>
+		<tr>
+			<!--V 'columnheaders'--><!--/V-->
+			<!--B 'columnheader'-->
+			<th nowrap="nowrap"><div>\<!--V 'L10N:[!V 'property'/]'--><!--V 'property'/-->\<!--/V--></div></th>
+			<!--/B-->
+			<th nowrap="nowrap"><div>\<!--V 'L10N:column_label-actions'-->column_label-actions\<!--/V--></div></th>
+			<!--V 'associationheaders'--><!--/V-->
+			<!--B 'associationheader'-->
+			<th nowrap="nowrap"><div id="association_header[!V 'association_count'/]">\<!--V 'L10N:association_header-[!V 'association_classname'/]'-->association_header-<!--V 'association_classname'/-->\<!--/V--></div></th>
+			\<!--BV 'L10N:association_header-[!V 'association_classname'/]'--><!--V 'association_short-classname'/-->\<!--/BV-->
+			<!--/B-->
+		</tr>
+	</thead>
+	<tbody>
+		\<!--V 'rows'/-->
+		\<!--B 'row'-->
+		<tr valign="middle">
+			<!--V 'columns'--><!--/V-->
+			<!--B 'column'-->
+				<td \[!V 'L10N:column_nowrap-[!V 'property'/]']nowrap="nowrap"\[!/V]><div class="column_content"><!--V 'form_field'/--></div></td>
+				<!--B 'form_field-generic'-->\<!--V '[!V 'property'/]'-->\<!--/V--><!--/B-->
+				<!--B 'form_field-url'--><a href="\[!V '[!V 'property'/]']\[!/V]" target="_blank">\<!--V '[!V 'property'/]'-->\<!--/V--></a><!--/B-->
+				<!--B 'form_field-email'--><a href="mailto:\[!V '[!V 'property'/]']\[!/V]">\<!--V '[!V 'property'/]'-->\<!--/V--></a><!--/B-->
+				<!--B 'form_field-image'--><img src="\[!V '[!V 'property'/]-src'/]" width="\[!V '[!V 'property'/]-width'/]" height="\[!V '[!V 'property'/]-height'/]" alt="" /><!--V 'form_field-legend'--><!--/V--><!--/B-->
+				<!--B 'form_field-raw'--><a href="\[!V '[!V 'property'/]-url'/]">\<!--V '[!V 'property'/]-name'/--></a><!--V 'form_field-legend'--><!--/V--><!--/B-->
+				<!--B 'form_field-legend'--><div class="form_legend">\<!--V '[!V 'property'/]-legend'/--></div><!--/B-->
+			<!--/B-->
+			<!--V 'actions'/-->
+			<!--BV 'actions'-->
+				<td nowrap="nowrap">
+					<form name="edit-[!V 'id'/]" action="\[!V 'EXIT:FORM:[!V 'exit_prefix'/][!V 'classname'/]-edit'/]" method="get">\<!--V 'EXIT:PARAMS:[!V 'exit_prefix'/][!V 'classname'/]-edit'/--><input name="submit" type="submit" value="\[!V 'L10N:button_label-edit']button_label-edit\[!/V]" /></form>&nbsp;
+					<form name="delete-[!V 'id'/]" action="\[!V 'EXIT:FORM:[!V 'exit_prefix'/][!V 'classname'/]-delete'/]" method="get">\<!--V 'EXIT:PARAMS:[!V 'exit_prefix'/][!V 'classname'/]-delete'/--><input name="submit" type="submit" value="\[!V 'L10N:button_label-delete']button_label-delete\[!/V]" /></form>&nbsp;
+					<!--V 'move_actions'--><!--/V-->
+					<!--B 'move_actions'-->
+						<form name="up-[!V 'id'/]" action="\[!V 'EXIT:FORM:up'/]" method="post">\<!--V 'EXIT:PARAMS:up'/--><input name="submit" type="submit" value="\[!V 'L10N:button_label-up']button_label-up\[!/V]" \[!V 'move_disabled_up']\[!/V]\[!B 'move_disabled'] disabled="disabled" class="input_disabled"\[!/B] /></form>&nbsp;
+						<form name="down-[!V 'id'/]" action="\[!V 'EXIT:FORM:down'/]" method="post">\<!--V 'EXIT:PARAMS:down'/--><input name="submit" type="submit" value="\[!V 'L10N:button_label-down']button_label-down\[!/V]" \[!V 'move_disabled_down']\[!/V] /></form>
+					<!--/B-->
+				</td>
+			<!--/BV-->
+			<!--V 'associations'--><!--/V-->
+			<!--B 'association'-->
+				<td nowrap="nowrap">
+					<table class="collapsed_table association_table[!V 'association_count'/]">
+					<colgroup>
+						<col width="*" />
+						<col width="*" />
+						<col width="*" />
+					</colgroup>
+					<tr>
+						<td align="right" nowrap="nowrap">\<!--V 'association_entrycount[!V 'association_count'/]'/--><br /></td>
+						<td><form action="\[!V 'EXIT:FORM:[!V 'exit_prefix'/][!V 'association_classname'/]-browse'/]" method="get">\<!--V 'EXIT:PARAMS:[!V 'exit_prefix'/][!V 'association_classname'/]-browse'/--><input name="submit" type="submit" value="\[!V 'L10N:button_label-browse_assocation']button_label-browse_assocation\[!/V]" /></form></td>
+						<td><form action="\[!V 'EXIT:FORM:[!V 'exit_prefix'/][!V 'association_classname'/]-add'/]" method="get">\<!--V 'EXIT:PARAMS:[!V 'exit_prefix'/][!V 'association_classname'/]-add'/--><input name="submit" type="submit" value="\[!V 'L10N:button_label-add_assocation']button_label-add_assocation\[!/V]" /></form></td>
+					</tr>
+					</table>
+				</td>
+			<!--/B-->
+		</tr>
+		\<!--/B-->
+	</tbody>
+	</table>
+
+	\<!--V 'ranged_table_area'-->\<!--/V-->
+\<!--/BV-->
+
+\<!--B 'crud_content_none'-->
+	<p class="warning">\<!--V 'L10N:page_content-browse-none_available'-->page_content-browse-none_available\<!--/V--></p>
+
+	<div class="context_buttons">
+		<form name="add_first" action="\[!V 'EXIT:FORM:[!V 'exit_prefix'/][!V 'classname'/]-add'/]" method="get">\<!--V 'EXIT:PARAMS:[!V 'exit_prefix'/][!V 'classname'/]-add'/--><input name="submit" type="submit" value="\[!V 'L10N:button_label-add_first']button_label-add_first\[!/V]" /></form>&nbsp;
+		<form name="home" action="\[!V 'EXIT:FORM:[!V 'exit_prefix'/][!V 'classname'/]-home'/]" method="get">\<!--V 'EXIT:PARAMS:[!V 'exit_prefix'/][!V 'classname'/]-home'/--><input name="submit" type="submit" value="\[!V 'L10N:button_label-home']button_label-home\[!/V]" /></form>
+	</div>
+\<!--/B-->
+
+\<!--BV 'document_attributes'--> onload="document.forms[0].submit.focus();"\<!--/BV-->
+

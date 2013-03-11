@@ -1,0 +1,11 @@
+<!--V 'PARAM:firstname'/-->, <r:bv name="value1"><!--V 'PARAM:lastname'--><!--/V--></r:bv><r:v name="value1"/>
+<input type="checkbox" name="wantsupdates"${v PARAM:wantsupdates:CHECKED}${/v}> I want updates<br />
+<input type="checkbox" name="colors" value="orange"[!V 'PARAM:colors:orange:CHECKED'][!/V]>orange<br />
+<input type="checkbox" name="colors" value="blue"[!V 'PARAM:colors:blue:CHECKED'][!/V]>blue<br />
+<input type="checkbox" name="colors" value="red"[!V 'PARAM:colors:red:CHECKED'][!/V]>red<br />
+<input type="radio" name="firstname"[!V 'PARAM:firstname:Geert:CHECKED'][!/V]> Geert
+<input type="radio" name="firstname"<!--BV 'value2'--><!--V 'PARAM:firstname:Nathalie:CHECKED'--><!--/V--><!--/BV--><!--V 'value2'/-->> Nathalie
+<select name="lastname">
+	<option value="Bevin"<!--V 'PARAM:lastname:Bevin:SELECTED'--><!--/V-->>Bevin</option>
+	<option value="Mafessoni"<!--BV 'value3'--><!--V 'PARAM:lastname:Mafessoni:SELECTED'--><!--/V--><!--/BV--><!--V 'value3'/-->>Mafessoni</option>
+</select>

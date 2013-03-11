@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: exits.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<!-- EXITS SIMPLE -->
+	<element id="SIMPLE_SOURCE" file="element/exits/simple_source.xml" url="/exits/simple/source">
+		<flowlink srcexit="exit1" destid="SIMPLE_DESTINATION"/>
+	</element>
+	<element id="SIMPLE_DESTINATION" file="element/exits/simple_destination.xml" url="/exits/simple/destination"/>
+
+	<!-- EXITS SELECTIVE -->
+	<element id="SELECTIVE_SOURCE" file="element/exits/selective_source.xml" url="/exits/selective/source">
+		<flowlink srcexit="exit1" destid="SELECTIVE_DESTINATION1"/>
+		<flowlink srcexit="exit2" destid="SELECTIVE_DESTINATION2"/>
+		<flowlink srcexit="exit3" destid="SELECTIVE_DESTINATION3"/>
+	</element>
+	<element id="SELECTIVE_DESTINATION1" file="element/exits/selective_destination1.xml" url="/exits/selective/destination1"/>
+	<element id="SELECTIVE_DESTINATION2" file="element/exits/selective_destination2.xml" url="/exits/selective/destination2"/>
+	<element id="SELECTIVE_DESTINATION3" file="element/exits/selective_destination3.xml" url="/exits/selective/destination3"/>
+
+	<!-- EXITS DIRECT LINK -->
+	<element id="DIRECTLINK_SOURCE" file="element/exits/directlink_source.xml" url="/exits/directlink/source">
+		<flowlink srcexit="exit1" destid="DIRECTLINK_DESTINATION"/>
+		<datalink srcoutput="output1" destid="DIRECTLINK_DESTINATION" destinput="input1"/>
+		<datalink srcoutput="output2" destid="DIRECTLINK_DESTINATION" destinput="input2"/>
+	</element>
+	<element id="DIRECTLINK_DESTINATION" file="element/exits/directlink_destination.xml" url="/exits/directlink/destination"/>
+
+	<!-- EXITS FLOWLINK SPECIFIC DATALINKS -->
+	<element id="FLOWLINKSPECIFIC_SOURCE" file="element/exits/flowlinkspecific_source.xml" url="/exits/flowlinkspecific/source">
+		<datalink srcoutput="output3" destid="FLOWLINKSPECIFIC_DESTINATION" destinput="input2"/>
+		<flowlink srcexit="exit1" destid="FLOWLINKSPECIFIC_DESTINATION">
+			<datalink srcoutput="output1" destinput="input1"/>
+		</flowlink>
+		<flowlink srcexit="exit2" destid="FLOWLINKSPECIFIC_DESTINATION">
+			<datalink srcoutput="output2" destinput="input1"/>
+		</flowlink>
+	</element>
+	<element id="FLOWLINKSPECIFIC_DESTINATION" file="element/exits/flowlinkspecific_destination.xml" url="/exits/flowlinkspecific/destination"/>
+	
+	<!-- EXITS AUTOLINK -->
+	<element id="AUTOLINK_SOURCE" implementation="com.uwyn.rife.engine.testelements.exits.AutolinkSource" url="/exits/autolink/source">
+		<input name="type"/>
+		<output name="value1"/>
+		<output name="value2"/>
+		<output name="value3"/>
+		<outbean name="bean1" classname="com.uwyn.rife.engine.testelements.exits.BeanImpl1"/>
+		<outbean name="bean2" classname="com.uwyn.rife.engine.testelements.exits.BeanImpl2" prefix="out_"/>
+		<autolink srcexit="AUTOLINK_DESTINATION"/>
+	</element>
+	<element id="AUTOLINK_DESTINATION" implementation="com.uwyn.rife.engine.testelements.exits.AutolinkDestination" url="/exits/autolink/destination">
+		<input name="value1"/>
+		<input name="value2"/>
+		<input name="value4"/>
+		<inbean name="bean1" classname="com.uwyn.rife.engine.testelements.exits.BeanImpl1"/>
+		<inbean name="bean3" classname="com.uwyn.rife.engine.testelements.exits.BeanImpl2" prefix="in_"/>
+	</element>
+	
+	<!-- EXITS ANNOTATIONS AUTOLINK -->
+	<element implementation="com.uwyn.rife.engine.testelements.exits.AutolinkAnnotationSource"/>
+	<element implementation="com.uwyn.rife.engine.testelements.exits.AutolinkAnnotationDestination"/>
+	
+	<!-- EXITS GENERATED URL -->
+	<element id="GENERATEDURL_SOURCE" file="element/exits/generatedurl_source.xml" url="/exits/generatedurl/source">
+		<flowlink srcexit="exit1" destid="GENERATEDURL_DESTINATION1"/>
+		<flowlink srcexit="exit2" destid="GENERATEDURL_DESTINATION2"/>
+		<datalink srcoutput="output1" destid="GENERATEDURL_DESTINATION1" destinput="input1"/>
+		<datalink srcoutput="output2" destid="GENERATEDURL_DESTINATION1" destinput="input2"/>
+		<datalink srcoutput="output2" destid="GENERATEDURL_DESTINATION2" destinput="input1"/>
+		<datalink srcoutput="output3" destid="GENERATEDURL_DESTINATION2" destinput="input2"/>
+	</element>
+	<element id="GENERATEDURL_DESTINATION1" file="element/exits/generatedurl_destination1.xml" url="/exits/generatedurl/destination1"/>
+	<element id="GENERATEDURL_DESTINATION2" file="element/exits/generatedurl_destination2.xml" url="/exits/generatedurl/destination2"/>
+
+	<!-- EXITS GENERATED URL OVERFLOW -->
+	<element id="GENERATEDURLOVERFLOW_SOURCE" file="element/exits/generatedurloverflow_source.xml" url="/exits/generatedurloverflow/source">
+		<flowlink srcexit="exit1" destid="GENERATEDURLOVERFLOW_DESTINATION"/>
+		<datalink srcoutput="output1" destid="GENERATEDURLOVERFLOW_DESTINATION" destinput="input1"/>
+		<datalink srcoutput="output2" destid="GENERATEDURLOVERFLOW_DESTINATION" destinput="input2"/>
+	</element>
+	<element id="GENERATEDURLOVERFLOW_DESTINATION" file="element/exits/generatedurloverflow_destination.xml" url="/exits/generatedurloverflow/destination"/>
+
+	<!-- EXITS GENERATED FORM -->
+	<element id="GENERATEDFORM_SOURCE" file="element/exits/generatedform_source.xml" url="/exits/generatedform/source">
+		<flowlink srcexit="exit1" destid="GENERATEDFORM_DESTINATION1"/>
+		<flowlink srcexit="exit2" destid="GENERATEDFORM_DESTINATION2"/>
+		<datalink srcoutput="output1" destid="GENERATEDFORM_DESTINATION1" destinput="input1"/>
+		<datalink srcoutput="output2" destid="GENERATEDFORM_DESTINATION1" destinput="input2"/>
+		<datalink srcoutput="output2" destid="GENERATEDFORM_DESTINATION2" destinput="input1"/>
+		<datalink srcoutput="output3" destid="GENERATEDFORM_DESTINATION2" destinput="input2"/>
+	</element>
+	<element id="GENERATEDFORM_DESTINATION1" file="element/exits/generatedform_destination1.xml" url="/exits/generatedform/destination1"/>
+	<element id="GENERATEDFORM_DESTINATION2" file="element/exits/generatedform_destination2.xml" url="/exits/generatedform/destination2"/>
+	
+	<!-- EXITS SNAPBACK SIMPLE -->
+	<element id="SNAPBACK_SIMPLE_SOURCE" file="element/exits/snapback_simple_source.xml" url="/exits/snapback/simple">
+		<flowlink srcexit="exit1" destid="SNAPBACK_SIMPLE_PASSTHROUGH"/>
+	</element>
+	<element id="SNAPBACK_SIMPLE_PASSTHROUGH" file="element/exits/snapback_simple_passthrough.xml">
+		<flowlink srcexit="exit2" snapback="true"/>
+	</element>
+	
+	<!-- EXITS SNAPBACK DATALINK -->
+	<element id="SNAPBACK_DATALINK_SOURCE" file="element/exits/snapback_datalinks_source.xml" url="/exits/snapback/datalinks">
+		<flowlink srcexit="exit1" destid="SNAPBACK_DATALINK_PASSTHROUGH"/>
+		<datalink srcoutput="param1" destid="SNAPBACK_DATALINK_PASSTHROUGH" destinput="param1"/>
+	</element>
+	<element id="SNAPBACK_DATALINK_PASSTHROUGH" file="element/exits/snapback_datalinks_passthrough.xml">
+		<flowlink srcexit="exit2" snapback="true"/>
+		<datalink srcoutput="output1" snapback="true" destinput="input1"/>
+		<datalink srcoutput="output2" snapback="true" destinput="input2"/>
+		<datalink srcoutput="output3" snapback="true" destinput="input3"/>
+	</element>
+
+	<!-- EXITS BEAN NORMAL -->
+	<element id="BEAN_NORMAL_SOURCE" file="element/exits/bean_normal_source.xml" url="/exits/bean/normal">
+		<flowlink srcexit="beanexit" destid="BEAN_NORMAL_DESTINATION"/>
+		<datalink srcoutbean="outbean1" destid="BEAN_NORMAL_DESTINATION" destinbean="inbean1"/>
+	</element>
+	<element id="BEAN_NORMAL_DESTINATION" file="element/exits/bean_normal_destination.xml"/>
+
+	<!-- EXITS BEAN DIFFERENT -->
+	<element id="BEAN_DIFFERENT_SOURCE" file="element/exits/bean_normal_source.xml" url="/exits/bean/different">
+		<flowlink srcexit="beanexit" destid="BEAN_DIFFERENT_DESTINATION"/>
+		<datalink srcoutbean="outbean1" destid="BEAN_DIFFERENT_DESTINATION" destinbean="inbean2"/>
+	</element>
+	<element id="BEAN_DIFFERENT_DESTINATION" file="element/exits/bean_normal_destination.xml"/>
+
+	<!-- EXITS BEAN SNAPBACK -->
+	<element id="BEAN_SNAPBACK" file="element/exits/bean_snapback.xml" url="/exits/bean/snapback">
+		<flowlink srcexit="beanexit" snapback="1"/>
+		<datalink srcoutbean="outbean1" snapback="1" destinbean="inbean1"/>
+	</element>
+
+	<!-- EXITS BEAN PREFIX SAME-->
+	<element id="BEAN_PREFIX_SAME_SOURCE" file="element/exits/bean_prefix_source.xml" url="/exits/bean/prefix/same">
+		<flowlink srcexit="beanexit" destid="BEAN_PREFIX_SAME_DESTINATION"/>
+		<datalink srcoutbean="outbean1" destid="BEAN_PREFIX_SAME_DESTINATION" destinbean="inbean1"/>
+	</element>
+	<element id="BEAN_PREFIX_SAME_DESTINATION" file="element/exits/bean_prefix_destination.xml"/>
+
+	<!-- EXITS BEAN PREFIX DIFFERENT-->
+	<element id="BEAN_PREFIX_DIFFERENT_SOURCE" file="element/exits/bean_prefix_source.xml" url="/exits/bean/prefix/different">
+		<flowlink srcexit="beanexit" destid="BEAN_PREFIX_DIFFERENT_DESTINATION"/>
+		<datalink srcoutbean="outbean1" destid="BEAN_PREFIX_DIFFERENT_DESTINATION" destinbean="inbean2"/>
+	</element>
+	<element id="BEAN_PREFIX_DIFFERENT_DESTINATION" file="element/exits/bean_prefix_destination.xml"/>
+
+	<!-- EXIT REDIRECT -->
+	<element id="REDIRECT_SOURCE" file="element/exits/redirect_source.xml" url="/exits/redirect/source">
+		<flowlink srcexit="exit_intern" destid="REDIRECT_DESTINATION"/>
+		<flowlink srcexit="exit_redirect" destid="REDIRECT_DESTINATION" redirect="1"/>
+		<datalink srcoutput="output1" destid="REDIRECT_DESTINATION" destinput="input1"/>
+		<datalink srcoutput="output2" destid="REDIRECT_DESTINATION" destinput="input2"/>
+	</element>
+	<element id="REDIRECT_DESTINATION" file="element/exits/redirect_destination.xml" url="/exits/redirect/destination"/>
+</site>
+

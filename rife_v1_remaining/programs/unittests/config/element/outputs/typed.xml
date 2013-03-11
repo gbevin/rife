@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: typed.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE element SYSTEM "/dtd/element.dtd">
+
+<element implementation="com.uwyn.rife.engine.testelements.outputs.Typed">
+	<input name="input1"/>
+	<input name="input2"/>
+	<input name="input3"/>
+	<input name="input4"/>
+	<input name="input5"/>
+	<input name="input6"/>
+	<input name="input7"/>
+	
+	<exit name="exit"/>
+	
+	<output name="outputstring"/>
+	<output name="outputchar"/>
+	<output name="outputchararray"/>
+	<output name="outputint"/>
+	<output name="outputlong"/>
+	<output name="outputdouble"/>
+	<output name="outputfloat"/>
+</element>
+

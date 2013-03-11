@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: departure.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<globalvar name="globalvar_departure1">
+		<default>some</default>
+		<default>values</default>
+	</globalvar>
+	<globalvar name="globalvar_departure2">
+		<default>another value</default>
+	</globalvar>
+	<globalvar name="globalvar_departure3"/>
+	<departure srcid="DEPARTURE_SOURCE"/>
+	
+	<element id="DEPARTURE_SOURCE" file="element/subsites/departure/source.xml" url="/source">
+		<flowlink srcexit="target" destid="DEPARTURE_TARGET"/>
+		<datalink srcoutput="output1" destid="DEPARTURE_TARGET" destinput="input1"/>
+		<datalink srcoutput="output2" destid="DEPARTURE_TARGET" destinput="input2"/>
+		<datalink srcoutput="globalvar_departure2" destid="DEPARTURE_TARGET" destinput="input3"/>
+	</element>
+	<element id="DEPARTURE_TARGET" file="element/subsites/departure/target.xml" url="/target"/>
+</site>
+

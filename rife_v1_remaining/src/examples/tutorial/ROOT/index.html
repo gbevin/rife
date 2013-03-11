@@ -1,0 +1,165 @@
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: index.html 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+<html>
+<title>RIFE : Examples</title>
+
+<body>
+
+<h1>RIFE : Examples</h1>
+
+<a name="TOC"></a><h2>Table of contents</h2>
+
+<ol type="A">
+	<li><a href="#A">License</a></li>
+	<li><a href="#B">Installation</a></li>
+	<li><a href="#C">Running</a></li>
+	<li><a href="#D">Available examples</a><br />
+		<ol type="1">
+			<li><a href="#D.1">Hello World</a></li>
+			<li><a href="#D.2">Recursive templating</a></li>
+			<li><a href="#D.3">Number guess game</a></li>
+			<li><a href="#D.4">Number guess game with continuations</a></li>
+			<li><a href="#D.5">Friends listing</a></li>
+			<li><a href="#D.6">Frames through inheritance</a></li>
+			<li><a href="#D.7">Selective authentication</a></li>
+			<li><a href="#D.8">Advanced continuations</a></li>
+			<li><a href="#D.9">Stateful counters</a></li>
+			<li><a href="#D.10">Hangman</a></li>
+		</ol>
+	</li>
+	<li><a href="#E">Feedback</a></li>
+</ol>
+
+<h2><a name="A"></a>A.&nbsp;License</h2>
+
+<p>RIFE and all related examples are distributed under the following license :</p>
+
+<pre>Copyright 2001-2008 Geert Bevin and contributors <a href="http://rifers.org/license">more info</a>.
+
+ Licensed under the Apache License, Version 2.0 (the "License")</pre>
+
+<p><font size="-1"><a href="#TOC">table of contents</a></font></p>
+
+<h2><a name="B"></a>B.&nbsp;Installation</h2>
+
+<p>Just use this directory as the <code>webapps</code> directory of your servlet container.</p>
+
+<p>The supported servlet engines are (these are minimal version numbers, later versions work too):</p>
+<ul>
+	<li><a href="http://jakarta.apache.org/tomcat/index.html">Jakarta Tomcat 4.1.24</a>,</li>
+	<li><a href="http://jetty.mortbay.org/jetty/index.html">Jetty 4.2.14</a>,</li>
+	<li><a href="http://www.caucho.com/resin/">Resin 2.1.11</a>.</li>
+	<li><a href="http://www.orionserver.com">Orion 2.0.2</a>.</li>
+	<li><a href="http://www.bea.com">Bea Weblogic Server 8.1</a>.</li>
+	<li><a href="http://www.tagtraum.com/jo.html">jo! 1.1</a>.</li>
+</ul>
+
+<p>Each web-application in the <code>webapps</code> directory contains a <code>WEB-INF/lib</code> directory. The jar file of RIFE has to be copied there for each and every web application.</p>
+
+<p>The RIFE jar that corresponds to this release of the examples can be found in the <code>ROOT/WEB-INF/lib</code> directory.</p>
+
+<p>Under a unix-like system (GNU/Linux for instance) you can do this quickly by executing the following bash script inside the <code>webapps</code> directory:</p>
+
+<p><blockquote><pre>for f in `find . -name WEB-INF | grep -v ROOT`; do
+mkdir -p ${f}/lib/;
+cp ROOT/WEB-INF/lib/rife-*.jar ${f}/lib/;
+done</pre></blockquote></p>
+
+<p>You can download the latest RIFE jar from the <a href="http://rife.dev.java.net/servlets/ProjectDocumentList">project's website</a></p>
+
+<p><i>Don't put this jar file in your servlet engine's lib, ext, or other engine-wide library location. Each web application needs to have its <u>own private copy of the RIFE jar</u>.</i></p>
+
+<p><font size="-1"><a href="#TOC">table of contents</a></font></p>
+
+<h2><a name="C"></a>C.&nbsp;Running</h2>
+
+<p>To be able to try out the examples, you now only have to start your servlet engine.</p>
+
+<p>If you are reading this page through your servlet engine, you can just click on a link below to go to an example web application.</p>
+
+<p><font size="-1"><a href="#TOC">table of contents</a></font></p>
+
+<h2><a name="D"></a>D.&nbsp;Available examples</h2>
+
+<h3><a name="D.1"></a>1.&nbsp;<a href="/01_helloworld/home">Hello World</a> (<a href="/01_helloworld/src">browse source</a>)</h3>
+
+<p>A typical first example that outputs Hello World to a web page.</p>
+
+<h3><a name="D.2"></a>2.&nbsp;<a href="/02_recursion">Recursive templating</a> (<a href="/02_recursion/src">browse source</a>)</h3>
+
+<p>Demonstrates advanced usage of the template engine by recursively constructing and displaying a tree structure.</p>
+
+<h3><a name="D.3"></a>3.&nbsp;<a href="/03_numberguess">Number guess game</a> (<a href="/03_numberguess/src">browse source</a>)</h3>
+
+<p>A simple number guessing game that shows how elements are chained together in a site structure through flowlinks and datalinks. An example of how to retrieve information from the visitor through a submission is also included.</p>
+
+<h3><a name="D.4"></a>4.&nbsp;<a href="/04_numberguess_continuations">Number guess game with continuations</a> (<a href="/04_numberguess_continuations/src">browse source</a>)</h3>
+
+<p>The same number guess game as above, but it has been implemented with web continuations instead. This clearly demonstrates the conciseness and logical grouping that web continuations bring to web applications.</p>
+
+<h3><a name="D.5"></a>5.&nbsp;<a href="/05_friends_basic">Friends listing</a> (<a href="/05_friends_basic/src">browse source</a>)</h3>
+
+<p>Uses basic database access to display a list of friends with links to their websites.</p>
+
+<p>The application includes an administration interface for installing, populating and removing the database structure. Addionally, it's also possible to add new friends.<br />
+RIFE makes it possible to use Java Beans to centralize the creation of database structures, the validation of form data and the storage and retrieval of data. This examples demonstrates the latter with the <code>tutorial.friends.backend.Friend</code> bean.</p>
+
+<p><i>Prerequisites</i></p>
+
+<p>A database instance has to be running and have been setup with the correct user and password. This example supports either PostgreSQL or MySQL. The JDBC driver are already included.</p>
+
+<p>The database connection settings are defined in this file :</p>
+
+<pre>05_friends_basic/WEB-INF/classes/rep/datasources.xml</pre>
+
+<p>To make the application use one of the datasources that are defined there, the <code>DATASOURCE</code> parameter has to be set to the correct datasource name in this file :</p>
+
+<pre>05_friends_basic/WEB-INF/classes/rep/config.xml</pre>
+
+<h3><a name="D.6"></a>6.&nbsp;<a href="/06_inheritance">Frames through inheritance</a> (<a href="/06_inheritance/src">browse source</a>)</h3>
+
+<p>Inheritance is used to automatically decorate certain urls with frames without having to be troubled by the maintenance of framesets.</p>
+
+<h3><a name="D.7"></a>7.&nbsp;<a href="/07_authentication">Selective authentication</a> (<a href="/07_authentication/src">browse source</a>)</h3>
+
+<p>Public pages are freely accessible, while other pages are protected through authentication. According to the user's role, acess is granted to protected parts of the site.</p>
+
+<p>The login/logout box is perfectly isolated and shows how code can be re-used and transparently integrated through embedded elements.</p>
+
+<h3><a name="D.8"></a>8.&nbsp;<a href="/08_advanced_continuations">Advanced continuations</a> (<a href="/08_advanced_continuations/src">browse source</a>)</h3>
+
+<p>Continuations are used to handle the intermediate steps during an order checkout process. By providing a custom <code>clone()</code> implementation, the individual steps are prefilled with earlier submitted data if the user has pressed the back button.</p>
+
+<h3><a name="D.9"></a>9.&nbsp;<a href="/09_stateful_counters">Stateful counters</a> (<a href="/09_stateful_counters/src">browse source</a>)</h3>
+
+<p>Embedded elements are used as individual counters that handle their own state and submission events. The whole application has been written solely in Java, without any XML. The declarations of the embedded Counter element are provided through JDK 1.5 annotations. <b>(this example doesn't work on JDK 1.4 because of the use of annotations)</b></p>
+
+<h3><a name="D.10"></a>10.&nbsp;<a href="/10_hangman">Hangman</a> (<a href="/10_hangman/src">browse source</a>)</h3>
+
+<p>A hangman word guessing game that interfaces with a structured model that is stored in the session. The whole application has been written solely in Java, without any XML. The declarations of the elements are provided through JDK 1.5 annotations. <b>(this example doesn't work on JDK 1.4 because of the use of annotations)</b></p>
+
+<p><font size="-1"><a href="#TOC">table of contents</a></font></p>
+
+<h2><a name="E"></a>E.&nbsp;The RIFE project</h2>
+<p>The <b>downloads</b> are available at <a href="http://rife.dev.java.net/servlets/ProjectDocumentList">File sharing</a>.</p>
+<p>The <b>examples</b> can be tried online at <a href="http://rifers.org/examples">http://rifers.org/examples</a>.</p>
+
+<p>The <b>users guide</b> can be read online at <a href="http://rifers.org/docs/usersguide">http://rifers.org/docs/usersguide</a>.</p>
+<p>The <b>API documentation</b> can be read online at <a href="http://rifers.org/docs/api">http://rifers.org/docs/api</a>.</p>
+<p>The <b>issue-tracker</b> is available at <a href="http://servlet.uwyn.com/issues/secure/BrowseProject.jspa?id=10000">http://servlet.uwyn.com/issues</a>.</p>
+<p>The <b>wiki</b> is available at <a href="http://rifers.org/wiki">http://rifers.org/wiki</a>.</p>
+<p>The <b>mailinglists</b> are set up at Uwyn, the following are available:
+<ul>
+	<li><a href="http://www.uwyn.com/mailman/listinfo/rife-users">RIFE users list : questions, bug reports and suggestions.</a></li>
+	<li><a href="http://www.uwyn.com/mailman/listinfo/rife-announce">RIFE announcement list.</a></li>
+	<li><a href="http://www.uwyn.com/mailman/listinfo/rife-devel"> RIFE developers list.</a></li>
+</ul>
+</p>
+
+<p>Real-time chatting about RIFE can be done through IRC at <a href="irc://irc.freenode.org/#rife">irc.freenode.net in the channel #rife</a>.</p>
+
+</body>
+</html>

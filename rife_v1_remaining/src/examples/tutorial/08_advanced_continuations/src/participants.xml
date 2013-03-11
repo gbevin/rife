@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: participants.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE rep SYSTEM "/dtd/rep.dtd">
+
+<!--
+- The location of the participants.xml file is setup with the rep.path
+- init-param in RIFE's filter declaration in web.xml. By default it is
+- rep/participants.xml and it is looked up through the classpath. It has
+- been changed to participants.xml for this example.
+-->
+<rep>
+    <participant param="advancedcontinuations.xml">ParticipantSite</participant>
+</rep>

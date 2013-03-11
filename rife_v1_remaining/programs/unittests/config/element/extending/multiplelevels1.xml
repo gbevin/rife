@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: multiplelevels1.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE element SYSTEM "/dtd/element.dtd">
+
+<element extends="element/extending/blueprint.xml">
+
+	<property name="property3">value3</property>
+	<property name="property4">value4</property>
+
+	<input name="input3"/>
+	<input name="input4">
+		<default>inputdefault</default>
+	</input>
+	
+	<incookie name="incookie3"/>
+	<incookie name="incookie4">
+		<default>incookiedefault</default>
+	</incookie>
+
+</element>

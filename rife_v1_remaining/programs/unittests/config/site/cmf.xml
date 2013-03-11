@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: cmf.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<globalexit name="serve" destid="SERVE"/>
+	
+	<element id="SERVE" file="rife/cmf/serve_content.xml" url="/serve/*">
+		<property name="datasource"><datasource><config param="unittestsdatasource"/></datasource></property>
+	</element>
+
+	<element id="SERVE_REPOSITORY" file="rife/cmf/serve_content.xml" url="/serve_repository/*">
+		<property name="datasource"><datasource><config param="unittestsdatasource"/></datasource></property>
+		<property name="repository">nondefault</property>
+	</element>
+
+	<element id="SERVE_NO_DATASOURCE" file="rife/cmf/serve_content.xml" url="/serve_nodatasource/*">
+	</element>
+
+	<element id="SERVE_EMBEDDED_IMAGE" file="rife/template/print.xml" url="/serve_embedded_image">
+		<property name="name">cmf_serve_embedded_image</property>
+	</element>
+
+	<element id="SERVE_EMBEDDED_XHTML" file="rife/template/print.xml" url="/serve_embedded_xhtml">
+		<property name="name">cmf_serve_embedded_xhtml</property>
+	</element>
+
+	<element file="element/cmf/content_querymanager_contentforhtml.xml" url="/contentforhtml">
+		<property name="datasource"><config param="unittestsdatasource"/></property>
+	</element>
+</site>
+

@@ -1,0 +1,22 @@
+if (element.hasSubmission("login"))
+{
+	element.print("defaultdir "+element.getParameter("login")+","+element.getParameter("password"));
+}
+else
+{
+	switch (element.getInput("input1"))
+	{
+		case "form":
+			element.print(`<html><body>
+				<form action="`+element.getSubmissionFormUrl()+`" method="post">
+				`+element.getSubmissionFormParameters("login")+`<input name="login" type="text">
+				<input name="password" type="password">
+				<input type="submit">
+				</form>
+				</body></html>`);
+			break;
+		default:
+			element.print("defaultdir "+element.getInput("input1")+","+element.getInput("input2"));
+			break;
+	}
+}

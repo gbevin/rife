@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: unittests_datasources.xml 3935 2008-04-25 22:58:45Z gbevin $
+  -->
+
+<!DOCTYPE datasources SYSTEM "/dtd/datasources.dtd">
+
+<datasources>
+	<!--
+	  -  the derby datasource is hardcoded for a number of tests, if you disable
+	  -  or remove it, certain tests will fail with an error
+	  -->
+    <datasource name="unittestsderby">
+        <driver>org.apache.derby.jdbc.EmbeddedDriver</driver>
+        <url>jdbc:derby:embedded_dbs/derby;create=true</url>
+        <user></user>
+        <password></password>
+        <poolsize>5</poolsize>
+    </datasource>
+    <datasource name="unittestspgsql">
+        <driver>org.postgresql.Driver</driver>
+        <url>jdbc:postgresql://localhost:5432/unittests</url>
+        <user><config param="DATASOURCE_USER"/></user>
+        <password><config param="DATASOURCE_PASSWORD"/></password>
+        <poolsize>5</poolsize>
+    </datasource>
+    <datasource name="unittestsmysql">
+        <driver>com.mysql.jdbc.Driver</driver>
+        <url>jdbc:mysql://localhost:3306/unittests</url>
+        <user><config param="DATASOURCE_USER"/></user>
+        <password><config param="DATASOURCE_PASSWORD"/></password>
+        <poolsize>5</poolsize>
+    </datasource>
+    <datasource name="unittestsoracle">
+        <driver>oracle.jdbc.OracleDriver</driver>
+        <url><config param="ORACLE_CONNECT"/></url>
+        <user><config param="DATASOURCE_USER"/></user>
+        <password><config param="DATASOURCE_PASSWORD"/></password>
+        <poolsize>5</poolsize>
+    </datasource>
+    <datasource name="unittestsh2">
+        <driver>org.h2.Driver</driver>
+        <url>jdbc:h2:embedded_dbs/h2/unittests</url>
+        <user>sa</user>
+        <password></password>
+        <poolsize>5</poolsize>
+    </datasource>
+    <datasource name="unittestshsqldb">
+        <driver>org.hsqldb.jdbcDriver</driver>
+        <url>jdbc:hsqldb:.</url>
+        <user>sa</user>
+        <password></password>
+        <poolsize>5</poolsize>
+    </datasource>
+    <datasource name="unittestsfirebird">
+        <driver>org.firebirdsql.jdbc.FBDriver</driver>
+        <url><config param="FIREBIRD_CONNECT"/></url>
+        <user>sysdba</user>
+        <password>masterkey</password>
+        <poolsize>5</poolsize>
+    </datasource>
+    <datasource name="unittestsmckoi">
+        <driver>com.mckoi.JDBCDriver</driver>
+        <url>jdbc:mckoi:local://./embedded_dbs/mckoi/db.conf</url>
+        <user><config param="DATASOURCE_USER"/></user>
+        <password><config param="DATASOURCE_PASSWORD"/></password>
+        <poolsize>5</poolsize>
+    </datasource>
+    <datasource name="unittestsdaffodil">
+        <driver>in.co.daffodil.db.jdbc.DaffodilDBDriver</driver>
+        <url>jdbc:daffodilDB_embedded:unittests;create=true</url>
+        <user><config param="DATASOURCE_USER"/></user>
+        <password><config param="DATASOURCE_PASSWORD"/></password>
+        <poolsize>5</poolsize>
+    </datasource>
+	
+    <datasource name="purgingunittestsderby">
+        <driver>org.apache.derby.jdbc.EmbeddedDriver</driver>
+        <url>jdbc:derby:embedded_dbs/derby;create=true</url>
+        <user></user>
+        <password></password>
+        <poolsize>1</poolsize>
+    </datasource>
+    <datasource name="purgingunittestspgsql">
+        <driver>org.postgresql.Driver</driver>
+        <url>jdbc:postgresql://localhost:5432/unittests</url>
+        <user><config param="DATASOURCE_USER"/></user>
+        <password><config param="DATASOURCE_PASSWORD"/></password>
+        <poolsize>1</poolsize>
+    </datasource>
+    <datasource name="purgingunittestsmysql">
+        <driver>com.mysql.jdbc.Driver</driver>
+        <url>jdbc:mysql://localhost:3306/unittests</url>
+        <user><config param="DATASOURCE_USER"/></user>
+        <password><config param="DATASOURCE_PASSWORD"/></password>
+        <poolsize>1</poolsize>
+    </datasource>
+    <datasource name="purgingunittestsoracle">
+        <driver>oracle.jdbc.OracleDriver</driver>
+        <url><config param="ORACLE_CONNECT"/></url>
+        <user><config param="DATASOURCE_USER"/></user>
+        <password><config param="DATASOURCE_PASSWORD"/></password>
+        <poolsize>1</poolsize>
+    </datasource>
+    <datasource name="purgingunittestsh2">
+        <driver>org.h2.Driver</driver>
+        <url>jdbc:h2:embedded_dbs/h2/unittests</url>
+        <user>sa</user>
+        <password></password>
+        <poolsize>1</poolsize>
+    </datasource>
+    <datasource name="purgingunittestshsqldb">
+        <driver>org.hsqldb.jdbcDriver</driver>
+        <url>jdbc:hsqldb:.</url>
+        <user>sa</user>
+        <password></password>
+        <poolsize>1</poolsize>
+    </datasource>
+    <datasource name="purgingunittestsfirebird">
+        <driver>org.firebirdsql.jdbc.FBDriver</driver>
+        <url><config param="FIREBIRD_CONNECT"/></url>
+        <user>sysdba</user>
+        <password>masterkey</password>
+        <poolsize>1</poolsize>
+    </datasource>
+    <datasource name="purgingunittestsmckoi">
+        <driver>com.mckoi.JDBCDriver</driver>
+        <url>jdbc:mckoi:local://./embedded_dbs/mckoi/db.conf</url>
+        <user><config param="DATASOURCE_USER"/></user>
+        <password><config param="DATASOURCE_PASSWORD"/></password>
+        <poolsize>1</poolsize>
+    </datasource>
+    <datasource name="purgingunittestsdaffodil">
+        <driver>in.co.daffodil.db.jdbc.DaffodilDBDriver</driver>
+        <url>jdbc:daffodilDB_embedded:unittests;create=true</url>
+        <user><config param="DATASOURCE_USER"/></user>
+        <password><config param="DATASOURCE_PASSWORD"/></password>
+        <poolsize>1</poolsize>
+    </datasource>
+	
+     <datasource name="sessiondurationunittestsderby">
+        <driver>org.apache.derby.jdbc.EmbeddedDriver</driver>
+        <url>jdbc:derby:embedded_dbs/derby;create=true</url>
+        <user></user>
+        <password></password>
+        <poolsize>1</poolsize>
+    </datasource>
+   <datasource name="sessiondurationunittestspgsql">
+        <driver>org.postgresql.Driver</driver>
+        <url>jdbc:postgresql://localhost:5432/unittests</url>
+        <user><config param="DATASOURCE_USER"/></user>
+        <password><config param="DATASOURCE_PASSWORD"/></password>
+        <poolsize>1</poolsize>
+    </datasource>
+    <datasource name="sessiondurationunittestsmysql">
+        <driver>com.mysql.jdbc.Driver</driver>
+        <url>jdbc:mysql://localhost:3306/unittests</url>
+        <user><config param="DATASOURCE_USER"/></user>
+        <password><config param="DATASOURCE_PASSWORD"/></password>
+        <poolsize>1</poolsize>
+    </datasource>
+    <datasource name="sessiondurationunittestsoracle">
+        <driver>oracle.jdbc.OracleDriver</driver>
+        <url><config param="ORACLE_CONNECT"/></url>
+        <user><config param="DATASOURCE_USER"/></user>
+        <password><config param="DATASOURCE_PASSWORD"/></password>
+        <poolsize>1</poolsize>
+    </datasource>
+    <datasource name="sessiondurationunittestsh2">
+        <driver>org.h2.Driver</driver>
+        <url>jdbc:h2:embedded_dbs/h2/unittests</url>
+        <user>sa</user>
+        <password></password>
+        <poolsize>1</poolsize>
+    </datasource>
+    <datasource name="sessiondurationunittestshsqldb">
+        <driver>org.hsqldb.jdbcDriver</driver>
+        <url>jdbc:hsqldb:.</url>
+        <user>sa</user>
+        <password></password>
+        <poolsize>1</poolsize>
+    </datasource>
+    <datasource name="sessiondurationunittestsfirebird">
+        <driver>org.firebirdsql.jdbc.FBDriver</driver>
+        <url><config param="FIREBIRD_CONNECT"/></url>
+        <user>sysdba</user>
+        <password>masterkey</password>
+        <poolsize>1</poolsize>
+    </datasource>
+    <datasource name="sessiondurationunittestsmckoi">
+        <driver>com.mckoi.JDBCDriver</driver>
+        <url>jdbc:mckoi:local://./embedded_dbs/mckoi/db.conf</url>
+        <user><config param="DATASOURCE_USER"/></user>
+        <password><config param="DATASOURCE_PASSWORD"/></password>
+        <poolsize>1</poolsize>
+    </datasource>
+    <datasource name="sessiondurationunittestsdaffodil">
+        <driver>in.co.daffodil.db.jdbc.DaffodilDBDriver</driver>
+        <url>jdbc:daffodilDB_embedded:unittests;create=true</url>
+        <user><config param="DATASOURCE_USER"/></user>
+        <password><config param="DATASOURCE_PASSWORD"/></password>
+        <poolsize>1</poolsize>
+    </datasource>
+	
+    <datasource name="jndiderby">
+        <jndi>java:comp/env/jdbc/unittestsderby</jndi>
+        <poolsize>5</poolsize>
+    </datasource>
+    <datasource name="jndiderby2">
+        <jndi>java:comp/env/jdbc/unittestsderby</jndi>
+    </datasource>
+</datasources>

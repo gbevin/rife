@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	
+	<head>
+		<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+		<title>DWR - Hello</title>
+<!--V 'ELEMENT:DwrHello'-->
+names = Hello
+includeUtil = true
+<!--/V-->
+		<script type="text/javascript">
+			function callOnLoad(init) {
+				if (window.addEventListener) window.addEventListener("load", init, false);
+				else if (window.attachEvent) window.attachEvent("onload", init);
+				else window.onload = init;
+			}
+			
+			function update() {
+				Hello.echo(DWRUtil.getValue("hellomessage"), loadinfo);
+			}
+			
+			function loadinfo(data) {
+				DWRUtil.setValue("reply", data);
+			}
+			
+			function init() {
+				DWRUtil.useLoadingMessage();
+			}
+			
+			callOnLoad(init);
+		</script>
+	</head>
+	
+	<body>
+		<div class="content">
+			<p>
+				<input type="text" name="hellomessage" id="hellomessage" /> <input value="Execute" type="button" onclick="update()"/>
+				<span id="reply"></span>
+			</p>
+		</div>
+	</body>
+</html>

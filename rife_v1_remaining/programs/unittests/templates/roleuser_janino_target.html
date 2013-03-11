@@ -1,0 +1,18 @@
+<!--V 'JANINO:ROLEUSER:login'-->not matching login<!--/V-->
+<!--V 'JANINO:ROLEUSER:password1'-->not matching password1<!--/V-->
+<!--V 'JANINO:ROLEUSER:password2'-->not matching password2<!--/V-->
+<!--V 'JANINO:ROLEUSER:role1'-->not matching role1<!--/V-->
+<!--V 'JANINO:ROLEUSER:role2'-->not matching role2<!--/V-->
+<!--V 'JANINO:ROLEUSER:role3'-->not matching role3<!--/V-->
+<!--V 'JANINO:ROLEUSER:userid1'-->not matching userid1<!--/V-->
+<!--V 'JANINO:ROLEUSER:userid2'-->not matching userid2<!--/V-->
+<!--V 'INPUT:authid'--><!--/V-->
+<!--B 'JANINO:ROLEUSER:login:[[ context.get("login").equals("gbevin") ]]'-->matching login<!--/B-->
+<!--B 'JANINO:ROLEUSER:password1:[[ context.get("password").equals("yeolpass") ]]'-->matching password1<!--/B-->
+<!--B 'JANINO:ROLEUSER:password2:[[ user.getPassword().equals(com.uwyn.rife.tools.StringEncryptor.MD5.encrypt("yeolpass")) || user.getPassword().equals(com.uwyn.rife.tools.StringEncryptor.SHA.encrypt("yeolpass")) ]]'-->matching password2<!--/B-->
+<!--B 'JANINO:ROLEUSER:role1:[[ ((java.util.Collection)context.get("roles")).contains("admin") ]]'-->matching role1<!--/B-->
+<!--B 'JANINO:ROLEUSER:role2:[[ user.isInRole("maint") ]]'-->matching role2<!--/B-->
+<!--B 'JANINO:ROLEUSER:role3:[[ user.getRoles().contains("maint") ]]'-->matching role3<!--/B-->
+<!--B 'JANINO:ROLEUSER:userid1:[[ 1 == user.getUserId() ]]'-->matching userid1<!--/B-->
+<!--B 'JANINO:ROLEUSER:userid2:[[ 3 == ((Long)context.get("userId")).longValue() ]]'-->matching userid2<!--/B-->
+

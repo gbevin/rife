@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: authentication_database.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<globalvar name="authid"/>
+
+	<!-- database authenticated /-->
+	<element id="DATABASE_AUTHENTICATED_BASIC" file="element/authentication/database_authenticated_basic.xml"/>
+	<element id="DATABASE_LOGOUT_TEMPLATE_BASIC" file="element/authentication/database_logout_template_basic.xml" url="/authentication/database/logout/template/basic"/>
+	<element id="DATABASE_LOGOUT_PASSTHROUGH_BASIC" file="element/authentication/database_logout_passthrough.xml">
+		<flowlink srcexit="logged_out" snapback="true"/>
+	</element>
+	<element id="DATABASE_AUTHENTICATED_BASIC_TARGET" file="element/authentication/database_authenticated_target.xml" url="/authentication/database/basic" inherits="DATABASE_AUTHENTICATED_BASIC">
+		<flowlink srcexit="reload" destid="DATABASE_AUTHENTICATED_BASIC_TARGET"/>
+		<flowlink srcexit="logout_template" destid="DATABASE_LOGOUT_TEMPLATE_BASIC"/>
+		<flowlink srcexit="logout_passthrough" destid="DATABASE_LOGOUT_PASSTHROUGH_BASIC"/>
+	</element>
+
+	<!-- database authenticated logout precedence -->
+	<element id="DATABASE_AUTHENTICATED_PRECEDENCE" file="element/authentication/database_authenticated_precedence.xml"/>
+	<element id="DATABASE_LOGOUT_PRECEDENCE_CHECK" file="element/authentication/database_logout_precedence_check.xml">
+		<flowlink srcexit="logout" destid="DATABASE_LOGOUT_PRECEDENCE_PASSTHROUGH"/>
+	</element>
+	<element id="DATABASE_LOGOUT_PRECEDENCE_PASSTHROUGH" file="element/authentication/database_logout_passthrough.xml">
+		<flowlink srcexit="logged_out" snapback="true"/>
+	</element>
+	<element id="DATABASE_AUTHENTICATED_PRECEDENCE_TARGET" file="element/authentication/database_authenticated_precedence_target.xml" url="/authentication/database/precedence" inherits="DATABASE_AUTHENTICATED_PRECEDENCE" pre="DATABASE_LOGOUT_PRECEDENCE_CHECK">
+		<flowlink srcexit="reload" destid="DATABASE_AUTHENTICATED_PRECEDENCE_TARGET"/>
+	</element>
+	
+	<!-- checking password encryption -->
+	<element id="DATABASE_AUTHENTICATED_ENCRYPTED" file="element/authentication/database_authenticated_encrypted.xml"/>
+	<element id="DATABASE_AUTHENTICATED_ENCRYPTED_TARGET" file="element/authentication/database_authenticated_target.xml" url="/authentication/database/encrypted" inherits="DATABASE_AUTHENTICATED_ENCRYPTED"/>
+
+	<!-- using roles -->
+	<element id="DATABASE_AUTHENTICATED_ROLE" file="element/authentication/database_authenticated_role.xml"/>
+	<element id="DATABASE_AUTHENTICATED_ROLE_TARGET" file="element/authentication/database_authenticated_target.xml" url="/authentication/database/role" inherits="DATABASE_AUTHENTICATED_ROLE"/>
+	
+	<element id="DATABASE_AUTHENTICATED_ROLE2" file="element/authentication/database_authenticated_role2.xml"/>
+	<element id="DATABASE_AUTHENTICATED_ROLE2_TARGET" file="element/authentication/database_authenticated_target.xml" url="/authentication/database/role2" inherits="DATABASE_AUTHENTICATED_ROLE2"/>
+
+	<!-- checking session timeout -->
+	<element id="DATABASE_AUTHENTICATED_SESSIONDURATION" file="element/authentication/database_authenticated_sessionduration.xml"/>
+	<element id="DATABASE_AUTHENTICATED_SESSIONDURATION_TARGET" file="element/authentication/database_authenticated_target.xml" url="/authentication/database/sessionduration" inherits="DATABASE_AUTHENTICATED_SESSIONDURATION"/>
+
+	<!-- checking non-enforced authentication -->
+	<element id="DATABASE_AUTHENTICATED_ENFORCE" file="element/authentication/database_authenticated_enforce.xml"/>
+	<element id="DATABASE_AUTHENTICATED_ENFORCE2" file="element/authentication/database_authenticated_enforce2.xml"/>
+	<element id="DATABASE_AUTHENTICATED_ENFORCE_TARGET" file="element/authentication/database_authenticated_target.xml" url="/authentication/database/enforce" inherits="DATABASE_AUTHENTICATED_ENFORCE"/>
+	<element id="DATABASE_AUTHENTICATED_ENFORCE2_TARGET" file="element/authentication/database_authenticated_target.xml" url="/authentication/database/enforce2" inherits="DATABASE_AUTHENTICATED_ENFORCE2"/>
+
+	<!-- using remember me /-->
+	<element id="DATABASE_AUTHENTICATED_REMEMBER" file="element/authentication/database_authenticated_remember.xml"/>
+	<element id="DATABASE_AUTHENTICATED_REMEMBER_TARGET" file="element/authentication/database_authenticated_target.xml" url="/authentication/database/remember" inherits="DATABASE_AUTHENTICATED_REMEMBER">
+		<flowlink srcexit="reload" destid="DATABASE_AUTHENTICATED_REMEMBER_TARGET"/>
+		<flowlink srcexit="logout_template" destid="DATABASE_LOGOUT_TEMPLATE_BASIC"/>
+		<flowlink srcexit="logout_passthrough" destid="DATABASE_LOGOUT_PASSTHROUGH_BASIC"/>
+	</element>
+
+	<!-- testing prohibited remembered authentication /-->
+	<element id="DATABASE_AUTHENTICATED_PROHIBITREMEMBERED" file="element/authentication/database_authenticated_prohibitremember.xml"/>
+	<element id="DATABASE_AUTHENTICATED_PROHIBITREMEMBERED_TARGET" file="element/authentication/database_authenticated_target.xml" url="/authentication/database/prohibitremember" inherits="DATABASE_AUTHENTICATED_PROHIBITREMEMBERED">
+		<flowlink srcexit="reload" destid="DATABASE_AUTHENTICATED_PROHIBITREMEMBERED_TARGET"/>
+		<flowlink srcexit="logout_template" destid="DATABASE_LOGOUT_TEMPLATE_BASIC"/>
+		<flowlink srcexit="logout_passthrough" destid="DATABASE_LOGOUT_PASSTHROUGH_BASIC"/>
+	</element>
+	
+	<!-- mixed authenticated /-->
+	<element id="MIXED_AUTHENTICATED_BASIC" file="element/authentication/mixed_authenticated_basic.xml"/>
+	<element id="MIXED_AUTHENTICATED_BASIC_TARGET" file="element/authentication/database_authenticated_target.xml" url="/authentication/mixed/basic" inherits="MIXED_AUTHENTICATED_BASIC"/>
+
+	<element id="MIXED_AUTHENTICATED_ENCRYPTED" file="element/authentication/mixed_authenticated_encrypted.xml"/>
+	<element id="MIXED_AUTHENTICATED_ENCRYPTED_TARGET" file="element/authentication/database_authenticated_target.xml" url="/authentication/mixed/encrypted" inherits="MIXED_AUTHENTICATED_ENCRYPTED"/>
+
+	<element id="MIXED_AUTHENTICATED_OTHERID" file="element/authentication/mixed_authenticated_otherid.xml"/>
+	<element id="MIXED_AUTHENTICATED_OTHERID_TARGET" file="element/authentication/database_authenticated_target.xml" url="/authentication/mixed/otherid" inherits="MIXED_AUTHENTICATED_OTHERID"/>
+
+	<element id="MIXED_AUTHENTICATED_ROLE" file="element/authentication/mixed_authenticated_role.xml"/>
+	<element id="MIXED_AUTHENTICATED_ROLE_TARGET" file="element/authentication/mixed_authenticated_target.xml" url="/authentication/mixed/role" inherits="MIXED_AUTHENTICATED_ROLE"/>
+	
+	<element id="MIXED_AUTHENTICATED_ROLE2" file="element/authentication/mixed_authenticated_role2.xml"/>
+	<element id="MIXED_AUTHENTICATED_ROLE2_TARGET" file="element/authentication/mixed_authenticated_target.xml" url="/authentication/mixed/role2" inherits="MIXED_AUTHENTICATED_ROLE2"/>
+
+	<element id="MIXED_AUTHENTICATED_SESSIONDURATION" file="element/authentication/mixed_authenticated_sessionduration.xml"/>
+	<element id="MIXED_AUTHENTICATED_SESSIONDURATION_TARGET" file="element/authentication/database_authenticated_target.xml" url="/authentication/mixed/sessionduration" inherits="MIXED_AUTHENTICATED_SESSIONDURATION"/>
+
+	<!-- purging database authenticated /-->
+	<element id="PURGING_DATABASE_AUTHENTICATED_BASIC" file="element/authentication/purging_database_authenticated_basic.xml"/>
+	<element id="PURGING_DATABASE_AUTHENTICATED_BASIC_TARGET" file="element/authentication/purging_database_authenticated_target.xml" url="/authentication/purging/database/basic" inherits="PURGING_DATABASE_AUTHENTICATED_BASIC"/>
+	<element id="PURGING_DATABASE_AUTHENTICATED_ENCRYPTED" file="element/authentication/purging_database_authenticated_encrypted.xml"/>
+	<element id="PURGING_DATABASE_AUTHENTICATED_ENCRYPTED_TARGET" file="element/authentication/purging_database_authenticated_target.xml" url="/authentication/purging/database/encrypted" inherits="PURGING_DATABASE_AUTHENTICATED_ENCRYPTED"/>
+	<element id="PURGING_DATABASE_AUTHENTICATED_REMEMBER" file="element/authentication/purging_database_authenticated_remember.xml"/>
+	<element id="PURGING_DATABASE_AUTHENTICATED_REMEMBER_TARGET" file="element/authentication/purging_database_authenticated_target.xml" url="/authentication/purging/database/remember" inherits="PURGING_DATABASE_AUTHENTICATED_REMEMBER"/>
+
+	<!-- purging mixed authenticated /-->
+	<element id="PURGING_MIXED_AUTHENTICATED_BASIC" file="element/authentication/purging_mixed_authenticated_basic.xml"/>
+	<element id="PURGING_MIXED_AUTHENTICATED_BASIC_TARGET" file="element/authentication/purging_database_authenticated_target.xml" url="/authentication/purging/mixed/basic" inherits="PURGING_MIXED_AUTHENTICATED_BASIC"/>
+	<element id="PURGING_MIXED_AUTHENTICATED_ENCRYPTED" file="element/authentication/purging_mixed_authenticated_encrypted.xml"/>
+	<element id="PURGING_MIXED_AUTHENTICATED_ENCRYPTED_TARGET" file="element/authentication/purging_database_authenticated_target.xml" url="/authentication/purging/mixed/encrypted" inherits="PURGING_MIXED_AUTHENTICATED_ENCRYPTED"/>
+	<element id="PURGING_MIXED_AUTHENTICATED_REMEMBER" file="element/authentication/purging_mixed_authenticated_remember.xml"/>
+	<element id="PURGING_MIXED_AUTHENTICATED_REMEMBER_TARGET" file="element/authentication/purging_database_authenticated_target.xml" url="/authentication/purging/mixed/remember" inherits="PURGING_MIXED_AUTHENTICATED_REMEMBER"/>
+</site>
+

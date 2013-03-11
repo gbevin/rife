@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+    <meta name="generator" content="JHighlight v1.0 (http://jhighlight.dev.java.net)" />
+    <title>10_hangman/src/model/Word.java</title>
+    <link rel="Help" href="http://jhighlight.dev.java.net" />
+    <style type="text/css">
+code {
+color: rgb(0,0,0); font-family: monospace; font-size: 12px; white-space: nowrap;
+}
+.java_type {
+color: rgb(0,44,221);
+}
+.java_comment {
+color: rgb(147,147,147); background-color: rgb(247,247,247);
+}
+.java_operator {
+color: rgb(0,124,31);
+}
+.java_separator {
+color: rgb(0,33,255);
+}
+.java_plain {
+color: rgb(0,0,0);
+}
+h1 {
+font-family: sans-serif; font-size: 16pt; font-weight: bold; color: rgb(0,0,0); background: rgb(210,210,210); border: solid 1px black; padding: 5px; text-align: center;
+}
+.java_javadoc_comment {
+color: rgb(147,147,147); background-color: rgb(247,247,247); font-style: italic;
+}
+.java_keyword {
+color: rgb(0,0,0); font-weight: bold;
+}
+.java_literal {
+color: rgb(188,0,0);
+}
+.java_javadoc_tag {
+color: rgb(147,147,147); background-color: rgb(247,247,247); font-style: italic; font-weight: bold;
+}
+    </style>
+</head>
+<body>
+<h1>10_hangman/src/model/Word.java</h1><code><span class="java_comment">/*</span><br />
+<span class="java_comment">&nbsp;*&nbsp;$Id:&nbsp;Word.java&nbsp;3364&nbsp;2006-07-10&nbsp;10:33:29Z&nbsp;gbevin&nbsp;$&nbsp;$Revision:&nbsp;3364&nbsp;$&nbsp;$Date:</span><br />
+<span class="java_comment">&nbsp;*&nbsp;2005-03-31&nbsp;15:26:49&nbsp;+0200&nbsp;(Do,&nbsp;31&nbsp;Mrz&nbsp;2005)&nbsp;$</span><br />
+<span class="java_comment">&nbsp;*</span><br />
+<span class="java_comment">&nbsp;*&nbsp;==============================================================================</span><br />
+<span class="java_comment">&nbsp;*&nbsp;Licensed&nbsp;under&nbsp;the&nbsp;Apache&nbsp;License,&nbsp;Version&nbsp;2.0&nbsp;(the&nbsp;&quot;License&quot;);&nbsp;you&nbsp;may&nbsp;not</span><br />
+<span class="java_comment">&nbsp;*&nbsp;use&nbsp;this&nbsp;file&nbsp;except&nbsp;in&nbsp;compliance&nbsp;with&nbsp;the&nbsp;License.&nbsp;You&nbsp;may&nbsp;obtain&nbsp;a&nbsp;copy&nbsp;of</span><br />
+<span class="java_comment">&nbsp;*&nbsp;the&nbsp;License&nbsp;at</span><br />
+<span class="java_comment">&nbsp;*</span><br />
+<span class="java_comment">&nbsp;*&nbsp;http://www.apache.org/licenses/LICENSE-2.0</span><br />
+<span class="java_comment">&nbsp;*</span><br />
+<span class="java_comment">&nbsp;*&nbsp;Unless&nbsp;required&nbsp;by&nbsp;applicable&nbsp;law&nbsp;or&nbsp;agreed&nbsp;to&nbsp;in&nbsp;writing,&nbsp;software</span><br />
+<span class="java_comment">&nbsp;*&nbsp;distributed&nbsp;under&nbsp;the&nbsp;License&nbsp;is&nbsp;distributed&nbsp;on&nbsp;an&nbsp;&quot;AS&nbsp;IS&quot;&nbsp;BASIS,&nbsp;WITHOUT</span><br />
+<span class="java_comment">&nbsp;*&nbsp;WARRANTIES&nbsp;OR&nbsp;CONDITIONS&nbsp;OF&nbsp;ANY&nbsp;KIND,&nbsp;either&nbsp;express&nbsp;or&nbsp;implied.&nbsp;See&nbsp;the</span><br />
+<span class="java_comment">&nbsp;*&nbsp;License&nbsp;for&nbsp;the&nbsp;specific&nbsp;language&nbsp;governing&nbsp;permissions&nbsp;and&nbsp;limitations&nbsp;under</span><br />
+<span class="java_comment">&nbsp;*&nbsp;the&nbsp;License.</span><br />
+<span class="java_comment">&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_keyword">package</span><span class="java_plain">&nbsp;model</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain"></span><br />
+<span class="java_keyword">import</span><span class="java_plain">&nbsp;java</span><span class="java_separator">.</span><span class="java_plain">io</span><span class="java_separator">.</span><span class="java_type">Serializable</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_keyword">import</span><span class="java_plain">&nbsp;java</span><span class="java_separator">.</span><span class="java_plain">util</span><span class="java_separator">.</span><span class="java_type">ArrayList</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_keyword">import</span><span class="java_plain">&nbsp;java</span><span class="java_separator">.</span><span class="java_plain">util</span><span class="java_separator">.</span><span class="java_type">Iterator</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_keyword">import</span><span class="java_plain">&nbsp;java</span><span class="java_separator">.</span><span class="java_plain">util</span><span class="java_separator">.</span><span class="java_type">List</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain"></span><br />
+<span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;Model&nbsp;for&nbsp;a&nbsp;word&nbsp;in&nbsp;the&nbsp;game&nbsp;of&nbsp;Game.</span><br />
+<span class="java_javadoc_comment">&nbsp;*</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@author</span><span class="java_javadoc_comment">&nbsp;Jonathan&nbsp;Locke</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@author</span><span class="java_javadoc_comment">&nbsp;Geert&nbsp;Bevin</span><br />
+<span class="java_javadoc_comment">&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_keyword">class</span><span class="java_plain">&nbsp;</span><span class="java_type">Word</span><span class="java_plain">&nbsp;</span><span class="java_keyword">implements</span><span class="java_plain">&nbsp;</span><span class="java_type">Serializable</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**&nbsp;The&nbsp;word&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">final</span><span class="java_plain">&nbsp;</span><span class="java_type">List</span><span class="java_plain">&nbsp;letters&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_keyword">new</span><span class="java_plain">&nbsp;</span><span class="java_type">ArrayList</span><span class="java_separator">();</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Constructor</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@param</span><span class="java_javadoc_comment">&nbsp;word</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;word</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_type">Word</span><span class="java_separator">(</span><span class="java_keyword">final</span><span class="java_plain">&nbsp;</span><span class="java_type">String</span><span class="java_plain">&nbsp;word</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">for</span><span class="java_plain">&nbsp;</span><span class="java_separator">(</span><span class="java_type">int</span><span class="java_plain">&nbsp;i&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_literal">0</span><span class="java_separator">;</span><span class="java_plain">&nbsp;i&nbsp;</span><span class="java_operator">&lt;</span><span class="java_plain">&nbsp;word</span><span class="java_separator">.</span><span class="java_plain">length</span><span class="java_separator">();</span><span class="java_plain">&nbsp;i</span><span class="java_operator">++</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;letters</span><span class="java_separator">.</span><span class="java_plain">add</span><span class="java_separator">(</span><span class="java_keyword">new</span><span class="java_plain">&nbsp;</span><span class="java_type">Letter</span><span class="java_separator">(</span><span class="java_plain">word</span><span class="java_separator">.</span><span class="java_plain">charAt</span><span class="java_separator">(</span><span class="java_plain">i</span><span class="java_separator">)));</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@return</span><span class="java_javadoc_comment">&nbsp;This&nbsp;word</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_type">String</span><span class="java_plain">&nbsp;asString</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">return</span><span class="java_plain">&nbsp;asString</span><span class="java_separator">(</span><span class="java_literal">false</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@param</span><span class="java_javadoc_comment">&nbsp;hideUnguessed</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;if&nbsp;unguessed&nbsp;letters&nbsp;should&nbsp;be&nbsp;hidden</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@return</span><span class="java_javadoc_comment">&nbsp;This&nbsp;word&nbsp;as&nbsp;a&nbsp;String</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_type">String</span><span class="java_plain">&nbsp;asString</span><span class="java_separator">(</span><span class="java_keyword">final</span><span class="java_plain">&nbsp;</span><span class="java_type">boolean</span><span class="java_plain">&nbsp;hideUnguessed</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">final</span><span class="java_plain">&nbsp;</span><span class="java_type">StringBuffer</span><span class="java_plain">&nbsp;buffer&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_keyword">new</span><span class="java_plain">&nbsp;</span><span class="java_type">StringBuffer</span><span class="java_separator">();</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">for</span><span class="java_plain">&nbsp;</span><span class="java_separator">(</span><span class="java_type">Iterator</span><span class="java_plain">&nbsp;iterator&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;letters</span><span class="java_separator">.</span><span class="java_plain">iterator</span><span class="java_separator">();</span><span class="java_plain">&nbsp;iterator</span><span class="java_separator">.</span><span class="java_plain">hasNext</span><span class="java_separator">();)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">final</span><span class="java_plain">&nbsp;</span><span class="java_type">Letter</span><span class="java_plain">&nbsp;letter&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_separator">(</span><span class="java_type">Letter</span><span class="java_separator">)</span><span class="java_plain">iterator</span><span class="java_separator">.</span><span class="java_plain">next</span><span class="java_separator">();</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">if</span><span class="java_plain">&nbsp;</span><span class="java_separator">(</span><span class="java_plain">hideUnguessed</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;buffer</span><span class="java_separator">.</span><span class="java_plain">append</span><span class="java_separator">(</span><span class="java_plain">letter</span><span class="java_separator">.</span><span class="java_plain">isGuessed</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_operator">?</span><span class="java_plain">&nbsp;letter</span><span class="java_separator">.</span><span class="java_plain">asString</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_operator">:</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;_&quot;</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain">&nbsp;</span><span class="java_keyword">else</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;buffer</span><span class="java_separator">.</span><span class="java_plain">append</span><span class="java_separator">(</span><span class="java_plain">letter</span><span class="java_separator">.</span><span class="java_plain">asString</span><span class="java_separator">());</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">return</span><span class="java_plain">&nbsp;buffer</span><span class="java_separator">.</span><span class="java_plain">toString</span><span class="java_separator">();</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@see</span><span class="java_javadoc_comment">&nbsp;java.lang.Object#equals(java.lang.Object)</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_type">boolean</span><span class="java_plain">&nbsp;equals</span><span class="java_separator">(</span><span class="java_keyword">final</span><span class="java_plain">&nbsp;</span><span class="java_type">Object</span><span class="java_plain">&nbsp;object</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">if</span><span class="java_plain">&nbsp;</span><span class="java_separator">(</span><span class="java_plain">object&nbsp;</span><span class="java_keyword">instanceof</span><span class="java_plain">&nbsp;</span><span class="java_type">Word</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">final</span><span class="java_plain">&nbsp;</span><span class="java_type">Word</span><span class="java_plain">&nbsp;that&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_separator">(</span><span class="java_type">Word</span><span class="java_separator">)</span><span class="java_plain">object</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">return</span><span class="java_plain">&nbsp;</span><span class="java_keyword">this</span><span class="java_separator">.</span><span class="java_plain">asString</span><span class="java_separator">().</span><span class="java_plain">equalsIgnoreCase</span><span class="java_separator">(</span><span class="java_plain">that</span><span class="java_separator">.</span><span class="java_plain">asString</span><span class="java_separator">());</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">return</span><span class="java_plain">&nbsp;</span><span class="java_literal">false</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@param</span><span class="java_javadoc_comment">&nbsp;letter</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;letter&nbsp;to&nbsp;guess</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@return</span><span class="java_javadoc_comment">&nbsp;True&nbsp;if&nbsp;guess&nbsp;was&nbsp;correct</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_type">boolean</span><span class="java_plain">&nbsp;guess</span><span class="java_separator">(</span><span class="java_keyword">final</span><span class="java_plain">&nbsp;</span><span class="java_type">Letter</span><span class="java_plain">&nbsp;letter</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_type">boolean</span><span class="java_plain">&nbsp;correct&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_literal">false</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">for</span><span class="java_plain">&nbsp;</span><span class="java_separator">(</span><span class="java_type">Iterator</span><span class="java_plain">&nbsp;iterator&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;letters</span><span class="java_separator">.</span><span class="java_plain">iterator</span><span class="java_separator">();</span><span class="java_plain">&nbsp;iterator</span><span class="java_separator">.</span><span class="java_plain">hasNext</span><span class="java_separator">();)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">final</span><span class="java_plain">&nbsp;</span><span class="java_type">Letter</span><span class="java_plain">&nbsp;current&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_separator">(</span><span class="java_type">Letter</span><span class="java_separator">)</span><span class="java_plain">iterator</span><span class="java_separator">.</span><span class="java_plain">next</span><span class="java_separator">();</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">if</span><span class="java_plain">&nbsp;</span><span class="java_separator">(</span><span class="java_plain">current</span><span class="java_separator">.</span><span class="java_plain">equals</span><span class="java_separator">(</span><span class="java_plain">letter</span><span class="java_separator">))</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;current</span><span class="java_separator">.</span><span class="java_plain">guess</span><span class="java_separator">();</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;correct&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_literal">true</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;letter</span><span class="java_separator">.</span><span class="java_plain">guess</span><span class="java_separator">();</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">return</span><span class="java_plain">&nbsp;correct</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@see</span><span class="java_javadoc_comment">&nbsp;java.lang.Object#hashCode()</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_type">int</span><span class="java_plain">&nbsp;hashCode</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">return</span><span class="java_plain">&nbsp;asString</span><span class="java_separator">().</span><span class="java_plain">hashCode</span><span class="java_separator">();</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@return</span><span class="java_javadoc_comment">&nbsp;True&nbsp;if&nbsp;the&nbsp;word&nbsp;has&nbsp;been&nbsp;guessed</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_type">boolean</span><span class="java_plain">&nbsp;isGuessed</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">for</span><span class="java_plain">&nbsp;</span><span class="java_separator">(</span><span class="java_keyword">final</span><span class="java_plain">&nbsp;</span><span class="java_type">Iterator</span><span class="java_plain">&nbsp;iterator&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;letters</span><span class="java_separator">.</span><span class="java_plain">iterator</span><span class="java_separator">();</span><span class="java_plain">&nbsp;iterator</span><span class="java_separator">.</span><span class="java_plain">hasNext</span><span class="java_separator">();)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">final</span><span class="java_plain">&nbsp;</span><span class="java_type">Letter</span><span class="java_plain">&nbsp;letter&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_separator">(</span><span class="java_type">Letter</span><span class="java_separator">)</span><span class="java_plain">iterator</span><span class="java_separator">.</span><span class="java_plain">next</span><span class="java_separator">();</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">if</span><span class="java_plain">&nbsp;</span><span class="java_separator">(</span><span class="java_operator">!</span><span class="java_plain">letter</span><span class="java_separator">.</span><span class="java_plain">isGuessed</span><span class="java_separator">())</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">return</span><span class="java_plain">&nbsp;</span><span class="java_literal">false</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">return</span><span class="java_plain">&nbsp;</span><span class="java_literal">true</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@see</span><span class="java_javadoc_comment">&nbsp;java.lang.Object#toString()</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_type">String</span><span class="java_plain">&nbsp;toString</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">return</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;[Word&nbsp;letters&nbsp;=&nbsp;&quot;</span><span class="java_plain">&nbsp;</span><span class="java_operator">+</span><span class="java_plain">&nbsp;letters&nbsp;</span><span class="java_operator">+</span><span class="java_plain">&nbsp;</span><span class="java_literal">&quot;]&quot;</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_separator">}</span><span class="java_plain"></span><br />
+</code>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<!B 'BLOCK1'>first <!V 'VALUE1'>value 1 default<!/V> block
+<!/B>
+<!B 'BLOCK2'>second <!V 'VALUE2'>value 2 default<!/V> block
+	<!B 'BLOCK3'>third <!V 'VALUE3'/> block
+<!/B>
+	<!B 'BLOCK4'>fourth <!  	
+		V  'VALUE4'	 /> block
+<!/B>
+<!/B>
+<!V 'CONTENT'/>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: scripted.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<element id="JAVA_SIMPLE" file="element/scripted/java.xml" url="/scripted/java"/>
+	<element id="JAVA_PACKAGE" file="element/scripted/java_package.xml" url="/scripted/java/package"/>
+
+	<element id="RHINO_SIMPLE" file="element/scripted/rhino.xml" url="/scripted/rhino"/>
+
+	<element id="JYTHON_SIMPLE" file="element/scripted/jython.xml" url="/scripted/jython"/>
+	
+	<element id="JRUBY_SIMPLE" file="element/scripted/jruby.xml" url="/scripted/jruby"/>
+
+	<element id="JACL_SIMPLE" file="element/scripted/jacl.xml" url="/scripted/jacl"/>
+
+	<element id="BEANSHELL_SIMPLE" file="element/scripted/beanshell.xml" url="/scripted/beanshell"/>
+
+	<element id="PNUTS_SIMPLE" file="element/scripted/pnuts.xml" url="/scripted/pnuts"/>
+
+	<element id="GROOVY_SIMPLE" file="element/scripted/groovy.xml" url="/scripted/groovy"/>
+
+	<element id="JANINO_SIMPLE" file="element/scripted/janino.xml" url="/scripted/janino"/>
+
+	<element file="element/scripted/java_defaultdir.xml" url="/scripted/defaultdir/java"/>
+
+	<element file="element/scripted/rhino_defaultdir.xml" url="/scripted/defaultdir/rhino"/>
+
+	<element file="element/scripted/jython_defaultdir.xml" url="/scripted/defaultdir/jython"/>
+	
+	<element file="element/scripted/jruby_defaultdir.xml" url="/scripted/defaultdir/jruby"/>
+
+	<element file="element/scripted/jacl_defaultdir.xml" url="/scripted/defaultdir/jacl"/>
+
+	<element file="element/scripted/beanshell_defaultdir.xml" url="/scripted/defaultdir/beanshell"/>
+
+	<element file="element/scripted/pnuts_defaultdir.xml" url="/scripted/defaultdir/pnuts"/>
+
+	<element file="element/scripted/groovy_defaultdir.xml" url="/scripted/defaultdir/groovy"/>
+
+	<element file="element/scripted/janino_defaultdir.xml" url="/scripted/defaultdir/janino"/>
+
+	<element id="JAVA_INHERITANCE_PARENT" file="element/scripted/java_inheritance_parent.xml"/>
+	<element id="JAVA_INHERITANCE_CHILD" file="element/scripted/java_inheritance_child.xml" url="/scripted/java/inheritance" inherits="JAVA_INHERITANCE_PARENT"/>
+
+	<element id="RHINO_INHERITANCE_PARENT" file="element/scripted/rhino_inheritance_parent.xml"/>
+	<element id="RHINO_INHERITANCE_CHILD" file="element/scripted/rhino_inheritance_child.xml" url="/scripted/rhino/inheritance" inherits="RHINO_INHERITANCE_PARENT"/>
+
+	<element id="JYTHON_INHERITANCE_PARENT" file="element/scripted/jython_inheritance_parent.xml"/>
+	<element id="JYTHON_INHERITANCE_CHILD" file="element/scripted/jython_inheritance_child.xml" url="/scripted/jython/inheritance" inherits="JYTHON_INHERITANCE_PARENT"/>
+	
+	<element id="JRUBY_INHERITANCE_PARENT" file="element/scripted/jruby_inheritance_parent.xml"/>
+	<element id="JRUBY_INHERITANCE_CHILD" file="element/scripted/jruby_inheritance_child.xml" url="/scripted/jruby/inheritance" inherits="JRUBY_INHERITANCE_PARENT"/>
+
+	<element id="JACL_INHERITANCE_PARENT" file="element/scripted/jacl_inheritance_parent.xml"/>
+	<element id="JACL_INHERITANCE_CHILD" file="element/scripted/jacl_inheritance_child.xml" url="/scripted/jacl/inheritance" inherits="JACL_INHERITANCE_PARENT"/>
+
+	<element id="BEANSHELL_INHERITANCE_PARENT" file="element/scripted/beanshell_inheritance_parent.xml"/>
+	<element id="BEANSHELL_INHERITANCE_CHILD" file="element/scripted/beanshell_inheritance_child.xml" url="/scripted/beanshell/inheritance" inherits="BEANSHELL_INHERITANCE_PARENT"/>
+
+	<element id="PNUTS_INHERITANCE_PARENT" file="element/scripted/pnuts_inheritance_parent.xml"/>
+	<element id="PNUTS_INHERITANCE_CHILD" file="element/scripted/pnuts_inheritance_child.xml" url="/scripted/pnuts/inheritance" inherits="PNUTS_INHERITANCE_PARENT"/>
+
+	<element id="GROOVY_INHERITANCE_PARENT" file="element/scripted/groovy_inheritance_parent.xml"/>
+	<element id="GROOVY_INHERITANCE_CHILD" file="element/scripted/groovy_inheritance_child.xml" url="/scripted/groovy/inheritance" inherits="GROOVY_INHERITANCE_PARENT"/>
+
+	<element id="JANINO_INHERITANCE_PARENT" file="element/scripted/janino_inheritance_parent.xml"/>
+	<element id="JANINO_INHERITANCE_CHILD" file="element/scripted/janino_inheritance_child.xml" url="/scripted/janino/inheritance" inherits="JANINO_INHERITANCE_PARENT"/>
+</site>
+

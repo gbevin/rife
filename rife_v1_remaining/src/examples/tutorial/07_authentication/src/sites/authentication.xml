@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: authentication.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<globalcookie name="authid"/>
+
+	<globalexit name="admin" destid="Admin"/>
+	
+	<arrival destid="Home"/>
+
+	<!-- embeddable login box -->
+    <element id="AuthBox" file="authentication/box.xml"/>
+    
+    <element id="Logout" file="rife/logout/passthrough/memory.xml">
+    	<flowlink srcexit="logged_out" snapback="true"/>
+    </element>
+    
+    <element id="LoginBox" file="credentials.xml" inherits="AuthBox">
+    	<flowlink srcexit="logout" destid="Logout"/>
+    </element>
+
+	<!-- visitor section -->
+    <element id="Home" extends="rife/template/print.xml" url="/home">
+		<property name="name">home</property>
+		<exit name="more"/>
+		
+    	<flowlink srcexit="more" destid="More"/>
+    </element>
+    
+    <element id="More" extends="rife/template/print.xml" url="/more">
+		<property name="name">more</property>
+		<exit name="home"/>
+		
+    	<flowlink srcexit="home" destid="Home"/>
+    </element>
+
+	<!-- administration section -->
+    <element id="AuthAdmin" file="authentication/administration.xml"/>
+    
+    <element id="Admin" extends="rife/template/print.xml" url="/admin" inherits="AuthAdmin">
+		<property name="name">administration</property>
+		<exit name="home"/>
+		
+    	<flowlink srcexit="home" destid="Home"/>
+    </element>
+</site>

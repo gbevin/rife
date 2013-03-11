@@ -1,0 +1,73 @@
+builder
+	.setImplementation("com.uwyn.rife.engine.testelements.engine.Simple")
+
+	// PROPERTIES
+	.addStaticProperty("property1", "value1")
+	.addStaticProperty("property2", "value2")
+	.addStaticProperty("property3", "value3")
+	.addStaticProperty("property4", "value4")
+
+	// INPUTS
+	.addInput("input1")
+	.addInput("input2")
+	.addInput("input3")
+	
+	// OUTPUTS
+	.addOutput("output1")
+	.addOutput("output2")
+	.addOutput("output3")
+	.addOutput("output4")
+	
+	// INCOOKIES
+	.addIncookie("incookie1")
+	.addIncookie("incookie2")
+	
+	// OUTCOOKIES
+	.addOutcookie("outcookie1")
+	.addOutcookie("outcookie2")
+	.addOutcookie("outcookie3")
+	.addOutcookie("outcookie4")
+	
+	// INBEANS
+	.addInBean("com.uwyn.rife.engine.testelements.exits.BeanImpl1", null, "inbean1")
+	.addInBean("com.uwyn.rife.engine.testelements.exits.BeanImpl2")
+	.addInBean("com.uwyn.rife.engine.testelements.exits.BeanImpl1", "prefix_", null)
+	.addInBean("com.uwyn.rife.engine.testelements.submission.BeanImpl", "prefixgroup_", "inbean2", "somegroup")
+	.addInBean("com.uwyn.rife.engine.testelements.submission.BeanImpl", null, null, "somegroup")
+	
+	// OUTBEANS
+	.addOutBean("com.uwyn.rife.engine.testelements.exits.BeanImpl1")
+	.addOutBean("com.uwyn.rife.engine.testelements.exits.BeanImpl2")
+	.addOutBean("com.uwyn.rife.engine.testelements.exits.BeanImpl2", "prefix_", "outbean1")
+	.addOutBean("com.uwyn.rife.engine.testelements.exits.BeanImpl2", "prefix_", "outbean1")
+	.addOutBean("com.uwyn.rife.engine.testelements.submission.BeanImpl", "prefixgroup_", null, "somegroup")
+	.addOutBean("com.uwyn.rife.engine.testelements.submission.BeanImpl", null, "outbean2", "somegroup")
+	
+	// CHILD TRIGGERS
+	.addChildTrigger("input1")
+	.addChildTrigger("input2")
+	
+	// EXITS
+	.addExit("exit1")
+	.addExit("exit2")
+	.addExit("exit3")
+	.addExit("exit4")
+
+    // SUBMISSIONS
+    .enterSubmission("submission1")
+        .addParameter("param1")
+        .addParameter("param2")
+        .addParameter("param3")
+        .addParameterRegexp("paramA(\\d+)")
+        .addParameterRegexp("paramB(\\d+)")
+        .addFile("file1")
+        .addFile("file2")
+    .leaveSubmission()
+	
+    .enterSubmission("submission2")
+        .addParameter("param1", new String[] {"default1", "default2"})
+        .addParameter("param2")
+        .addParameterRegexp("paramC(.*)")
+        .addFile("file1")
+    .leaveSubmission();
+

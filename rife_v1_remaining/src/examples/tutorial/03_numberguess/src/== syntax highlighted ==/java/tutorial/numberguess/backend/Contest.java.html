@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+    <meta name="generator" content="JHighlight v1.0 (http://jhighlight.dev.java.net)" />
+    <title>03_numberguess/src/java/tutorial/numberguess/backend/Contest.java</title>
+    <link rel="Help" href="http://jhighlight.dev.java.net" />
+    <style type="text/css">
+code {
+color: rgb(0,0,0); font-family: monospace; font-size: 12px; white-space: nowrap;
+}
+.java_type {
+color: rgb(0,44,221);
+}
+.java_comment {
+color: rgb(147,147,147); background-color: rgb(247,247,247);
+}
+.java_operator {
+color: rgb(0,124,31);
+}
+.java_separator {
+color: rgb(0,33,255);
+}
+.java_plain {
+color: rgb(0,0,0);
+}
+h1 {
+font-family: sans-serif; font-size: 16pt; font-weight: bold; color: rgb(0,0,0); background: rgb(210,210,210); border: solid 1px black; padding: 5px; text-align: center;
+}
+.java_javadoc_comment {
+color: rgb(147,147,147); background-color: rgb(247,247,247); font-style: italic;
+}
+.java_keyword {
+color: rgb(0,0,0); font-weight: bold;
+}
+.java_literal {
+color: rgb(188,0,0);
+}
+.java_javadoc_tag {
+color: rgb(147,147,147); background-color: rgb(247,247,247); font-style: italic; font-weight: bold;
+}
+    </style>
+</head>
+<body>
+<h1>03_numberguess/src/java/tutorial/numberguess/backend/Contest.java</h1><code><span class="java_comment">/*</span><br />
+<span class="java_comment">&nbsp;*&nbsp;Copyright&nbsp;2001-2008&nbsp;Geert&nbsp;Bevin&nbsp;&lt;gbevin[remove]&nbsp;at&nbsp;uwyn&nbsp;dot&nbsp;com&gt;</span><br />
+<span class="java_comment">&nbsp;*&nbsp;Licensed&nbsp;under&nbsp;the&nbsp;Apache&nbsp;License,&nbsp;Version&nbsp;2.0&nbsp;(the&nbsp;&quot;License&quot;)</span><br />
+<span class="java_comment">&nbsp;*&nbsp;$Id:&nbsp;Contest.java&nbsp;3877&nbsp;2007-08-03&nbsp;19:48:10Z&nbsp;gbevin&nbsp;$</span><br />
+<span class="java_comment">&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_keyword">package</span><span class="java_plain">&nbsp;tutorial</span><span class="java_separator">.</span><span class="java_plain">numberguess</span><span class="java_separator">.</span><span class="java_plain">backend</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain"></span><br />
+<span class="java_keyword">import</span><span class="java_plain">&nbsp;com</span><span class="java_separator">.</span><span class="java_plain">uwyn</span><span class="java_separator">.</span><span class="java_plain">rife</span><span class="java_separator">.</span><span class="java_plain">tools</span><span class="java_separator">.</span><span class="java_type">UniqueID</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_keyword">import</span><span class="java_plain">&nbsp;com</span><span class="java_separator">.</span><span class="java_plain">uwyn</span><span class="java_separator">.</span><span class="java_plain">rife</span><span class="java_separator">.</span><span class="java_plain">tools</span><span class="java_separator">.</span><span class="java_type">UniqueIDGenerator</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_keyword">import</span><span class="java_plain">&nbsp;java</span><span class="java_separator">.</span><span class="java_plain">util</span><span class="java_separator">.</span><span class="java_type">HashMap</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_keyword">import</span><span class="java_plain">&nbsp;java</span><span class="java_separator">.</span><span class="java_plain">util</span><span class="java_separator">.</span><span class="java_type">Map</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain"></span><br />
+<span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;This&nbsp;class&nbsp;is&nbsp;meant&nbsp;to&nbsp;never&nbsp;be&nbsp;instantiated.&nbsp;It&nbsp;keeps&nbsp;track&nbsp;of&nbsp;all&nbsp;active</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;games.</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;&lt;p&gt;</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;Ideally&nbsp;this&nbsp;functionality&nbsp;should&nbsp;be&nbsp;implemented&nbsp;through&nbsp;the&nbsp;storage&nbsp;in&nbsp;a</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;database&nbsp;or&nbsp;other&nbsp;persistant&nbsp;data&nbsp;storage&nbsp;medium.&nbsp;For&nbsp;simplicity's&nbsp;sake,</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;a&nbsp;simple&nbsp;in-memory&nbsp;structure&nbsp;is&nbsp;used&nbsp;and&nbsp;accessed&nbsp;in&nbsp;a&nbsp;thread-safe&nbsp;manner.</span><br />
+<span class="java_javadoc_comment">&nbsp;*</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@author</span><span class="java_javadoc_comment">&nbsp;Geert&nbsp;Bevin&nbsp;(gbevin[remove]&nbsp;at&nbsp;uwyn&nbsp;dot&nbsp;com)</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@version</span><span class="java_javadoc_comment">&nbsp;$Revision:&nbsp;3877&nbsp;$</span><br />
+<span class="java_javadoc_comment">&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_keyword">abstract</span><span class="java_plain">&nbsp;</span><span class="java_keyword">class</span><span class="java_plain">&nbsp;</span><span class="java_type">Contest</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">private</span><span class="java_plain">&nbsp;</span><span class="java_keyword">static</span><span class="java_plain">&nbsp;</span><span class="java_keyword">final</span><span class="java_plain">&nbsp;</span><span class="java_type">Map</span><span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;activeGames&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_keyword">new</span><span class="java_plain">&nbsp;</span><span class="java_type">HashMap</span><span class="java_separator">();</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Starts&nbsp;a&nbsp;new&nbsp;game&nbsp;and&nbsp;registers&nbsp;it&nbsp;in&nbsp;the&nbsp;collection&nbsp;of&nbsp;active&nbsp;game.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;A&nbsp;unique&nbsp;identifier&nbsp;is&nbsp;also&nbsp;generated&nbsp;that&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;retrieve&nbsp;the</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;game&nbsp;afterwards.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@return</span><span class="java_javadoc_comment">&nbsp;a&nbsp;&lt;code&gt;String&lt;/code&gt;&nbsp;containing&nbsp;the&nbsp;unique&nbsp;id&nbsp;that&nbsp;corresponds</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;to&nbsp;the&nbsp;newly&nbsp;started&nbsp;game.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_keyword">static</span><span class="java_plain">&nbsp;</span><span class="java_type">String</span><span class="java_plain">&nbsp;startGame</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_type">UniqueID</span><span class="java_plain">&nbsp;gameid&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_type">UniqueIDGenerator</span><span class="java_separator">.</span><span class="java_plain">generate</span><span class="java_separator">();</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_type">Game</span><span class="java_plain">&nbsp;game&nbsp;</span><span class="java_operator">=</span><span class="java_plain">&nbsp;</span><span class="java_keyword">new</span><span class="java_plain">&nbsp;</span><span class="java_type">Game</span><span class="java_separator">();</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">synchronized</span><span class="java_plain">&nbsp;</span><span class="java_separator">(</span><span class="java_type">Contest</span><span class="java_separator">.</span><span class="java_plain">activeGames</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_type">Contest</span><span class="java_separator">.</span><span class="java_plain">activeGames</span><span class="java_separator">.</span><span class="java_plain">put</span><span class="java_separator">(</span><span class="java_plain">gameid</span><span class="java_separator">.</span><span class="java_plain">toString</span><span class="java_separator">(),</span><span class="java_plain">&nbsp;game</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">return</span><span class="java_plain">&nbsp;gameid</span><span class="java_separator">.</span><span class="java_plain">toString</span><span class="java_separator">();</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Stops&nbsp;an&nbsp;active&nbsp;game.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@param</span><span class="java_javadoc_comment">&nbsp;gameid&nbsp;The&nbsp;unique&nbsp;identifier&nbsp;that&nbsp;corresponds&nbsp;to&nbsp;the&nbsp;game&nbsp;that</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;has&nbsp;to&nbsp;be&nbsp;stopped.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@return</span><span class="java_javadoc_comment">&nbsp;the&nbsp;&lt;code&gt;Game&lt;/code&gt;&nbsp;instance&nbsp;that&nbsp;has&nbsp;been&nbsp;stopped;&nbsp;or</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&lt;p&gt;</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&lt;code&gt;null&lt;/code&gt;&nbsp;if&nbsp;no&nbsp;game&nbsp;could&nbsp;be&nbsp;found&nbsp;with&nbsp;the&nbsp;provided&nbsp;id.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_keyword">static</span><span class="java_plain">&nbsp;</span><span class="java_type">Game</span><span class="java_plain">&nbsp;stopGame</span><span class="java_separator">(</span><span class="java_type">String</span><span class="java_plain">&nbsp;gameid</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">synchronized</span><span class="java_plain">&nbsp;</span><span class="java_separator">(</span><span class="java_type">Contest</span><span class="java_separator">.</span><span class="java_plain">activeGames</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">return</span><span class="java_plain">&nbsp;</span><span class="java_separator">(</span><span class="java_type">Game</span><span class="java_separator">)</span><span class="java_type">Contest</span><span class="java_separator">.</span><span class="java_plain">activeGames</span><span class="java_separator">.</span><span class="java_plain">remove</span><span class="java_separator">(</span><span class="java_plain">gameid</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Retrieves&nbsp;an&nbsp;active&nbsp;game.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@param</span><span class="java_javadoc_comment">&nbsp;gameid&nbsp;The&nbsp;unique&nbsp;identifier&nbsp;that&nbsp;corresponds&nbsp;to&nbsp;the&nbsp;game&nbsp;that</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;has&nbsp;to&nbsp;be&nbsp;retrieved.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@return</span><span class="java_javadoc_comment">&nbsp;the&nbsp;&lt;code&gt;Game&lt;/code&gt;&nbsp;instance&nbsp;that&nbsp;corresponds&nbsp;to&nbsp;the&nbsp;provided</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;id;&nbsp;or</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&lt;p&gt;</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&lt;code&gt;null&lt;/code&gt;&nbsp;if&nbsp;no&nbsp;game&nbsp;could&nbsp;be&nbsp;found&nbsp;with&nbsp;the&nbsp;provided&nbsp;id</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_keyword">static</span><span class="java_plain">&nbsp;</span><span class="java_type">Game</span><span class="java_plain">&nbsp;getGame</span><span class="java_separator">(</span><span class="java_type">String</span><span class="java_plain">&nbsp;gameid</span><span class="java_separator">)</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">return</span><span class="java_plain">&nbsp;</span><span class="java_separator">(</span><span class="java_type">Game</span><span class="java_separator">)</span><span class="java_type">Contest</span><span class="java_separator">.</span><span class="java_plain">activeGames</span><span class="java_separator">.</span><span class="java_plain">get</span><span class="java_separator">(</span><span class="java_plain">gameid</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_separator">}</span><span class="java_plain"></span><br />
+</code>
+</body>
+</html>

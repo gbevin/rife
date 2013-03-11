@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/implementations"/>
+	<classpathentry kind="src" path="src/java"/>
+	<classpathentry kind="src" path="src/templates"/>
+	<classpathentry kind="src" path="src/sites"/>
+	<classpathentry kind="src" path="src/rep"/>
+	<classpathentry kind="src" path="src/elements"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/rife/lib/h2-1.0-2008-03-15.jar"/>
+	<classpathentry kind="lib" path="/rife/lib/mysql-connector-java-5.1.6-bin.jar"/>
+	<classpathentry kind="lib" path="/rife/lib/postgresql-8.3-603.jdbc3.jar"/>
+	<classpathentry kind="lib" path="/rife/lib/derby-10.3.2.1.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/rife"/>
+	<classpathentry kind="output" path="build"/>
+</classpath>

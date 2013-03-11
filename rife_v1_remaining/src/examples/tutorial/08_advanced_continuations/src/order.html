@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: order.html 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	
+	<head>
+		<title>Order</title>
+		<style type="text/css">
+			.mark_error {
+				border: solid red 1px; background: #ffdcdc; color: red;
+				padding: 4px;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<r:v name="content"/>
+		
+		<r:b name="INVALID:*">invalid</r:b>
+		<r:b name="WRONGLENGTH:*">wrong length</r:b>
+		<r:b name="MANDATORY:*">mandatory</r:b>
+		
+		<r:bv name="content">
+			<r:b name="ERRORMESSAGE:*"><r:v name="ERRORMESSAGE"/><br /></r:b>
+			<r:b name="MARK:ERROR">class="mark_error"</r:b>
+			
+			<r:v name="content_form"></r:v>
+		</r:bv>
+		
+		<r:b name="content_shipping">
+			<h2>Please choose how you want your order to be shipped</h2>
+			
+			<form action="${v SUBMISSION:FORM:selectShipping/}" method="post">
+				<r:v name="SUBMISSION:PARAMS:selectShipping"/>
+				
+				<p><b><label for="shippingMethod">Shipping method</label></b></p>
+				<p ${v MARK:shippingMethod}${/v}>
+					<r:v name="ERRORS:shippingMethod"></r:v>
+					<r:v name="FORM:RADIO:shippingMethod">id="shippingMethod"</r:v>
+				</p>
+				
+				<p>
+					<input type="submit" value="next &gt;&gt;" />
+				</p>
+			</form>
+		</r:b>
+		
+		<r:b name="content_creditcard">
+			<h2>Please provide your credit card details</h2>
+			
+			<form action="${v SUBMISSION:FORM:provideCreditCard/}" method="post">
+				<r:v name="SUBMISSION:PARAMS:provideCreditCard"/>
+				
+				<p><b><label for="creditCardType">Type</label></b></p>
+				<p ${v MARK:creditCardType}${/v}>
+					<r:v name="ERRORS:creditCardType"></r:v>
+					<r:v name="FORM:RADIO:creditCardType">id="creditCardType"</r:v>
+				</p>
+				
+				<p><b><label for="creditCardNumber">Number</label></b></p>
+				<p ${v MARK:creditCardNumber}${/v}>
+					<r:v name="ERRORS:creditCardNumber"></r:v>
+					<r:v name="FORM:INPUT:creditCardNumber">id="creditCardNumber" size="17"</r:v>
+				</p>
+				
+				<p><b><label for="creditCardExpiration">Expiration</label></b></p>
+				<p ${v MARK:creditCardExpiration}${/v}>
+					<r:v name="ERRORS:creditCardExpiration"></r:v>
+					<r:v name="FORM:INPUT:creditCardExpiration">id="creditCardExpiration" size="6"</r:v>
+				</p>
+				
+				<p>
+					<input type="submit" name="back" value="&lt;&lt; back" />
+					<input type="submit" value="next &gt;&gt;" />
+				</p>
+			</form>
+		</r:b>
+		
+		<r:b name="content_overview">
+			<h2>You have provided the following</h2>
+			
+			<p><b>Shipping method</b></p>
+			<p><r:v name="shippingMethod"></r:v></p>
+			
+			<p><b>Credit Card type</b></p>
+			<p><r:v name="creditCardType"></r:v></p>
+			
+			<p><b>Credit Card number</b></p>
+			<p><r:v name="creditCardNumber"></r:v></p>
+			
+			<p><b>Credit Card expiration</b></p>
+			<p><r:v name="creditCardExpiration"></r:v></p>
+		</r:b>
+	</body>
+	
+</html>

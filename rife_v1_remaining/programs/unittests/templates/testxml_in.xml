@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE config SYSTEM "/dtd/config.dtd">
+
+<config>
+<!--V 'params'/--><!--B 'param'--><param name="<!--V 'name'/-->"><!--V 'value'/--></param>
+<!--/B--></config>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: rife_catalog.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!-- see http://www.oasis-open.org/committees/entity/spec.html -->
+<!DOCTYPE catalog PUBLIC "-//OASIS//DTD Entity Resolution XML Catalog V1.0//EN"
+         "http://www.oasis-open.org/committees/entity/release/1.0/catalog.dtd">
+
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+            
+    <public publicId="-//Rifers.org//RIFE Config 1.0//EN" uri="file:dtd/config.dtd"/>
+    <system systemId="http://rifers.org/dtd/config_1_0.dtd" uri="file:dtd/config.dtd"/>
+    <system systemId="/dtd/config.dtd" uri="file:dtd/config.dtd"/>
+	
+    <public publicId="-//Rifers.org//RIFE Datasources 1.1//EN" uri="file:dtd/datasources.dtd"/>
+    <system systemId="http://rifers.org/dtd/datasources_1_1.dtd" uri="file:dtd/datasources.dtd"/>
+    <system systemId="/dtd/datasources.dtd" uri="file:dtd/datasources.dtd"/>
+	
+    <public publicId="-//Rifers.org//RIFE Element 1.2//EN" uri="file:dtd/element.dtd"/>
+    <system systemId="http://rifers.org/dtd/element_1_2.dtd" uri="file:dtd/element.dtd"/>
+    <system systemId="/dtd/element.dtd" uri="file:dtd/element.dtd"/>
+	
+    <public publicId="-//Rifers.org//RIFE Rep 1.1//EN" uri="file:dtd/rep.dtd"/>
+    <system systemId="http://rifers.org/dtd/rep_1_1.dtd" uri="file:dtd/rep.dtd"/>
+    <system systemId="/dtd/rep.dtd" uri="file:dtd/rep.dtd"/>
+	
+    <public publicId="-//Rifers.org//RIFE Scheduler 1.0//EN" uri="file:dtd/scheduler.dtd"/>
+    <system systemId="http://rifers.org/dtd/scheduler_1_0.dtd" uri="file:dtd/scheduler.dtd"/>
+    <system systemId="/dtd/scheduler.dtd" uri="file:dtd/scheduler.dtd"/>
+	
+    <public publicId="-//Rifers.org//RIFE Site 1.5.1//EN" uri="file:dtd/site.dtd"/>
+    <system systemId="http://rifers.org/dtd/site_1_5_1.dtd" uri="file:dtd/site.dtd"/>
+    <system systemId="/dtd/site.dtd" uri="file:dtd/site.dtd"/>
+	
+    <public publicId="-//Rifers.org//RIFE Users 1.0//EN" uri="file:dtd/users.dtd"/>
+    <system systemId="http://rifers.org/dtd/users_1_0.dtd" uri="file:dtd/users.dtd"/>
+    <system systemId="/dtd/users.dtd" uri="file:dtd/users.dtd"/>
+            
+    <public publicId="-//Rifers.org//RIFE Template 1.0//EN" uri="file:dtd/template.dtd"/>
+    <system systemId="http://rifers.org/dtd/template_1_0.dtd" uri="file:dtd/template.dtd"/>
+    <system systemId="/dtd/template.dtd" uri="file:dtd/template.dtd"/>
+	
+</catalog>

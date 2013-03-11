@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: inheritance.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<globalvar name="globalvar1"/>
+	<globalvar name="globalvar2"/>
+	<globalvar name="globaltrigger">
+		<default>doit</default>
+	</globalvar>
+	
+	<arrival destid="GROUP_CHILD"/>
+
+	<!-- INHERITANCE SIMPLE -->
+	<element id="SIMPLE_PARENT" file="element/inheritance/simple_parent.xml"/>
+	<element id="SIMPLE_CHILD" file="element/inheritance/simple_child.xml" inherits="SIMPLE_PARENT" url="/inheritance/simple"/>
+
+	<!-- INHERITANCE BEAN -->
+	<element id="BEAN_PARENT" file="element/inheritance/bean_parent.xml"/>
+	<element id="BEAN_CHILD" file="element/inheritance/simple_child.xml" inherits="BEAN_PARENT" url="/inheritance/bean"/>
+
+	<!-- INHERITANCE SIMPLE OUTJECTION -->
+	<element id="SIMPLE_PARENT_OUTJECTION" implementation="com.uwyn.rife.engine.testelements.inheritance.SimpleParentOutjection" extends="element/inheritance/simple_parent.xml"/>
+	<element id="SIMPLE_CHILD_OUTJECTION" file="element/inheritance/simple_child.xml" inherits="SIMPLE_PARENT_OUTJECTION" url="/inheritance/simple/outjection"/>
+
+	<!-- INHERITANCE BEAN OUTJECTION -->
+	<element id="BEAN_PARENT_OUTJECTION" implementation="com.uwyn.rife.engine.testelements.inheritance.BeanParentOutjection" extends="element/inheritance/bean_parent.xml"/>
+	<element id="BEAN_CHILD_OUTJECTION" file="element/inheritance/simple_child.xml" inherits="BEAN_PARENT_OUTJECTION" url="/inheritance/bean/outjection"/>
+
+	<!-- INHERITANCE INTERFACE -->
+	<element id="INTERFACE_PARENT" file="element/inheritance/interface_parent.xml"/>
+	<element id="INTERFACE_CHILD" file="element/inheritance/interface_child.xml" inherits="INTERFACE_PARENT" url="/inheritance/interface"/>
+
+	<!-- INHERITANCE GLOBALVAR -->
+	<element id="GLOBALVAR_PARENT" file="element/inheritance/globalvar_parent.xml"/>
+	<element id="GLOBALVAR_CHILD" file="element/inheritance/globalvar_child.xml" inherits="GLOBALVAR_PARENT" url="/inheritance/globalvar"/>
+
+	<!-- INHERITANCE TARGET RETRIEVAL -->
+	<element id="TARGETRETRIEVAL_PARENT" file="element/inheritance/targetretrieval_parent.xml"/>
+	<element id="TARGETRETRIEVAL_CHILD" file="element/inheritance/targetretrieval_child.xml" inherits="TARGETRETRIEVAL_PARENT" url="/inheritance/targetretrieval"/>
+
+	<!-- INHERITANCE COOKIE -->
+	<element id="COOKIE_PARENT" file="element/inheritance/cookie_parent.xml"/>
+	<element id="COOKIE_CHILD" file="element/inheritance/cookie_child.xml" inherits="COOKIE_PARENT" url="/inheritance/cookie"/>
+
+	<!-- INHERITANCE COOKIE OUTJECTION -->
+	<element id="COOKIE_PARENT_OUTJECTION" implementation="com.uwyn.rife.engine.testelements.inheritance.CookieParentOutjection" extends="element/inheritance/cookie_parent.xml"/>
+	<element id="COOKIE_CHILD_OUTJECTION" file="element/inheritance/cookie_child.xml" inherits="COOKIE_PARENT_OUTJECTION" url="/inheritance/cookie/outjection"/>
+
+	<!-- INHERITANCE GLOBALCOOKIE -->
+	<group>
+		<globalcookie name="trigger"/>
+
+		<element id="GLOBALCOOKIE_PARENT" file="element/inheritance/globalcookie_parent.xml"/>
+		<element id="GLOBALCOOKIE_CHILD" file="element/inheritance/globalcookie_child.xml" inherits="GLOBALCOOKIE_PARENT" url="/inheritance/globalcookie"/>
+	</group>
+
+	<!-- INHERITANCE GLOBALCOOKIE OUTJECTION -->
+	<group>
+		<globalcookie name="trigger"/>
+
+		<element id="GLOBALCOOKIE_PARENT_OUTJECTION" implementation="com.uwyn.rife.engine.testelements.inheritance.CookieParentOutjection" file="element/inheritance/globalcookie_parent.xml"/>
+		<element id="GLOBALCOOKIE_CHILD_OUTJECTION" file="element/inheritance/globalcookie_child.xml" inherits="GLOBALCOOKIE_PARENT_OUTJECTION" url="/inheritance/globalcookie/outjection"/>
+	</group>
+
+	<!-- INHERITANCE INPUT DEFAULT TRIGGER -->
+	<element id="INPUTDEFAULT_PARENT" file="element/inheritance/inputdefault_parent.xml"/>
+	<element id="INPUTDEFAULT_CHILD" file="element/inheritance/inputdefault_child.xml" inherits="INPUTDEFAULT_PARENT" url="/inheritance/inputdefault"/>
+
+	<!-- INHERITANCE INCOOKIE DEFAULT TRIGGER -->
+	<element id="INCOOKIEDEFAULT_PARENT" file="element/inheritance/incookiedefault_parent.xml"/>
+	<element id="INCOOKIEDEFAULT_CHILD" file="element/inheritance/incookiedefault_child.xml" inherits="INCOOKIEDEFAULT_PARENT" url="/inheritance/incookiedefault"/>
+
+	<!-- INHERITANCE OUTPUT DEFAULT TRIGGER -->
+	<element id="OUTPUTDEFAULT_PARENT" file="element/inheritance/outputdefault_parent.xml"/>
+	<element id="OUTPUTDEFAULT_CHILD" file="element/inheritance/outputdefault_child.xml" inherits="OUTPUTDEFAULT_PARENT" url="/inheritance/outputdefault"/>
+
+	<!-- OUTHERITANCE OUTCOOKIE DEFAULT TRIGGER -->
+	<element id="OUTCOOKIEDEFAULT_PARENT" file="element/inheritance/outcookiedefault_parent.xml"/>
+	<element id="OUTCOOKIEDEFAULT_CHILD" file="element/inheritance/outcookiedefault_child.xml" inherits="OUTCOOKIEDEFAULT_PARENT" url="/inheritance/outcookiedefault"/>
+
+	<!-- INHERITANCE INPUT OUTPUT DEFAULT TRIGGER -->
+	<element id="INPUTOUTPUTDEFAULT_PARENT" file="element/inheritance/inputoutputdefault_parent.xml"/>
+	<element id="INPUTOUTPUTDEFAULT_CHILD" file="element/inheritance/inputoutputdefault_child.xml" inherits="INPUTOUTPUTDEFAULT_PARENT" url="/inheritance/inputoutputdefault"/>
+
+	<!-- INHERITANCE INCOOKIE OUTCOOKIE DEFAULT TRIGGER -->
+	<element id="INCOOKIEOUTCOOKIEDEFAULT_PARENT" file="element/inheritance/incookieoutcookiedefault_parent.xml"/>
+	<element id="INCOOKIEOUTCOOKIEDEFAULT_CHILD" file="element/inheritance/incookieoutcookiedefault_child.xml" inherits="INCOOKIEOUTCOOKIEDEFAULT_PARENT" url="/inheritance/incookieoutcookiedefault"/>
+
+	<!-- INHERITANCE GLOBAL DEFAULT TRIGGER -->
+	<element id="GLOBALDEFAULT_PARENT" file="element/inheritance/globaldefault_parent.xml"/>
+	<element id="GLOBALDEFAULT_CHILD" file="element/inheritance/globaldefault_child.xml" inherits="GLOBALDEFAULT_PARENT" url="/inheritance/globaldefault"/>
+
+	<!-- INHERITANCE GLOBALCOOKIE DEFAULT TRIGGER -->
+	<group>
+		<globalcookie name="trigger">
+			<default>doit</default>
+		</globalcookie>
+
+		<element id="GLOBALCOOKIEDEFAULT_PARENT" file="element/inheritance/globalcookiedefault_parent.xml"/>
+		<element id="GLOBALCOOKIEDEFAULT_CHILD" file="element/inheritance/globalcookiedefault_child.xml" inherits="GLOBALCOOKIEDEFAULT_PARENT" url="/inheritance/globalcookiedefault"/>
+	</group>
+
+	<!-- INHERITANCE NO TRIGGER -->
+	<element id="NOTRIGGER_PARENT" file="element/inheritance/notrigger_parent.xml"/>
+	<element id="NOTRIGGER_CHILD" file="element/inheritance/notrigger_child.xml" inherits="NOTRIGGER_PARENT" url="/inheritance/notrigger"/>
+
+	<!-- INHERITANCE ACCESS DENIED -->
+	<element id="ACCESSDENIED_PARENT" file="element/inheritance/accessdenied_parent.xml"/>
+	<element id="ACCESSDENIED_CHILD" file="element/inheritance/accessdenied_child.xml" inherits="ACCESSDENIED_PARENT" url="/inheritance/accessdenied"/>
+
+	<!-- INHERITANCE PRESERVE PARAMETERS -->
+	<element id="PARAMPRESERVE_PARENT" file="element/inheritance/parampreserve_parent.xml"/>
+	<element id="PARAMPRESERVE_CHILD" file="element/inheritance/parampreserve_child.xml" inherits="PARAMPRESERVE_PARENT" url="/inheritance/parampreserve"/>
+	
+	<!-- INHERITANCE PRESERVE INPUTS -->
+	<element id="INPUTPRESERVE_PARENT" file="element/inheritance/inputpreserve_parent.xml"/>
+	<element id="INPUTPRESERVE_CHILD" file="element/inheritance/inputpreserve_child.xml" inherits="INPUTPRESERVE_PARENT" url="/inheritance/inputpreserve"/>
+	
+	<!-- INHERITANCE PRESERVE PATHINFO -->
+	<element id="PATHINFOPRESERVE_PARENT" file="element/inheritance/pathinfopreserve_parent.xml"/>
+	<element id="PATHINFOPRESERVE_CHILD" file="element/inheritance/pathinfopreserve_child.xml" inherits="PATHINFOPRESERVE_PARENT" url="/inheritance/pathinfopreserve/*"/>
+	
+	<!-- INHERITANCE PRESERVE PATHINFO THROUGH POST -->
+	<element id="PATHINFOPRESERVETHROUGHPOST_PARENT" file="element/inheritance/pathinfopreservethroughpost_parent.xml"/>
+	<element id="PATHINFOPRESERVETHROUGHPOST_CHILD" file="element/inheritance/pathinfopreservethroughpost_child.xml" inherits="PATHINFOPRESERVETHROUGHPOST_PARENT" url="/inheritance/pathinfopreservethroughpost/*"/>
+	
+	<!-- INHERITANCE PRESERVE PARAMS DIRECT TRIGGER-->
+	<element id="DIRECTTRIGGER_PARENT" file="element/inheritance/directtrigger_parent.xml"/>
+	<element id="PARAMSPRESERVE_DIRECTTRIGGER_CHILD" file="element/inheritance/paramspreserve_child.xml" inherits="DIRECTTRIGGER_PARENT" url="/inheritance/paramspreserve/directtrigger"/>
+	
+	<!-- INHERITANCE PRESERVE INPUTS DIRECT TRIGGER-->
+	<element id="INPUTPRESERVE_DIRECTTRIGGER_CHILD" file="element/inheritance/inputpreserve_child.xml" inherits="DIRECTTRIGGER_PARENT" url="/inheritance/inputpreserve/directtrigger"/>
+	
+	<!-- INHERITANCE PRESERVE PATHINFO DIRECT TRIGGER -->
+	<element id="PATHINFOPRESERVE_DIRECTTRIGGER_CHILD" file="element/inheritance/pathinfopreserve_child.xml" inherits="DIRECTTRIGGER_PARENT" url="/inheritance/pathinfopreserve/directtrigger/*"/>
+	
+	<!-- INHERITANCE PRESERVE PARAMS MIDDLE-->
+	<element id="PARAMSPRESERVE_MIDDLE" file="element/inheritance/paramspreserve_child.xml" inherits="DIRECTTRIGGER_PARENT"/>
+	<element id="PARAMSPRESERVE_MIDDLE_CHILD" file="element/inheritance/simple_child.xml" inherits="PARAMSPRESERVE_MIDDLE" url="/inheritance/paramspreserve/middle"/>
+	
+	<!-- INHERITANCE DEEP -->
+	<element id="DEEP_PARENT3" file="element/inheritance/deep_parent3.xml"/>
+	<element id="DEEP_PARENT2" file="element/inheritance/deep_parent2.xml" inherits="DEEP_PARENT3"/>
+	<element id="DEEP_PARENT1" file="element/inheritance/deep_parent1.xml" inherits="DEEP_PARENT2"/>
+	<element id="DEEP_CHILD" file="element/inheritance/deep_child.xml" inherits="DEEP_PARENT1" url="/inheritance/deep"/>
+	
+	<!-- INHERITANCE EXITS -->
+	<element id="EXITS_PARENT2" file="element/inheritance/exits_parent2.xml"/>
+	
+	<element id="EXITS_PARENT1_EXIT2" file="element/inheritance/exits_parent1_exit2.xml">
+		<flowlink srcexit="exit3" destid="EXITS_PARENT1"/>
+		<datalink srcoutput="output1" destid="EXITS_PARENT1" destinput="trigger"/>
+	</element>
+	
+	<element id="EXITS_PARENT1_EXIT1" file="element/inheritance/exits_parent1_exit1.xml">
+		<flowlink srcexit="exit2" destid="EXITS_PARENT1_EXIT2"/>
+	</element>
+	
+	<element id="EXITS_PARENT1" file="element/inheritance/exits_parent1.xml" inherits="EXITS_PARENT2">
+		<flowlink srcexit="exit1" destid="EXITS_PARENT1_EXIT1"/>
+	</element>
+	
+	<element id="EXITS_CHILD" file="element/inheritance/exits_child.xml" inherits="EXITS_PARENT1" url="/inheritance/exits"/>
+	
+	<!-- INHERITANCE EXITS CANCEL INHERITANCE-->
+	<element id="EXITS_CANCELINHERITANCE_PARENT2" file="element/inheritance/exits_parent2.xml"/>
+	
+	<element id="EXITS_CANCELINHERITANCE_PARENT1_EXIT2" file="element/inheritance/exits_parent1_exit2.xml">
+		<flowlink srcexit="exit3" destid="EXITS_CANCELINHERITANCE_PARENT1" inheritance="cancel"/>
+		<datalink srcoutput="output1" destid="EXITS_CANCELINHERITANCE_PARENT1" destinput="trigger"/>
+	</element>
+	
+	<element id="EXITS_CANCELINHERITANCE_PARENT1_EXIT1" file="element/inheritance/exits_parent1_exit1.xml">
+		<flowlink srcexit="exit2" destid="EXITS_CANCELINHERITANCE_PARENT1_EXIT2"/>
+	</element>
+	
+	<element id="EXITS_CANCELINHERITANCE_PARENT1" file="element/inheritance/exits_parent1.xml" inherits="EXITS_CANCELINHERITANCE_PARENT2">
+		<flowlink srcexit="exit1" destid="EXITS_CANCELINHERITANCE_PARENT1_EXIT1"/>
+	</element>
+	
+	<element id="EXITS_CANCELINHERITANCE_CHILD" file="element/inheritance/exits_child.xml" inherits="EXITS_CANCELINHERITANCE_PARENT1" url="/inheritance/exits/cancelinheritance"/>
+	
+	<!-- INHERITANCE GLOBALEXITS CANCEL INHERITANCE-->
+	<group>
+		<globalexit name="globalexit3" destid="GLOBALEXITS_CANCELINHERITANCE_PARENT1" inheritance="cancel"/>
+		<globalexit name="globalexit2" destid="GLOBALEXITS_CANCELINHERITANCE_PARENT1_EXIT2"/>
+		<globalexit name="globalexit1" destid="GLOBALEXITS_CANCELINHERITANCE_PARENT1_EXIT1"/>
+		
+		<element id="GLOBALEXITS_CANCELINHERITANCE_PARENT2" file="element/inheritance/globalexits_parent2.xml"/>
+		<element id="GLOBALEXITS_CANCELINHERITANCE_PARENT1_EXIT2" file="element/inheritance/globalexits_parent1_exit2.xml">
+			<datalink srcoutput="output1" destid="GLOBALEXITS_CANCELINHERITANCE_PARENT1" destinput="trigger"/>
+		</element>
+		<element id="GLOBALEXITS_CANCELINHERITANCE_PARENT1_EXIT1" file="element/inheritance/globalexits_parent1_exit1.xml"/>
+		<element id="GLOBALEXITS_CANCELINHERITANCE_PARENT1" file="element/inheritance/globalexits_parent1.xml" inherits="GLOBALEXITS_CANCELINHERITANCE_PARENT2"/>
+		<element id="GLOBALEXITS_CANCELINHERITANCE_CHILD" file="element/inheritance/globalexits_child.xml" inherits="GLOBALEXITS_CANCELINHERITANCE_PARENT1" url="/inheritance/globalexits/cancelinheritance"/>
+	</group>
+	
+	<!-- INHERITANCE EXITLINKS -->
+	<element id="EXITLINKS_PARENT1_EXIT1" file="element/inheritance/exitlinks_parent1_exit1.xml"/>
+	
+	<element id="EXITLINKS_PARENT1" file="element/inheritance/exitlinks_parent1.xml">
+		<flowlink srcexit="exit1" destid="EXITLINKS_PARENT1_EXIT1"/>
+		<datalink srcoutput="output1" destid="EXITLINKS_PARENT1_EXIT1" destinput="input1"/>
+	</element>
+	
+	<element id="EXITLINKS_CHILD" file="element/inheritance/exitlinks_child.xml" inherits="EXITLINKS_PARENT1" url="/inheritance/exitlinks"/>
+	
+	<!-- INHERITANCE EXITLINKS CANCEL INHERITANCE-->
+	<element id="EXITLINKS_CANCELINHERITANCE_PARENT1_EXIT1" file="element/inheritance/exitlinks_parent1_exit1.xml"/>
+	
+	<element id="EXITLINKS_CANCELINHERITANCE_PARENT1" file="element/inheritance/exitlinks_parent1.xml">
+		<flowlink srcexit="exit1" destid="EXITLINKS_CANCELINHERITANCE_PARENT1_EXIT1" inheritance="cancel"/>
+		<datalink srcoutput="output1" destid="EXITLINKS_CANCELINHERITANCE_PARENT1_EXIT1" destinput="input1"/>
+	</element>
+	
+	<element id="EXITLINKS_CANCELINHERITANCE_CHILD" file="element/inheritance/exitlinks_child.xml" inherits="EXITLINKS_CANCELINHERITANCE_PARENT1" url="/inheritance/exitlinks/cancelinheritance"/>
+	
+	<!-- INHERITANCE EXIT DATA FLOW -->
+	<element id="EXITDATAFLOW_EXIT" file="element/inheritance/exitdataflow_exit.xml"/>
+	
+	<element id="EXITDATAFLOW_PARENT" file="element/inheritance/exitdataflow_parent.xml">
+		<flowlink srcexit="exit1" destid="EXITDATAFLOW_EXIT"/>
+		<datalink srcoutput="output1" destid="EXITDATAFLOW_EXIT" destinput="input1"/>
+		<datalink srcoutput="output2" destid="EXITDATAFLOW_EXIT" destinput="input2"/>
+		<datalink srcoutput="output3" destid="EXITDATAFLOW_EXIT" destinput="input3"/>
+	</element>
+	
+	<element id="EXITDATAFLOW_CHILD" file="element/inheritance/exitdataflow_child.xml" inherits="EXITDATAFLOW_PARENT" url="/inheritance/exitdataflow"/>
+	
+	<!-- INHERITANCE GLOBAL PARAMETER PASSING -->
+	<element id="PARAMPASS_PARENT3" file="element/inheritance/parampass_parent3.xml"/>
+	<element id="PARAMPASS_PARENT2" file="element/inheritance/parampass_parent2.xml" inherits="PARAMPASS_PARENT3"/>
+	<element id="PARAMPASS_PARENT1" file="element/inheritance/parampass_parent1.xml" inherits="PARAMPASS_PARENT2"/>
+	<element id="PARAMPASS_CHILD" file="element/inheritance/parampass_child.xml" inherits="PARAMPASS_PARENT1" url="/inheritance/parampass"/>
+	
+	<!-- INHERITANCE SUCCESSIVE -->
+	<element id="SUCCESSIVE_PARENT1" file="element/inheritance/successive_parent1.xml">
+		<flowlink srcexit="exit" destid="SUCCESSIVE_PARENT1_EXIT"/>
+	</element>
+	<element id="SUCCESSIVE_PARENT2" file="element/inheritance/successive_parent2.xml"/>
+	<element id="SUCCESSIVE_PARENT1_EXIT" file="element/inheritance/successive_parent1_exit.xml" inherits="SUCCESSIVE_PARENT2"/>
+	<element id="SUCCESSIVE_CHILD" file="element/inheritance/successive_child.xml" inherits="SUCCESSIVE_PARENT1" url="/inheritance/successive"/>
+
+	<!-- INHERITANCE ARRIVAL SUBSITES -->
+	<subsite id="ARRIVAL_INHERITANCE" file="site/inheritance/arrival_main.xml" urlprefix="/inheritance/arrival"/>
+
+	<!-- INHERITANCE GLOBAL SCOPE -->
+	<subsite id="GLOBAL_SCOPE" file="site/inheritance/globalscope.xml" urlprefix="/inheritance/globalscope"/>
+	
+	<!-- INHERITANCE DIFFERENT PARENT SAME CHILD -->
+	<element id="DIFFERENTPARENTSAMECHILD_PARENT1" file="element/inheritance/differentparent_samechild_parent1.xml"/>
+	<element id="DIFFERENTPARENTSAMECHILD_CHILD1" file="element/inheritance/differentparent_samechild_child.xml" inherits="DIFFERENTPARENTSAMECHILD_PARENT1" url="/inheritance/differentparent_samechild1"/>
+
+	<element id="DIFFERENTPARENTSAMECHILD_PARENT2" file="element/inheritance/differentparent_samechild_parent2.xml"/>
+	<element id="DIFFERENTPARENTSAMECHILD_CHILD2" file="element/inheritance/differentparent_samechild_child.xml" inherits="DIFFERENTPARENTSAMECHILD_PARENT2" url="/inheritance/differentparent_samechild2"/>
+
+	<!-- INHERITANCE GROUP -->
+	<element id="GROUP_PARENT" file="element/inheritance/simple_parent.xml"/>
+	<group inherits="GROUP_PARENT">
+		<element id="GROUP_CHILD" file="element/inheritance/simple_child.xml" url="/inheritance/group"/>
+	</group>
+	
+	<!-- INHERITANCE SEVERAL SUBMISSIONS -->
+	<element id="SEVERALSUBMISSIONS_PARENT" file="element/inheritance/severalsubmissions_parent.xml"/>
+	<element id="SEVERALSUBMISSIONS_CHILD" file="element/inheritance/severalsubmissions_child.xml" inherits="SEVERALSUBMISSIONS_PARENT" url="/inheritance/severalsubmissions"/>
+
+	<!-- INHERITANCE GROUP SUBSITE-->
+	<element id="GROUP_SUBSITE_PARENT1" file="element/inheritance/group_subsite_parent.xml"/>
+	<element id="GROUP_SUBSITE_PARENT2" file="element/inheritance/group_subsite_parent.xml"/>
+	<element id="GROUP_SUBSITE_PARENT3" file="element/inheritance/group_subsite_parent.xml"/>
+	<element id="GROUP_SUBSITE_PARENT4" file="element/inheritance/group_subsite_parent.xml"/>
+	<element id="GROUP_SUBSITE_PARENT5" file="element/inheritance/group_subsite_parent.xml"/>
+	<element id="GROUP_SUBSITE_PARENT6" file="element/inheritance/group_subsite_parent.xml"/>
+	<element id="GROUP_SUBSITE_PARENT7" file="element/inheritance/group_subsite_parent.xml"/>
+	<element id="GROUP_SUBSITE_PARENT8" file="element/inheritance/group_subsite_parent.xml"/>
+	<element id="GROUP_SUBSITE_PARENT9" file="element/inheritance/group_subsite_parent.xml"/>
+	<group inherits="GROUP_SUBSITE_PARENT1">
+		<group inherits="GROUP_SUBSITE_PARENT2">
+			<element id="CHILD1" inherits="GROUP_SUBSITE_PARENT3" file="element/inheritance/group_subsite_child.xml" url="/inheritance/child1"/>
+			
+			<subsite id="GROUP_SUBSITE_SUBSITE" inherits="GROUP_SUBSITE_PARENT3" urlprefix="/inheritance/group_subsite">
+				<element id="CHILD2" inherits="^GROUP_SUBSITE_PARENT4" file="element/inheritance/group_subsite_child.xml" url="/child2"/>
+				
+				<group inherits="^GROUP_SUBSITE_PARENT4">
+					<element id="CHILD3" inherits="^GROUP_SUBSITE_PARENT5" file="element/inheritance/group_subsite_child.xml" url="/child3"/>
+					
+					<group inherits="^GROUP_SUBSITE_PARENT5">
+						<element id="CHILD4" inherits="^GROUP_SUBSITE_PARENT6" file="element/inheritance/group_subsite_child.xml" url="/child4"/>
+					</group>
+				</group>
+				<group inherits="^GROUP_SUBSITE_PARENT7">
+					<group inherits="^GROUP_SUBSITE_PARENT8">
+						<element id="CHILD5" inherits="^GROUP_SUBSITE_PARENT9" file="element/inheritance/group_subsite_child.xml" url="/child5"/>
+					</group>
+				</group>
+			</subsite>
+		</group>
+	</group>
+</site>
+

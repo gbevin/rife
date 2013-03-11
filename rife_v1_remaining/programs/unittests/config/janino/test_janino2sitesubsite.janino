@@ -1,0 +1,17 @@
+builder
+	.setFallback("ELEMENT2")
+	
+	.addGlobalExit("globalexit3", "ELEMENT3")
+	.addGlobalVar("globalvar3")
+	
+	.addDeparture("ELEMENT3")
+
+	.enterElement("xml/test_xml2elementinfo2.xml")
+		.setId("ELEMENT2")
+		.setUrl("/test/element2")
+	.leaveElement()
+	
+	.enterElement("xml/test_xml2elementinfo3.xml")
+		.setId("ELEMENT3")
+		.setUrl("/test/element3")
+	.leaveElement();

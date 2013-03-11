@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crud>
+	<method>home</method>
+	<title>\<!--V 'L10N:window_title'-->window_title\<!--/V--></title>
+	<subtitle>\<!--V 'L10N:page_title-home'-->page_title-home\<!--/V--></subtitle>
+	<urls>
+		<home>\<!--V 'EXIT:QUERY:[!V 'exit_prefix'/][!V 'classname'/]-home'/--></home>
+		<add>\<!--V 'EXIT:QUERY:[!V 'exit_prefix'/][!V 'classname'/]-add'/--></add>
+		<browse>\<!--V 'EXIT:QUERY:[!V 'exit_prefix'/][!V 'classname'/]-browse'/--></browse>
+	</urls>
+</crud>

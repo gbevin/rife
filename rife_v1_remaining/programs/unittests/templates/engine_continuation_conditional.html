@@ -1,0 +1,11 @@
+<html>
+	<head><title><!--V 'title'/--></title>
+	<body>
+		<form name="pause" action="[!V 'SUBMISSION:FORM:pause'/]" method="POST">
+			<!--V 'SUBMISSION:PARAMS:pause'/-->
+			<p><input name="answer" type="text" value="[!V 'PARAM:answer'][!/V]"></p>
+			<p><input name="stop" type="text" value="[!V 'PARAM:stop'][!/V]"></p>
+			<input type="submit"/>
+		</form>
+	</body>
+</html>

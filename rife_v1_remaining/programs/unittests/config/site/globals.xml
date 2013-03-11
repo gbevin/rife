@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: globals.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<globalvar name="globalvar1"/>
+	<globalvar name="globalvar2"/>
+	<globalexit name="globalexit1" destid="DESTINATION3" reflect="0"/>
+	<globalexit name="globalexit2" reflect="true"/>
+	
+	<globalexit name="globalexit6" destid="."/>
+	
+	<globalcookie name="cookie1"/>
+	
+	<arrival destid="INPUTSSOURCE"/>
+	
+	<!-- BASIC GLOBALS WITH EXITS -->
+	<element id="SOURCE" url="/globals/source" file="element/globals/source.xml">
+		<flowlink srcexit="exit1" destid="DESTINATION1"/>
+		<flowlink srcexit="exit2" destid="DESTINATION2"/>
+	</element>
+	<element id="DESTINATION1" url="/globals/destination1" file="element/globals/destination1.xml"/>
+	<element id="DESTINATION2" url="/globals/destination2" file="element/globals/destination2.xml"/>
+	<element id="DESTINATION3" url="/globals/destination3" file="element/globals/destination3.xml"/>
+	
+	<!-- BASIC GLOBALS WITH INJECTION -->
+	<element id="INJECTION" url="/globals/injection" file="element/globals/source.xml">
+		<flowlink srcexit="exit1" destid="INJECTIONDEST1"/>
+		<flowlink srcexit="exit2" destid="INJECTIONDEST2"/>
+	</element>
+	<element id="INJECTIONDEST1" url="/globals/injectiondest1" file="element/globals/injectiondest1.xml"/>
+	<element id="INJECTIONDEST2" url="/globals/injectiondest2" file="element/globals/injectiondest2.xml"/>
+	
+	<!-- GROUP -->
+	<group>
+		<globalvar name="globalvar3"/>
+		<globalvar name="globalvar4"/>
+		<globalexit name="globalexit3" destid="GROUP_DESTINATION3" reflect="f"/>
+		<globalexit name="globalexit4" reflect="t"/>
+		
+		<element id="GROUP_SOURCE" url="/globals/group/source" file="element/globals/group/source.xml">
+			<flowlink srcexit="exit1" destid="GROUP_DESTINATION1"/>
+			<flowlink srcexit="exit2" destid="GROUP_DESTINATION2"/>
+		</element>
+		<element id="GROUP_DESTINATION1" url="/globals/group/destination1" file="element/globals/group/destination1.xml"/>
+		<element id="GROUP_DESTINATION2" url="/globals/group/destination2" file="element/globals/group/destination2.xml"/>
+		<element id="GROUP_DESTINATION3" url="/globals/group/destination3" file="element/globals/group/destination3.xml"/>
+	</group>
+
+	<!-- GROUP ISOLATION -->
+	<group>
+		<globalvar name="globalvar5"/>
+		
+		<element id="GROUP_ISOLATION_SOURCE" url="/globals/group/isolation_source" file="element/globals/group/isolation_source.xml">
+			<flowlink srcexit="exit1" destid="GROUP_ISOLATION_DESTINATION1"/>
+			<flowlink srcexit="exit2" destid="GROUP_ISOLATION_DESTINATION2"/>
+		</element>
+		<element id="GROUP_ISOLATION_DESTINATION1" url="/globals/group/isolation_destination1" file="element/globals/group/isolation_destination.xml"/>
+	</group>
+
+	<group>
+		<globalvar name="globalvar2">
+			<default>default value 2 local</default>
+		</globalvar>
+		<globalvar name="globalvar5"/>
+		
+		<element id="GROUP_ISOLATION_DESTINATION2" url="/globals/group/isolation_destination2" file="element/globals/group/isolation_destination.xml"/>
+	</group>
+
+
+	<element id="SUBMISSION" url="/globals/submission" file="element/globals/submission.xml"/>
+
+	<!-- INPUT OVERRIDING -->
+	<element id="INPUTSSOURCE" url="/globalvars/inputs/source" file="element/globals/vars_inputs_source.xml">
+		<flowlink srcexit="exit" destid="INPUTSDESTINATION"/>
+		<datalink srcoutput="output1"  destid="INPUTSDESTINATION" destinput="input1"/>
+		<datalink srcoutput="output2"  destid="INPUTSDESTINATION" destinput="input2"/>
+	</element>
+	<element id="INPUTSDESTINATION" url="/globalvars/inputs/destination" file="element/globals/vars_inputs_destination.xml"/>
+	
+	<!-- GLOBAL BEAN -->
+	<group>
+		<globalbean classname="com.uwyn.rife.engine.testelements.globals.BeanImpl"/>
+		<globalexit name="exit" reflect="true"/>
+
+		<element id="BEAN_NORMAL" url="/globals/bean/normal" file="element/globals/bean_normal.xml"/>
+	</group>
+	
+	<!-- GLOBAL BEAN PREFIX -->
+	<group>
+		<globalbean classname="com.uwyn.rife.engine.testelements.globals.BeanImpl" prefix="prefix_"/>
+		<globalexit name="exit" reflect="1"/>
+
+		<element id="BEAN_PREFIX" url="/globals/bean/prefix" file="element/globals/bean_prefix.xml"/>
+	</group>
+	
+	<!-- NAMED GLOBAL BEAN -->
+	<group>
+		<globalbean name="globalbean1" classname="com.uwyn.rife.engine.testelements.globals.BeanImpl"/>
+		<globalexit name="exit" reflect="true"/>
+
+		<element id="NAMED_BEAN_NORMAL" url="/globals/namedbean/normal" file="element/globals/namedbean_normal.xml"/>
+	</group>
+	
+	<!-- NAMED GLOBAL BEAN PREFIX -->
+	<group>
+		<globalbean name="globalbean2"  classname="com.uwyn.rife.engine.testelements.globals.BeanImpl" prefix="prefix_"/>
+		<globalexit name="exit" reflect="1"/>
+
+		<element id="NAMED_BEAN_PREFIX" url="/globals/namedbean/prefix" file="element/globals/namedbean_prefix.xml"/>
+	</group>
+	
+	<!-- GLOBALEXIT SNAPBACK -->
+	<group>
+		<globalexit name="exit2" snapback="true"/>
+		
+		<element id="SNAPBACK_SOURCE" file="element/globals/snapback_source.xml" url="/globals/snapback/source">
+			<flowlink srcexit="exit1" destid="SNAPBACK_PASSTHROUGH"/>
+		</element>
+		<element id="SNAPBACK_PASSTHROUGH" file="element/globals/snapback_passthrough.xml" url="/globals/snapback/passthrough"/>
+	</group>
+	
+	<!--GLOBAL COOKIES-->
+	<group>
+		<globalcookie name="cookie2"/>
+		<globalcookie name="cookie3"/>
+		
+		<element id="GLOBALCOOKIE_VALID_SOURCE" file="element/globals/globalcookie_source.xml" url="/globals/globalcookie/valid/source"/>
+		<element id="GLOBALCOOKIE_VALID_DESTINATION" file="element/globals/globalcookie_destination.xml" url="/globals/globalcookie/valid/destination"/>
+	</group>
+	<group>
+		<globalcookie name="cookie2"/>
+	
+		<element id="GLOBALCOOKIE_INVALID_SOURCE" file="element/globals/globalcookie_source.xml" url="/globals/globalcookie/invalid/source"/>
+		<element id="GLOBALCOOKIE_INVALID_SOURCE2" file="element/globals/globalcookie_source2.xml" url="/globals/globalcookie/invalid/source2"/>
+	</group>
+	<group>
+		<globalcookie name="defcookie1">
+			<default>the first cookie</default>
+		</globalcookie>
+		
+		<globalcookie name="defcookie2"/>
+		
+		<globalcookie name="defcookie3">
+			<default><config param="ENGINE_ELEMENT_CONFIG_VALUE"/></default>
+		</globalcookie>
+		
+		<globalcookie name="defcookie4">
+			<default><config param="ENGINE_ELEMENT_CONFIG_VALUE"/></default>
+		</globalcookie>
+		<globalcookie name="defcookie5">
+			<default>the fifth cookie</default>
+		</globalcookie>
+		
+		<element id="GLOBALCOOKIE_DEFAULTS" file="element/globals/globalcookie_defaults.xml" url="/globals/globalcookie/defaults"/>
+	</group>
+	
+	<!-- GLOBAL EXIT TO ROOT ARRIVAL -->
+	<element id="GLOBALEXIT_TO_ROOT_ARRIVAL" file="element/globals/globalexit_to_root_arrival.xml" url="/globals/globalexit_to_root_arrival">
+		<datalink srcoutput="output1"  destid="." destinput="input1"/>
+		<datalink srcoutput="output2"  destid="." destinput="input2"/>
+	</element>
+</site>
+

@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+    <meta name="generator" content="JHighlight v1.0 (http://jhighlight.dev.java.net)" />
+    <title>03_numberguess/src/implementations/tutorial/numberguess/Start.java</title>
+    <link rel="Help" href="http://jhighlight.dev.java.net" />
+    <style type="text/css">
+code {
+color: rgb(0,0,0); font-family: monospace; font-size: 12px; white-space: nowrap;
+}
+.java_type {
+color: rgb(0,44,221);
+}
+.java_comment {
+color: rgb(147,147,147); background-color: rgb(247,247,247);
+}
+.java_operator {
+color: rgb(0,124,31);
+}
+.java_separator {
+color: rgb(0,33,255);
+}
+.java_plain {
+color: rgb(0,0,0);
+}
+h1 {
+font-family: sans-serif; font-size: 16pt; font-weight: bold; color: rgb(0,0,0); background: rgb(210,210,210); border: solid 1px black; padding: 5px; text-align: center;
+}
+.java_javadoc_comment {
+color: rgb(147,147,147); background-color: rgb(247,247,247); font-style: italic;
+}
+.java_keyword {
+color: rgb(0,0,0); font-weight: bold;
+}
+.java_literal {
+color: rgb(188,0,0);
+}
+.java_javadoc_tag {
+color: rgb(147,147,147); background-color: rgb(247,247,247); font-style: italic; font-weight: bold;
+}
+    </style>
+</head>
+<body>
+<h1>03_numberguess/src/implementations/tutorial/numberguess/Start.java</h1><code><span class="java_comment">/*</span><br />
+<span class="java_comment">&nbsp;*&nbsp;Copyright&nbsp;2001-2008&nbsp;Geert&nbsp;Bevin&nbsp;&lt;gbevin[remove]&nbsp;at&nbsp;uwyn&nbsp;dot&nbsp;com&gt;</span><br />
+<span class="java_comment">&nbsp;*&nbsp;Licensed&nbsp;under&nbsp;the&nbsp;Apache&nbsp;License,&nbsp;Version&nbsp;2.0&nbsp;(the&nbsp;&quot;License&quot;)</span><br />
+<span class="java_comment">&nbsp;*&nbsp;$Id:&nbsp;Start.java&nbsp;3877&nbsp;2007-08-03&nbsp;19:48:10Z&nbsp;gbevin&nbsp;$</span><br />
+<span class="java_comment">&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_keyword">package</span><span class="java_plain">&nbsp;tutorial</span><span class="java_separator">.</span><span class="java_plain">numberguess</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain"></span><br />
+<span class="java_keyword">import</span><span class="java_plain">&nbsp;com</span><span class="java_separator">.</span><span class="java_plain">uwyn</span><span class="java_separator">.</span><span class="java_plain">rife</span><span class="java_separator">.</span><span class="java_plain">engine</span><span class="java_separator">.</span><span class="java_type">Element</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_keyword">import</span><span class="java_plain">&nbsp;tutorial</span><span class="java_separator">.</span><span class="java_plain">numberguess</span><span class="java_separator">.</span><span class="java_plain">backend</span><span class="java_separator">.</span><span class="java_type">Contest</span><span class="java_separator">;</span><span class="java_plain"></span><br />
+<span class="java_plain"></span><br />
+<span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;This&nbsp;element&nbsp;starts&nbsp;a&nbsp;new&nbsp;game&nbsp;and&nbsp;activates&nbsp;the&nbsp;&lt;code&gt;started&lt;/code&gt;&nbsp;exit</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;when&nbsp;that's&nbsp;done.&nbsp;Nothing&nbsp;is&nbsp;displayed.</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;&lt;p&gt;</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;If&nbsp;a&nbsp;game&nbsp;is&nbsp;already&nbsp;active&nbsp;for&nbsp;the&nbsp;participant&nbsp;that&nbsp;uses&nbsp;this&nbsp;element,</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;the&nbsp;game&nbsp;is&nbsp;replaced&nbsp;by&nbsp;the&nbsp;name&nbsp;one.</span><br />
+<span class="java_javadoc_comment">&nbsp;*</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@author</span><span class="java_javadoc_comment">&nbsp;Geert&nbsp;Bevin&nbsp;(gbevin[remove]&nbsp;at&nbsp;uwyn&nbsp;dot&nbsp;com)</span><br />
+<span class="java_javadoc_comment">&nbsp;*&nbsp;</span><span class="java_javadoc_tag">@version</span><span class="java_javadoc_comment">&nbsp;$Revision:&nbsp;3877&nbsp;$</span><br />
+<span class="java_javadoc_comment">&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_keyword">class</span><span class="java_plain">&nbsp;</span><span class="java_type">Start</span><span class="java_plain">&nbsp;</span><span class="java_keyword">extends</span><span class="java_plain">&nbsp;</span><span class="java_type">Element</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_javadoc_comment">/**</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;The&nbsp;element's&nbsp;entry&nbsp;point.</span><br />
+<span class="java_javadoc_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_keyword">public</span><span class="java_plain">&nbsp;</span><span class="java_type">void</span><span class="java_plain">&nbsp;processElement</span><span class="java_separator">()</span><span class="java_plain">&nbsp;</span><span class="java_separator">{</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_comment">//&nbsp;if&nbsp;a&nbsp;game&nbsp;is&nbsp;already&nbsp;active,&nbsp;stop&nbsp;it</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_type">Contest</span><span class="java_separator">.</span><span class="java_plain">stopGame</span><span class="java_separator">(</span><span class="java_plain">getInput</span><span class="java_separator">(</span><span class="java_literal">&quot;gameid&quot;</span><span class="java_separator">));</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_comment">//&nbsp;start&nbsp;the&nbsp;new&nbsp;game&nbsp;and&nbsp;remember&nbsp;it's&nbsp;unique&nbsp;id</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setOutput</span><span class="java_separator">(</span><span class="java_literal">&quot;gameid&quot;</span><span class="java_separator">,</span><span class="java_plain">&nbsp;</span><span class="java_type">Contest</span><span class="java_separator">.</span><span class="java_plain">startGame</span><span class="java_separator">());</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_comment">//&nbsp;activate&nbsp;the&nbsp;started&nbsp;exit</span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit</span><span class="java_separator">(</span><span class="java_literal">&quot;started&quot;</span><span class="java_separator">);</span><span class="java_plain"></span><br />
+<span class="java_plain">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="java_separator">}</span><span class="java_plain"></span><br />
+<span class="java_separator">}</span><span class="java_plain"></span><br />
+</code>
+</body>
+</html>

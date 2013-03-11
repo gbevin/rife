@@ -1,0 +1,16 @@
+<!V 'rows'/>
+
+<!B 'row_first'>
+	<!V 'member_one_a'/>
+	<!V 'member_one_b'/>
+<!/B>
+<!B 'row_second'>
+	<!V 'member_two_a'/>
+	<!V 'member_two_b'/>
+<!/B>
+
+<!BV 'member_one_a'>one a <!V 'member_value1'/><!/BV>
+<!BV 'member_one_b'>one b <!V 'member_value1'/><!/BV>
+<!BV 'member_two_a'>two <!V 'member_value1'/><!/BV>
+<!BV 'member_two_b'>two <!V 'member_value2'/><!/BV>
+

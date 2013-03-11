@@ -1,0 +1,13 @@
+builder
+	.setImplementation("com.uwyn.rife.engine.testelements.outputs.Normal")
+	
+	// INPUTS
+	.addInput("input1")
+	.addInput("input2")
+	
+	// OUTPUTS
+	.addOutput("output1")
+	
+	// EXITS
+	.addExit("exit1");
+

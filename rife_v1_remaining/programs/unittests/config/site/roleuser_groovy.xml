@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: roleuser_groovy.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<globalvar name="authid"/>
+
+	<element id="MEMORY_ROLE_ADMIN" file="element/authentication/memory_authenticated_role.xml"/>
+	<element id="MEMORY_ROLE_ADMIN_TARGET" file="element/roleuser/target_groovy.xml" url="/memory/role_admin" inherits="MEMORY_ROLE_ADMIN"/>
+
+	<element id="MEMORY_ROLE_MAINT" file="element/authentication/memory_authenticated_role2.xml"/>
+	<element id="MEMORY_ROLE_MAINT_TARGET" file="element/roleuser/target_groovy.xml" url="/memory/role_maint" inherits="MEMORY_ROLE_MAINT"/>
+	
+	<element id="IDENTIFIED" file="element/roleuser/identified.xml">
+		<property name="authElementId">MEMORY_ROLE_ADMIN</property>
+	</element>
+	<element id="IDENTIFIED_TARGET" file="element/roleuser/target_groovy.xml" url="/identified" inherits="IDENTIFIED"/>
+
+	<element file="element/roleuser/explicit_evaluation_groovy.xml" url="/explicit_evaluation" inherits="MEMORY_ROLE_ADMIN"/>
+
+	<element id="DATABASE_ROLE_ADMIN" file="element/authentication/database_authenticated_role.xml"/>
+	<element id="DATABASE_ROLE_ADMIN_TARGET" file="element/roleuser/target_groovy.xml" url="/database/role_admin" inherits="DATABASE_ROLE_ADMIN"/>
+	
+	<element id="DATABASE_ROLE_MAINT" file="element/authentication/database_authenticated_role2.xml"/>
+	<element id="DATABASE_ROLE_MAINT_TARGET" file="element/roleuser/target_groovy.xml" url="/database/role_maint" inherits="DATABASE_ROLE_MAINT"/>
+	
+	<element id="DATABASE_ENCRYPTED" file="element/authentication/database_authenticated_encrypted.xml"/>
+	<element id="DATABASE_ENCRYPTED_TARGET" file="element/roleuser/target_groovy.xml" url="/database/encrypted" inherits="DATABASE_ENCRYPTED"/>
+</site>
+

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: mixed_authenticated_otherid.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE element SYSTEM "/dtd/element.dtd">
+
+<element extends="rife/authenticated/mixedunpurged.xml">
+	<property name="datasource"><datasource><config param="unittestsdatasource"/></datasource></property>
+	
+	<property name="template_name">authentication_mixed</property>
+	<property name="sessionmanager_id">otherid</property>
+
+	<submission name="credentials">
+		<param name="login"/>
+		<param name="password"/>
+	</submission>
+
+	<childtrigger name="authid"/>
+</element>
+
+

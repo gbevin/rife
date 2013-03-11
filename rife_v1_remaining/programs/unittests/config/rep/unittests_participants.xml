@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: unittests_participants.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE rep SYSTEM "/dtd/rep.dtd">
+
+<rep>
+    <participant name="configuration" blocking="true" param="XmlSelectorOs">
+      ParticipantConfig</participant>
+    <participant blocking="true" param="rep/unittests_datasources.xml">  ParticipantDatasources  </participant>
+    <participant blocking="true" param="rep/unittests_memoryusers.xml">ParticipantMemoryUsers</participant>
+    <participant name="scheduler" blocking="true" param="rep/unittests_memoryscheduler.xml">ParticipantMemoryScheduler</participant>
+    <participant blocking="true" param="rep/unittests_site.xml">ParticipantSite</participant>
+</rep>

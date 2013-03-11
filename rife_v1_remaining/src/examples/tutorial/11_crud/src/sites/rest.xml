@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: rest.xml 3953 2008-05-08 01:04:08Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<subsite id="Blog" file="crud:Blog.groovy" urlprefix="/blog"/>
+	<subsite id="BlogJanino" file="crud:BlogJanino.janino" urlprefix="/blogjanino"/>
+	<subsite id="News" file="crud:com.uwyn.rifecrudmodels.Newsitem" urlprefix="/news"/>
+	<subsite id="Account" file="crud:com.uwyn.rife.crud.samples.beans.Account" urlprefix="/account"/>
+	<subsite id="Category" file="crud:com.uwyn.rife.crud.samples.beans.Category" urlprefix="/category"/>
+	<subsite id="Faq" file="crud:com.uwyn.rife.crud.samples.beans.Faq" urlprefix="/faq"/>
+	<subsite id="Regular" file="crud:com.uwyn.rife.crud.samples.beans.Regular" urlprefix="/regular">
+		<property name="crud_paging-limit">5</property>
+		<property name="crud_paging-span">2</property>
+	</subsite>
+	<subsite id="Test" file="crud:com.uwyn.rife.crud.samples.beans.Test" urlprefix="/test"/>
+</site>
+

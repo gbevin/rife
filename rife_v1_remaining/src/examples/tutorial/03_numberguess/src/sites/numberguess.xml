@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: numberguess.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+    <arrival destid="Start"/>
+    
+    <element id="Start" url="/start"
+    		 implementation="tutorial.numberguess.Start">
+    		 
+		<input name="gameid"/>
+		<output name="gameid"/>
+		
+		<exit name="started"/>
+	
+        <flowlink srcexit="started" destid="Guess">
+			<datalink srcoutput="gameid" destinput="gameid"/>
+		</flowlink>
+    </element>
+    
+    <element id="Success"
+    		 implementation="tutorial.numberguess.Success">
+    		 
+		<input name="gameid"/>
+		<exit name="start"/>
+		
+        <flowlink srcexit="start" destid="Guess"/>
+    </element>
+    
+    <element id="Guess" url="/guess"
+    		 implementation="tutorial.numberguess.Guess">
+    		 
+		<input name="gameid"/>
+		<submission name="performGuess">
+			<param name="guess">
+				<default>-1</default>
+			</param>
+		</submission>
+		<output name="gameid"/>
+		
+		<exit name="start"/>
+		<exit name="success"/>
+
+        <flowlink srcexit="start" destid="Start">
+			<datalink srcoutput="gameid" destinput="gameid"/>
+		</flowlink>
+
+        <flowlink srcexit="success" destid="Success">
+			<datalink srcoutput="gameid" destinput="gameid"/>
+		</flowlink>
+    </element>
+</site>

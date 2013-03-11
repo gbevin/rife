@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+					  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  http://www.uwyn.com
+  -  $Id: blueprint_custom.html 3953 2008-05-08 01:04:08Z gbevin $
+  -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="[!V 'CONFIG:L10N_DEFAULT_LANGUAGE']en[!/V]" lang="[!V 'CONFIG:L10N_DEFAULT_LANGUAGE'/]">
+
+<head>
+	<title><!--V 'window_title'-->the window title<!--/V--></title>
+	<link rel="stylesheet" type="text/css" href="[!V 'WEBAPP:ROOTURL'/]style/crud.css" />
+	<base href="[!V 'WEBAPP:ROOTURL'/]">
+	<style type="text/css">
+		.product_title_area {
+			background-color: #990000;
+		}
+		
+		.page_title_area {
+			background-color: #993333;
+		}
+
+		.menu_item_active {
+			background-color: #999999 !important;
+		}
+
+		.menu_item_highlight {
+			background-color: #aa8888 !important;
+		}
+		
+		.menu_item_highlight a {
+			border-color: #aa8888;
+			background-color: #aa8888 !important;
+		}
+
+		.rangedtable .activerange {
+			color: #990000;
+		}
+		
+		.rangedtable a {
+			color: #990000;
+		}
+	</style>
+	<!--V 'head_scripts'--><!--/V-->
+</head>
+
+<body[!V 'document_attributes'][!/V]>
+	<a name="TOP"></a>
+
+	<div class="product_title_area">
+		<div class="product_title"><i><!--V 'L10N:product_title'-->product_title<!--/V--></i></div>
+	</div>
+	
+	<!--V 'page_title_area'--><!--/V-->
+	<!--BV 'page_title_area'-->
+	<div class="page_title_area">
+		<div class="page_title"><!--V 'page_title'-->the page title<!--/V--></div>
+	</div>
+	<!--/BV-->
+	
+	<!--V 'menu_area'--><!--/V-->
+	<div class="content_area">
+		<div class="content">
+			<!--I 'rife.crud.html.common.error_area'/-->
+			<!--V 'crud_content'/-->
+		</div>
+	</div>
+
+	<div class="copyright_area">
+		<div class="copyright"><b><!--V 'L10N:product_name'-->product_name<!--/V--></b> &copy; 2001-2008 by <a href="http://www.uwyn.com">Uwyn bvba/sprl</a></div>
+	</div>
+
+</body>
+</html>
+<!--B 'document_attributes_success'--> onload="document.forms[0].submit.focus();"<!--/B-->

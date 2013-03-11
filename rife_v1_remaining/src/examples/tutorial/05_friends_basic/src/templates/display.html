@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: display.html 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<title>My friends</title>
+</head>
+
+<body>
+	<h3>My Friends</h3>
+	
+	<p>This is a list of my friends that have interesting websites to visit.</p>
+	
+	<r:v name="content"/>
+	
+	<r:bv name="content">
+		<table border="1" cellpadding="5" cellspacing="0">
+		<tr>
+			<th>firstname</th>
+			<th>lastname</th>
+			<th>website</th>
+		</tr>
+		
+		<r:v name="rows"></r:v>
+		<r:b name="row">
+			<tr valign="top">
+				<td><r:v name="firstname"/></td>
+				<td><r:v name="lastname"/></td>
+				<td><a href="${v url/}"><r:v name="description"/></a></td>
+			</tr>
+		</r:b>
+		</table>
+	</r:bv>
+	<p><a href="${v EXIT:QUERY:menu/}">go to menu</a></p>
+</body>
+
+</html>

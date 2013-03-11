@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: datasources.xml 3943 2008-04-27 09:09:02Z gbevin $
+  -->
+
+<!DOCTYPE datasources SYSTEM "/dtd/datasources.dtd">
+
+<datasources>
+    <datasource name="derby">
+        <driver>org.apache.derby.jdbc.EmbeddedDriver</driver>
+        <url>jdbc:derby:rife;create=true</url>
+        <user></user>
+        <password></password>
+        <poolsize>5</poolsize>
+    </datasource>
+    <datasource name="postgresql">
+        <driver>org.postgresql.Driver</driver>
+        <url>jdbc:postgresql://localhost:5432/rife</url>
+        <user>rife</user>
+        <password>rife</password>
+        <poolsize>5</poolsize>
+    </datasource>
+    <datasource name="mysql">
+        <driver>com.mysql.jdbc.Driver</driver>
+        <url>jdbc:mysql://localhost:3306/rife</url>
+        <user>rife</user>
+        <password>rife</password>
+        <poolsize>5</poolsize>
+    </datasource>
+    <datasource name="h2">
+        <driver>org.h2.Driver</driver>
+        <url>jdbc:h2:embedded_dbs/h2/rife</url>
+        <user>sa</user>
+        <password></password>
+        <poolsize>5</poolsize>
+    </datasource>
+</datasources>

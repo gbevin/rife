@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: main.xml 3953 2008-05-08 01:04:08Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<arrival destid="Root"/>
+	
+	<element id="Root" file="rife/http/redirect.xml" url="home">
+		<property name="to">/html</property>
+	</element>
+	
+	<subsite id="Html" file="html.xml" urlprefix="html"/>
+	<subsite id="Rest" file="rest.xml" urlprefix="rest">
+		<property name="crud_template_group">xml</property>
+	</subsite>
+</site>
+

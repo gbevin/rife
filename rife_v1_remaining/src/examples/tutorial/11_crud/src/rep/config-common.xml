@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: config-common.xml 3953 2008-05-08 01:04:08Z gbevin $
+  -->
+
+<!DOCTYPE config SYSTEM "/dtd/config.dtd">
+
+<config>
+	<param name="DATASOURCE_DATABASE">unittests</param>
+	<param name="DATASOURCE_USER">unittests</param>
+	<param name="DATASOURCE_PASSWORD">password</param>
+	<param name="ORACLE_CONNECT">jdbc:oracle:thin:@oracle:1521:prod</param>
+</config>

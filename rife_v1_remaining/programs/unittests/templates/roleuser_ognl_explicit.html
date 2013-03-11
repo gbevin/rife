@@ -1,0 +1,18 @@
+<!--V 'OGNL:ROLEUSER:login'-->not matching login<!--/V-->
+<!--V 'OGNL:ROLEUSER:password1'-->not matching password1<!--/V-->
+<!--V 'OGNL:ROLEUSER:password2'-->not matching password2<!--/V-->
+<!--V 'OGNL:ROLEUSER:role1'-->not matching role1<!--/V-->
+<!--V 'OGNL:ROLEUSER:role2'-->not matching role2<!--/V-->
+<!--V 'OGNL:ROLEUSER:role3'-->not matching role3<!--/V-->
+<!--V 'OGNL:ROLEUSER:userid1'-->not matching userid1<!--/V-->
+<!--V 'OGNL:ROLEUSER:userid2'-->not matching userid2<!--/V-->
+<!--V 'INPUT:authid'--><!--/V-->
+<!--B 'OGNL:ROLEUSER:login:[[ #login == "gbevin" ]]'-->matching login<!--/B-->
+<!--B 'OGNL:ROLEUSER:password1:[[ #password == "yeolpass" ]]'-->matching password1<!--/B-->
+<!--B 'OGNL:ROLEUSER:password2:[[ password in {@com.uwyn.rife.tools.StringEncryptor@MD5.encrypt("yeolpass"), @com.uwyn.rife.tools.StringEncryptor@SHA.encrypt("yeolpass")} ]]'-->matching password2<!--/B-->
+<!--B 'OGNL:ROLEUSER:role1:[[ #roleadmin in #roles ]]'-->matching role1<!--/B-->
+<!--B 'OGNL:ROLEUSER:role2:[[ isInRole("maint") ]]'-->matching role2<!--/B-->
+<!--B 'OGNL:ROLEUSER:role3:[[ "maint" in roles ]]'-->matching role3<!--/B-->
+<!--B 'OGNL:ROLEUSER:userid1:[[ 1 == userId ]]'-->matching userid1<!--/B-->
+<!--B 'OGNL:ROLEUSER:userid2:[[ 3 == #userId ]]'-->matching userid2<!--/B-->
+

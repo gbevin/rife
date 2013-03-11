@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: config.dtd 3918 2008-04-14 17:35:35Z gbevin $
+  -  PUBLIC ID: -//Rifers.org//RIFE Config 1.0//EN
+  -  SYSTEM ID: http://rifers.org/dtd/config_1_0.dtd
+  -->
+
+<!ELEMENT config	(param|list|include)*>
+
+<!ELEMENT param     (#PCDATA|value|property)*>
+<!ATTLIST param	    name CDATA #REQUIRED
+					final (0|f|false|1|t|true) "false">
+
+<!ELEMENT value     EMPTY>
+<!ATTLIST value     name CDATA #REQUIRED>
+
+<!ELEMENT list      (item*)>
+<!ATTLIST list      name CDATA #REQUIRED
+					final (0|f|false|1|t|true) "false">
+
+<!ELEMENT item      (#PCDATA|value|property)*>
+
+<!ELEMENT include	EMPTY>
+<!ATTLIST include   file CDATA #REQUIRED>
+
+<!ELEMENT property  EMPTY>
+<!ATTLIST property  name CDATA #REQUIRED>
+

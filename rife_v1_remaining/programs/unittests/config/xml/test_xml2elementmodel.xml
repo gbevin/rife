@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: test_xml2elementmodel.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE element SYSTEM "/dtd/element.dtd">
+
+<element implementation="com.uwyn.rife.element.elementModel">
+
+	<!-- INPUTS -->
+	<input name="Input1"/>
+	<input name="Input2"/>
+	<input name="Input3"/>
+	
+	<!-- OUTPUTS -->
+	<output name="Output1"/>
+	<output name="Output2"/>
+	
+	<!-- EXITS -->
+	<exit name="Exit1"/>
+	<exit name="Exit2"/>
+	<exit name="Exit3"/>
+	<exit name="Exit4"/>
+
+    <!-- SUBMISSIONS -->
+    <submission name="Submission1">
+        <param name="Param1"/>
+        <param name="Param2"/>
+        <param name="Param3"/>
+    </submission>
+    <submission name="Submission2">
+        <param name="Param1"/>
+        <param name="Param2"/>
+    </submission>
+</element>
+

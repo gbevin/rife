@@ -1,0 +1,16 @@
+${c}comment1${/c}
+<html>
+	<head>
+		<title>Template with ${c}comment2${/c}comment tags</title>
+	</head>
+
+	<body>
+		[!V 'VALUE1']default1[! C   ]comment2 <!--B 'BLOCK UNUSED'-->unused block<!--/B--><!--/C --><!--  C 
+		-->successive comments[!/C
+		]<!--B 'BLOCK1'-->block content<!--/B--><!--/V  	
+		 -->
+		<h1>This is a template with comment tags.</h1>
+		<h2>Some more text.</h2>[!C]
+		<r:v name="VALUE2">default2</r:v><!--/C -->
+	</body>
+</html><r:c>last comment</r:c>

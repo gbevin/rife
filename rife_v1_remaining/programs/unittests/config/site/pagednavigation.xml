@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: pagednavigation.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<element file="element/pagednavigation/defaults.xml" url="/defaults">
+		<datalink srcoutput="offset" destid="defaults" destinput="offset" />
+		<flowlink srcexit="change_offset" destid="defaults"/>
+	</element>
+
+	<element file="element/pagednavigation/custom.xml" url="/custom">
+		<datalink srcoutput="myoff" destid="custom" destinput="myoff" />
+		<flowlink srcexit="changemyoff" destid="custom"/>
+	</element>
+
+	<element id="negativecount" file="element/pagednavigation/custom.xml" url="/negativecount">
+		<datalink srcoutput="myoff" destid="negativecount" destinput="myoff" />
+		<flowlink srcexit="changemyoff" destid="negativecount"/>
+		<property name="count">-10</property>
+	</element>
+
+	<element id="norangecount" file="element/pagednavigation/defaults.xml" url="/norangecount">
+		<datalink srcoutput="offset" destid="norangecount" destinput="offset" />
+		<flowlink srcexit="change_offset" destid="norangecount"/>
+		<property name="template">paged_navigation_norangecount</property>
+	</element>
+	
+	<element id="pathinfo" file="element/pagednavigation/defaults.xml" url="/pathinfo">
+		<datalink srcoutput="offset" destid="pathinfo" destinput="offset" />
+		<flowlink srcexit="change_offset" destid="pathinfo"/>
+		<property name="pathinfo">/test/pathinfo</property>
+	</element>
+</site>
+

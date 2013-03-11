@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: authentication_memory.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<!-- memory authenticated -->
+	<element id="MEMORY_AUTHENTICATED_BASIC" file="element/authentication/memory_authenticated_basic.xml"/>
+	<element id="MEMORY_LOGOUT_TEMPLATE_BASIC" file="element/authentication/memory_logout_template_basic.xml" url="/authentication/memory/logout/template/basic"/>
+	<element id="MEMORY_LOGOUT_PASSTHROUGH" file="element/authentication/memory_logout_passthrough.xml">
+		<flowlink srcexit="logged_out" snapback="true"/>
+	</element>
+	<element id="MEMORY_AUTHENTICATED_BASIC_TARGET" file="element/authentication/memory_authenticated_target.xml" url="/authentication/memory/basic" inherits="MEMORY_AUTHENTICATED_BASIC">
+		<flowlink srcexit="reload" destid="MEMORY_AUTHENTICATED_BASIC_TARGET"/>
+		<flowlink srcexit="logout_template" destid="MEMORY_LOGOUT_TEMPLATE_BASIC"/>
+		<flowlink srcexit="logout_passthrough" destid="MEMORY_LOGOUT_PASSTHROUGH"/>
+	</element>
+	
+	<!-- memory authenticated xhtml -->
+	<element id="MEMORY_LOGOUT_TEMPLATE_XHTML" file="element/authentication/memory_logout_template_xhtml.xml" url="/authentication/memory/logout/template/xhtml"/>
+	<element id="MEMORY_AUTHENTICATED_XHTML" file="element/authentication/memory_authenticated_xhtml.xml"/>
+	<element id="MEMORY_AUTHENTICATED_XHTML_TARGET" file="element/authentication/memory_authenticated_target.xml" url="/authentication/memory/xhtml" inherits="MEMORY_AUTHENTICATED_XHTML">
+		<flowlink srcexit="reload" destid="MEMORY_AUTHENTICATED_XHTML_TARGET"/>
+		<flowlink srcexit="logout_template" destid="MEMORY_LOGOUT_TEMPLATE_XHTML"/>
+		<flowlink srcexit="logout_passthrough" destid="MEMORY_LOGOUT_PASSTHROUGH"/>
+	</element>
+	
+	<!-- memory authenticated logout precedence -->
+	<element id="MEMORY_AUTHENTICATED_PRECEDENCE" file="element/authentication/memory_authenticated_precedence.xml"/>
+	<element id="MEMORY_LOGOUT_PRECEDENCE_CHECK" file="element/authentication/memory_logout_precedence_check.xml">
+		<flowlink srcexit="logout" destid="MEMORY_LOGOUT_PRECEDENCE_PASSTHROUGH"/>
+	</element>
+	<element id="MEMORY_LOGOUT_PRECEDENCE_PASSTHROUGH" file="element/authentication/memory_logout_passthrough.xml">
+		<flowlink srcexit="logged_out" snapback="true"/>
+	</element>
+	<element id="MEMORY_AUTHENTICATED_PRECEDENCE_TARGET" file="element/authentication/memory_authenticated_precedence_target.xml" url="/authentication/memory/precedence" inherits="MEMORY_AUTHENTICATED_PRECEDENCE" pre="MEMORY_LOGOUT_PRECEDENCE_CHECK">
+		<flowlink srcexit="reload" destid="MEMORY_AUTHENTICATED_PRECEDENCE_TARGET"/>
+	</element>
+	
+	<!-- using another id for the session manager -->
+	<element id="MEMORY_AUTHENTICATED_OTHERID" file="element/authentication/memory_authenticated_otherid.xml"/>
+	<element id="MEMORY_LOGOUT_TEMPLATE_OTHERID" file="element/authentication/memory_logout_template_otherid.xml" url="/authentication/memory/logout/template/otherid"/>
+	<element id="MEMORY_AUTHENTICATED_OTHERID_TARGET" file="element/authentication/memory_authenticated_target.xml" url="/authentication/memory/otherid" inherits="MEMORY_AUTHENTICATED_OTHERID">
+		<flowlink srcexit="reload" destid="MEMORY_AUTHENTICATED_OTHERID_TARGET"/>
+		<flowlink srcexit="logout_template" destid="MEMORY_LOGOUT_TEMPLATE_OTHERID"/>
+	</element>
+	
+	<!-- using roles -->
+	<element id="MEMORY_AUTHENTICATED_ROLE" file="element/authentication/memory_authenticated_role.xml"/>
+	<element id="MEMORY_AUTHENTICATED_ROLE_TARGET" file="element/authentication/memory_authenticated_target.xml" url="/authentication/memory/role" inherits="MEMORY_AUTHENTICATED_ROLE"/>
+	
+	<element id="MEMORY_AUTHENTICATED_ROLE2" file="element/authentication/memory_authenticated_role2.xml"/>
+	<element id="MEMORY_AUTHENTICATED_ROLE2_TARGET" file="element/authentication/memory_authenticated_target.xml" url="/authentication/memory/role2" inherits="MEMORY_AUTHENTICATED_ROLE2"/>
+
+	<!-- checking non-enforced authentication -->
+	<element id="MEMORY_AUTHENTICATED_ENFORCE" file="element/authentication/memory_authenticated_enforce.xml"/>
+	<element id="MEMORY_AUTHENTICATED_ENFORCE2" file="element/authentication/memory_authenticated_enforce2.xml"/>
+	<element id="MEMORY_AUTHENTICATED_ENFORCE_TARGET" file="element/authentication/memory_authenticated_target.xml" url="/authentication/memory/enforce" inherits="MEMORY_AUTHENTICATED_ENFORCE"/>
+	<element id="MEMORY_AUTHENTICATED_ENFORCE2_TARGET" file="element/authentication/memory_authenticated_target.xml" url="/authentication/memory/enforce2" inherits="MEMORY_AUTHENTICATED_ENFORCE2"/>
+
+	<!-- checking session timeout -->
+	<element id="MEMORY_AUTHENTICATED_SESSIONDURATION" file="element/authentication/memory_authenticated_sessionduration.xml"/>
+	<element id="MEMORY_AUTHENTICATED_SESSIONDURATION_TARGET" file="element/authentication/memory_authenticated_target.xml" url="/authentication/memory/sessionduration" inherits="MEMORY_AUTHENTICATED_SESSIONDURATION"/>
+
+	<!-- purging memory authenticated -->
+	<element id="PURGING_MEMORY_AUTHENTICATED_BASIC" file="element/authentication/purging_memory_authenticated_basic.xml"/>
+	<element id="PURGING_MEMORY_AUTHENTICATED_BASIC_TARGET" file="element/authentication/purging_memory_authenticated_target.xml" url="/authentication/purging/memory/basic" inherits="PURGING_MEMORY_AUTHENTICATED_BASIC"/>
+
+	<!-- role users manager retriever -->
+	<element file="element/roleusersmanagerretriever/valid_auth_element.xml" url="/roleusersmanagerretriever/valid_auth_element"/>
+	<element file="element/roleusersmanagerretriever/auth_element_not_found.xml" url="/roleusersmanagerretriever/auth_element_not_found"/>
+	<element file="element/roleusersmanagerretriever/element_not_authenticated.xml" url="/roleusersmanagerretriever/element_not_authenticated"/>
+
+	<!-- session validator retriever -->
+	<element id="valid_auth_element2" file="element/sessionvalidatorretriever/valid_auth_element.xml" url="/sessionvalidatorretriever/valid_auth_element"/>
+	<element id="auth_element_not_found2" file="element/sessionvalidatorretriever/auth_element_not_found.xml" url="/sessionvalidatorretriever/auth_element_not_found"/>
+	<element id="element_not_authenticated2" file="element/sessionvalidatorretriever/element_not_authenticated.xml" url="/sessionvalidatorretriever/element_not_authenticated"/>
+
+	<!-- authentication utils -->
+	<element id="startAuthSession" implementation="com.uwyn.rife.authentication.elements.testelements.authenticationutils.StartAuthSession" url="/authenticationutils/startauthsession"/>
+	<element id="startAuthSession2" implementation="com.uwyn.rife.authentication.elements.testelements.authenticationutils.StartAuthSession2" url="/authenticationutils/startauthsession2"/>
+</site>
+

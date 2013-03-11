@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: submissions.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<element id="VALID" file="element/submission/valid.xml" url="/submissions/valid"/>
+	<element id="TYPED" file="element/submission/typed.xml" url="/submissions/typed"/>
+	<element id="TYPED_INJECTION" file="element/submission/typed_injection.xml" url="/submissions/typed_injection"/>
+	<element id="TYPED_MULTIPLE" file="element/submission/typed_multiple.xml" url="/submissions/typed/multiple"/>
+	<element id="MULTIPLE" file="element/submission/multiple.xml" url="/submissions/multiple"/>
+	<element id="DOESNTEXIST" file="element/submission/doesntexist.xml" url="/submissions/doesntexist"/>
+	<element id="PARAMS_UNKNOWN" file="element/submission/params_unknown.xml" url="/submissions/params_unknown"/>
+	<element id="SENDGET" file="element/submission/sendget.xml" url="/submissions/sendget"/>
+	<element id="SENDPOST" file="element/submission/sendpost.xml" url="/submissions/sendpost"/>
+	<element id="SENDPOSTHIDDEN" file="element/submission/sendposthidden.xml" url="/submissions/sendposthidden"/>
+	<element id="SENDGETHIDDEN" file="element/submission/sendgethidden.xml" url="/submissions/sendgethidden"/>
+	<element id="GENERATEDURL" file="element/submission/generatedurl.xml" url="/submissions/generatedurl"/>
+	<element id="GENERATEDURLPATHINFO" file="element/submission/generatedurlpathinfo.xml" url="/submissions/generatedurlpathinfo/*"/>
+	<element id="GENERATEDURLOVERFLOW" file="element/submission/generatedurloverflow.xml" url="/submissions/generatedurloverflow"/>
+	<element id="INPUTSPRESERVED" file="element/submission/inputspreserved.xml" url="/submissions/inputspreserved"/>
+	<element id="BEAN_NORMAL" file="element/submission/bean_normal.xml" url="/submissions/bean/normal"/>
+	<element id="BEAN_PREFIX" file="element/submission/bean_prefix.xml" url="/submissions/bean/prefix"/>
+	<element id="NAMED_BEAN_NORMAL" file="element/submission/named_bean_normal.xml" url="/submissions/named_bean/normal"/>
+	<element id="NAMED_BEAN_PREFIX" file="element/submission/named_bean_prefix.xml" url="/submissions/named_bean/prefix"/>
+	<element id="NAMED_BEAN_NORMAL_INJECTION" implementation="com.uwyn.rife.engine.testelements.submission.NamedBeanNormalInjection" extends="element/submission/named_bean_normal.xml" url="/submissions/named_bean/normal/injection"/>
+	<element id="NAMED_BEAN_PREFIX_INJECTION" implementation="com.uwyn.rife.engine.testelements.submission.NamedBeanPrefixInjection" extends="element/submission/named_bean_prefix.xml" url="/submissions/named_bean/prefix/injection"/>
+	<element id="FILL_BEAN_NORMAL" file="element/submission/fill_bean_normal.xml" url="/submissions/fill/bean/normal"/>
+	<element id="FILL_BEAN_GROUP" file="element/submission/fill_bean_group.xml" url="/submissions/fill/bean/group"/>
+	<element id="PARAMS_GENERATED" file="element/submission/params_generated.xml" url="/params/generated"/>
+	<element id="PARAMS_DEFAULTS" file="element/submission/params_defaults.xml" url="/params/defaults"/>
+	<element id="PARAMS_REGEXP" file="element/submission/params_regexp.xml" url="/params/regexp"/>
+	<element id="FORM_GENERATED" file="element/submission/form_generated.xml" url="/form/generated"/>
+	<element id="SET_SUBMISSION_BEAN" file="element/submission/set_submission_bean.xml" url="/set_submission_bean"/>
+	<element id="FILEUPLOAD_SIMPLE" file="element/submission/fileupload.xml" url="/fileupload/simple"/>
+	<element id="FILEUPLOAD_INJECTION" implementation="com.uwyn.rife.engine.testelements.submission.FileUploadInjection" extends="element/submission/fileupload.xml" url="/fileupload/injection"/>
+	<element id="FILEUPLOAD_REGEXP" file="element/submission/fileupload_regexp.xml" url="/fileupload/regexp"/>
+	<element id="EXIT_SOURCE" file="element/submission/exit_source.xml" url="/exit/source">
+		<flowlink srcexit="go_to_exit" destid="EXIT_TARGET"/>
+		<datalink srcoutput="sent_value" destid="EXIT_TARGET" destinput="received_value"/>
+	</element>
+	<element id="EXIT_TARGET" file="element/submission/exit_target.xml" url="/exit/target"/>
+	<element id="UNKNOWN" file="element/submission/unknown.xml" url="/submissions/unknown"/>
+	<element id="INPUTSNONPARAM" file="element/submission/inputsnonparam.xml" url="/submissions/inputsnonparam"/>
+	<element id="INPUTSOVERLAP" file="element/submission/inputsoverlap.xml" url="/submissions/inputsoverlap"/>
+	<element id="PARAMETERSOVERLAP" file="element/submission/parametersoverlap.xml" url="/submissions/parametersoverlap"/>
+</site>
+

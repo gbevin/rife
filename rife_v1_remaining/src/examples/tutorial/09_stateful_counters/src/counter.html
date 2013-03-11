@@ -1,0 +1,13 @@
+<div>
+	<r:v name="counter"/>
+	
+	<form action="${v SUBMISSION:FORM:decrease/}" method="post">
+		<r:v name="SUBMISSION:PARAMS:decrease"/>
+		<input type="submit" value=" - " />
+	</form>
+	
+	<form action="${v SUBMISSION:FORM:increase/}" method="post">
+		<r:v name="SUBMISSION:PARAMS:increase"/>
+		<input type="submit" value=" + " />
+	</form>
+</div>

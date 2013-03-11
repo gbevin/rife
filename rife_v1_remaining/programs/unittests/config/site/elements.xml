@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: elements.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<element id="PRINTTEMPLATE_STATICPROPERTIES" file="element/elements/print_template.xml" url="/print_template_staticproperties"/>
+	<element id="PRINTTEMPLATE_STATICPROPERTIES_XHTML" file="element/elements/print_template_xhtml.xml" url="/print_template_staticproperties_xhtml"/>
+	<element id="PRINTTEMPLATE_PROPERTIES" file="rife/template/print.xml" url="/print_template_properties">
+		<property name="name">engine_printtemplate</property>
+	</element>
+	<element id="REDIRECT_STATICPROPERTIES" file="element/elements/redirect.xml" url="/redirect_staticproperties"/>
+	<element id="REDIRECT_PROPERTIES" file="rife/http/redirect.xml" url="/redirect_properties">
+		<property name="to">print_template_staticproperties</property>
+	</element>
+	<element id="REDIRECT_STATICPROPERTIES_TYPE" file="element/elements/redirect.xml" url="/redirect_staticproperties_type"/>
+	<element id="REDIRECT_PROPERTIES_TYPE" file="rife/http/redirect.xml" url="/redirect_properties_type">
+		<property name="to">PRINTTEMPLATE_STATICPROPERTIES_XHTML</property>
+		<property name="type">element</property>
+	</element>
+	<element id="UNCACHED" file="rife/http/uncached.xml"/>
+	<element id="UNCACHED_TARGET" file="element/engine/simple_html.xml" url="/uncached" inherits="UNCACHED"/>
+	<element id="CACHED" file="element/engine/simple_html.xml" url="/cached"/>
+</site>
+

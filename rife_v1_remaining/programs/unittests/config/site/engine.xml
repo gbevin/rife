@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: engine.xml 3930 2008-04-24 11:10:22Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site fallbackid="fallback">
+	<arrival destid="ROOT"/>
+	<element id="ROOT" file="element/engine/root.xml" url="en:/root,nl:/wortel"/>
+	<element file="element/engine/simple_plain.xml" url="/simple/plain"/>
+	<element file="element/engine/simple_html.xml" url="/simple/html"/>
+	<element file="element/engine/simple_interface.xml" url="/simple/interface"/>
+	<element id="PROPERTIES1" file="element/engine/properties.xml" url="/properties1">
+		<property name="property1">property1a</property>
+		<property name="property2">property2a</property>
+		<property name="property4"><participant name="configuration">EXPRESSION_CONFIG_VALUE</participant></property>
+	</element>
+	<element id="PROPERTIES2" file="element/engine/properties.xml" url="/properties2">
+		<property name="property1">property1b</property>
+		<property name="property3">property3b</property>
+		<property name="property4">out: <template type="enginehtml">noblocks_in</template></property>
+	</element>
+	<element file="element/engine/autoid.xml" url="/autoid"/>
+	<element id="THIS_ID_IS_EXPLICIT" file="element/engine/explicitid.xml" url="/explicitid"/>
+	<element id="PATHINFO" file="element/engine/simple_html.xml" url="/simple/pathinfo/*"/>
+	<element id="COEXIST_REGULAR" file="element/engine/simple_html.xml" url="/simple_coexist"/>
+	<element id="COEXIST_PATHINFO" file="element/engine/simple_html.xml" url="/simple_coexist/*"/>
+	<element file="element/engine/headers.xml" url="/headers"/>
+	<element file="element/engine/dynamic_contenttype.xml" url="/dynamiccontenttype"/>
+	<element file="element/engine/contentlength.xml" url="/contentlength"/>
+	<element file="element/engine/staticproperties.xml" url="/staticproperties"/>
+	<element file="element/engine/fallback.xml" url="/fallback"/>
+	<element file="element/engine/binary.xml" url="/binary"/>
+	<element file="element/engine/printandwrite_buffer.xml" url="/printandwrite_buffer"/>
+	<element file="element/engine/printandwrite_nobuffer.xml" url="/printandwrite_nobuffer"/>
+	<element file="element/engine/innerclass.xml" url="/innerclass"/>
+	<element file="element/engine/initconfig.xml" url="/initconfig"/>
+	<element file="element/engine/initialize.xml" url="/initialize"/>
+	<element file="element/engine/initialize_interface.xml" url="/initialize_interface"/>
+	<element file="element/engine/deployment.xml" url="/deployment"/>
+	<element file="element/engine/deployment_interface.xml" url="/deployment_interface"/>
+	<element file="element/engine/packageprivateclass.xml" url="/packageprivateclass"/>
+	<element file="element/engine/packageprivatemethod.xml" url="/packageprivatemethod"/>
+	<element file="element/engine/form.xml" url="/form"/>
+	<element file="element/engine/form_empty.xml" url="/form_empty"/>
+	<element file="element/engine/template_content_type.xml" url="template_content_type"/>
+	<element id="GeneratedProperties" implementation="com.uwyn.rife.engine.testelements.engine.GeneratedProperties" url="generated_properties">
+		<property name="customProperty">custom property value</property>
+	</element>
+
+	<element id="Errors1" url="errors1" implementation="com.uwyn.rife.engine.testelements.engine.Errors"/>
+	<element id="Errors2" url="errors2" implementation="com.uwyn.rife.engine.testelements.engine.Errors"/>
+	<group>
+		<errorhandler destid="Errors1">
+			<type classname="com.uwyn.rife.engine.exceptions.EngineException"/>
+		</errorhandler>
+		<errorhandler destid="Errors2">
+			<type classname="java.lang.RuntimeException"/>
+		</errorhandler>
+
+		<element implementation="com.uwyn.rife.engine.testelements.engine.Erroneous"/>
+	</group>
+</site>
+

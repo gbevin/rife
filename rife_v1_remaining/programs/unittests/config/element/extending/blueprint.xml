@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: blueprint.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE element SYSTEM "/dtd/element.dtd">
+
+<element implementation="com.uwyn.rife.engine.testelements.extending.Blueprint">
+
+	<property name="property1">value1</property>
+	<property name="property2">value2</property>
+
+	<input name="switch"/>
+
+	<input name="input1"/>
+	<input name="input2">
+		<default>inputdefault</default>
+	</input>
+	
+	<incookie name="incookie1"/>
+	<incookie name="incookie2">
+		<default>incookiedefault</default>
+	</incookie>
+
+	<submission name="submission1">
+		<param name="param1"/>
+		<param name="param2">
+			<default>paramdefault</default>
+		</param>
+	</submission>
+	
+	<outcookie name="outcookie1"/>
+	<outcookie name="outcookie2">
+		<default>outcookiedefault</default>
+	</outcookie>
+	
+	<exit name="exit1"/>
+	<exit name="exit2"/>
+
+	<output name="output1"/>
+	<output name="output2">
+		<default>outputdefault</default>
+	</output>
+
+</element>
+

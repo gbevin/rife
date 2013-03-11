@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: embedding.xml 3930 2008-04-24 11:10:22Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<element id="SIMPLE" file="element/embedding/simple.xml" url="simple"/>
+	<element id="SIMPLE_EMBEDDED" file="element/embedding/embedded/simple.xml" url="simple/embedded"/>
+
+	<element id="VALUE" file="element/embedding/value.xml" url="value"/>
+	
+	<element id="DATA" file="element/embedding/data.xml" url="data"/>
+	<element id="DATA_EMBEDDED" file="element/embedding/embedded/data.xml"/>
+	
+	<element id="PROPERTIES" file="element/embedding/properties.xml" url="properties"/>
+	<element id="PROPERTIES_EMBEDDED" file="element/embedding/embedded/properties.xml"/>
+
+	<element id="CLEAR_TEMPLATE" file="element/embedding/clear_template.xml" url="clear_template"/>
+
+	<element id="SUBMISSION" file="element/embedding/submission.xml" url="submission"/>
+	<element id="SUBMISSION_EMBEDDED" file="element/embedding/embedded/submission.xml" url="submission/embedded"/>
+
+	<element id="LIST" file="element/embedding/list.xml" url="list"/>
+	<element id="LISTENTRY_EMBEDDED" file="element/embedding/embedded/listentry.xml"/>
+
+	<element id="SUBMISSION_NOURL" file="element/embedding/submission_nourl.xml" url="submission_nourl"/>
+	<element id="SUBMISSION_NOURL_EMBEDDED" file="element/embedding/embedded/submission.xml"/>
+
+	<element id="SUBMISSION_NOURL_PATHINFO" file="element/embedding/submission_nourl_pathinfo.xml" url="submission_nourl_pathinfo/*"/>
+	<element id="SUBMISSION_NOURL_PATHINFO_EMBEDDED" file="element/embedding/embedded/submission.xml"/>
+
+	<element id="SUBMISSION_SAME" file="element/embedding/submission_same.xml" url="submission_same"/>
+	<element id="SUBMISSION_SAME_EMBEDDED" file="element/embedding/embedded/submission_same.xml" url="submission_same/embedded"/>
+
+	<element id="SUBMISSION_SAME_NOURL" file="element/embedding/submission_same_nourl.xml" url="submission_same_nourl"/>
+	<element id="SUBMISSION_SAME_NOURL_EMBEDDED" file="element/embedding/embedded/submission_same.xml"/>
+
+	<element id="SUBMISSION_GLOBAL_SAME_NOURL" file="element/embedding/submission_global_same_nourl.xml" url="submission_global_same_nourl"/>
+	<element id="SUBMISSION_GLOBAL_SAME_NOURL_EMBEDDED" file="element/embedding/embedded/submission_global_same.xml"/>
+
+	<element id="SUBMISSION_MULTIPLE" file="element/embedding/submission_multiple.xml" url="submission_multiple"/>
+	<element id="SUBMISSION_MULTIPLE_EMBEDDED" file="element/embedding/embedded/submission_multiple.xml" url="submission_multiple/embedded"/>
+
+	<element id="SUBMISSION_MULTIPLE_NOURL" file="element/embedding/submission_multiple_nourl.xml" url="submission_multiple_nourl"/>
+	<element id="SUBMISSION_MULTIPLE_NOURL_EMBEDDED" file="element/embedding/embedded/submission_multiple.xml"/>
+
+	<element id="SUBMISSION_EXIT" file="element/embedding/submission_exit.xml" url="submission_exit"/>
+	<element id="SUBMISSION_EXIT_EMBEDDED" file="element/embedding/embedded/submission_exit.xml" url="submission_exit/embedded">
+		<flowlink srcexit="exit" destid="SUBMISSION_EXIT_TARGET"/>
+	</element>
+	<element id="SUBMISSION_EXIT_TARGET" file="element/embedding/submission_exit_target.xml" url="submission_exit_target"/>
+
+	<element id="SUBMISSION_EXIT_NOURL" file="element/embedding/submission_exit_nourl.xml" url="submission_exit_nourl"/>
+	<element id="SUBMISSION_EXIT_EMBEDDED_NOURL" file="element/embedding/embedded/submission_exit.xml">
+		<flowlink srcexit="exit" destid="SUBMISSION_EXIT_TARGET"/>
+	</element>
+
+	<element id="SUBMISSION_EXIT_CANCEL" file="element/embedding/submission_exit_cancel.xml" url="submission_exit_cancel"/>
+	<element id="SUBMISSION_EXIT_EMBEDDED_CANCEL" file="element/embedding/embedded/submission_exit.xml">
+		<flowlink srcexit="exit" destid="SUBMISSION_EXIT_TARGET" embedding="cancel"/>
+	</element>
+
+	<element id="INHERITANCE_EMBEDDED" file="element/embedding/inheritance_embedded.xml" url="inheritance/embedded"/>
+	<element id="INHERITANCE_EMBEDDED_TARGET_PARENT" file="element/embedding/embedded/inheritance_parent.xml"/>
+	<element id="INHERITANCE_EMBEDDED_TARGET" file="element/embedding/embedded/inheritance_child.xml" inherits="INHERITANCE_EMBEDDED_TARGET_PARENT" url="inheritance/embedded/target"/>
+
+	<element id="INHERITANCE_EMBEDDED_NOURL" file="element/embedding/inheritance_embedded_nourl.xml" url="inheritance/embedded/nourl"/>
+	<element id="INHERITANCE_EMBEDDED_NOURL_TARGET_PARENT" file="element/embedding/embedded/inheritance_parent.xml"/>
+	<element id="INHERITANCE_EMBEDDED_NOURL_TARGET" file="element/embedding/embedded/inheritance_child.xml" inherits="INHERITANCE_EMBEDDED_NOURL_TARGET_PARENT"/>
+
+	<element id="INHERITANCE_EMBEDDED_NOURL_PATHINFO" file="element/embedding/inheritance_embedded_nourl_pathinfo.xml" url="inheritance/embedded/nourl_pathinfo/*"/>
+	<element id="INHERITANCE_EMBEDDED_NOURL_PATHINFO_TARGET_PARENT" file="element/embedding/embedded/inheritance_parent.xml"/>
+	<element id="INHERITANCE_EMBEDDED_NOURL_PATHINFO_TARGET" file="element/embedding/embedded/inheritance_child.xml" inherits="INHERITANCE_EMBEDDED_NOURL_PATHINFO_TARGET_PARENT"/>
+
+	<element id="INHERITANCE_SUCCESSIVE_EMBEDDED_NOURL_PARENT" file="element/embedding/inheritance_embedded_nourl_parent.xml"/>
+	<element id="INHERITANCE_SUCCESSIVE_EMBEDDED_NOURL" file="element/embedding/inheritance_embedded_nourl.xml" url="inheritance_successive/embedded/nourl" inherits="INHERITANCE_SUCCESSIVE_EMBEDDED_NOURL_PARENT"/>
+	<element id="INHERITANCE_SUCCESSIVE_EMBEDDED_NOURL_TARGET_PARENT" file="element/embedding/embedded/inheritance_parent.xml"/>
+	<element id="INHERITANCE_SUCCESSIVE_EMBEDDED_NOURL_TARGET" file="element/embedding/embedded/inheritance_child.xml" inherits="INHERITANCE_SUCCESSIVE_EMBEDDED_NOURL_TARGET_PARENT"/>
+
+	<element id="INHERITANCE_SUCCESSIVE_EMBEDDED_NOURL_PATHINFO_PARENT" file="element/embedding/inheritance_embedded_nourl_parent.xml"/>
+	<element id="INHERITANCE_SUCCESSIVE_EMBEDDED_NOURL_PATHINFO" file="element/embedding/inheritance_embedded_nourl.xml" url="inheritance_successive/embedded/nourl_pathinfo_successive/*" inherits="INHERITANCE_SUCCESSIVE_EMBEDDED_NOURL_PATHINFO_PARENT"/>
+	<element id="INHERITANCE_SUCCESSIVE_EMBEDDED_NOURL_PATHINFO_TARGET_PARENT" file="element/embedding/embedded/inheritance_parent.xml"/>
+	<element id="INHERITANCE_SUCCESSIVE_EMBEDDED_NOURL_PATHINFO_TARGET" file="element/embedding/embedded/inheritance_child.xml" inherits="INHERITANCE_SUCCESSIVE_EMBEDDED_NOURL_PATHINFO_TARGET_PARENT"/>
+
+	<element id="INHERITANCE_COOKIE_EMBEDDING_PARENT" file="element/inheritance/cookie_parent.xml"/>
+	<element id="INHERITANCE_COOKIE_EMBEDDING" file="element/embedding/inheritance_cookie_embedding.xml" inherits="INHERITANCE_COOKIE_EMBEDDING_PARENT" url="inheritance/cookie/embedding"/>
+	<element id="INHERITANCE_COOKIE_EMBEDDING_TARGET" file="element/inheritance/cookie_child.xml" url="inheritance/cookie/embedding/target"/>
+
+	<group>
+		<globalvar name="globalvar1"/>
+		<element id="INHERITANCE_GLOBALVAR_EMBEDDING_PARENT" file="element/inheritance/globalvar_parent.xml"/>
+		<element id="INHERITANCE_GLOBALVAR_EMBEDDING" file="element/embedding/inheritance_globalvar_embedding.xml" inherits="INHERITANCE_GLOBALVAR_EMBEDDING_PARENT" url="inheritance/globalvar/embedding"/>
+		<element id="INHERITANCE_GLOBALVAR_EMBEDDING_TARGET" file="element/inheritance/globalvar_child.xml" url="inheritance/globalvar/embedding/target"/>
+	</group>
+
+	<element id="SCRIPTED" file="element/embedding/scripted.xml" url="scripted"/>
+	<element id="SCRIPTED_EMBEDDED" file="element/scripted/pnuts.xml" url="scripted/embedded"/>
+
+	<element id="EXITS" file="element/embedding/exits.xml" url="exits"/>
+	<element id="EXITS_EMBEDDED" file="element/exits/simple_source.xml" url="exits/embedded">
+		<flowlink srcexit="exit1" destid="EXITS_DESTINATION"/>
+	</element>
+	<element id="EXITS_DESTINATION" file="element/exits/simple_destination.xml" url="exits/destination"/>
+
+	<element id="EXIT_NOURLREFLECTIVE" file="element/embedding/exit_nourlreflective.xml" url="exit_nourlreflective"/>
+	<element id="EXIT_NOURLREFLECTIVE_EMBEDDED" file="element/embedding/embedded/exit_nourlreflective.xml">
+		<flowlink srcexit="exit" destid="EXIT_NOURLREFLECTIVE_EMBEDDED"/>
+		<datalink srcoutput="embeddedoutput" destid="EXIT_NOURLREFLECTIVE_EMBEDDED" destinput="embeddedinput"/>
+	</element>
+
+	<subsite id="RELATIVE1" file="site/embedding/relative1.xml" urlprefix="/relative1"/>
+	<subsite id="RELATIVE2" file="site/embedding/relative2.xml" urlprefix="/relative2"/>
+
+	<group>
+		<globalvar name="var1"/>
+		<globalvar name="var2"/>
+		<globalvar name="var3"/>
+
+		<element id="GLOBALVAR" file="element/embedding/globalvar.xml" url="globalvar"/>
+		<element id="GLOBALVAR_EMBEDDED" file="element/embedding/embedded/globalvar.xml"/>
+	</group>
+
+	<group>
+		<globalvar name="var4"/>
+
+		<element id="EMBEDDER_INPUTS" file="element/embedding/embedder_inputs.xml" url="embedder_inputs/*">
+			<pathinfo mapping="test/$var5/$var6"/>
+		</element>
+	</group>
+	<element id="EMBEDDER_INPUTS_EMBEDDED" file="element/embedding/embedded/embedder_inputs.xml"/>
+
+	<group>
+		<globalcookie name="cookie1"/>
+		<globalcookie name="cookie2"/>
+		<globalcookie name="cookie3"/>
+
+		<element id="COOKIES" file="element/embedding/cookies.xml" url="cookies"/>
+		<element id="COOKIES_EMBEDDED" file="element/embedding/embedded/cookies.xml"/>
+	</group>
+
+	<group>
+		<globalcookie name="cookie1"/>
+		<globalcookie name="cookie2"/>
+		<globalcookie name="cookie3"/>
+
+		<element id="COOKIES_OUTJECTION" implementation="com.uwyn.rife.engine.testelements.embedding.CookiesOutjection" extends="element/embedding/cookies.xml" url="cookies/outjection"/>
+		<element id="COOKIES_OUTJECTION_EMBEDDED" implementation="com.uwyn.rife.engine.testelements.embedding.embedded.CookiesOutjection" extends="element/embedding/embedded/cookies.xml"/>
+	</group>
+
+	<group>
+		<globalcookie name="cookie1"/>
+		<globalcookie name="cookie2"/>
+		<globalcookie name="cookie3"/>
+
+		<element id="SUCCESSIVE_GLOBALCOOKIE" file="element/embedding/successive_globalcookie.xml" url="successive_globalcookie"/>
+		<element id="SUCCESSIVE_GLOBALCOOKIE_EMBEDDED1" file="element/embedding/embedded/successive_globalcookie1.xml"/>
+		<element id="SUCCESSIVE_GLOBALCOOKIE_EMBEDDED2" file="element/embedding/embedded/successive_globalcookie2.xml"/>
+	</group>
+
+	<group>
+		<globalvar name="var2"/>
+
+		<element id="EXPLICIT_PROCESSING" file="element/embedding/explicit_processing.xml" url="explicit_processing">
+			<flowlink srcexit="early" destid="EXPLICIT_PROCESSING"/>
+			<flowlink srcexit="late" destid="EXPLICIT_PROCESSING"/>
+			<flowlink srcexit="result" destid="EXPLICIT_PROCESSING"/>
+			<datalink srcoutput="late" destid="EXPLICIT_PROCESSING" destinput="late"/>
+		</element>
+		<element id="EXPLICIT_PROCESSING_EMBEDDED" file="element/embedding/embedded/explicit_processing.xml"/>
+	</group>
+
+	<group>
+		<globalvar name="globalvar1"/>
+
+		<element id="GLOBALVAR_SIBLING" implementation="com.uwyn.rife.engine.testelements.embedding.GlobalvarSibling" url="globalvar_sibling">
+			<property name="template"><template>engine_embedding_globalvar_siblingembedded</template></property>
+		</element>
+		<element id="GLOBALVAR_SIBLING_EMBEDDED1" implementation="com.uwyn.rife.engine.testelements.embedding.embedded.GlobalvarSibling" inherits="GLOBALVAR_SIBLING_EMBEDDED1b"/>
+		<element id="GLOBALVAR_SIBLING_EMBEDDED1b" implementation="com.uwyn.rife.engine.testelements.embedding.embedded.GlobalvarSiblingParent">
+			<childtrigger name="globalvar1"/>
+		</element>
+		<element id="GLOBALVAR_SIBLING_EMBEDDED2" implementation="com.uwyn.rife.engine.testelements.embedding.embedded.GlobalvarSibling"/>
+		<element id="GLOBALVAR_SIBLING_EMBEDDED3" implementation="com.uwyn.rife.engine.testelements.embedding.embedded.GlobalvarSibling"/>
+		<element id="GLOBALVAR_SIBLING_EMBEDDED4" implementation="com.uwyn.rife.engine.testelements.embedding.embedded.GlobalvarSibling">
+			<input name="clear"/>
+		</element>
+	</group>
+
+	<group>
+		<globalvar name="globalvar1"/>
+
+		<element id="GLOBALVAR_SIBLING_BIJECTION" implementation="com.uwyn.rife.engine.testelements.embedding.GlobalvarSibling" url="globalvar_sibling/bijection">
+			<property name="template"><template>engine_embedding_globalvar_siblingembedded_bijection</template></property>
+		</element>
+		<element id="GLOBALVAR_SIBLING_BIJECTION_EMBEDDED1" implementation="com.uwyn.rife.engine.testelements.embedding.embedded.GlobalvarSiblingInjection" inherits="GLOBALVAR_SIBLING_BIJECTION_EMBEDDED1b"/>
+		<element id="GLOBALVAR_SIBLING_BIJECTION_EMBEDDED1b" implementation="com.uwyn.rife.engine.testelements.embedding.embedded.GlobalvarSiblingOutjectionParent">
+			<childtrigger name="globalvar1"/>
+		</element>
+		<element id="GLOBALVAR_SIBLING_BIJECTION_EMBEDDED2" implementation="com.uwyn.rife.engine.testelements.embedding.embedded.GlobalvarSiblingInjection"/>
+		<element id="GLOBALVAR_SIBLING_BIJECTION_EMBEDDED3" implementation="com.uwyn.rife.engine.testelements.embedding.embedded.GlobalvarSiblingInjection"/>
+		<element id="GLOBALVAR_SIBLING_BIJECTION_EMBEDDED4" implementation="com.uwyn.rife.engine.testelements.embedding.embedded.GlobalvarSiblingInjection">
+			<input name="clear"/>
+		</element>
+	</group>
+
+	<element id="PRINTANDWRITE_BUFFER" file="element/embedding/printandwrite_buffer.xml" url="printandwrite_buffer"/>
+	<element id="PRINTANDWRITE_BUFFER_EMBEDDED" file="element/engine/printandwrite_buffer.xml"/>
+
+	<element id="PRINTANDWRITE_NOBUFFER" file="element/embedding/printandwrite_nobuffer.xml" url="printandwrite_nobuffer"/>
+	<element id="PRINTANDWRITE_NOBUFFER_EMBEDDED" file="element/engine/printandwrite_nobuffer.xml"/>
+
+	<element id="PRIORITIES" file="element/embedding/priorities.xml" url="priorities"/>
+	<element id="PRIORITIES_EMBEDDED_EARLY" file="element/embedding/embedded/priorities.xml"/>
+	<element id="PRIORITIES_EMBEDDED_NORMAL" file="element/embedding/embedded/priorities.xml"/>
+	<element id="PRIORITIES_EMBEDDED_LATE" file="element/embedding/embedded/priorities.xml"/>
+
+	<element implementation="com.uwyn.rife.engine.testelements.embedding.embedded.Counter">
+		<datalink srcoutput="counter" destinput="counter" destid="Counter"/>
+	</element>
+	<element id="COUNTER_INDEX" file="rife/template/print.xml" url="counter">
+		<property name="name">engine_embedding_counter_index</property>
+	</element>
+	
+	<state store="session">
+		<element id="CounterSession" implementation="com.uwyn.rife.engine.testelements.embedding.embedded.Counter">
+			<datalink srcoutput="counter" destinput="counter" destid="CounterSession"/>
+		</element>
+		<element id="COUNTER_INDEX_SESSION" file="rife/template/print.xml" url="counter_session">
+			<property name="name">engine_embedding_counter_index_session</property>
+		</element>
+	</state>
+	
+	<element implementation="com.uwyn.rife.engine.testelements.embedding.embedded.CounterContinuations"/>
+	<element id="COUNTER_INDEX_CONTINUATIONS" file="rife/template/print.xml" url="countercontinuations">
+		<property name="name">engine_embedding_counter_index_continuations</property>
+	</element>
+	
+	<element implementation="com.uwyn.rife.engine.testelements.embedding.StatefulExplicitProcessing">
+		<property name="template"><template>engine_embedding_statefulexplicitprocessing</template></property>
+		<property name="embedname">StatefulExplicitProcessed</property>
+	</element>
+	<element implementation="com.uwyn.rife.engine.testelements.embedding.embedded.StatefulExplicitProcessed">
+		<datalink srcoutput="enabled" destinput="enabled" destid="StatefulExplicitProcessed"/>
+	</element>
+
+	<state store="session">
+		<element id="StatefulExplicitProcessingSession" implementation="com.uwyn.rife.engine.testelements.embedding.StatefulExplicitProcessing" url="statefulexplicitprocessing_session">
+			<property name="template"><template>engine_embedding_statefulexplicitprocessing_session</template></property>
+			<property name="embedname">StatefulExplicitProcessedSession</property>
+		</element>
+		<element id="StatefulExplicitProcessedSession" implementation="com.uwyn.rife.engine.testelements.embedding.embedded.StatefulExplicitProcessed">
+			<datalink srcoutput="enabled" destinput="enabled" destid="StatefulExplicitProcessedSession"/>
+		</element>
+	</state>
+
+	<element implementation="com.uwyn.rife.engine.testelements.embedding.Errors"/>
+	<group>
+		<errorhandler destid="Errors"/>
+		<element implementation="com.uwyn.rife.engine.testelements.embedding.embedded.Erroneous"/>
+		<element id="ERROR_HANDLING_HANDLER" file="rife/template/print.xml" url="errorhandling/handler">
+			<property name="name">engine_embedding_errorhandling_handler</property>
+		</element>
+	</group>
+
+	<element id="ErroneousNoHandler" implementation="com.uwyn.rife.engine.testelements.embedding.embedded.Erroneous"/>
+	<element id="ERROR_HANDLING_NOHANDLER" file="rife/template/print.xml" url="errorhandling/nohandler">
+		<property name="name">engine_embedding_errorhandling_nohandler</property>
+	</element>
+</site>
+

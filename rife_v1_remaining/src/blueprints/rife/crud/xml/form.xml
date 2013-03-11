@@ -1,0 +1,34 @@
+<submit>\<!--V 'SUBMISSION:QUERY:[!V 'submission'/]'/--></submit>
+<fields>
+<!--V 'fields'--><!--/V-->
+<!--B 'field'-->
+	<!--V 'form_field'/-->
+	<!--B 'form_field-textlimited'-->\<!--V 'FORM:INPUT:[!V 'property'/]'/-->\<!--BV 'FORM:INPUT:[!V 'property'/]'--><!--V 'form_field_attributes'/-->\<!--/BV--><!--/B-->
+	<!--B 'form_field-numeric'-->\<!--V 'FORM:INPUT:[!V 'property'/]'/-->\<!--BV 'FORM:INPUT:[!V 'property'/]'--><!--V 'form_field_attributes'/-->\<!--/BV--><!--/B-->
+	<!--B 'form_field-textarea'-->\<!--V 'FORM:TEXTAREA:[!V 'property'/]'/-->\<!--BV 'FORM:TEXTAREA:[!V 'property'/]'--><!--V 'form_field_attributes'/-->\<!--/BV--><!--/B-->
+	<!--B 'form_field-list'-->\<!--V 'FORM:SELECT:[!V 'property'/]'/-->\<!--BV 'FORM:SELECT:[!V 'property'/]'--><!--V 'form_field_attributes'/-->\<!--/BV--><!--/B-->
+	<!--B 'form_field-checkbox'-->\<!--V 'FORM:CHECKBOX:[!V 'property'/]'/-->\<!--BV 'FORM:CHECKBOX:[!V 'property'/]'--><!--V 'form_field_attributes'/-->\<!--/BV--><!--/B-->
+	<!--B 'form_field-file'--><field><name><!--V 'property'/--></name><type>file</type><!--V 'form_field_attributes'/--></field><!--/B-->
+	<!--B 'form_field-generic'-->\<!--V 'FORM:INPUT:[!V 'property'/]'/-->\<!--BV 'FORM:INPUT:[!V 'property'/]'--><!--V 'form_field_attributes'/-->\<!--/BV--><!--/B-->
+
+	<!--BV 'form_field_attributes'-->
+		<!--V 'existing_field'--><!--/V-->
+		<!--B 'existing_field-url'--><value type="url">\<!--V 'existing_[!V 'property'/]'-->\<!--/V--></value><!--/B-->
+		<!--B 'existing_field-email'--><value type="email">\<!--V 'existing_[!V 'property'/]'-->\<!--/V--></value><!--/B-->
+		<!--B 'existing_field-text'--><value type="text">\<!--V 'existing_[!V 'property'/]'-->\<!--/V--></value><!--/B-->
+		<!--B 'existing_field-xhtml'--><value type="xhtml">\<!--V 'existing_[!V 'property'/]'-->\<!--/V--></value><!--/B-->
+		<!--B 'existing_field-image'--><value type="image"><url>\<!--V 'existing_[!V 'property'/]-src'-->\<!--/V--></url><width>\<!--V 'existing_[!V 'property'/]-width'-->\<!--/V--></width><height>\<!--V 'existing_[!V 'property'/]-height'-->\<!--/V--></height><size>\<!--V 'existing_[!V 'property'/]-size'-->\<!--/V--></size></value><!--/B-->
+		<!--B 'existing_field-raw'--><value type="raw"><url>\<!--V 'existing_[!V 'property'/]-url'-->\<!--/V--></url><size>\<!--V 'existing_[!V 'property'/]-size'-->\<!--/V--></size></value><!--/B-->
+		<!--B 'existing_field-generic'--><!--/B-->
+
+		<mandatory><!--V 'mandatory'-->0<!--/V--><!--B 'mandatory'-->1<!--/B--></mandatory>
+		<label>\<!--V 'L10N:[!V 'property'/]'-->[!V 'property'/]\<!--/V--></label>
+		<legend>\<!--V 'L10N:[!V 'property'/]-legend'-->\<!--/V--></legend>
+		<help>\<!--V 'L10N:[!V 'property'/]-help'-->\<!--/V--></help>
+
+		\<!--V 'ERRORS:[!V 'property'/]'-->\<!--/V-->
+		\<!--B 'ERRORS:*'--><errors>\<!--V 'ERRORS'/--></errors>\<!--/B-->
+		\<!--B 'ERRORMESSAGE:*'--><error>\<!--V 'ERRORMESSAGE'/--></error>\<!--/B-->
+	<!--/BV-->
+<!--/B-->
+</fields>

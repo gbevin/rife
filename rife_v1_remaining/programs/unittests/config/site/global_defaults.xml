@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: global_defaults.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<globalvar name="global1">
+		<default>the first value</default>
+	</globalvar>
+	<globalvar name="global2">
+		<default>2rda</default>
+		<default>2rdd</default>
+		<default>2rdc</default>
+		<default>2rdb</default>
+	</globalvar>
+	<globalvar name="global3"/>
+	<globalvar name="global4">
+		<default><config param="ENGINE_ELEMENT_CONFIG_VALUE"/></default>
+	</globalvar>
+	
+	<element id="GLOBALS_DEFAULTS_SOURCE" file="element/globals/defaults_source.xml" url="/globals/defaults">
+		<flowlink srcexit="exit1" destid="GLOBALS_DEFAULTS_DESTINATION"/>
+		<datalink srcoutput="global1" destid="GLOBALS_DEFAULTS_DESTINATION" destinput="input1"/>
+		<datalink srcoutput="global2" destid="GLOBALS_DEFAULTS_DESTINATION" destinput="input2"/>
+		<datalink srcoutput="global3" destid="GLOBALS_DEFAULTS_DESTINATION" destinput="input3"/>
+	</element>
+	<element id="GLOBALS_DEFAULTS_DESTINATION" file="element/globals/defaults_destination.xml" url="/globals/defaults/destination"/>
+</site>
+

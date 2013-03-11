@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: test_xml2site.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site fallbackid="ELEMENT4">
+	<globalexit name="globalexit1" destid="ELEMENT6"/>
+	<globalexit name="globalexit2" destid="SUBSITE.ELEMENT2"/>
+
+	<globalvar name="globalvar1"/>
+	<globalvar name="globalvar2"/>
+	
+	<globalbean name="globalbean1" classname="com.uwyn.rife.engine.testelements.submission.BeanImpl" prefix="onemoreprefixgroup_" group="anothergroup"/>
+	<globalbean classname="com.uwyn.rife.engine.testelements.submission.BeanImpl" group="anothergroup"/>
+
+	<property name="prop1">sitepropval</property>
+	<property name="prop6">
+		<datasource>
+			purgingunittests<participant name="configuration">  <config param="IOC_CONFIG"/>
+			</participant>
+		</datasource>
+	</property>
+ 
+ 	<subsite id="SUBSITE" file="xml/test_xml2sitesubsite.xml" urlprefix="/subsite" inherits="ELEMENT4">
+		<property name="prop1">subsitepropval</property>
+		<property name="prop2">  <template type="enginehtml">noblocks_in</template> </property>
+		<property name="prop3"><participant name="configuration">
+			EXPRESSION_CONFIG_VALUE</participant> 3 </property>
+		<property name="prop4">
+			<datasource>
+				unittests<participant name="configuration">  <config param="IOC_CONFIG"/>
+				</participant>
+			</datasource>
+		</property>
+		<property name="prop5">
+			<participant name="configuration">
+				DATASOURCE_USER
+			</participant>
+			<participant name="configuration"><config param="IOC_CONFIG"/></participant>
+		</property>
+	</subsite>
+	
+	<group inherits="ELEMENT5">
+		<globalvar name="globalvar4"/>
+ 	
+		<element id="ELEMENT6" file="xml/test_xml2elementinfo2.xml" url="/test/element6" inherits="ELEMENT3"/>
+		<element file="xml/test_xml2elementinfo3.xml" url="/test/element7"/>
+	</group>
+	
+	<element id="ELEMENT1" file="xml/test_xml2elementinfo1.xml" url="/test/element1">
+		<datalink srcoutput="output1" destid="ELEMENT2" destinput="input1"/>
+		<datalink srcoutput="output1" destid="ELEMENT2" destinput="input2"/>
+		<flowlink srcexit="exit1" destid="ELEMENT2"/>
+		<flowlink srcexit="exit2" snapback="true"/>
+		<datalink srcoutput="output2" snapback="t" destinput="input2"/>
+		
+		<flowlink srcexit="exit3" destid="ELEMENT2">
+			<datalink srcoutput="output3" destinput="input1"/>
+		</flowlink>
+		
+		<flowlink srcexit="exit4" destid="ELEMENT2">
+			<datalink srcoutput="output4" destinput="input1"/>
+		</flowlink>
+
+		<property name="prop1">elementpropval</property>
+		<property name="prop7">
+			<datasource>
+				sessiondurationunittests<participant name="configuration">  <config param="IOC_CONFIG"/>
+				</participant>
+			</datasource>
+		</property>
+	</element>
+	
+	<property name="prop2">  <template type="enginehtml">unsetvalues_output_in</template> </property>
+
+	<element id="ELEMENT2" file="xml/test_xml2elementinfo2.xml" inherits="ELEMENT3" url="/test/element2"/>
+			 
+	<element id="ELEMENT3" file="xml/test_xml2elementinfo3.xml"/>
+
+	<element id="ELEMENT4" file="xml/test_xml2elementinfo4.xml"/>
+
+	<element id="ELEMENT5" file="xml/test_xml2elementinfo5.xml"/>
+</site>
+

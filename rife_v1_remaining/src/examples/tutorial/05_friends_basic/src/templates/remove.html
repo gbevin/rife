@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: remove.html 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<title>Remove the database structure</title>
+</head>
+
+<body>
+	<h3>Removal</h3>
+	
+	<r:v name="content"/>
+	<r:bv name="content">
+		<p>Are you sure you want to remove the database structure?</p>
+		<form name="confirmation" action="${v SUBMISSION:FORM:confirmation/}" method="post">
+			<r:v name="SUBMISSION:PARAMS:confirmation"/>
+			<input type="submit" name="Yes, I'm sure!" />
+		</form>
+	</r:bv>
+	
+	<r:b name="content_removed">
+		<p>The removal has succeeded.</p>
+	</r:b>
+	
+	<p><a href="${v EXIT:QUERY:menu/}">back to menu</a></p>
+</body>
+
+</html>

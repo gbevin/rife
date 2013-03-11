@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: template.dtd 3918 2008-04-14 17:35:35Z gbevin $
+  -  PUBLIC ID: -//Rifers.org//RIFE Template 1.0//EN
+  -  SYSTEM ID: http://rifers.org/dtd/template_1_0.dtd
+  -->
+
+<!ELEMENT v  (#PCDATA)>
+<!ATTLIST v  name CDATA #REQUIRED>
+
+<!ELEMENT b  (#PCDATA)>
+<!ATTLIST b  name CDATA #REQUIRED>
+
+<!ELEMENT bv (#PCDATA)>
+<!ATTLIST bv name CDATA #REQUIRED>
+
+<!ELEMENT i  (#PCDATA)>
+<!ATTLIST i  name CDATA #REQUIRED>
+

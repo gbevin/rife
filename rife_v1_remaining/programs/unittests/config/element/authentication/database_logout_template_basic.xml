@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: database_logout_template_basic.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE element SYSTEM "/dtd/element.dtd">
+
+<element extends="rife/logout/template/database.xml">
+	<property name="datasource"><datasource><config param="unittestsdatasource"/></datasource></property>
+	<property name="template_name">logout_database</property>
+
+	<incookie name="rememberid"/>
+	<outcookie name="rememberid"/>
+</element>
+
+

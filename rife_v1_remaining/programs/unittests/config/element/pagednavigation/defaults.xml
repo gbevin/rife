@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: defaults.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE element SYSTEM "/dtd/element.dtd">
+
+<element implementation="com.uwyn.rife.engine.testelements.pagednavigation.Defaults">
+	<property name="count">80</property>
+	<property name="limit">10</property>
+	<property name="span">3</property>
+	<property name="pathinfo"/>
+	<property name="template">paged_navigation_defaults</property>
+
+	<input name="offset"/>
+	<output name="offset"/>
+	<exit name="change_offset"/>
+</element>
+

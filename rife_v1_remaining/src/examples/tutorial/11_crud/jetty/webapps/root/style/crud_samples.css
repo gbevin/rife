@@ -1,0 +1,19 @@
+/*
+ * Copyright 2005 Geert Bevin <gbevin[remove] at uwyn dot com>
+ * Licensed under the Apache License, Version 2.0 (the "License")
+ * $Id: crud_samples.css 3954 2008-05-08 01:11:49Z gbevin $
+ */
+@import "crud.css";
+
+body {
+	background-color: #cccccc;
+}
+
+.product_title_area {
+	background-color: #560456;
+}
+
+.page_title_area {
+	background-color: #663366;
+}
+

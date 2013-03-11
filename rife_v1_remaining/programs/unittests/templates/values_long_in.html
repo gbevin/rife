@@ -1,0 +1,18 @@
+<html>
+	<head>
+		<title>Template with long value tags</title>
+	</head>
+
+	<body>
+		<!--    	 V  'VALUE1'-->default1</r:v>
+		<h1>This is a template with long value tags.</h1>
+		<!--B 'BLOCK1'-->one<!--V 'VALUE2'   
+			 -->default2<!--/V-->two<!--V    'VALUE3'-->default3<!--/	
+			 	V-->three<!--/B-->
+		[!B  'BLOCK2']three[!V 'VALUE4']default4<!--/V--><r:v name="VALUE5">default5[!/V][!/B]
+		<!--B   'BLOCK3'-->${v VALUE6    }default6<!--/V-->[!/B]
+		<h2>Some more text.</h2>
+		[!V 'VALUE7'	 
+				]default7${/v}
+	</body>
+</html>

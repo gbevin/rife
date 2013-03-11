@@ -1,0 +1,18 @@
+<!--V 'MVEL:ROLEUSER:login'-->not matching login<!--/V-->
+<!--V 'MVEL:ROLEUSER:password1'-->not matching password1<!--/V-->
+<!--V 'MVEL:ROLEUSER:password2'-->not matching password2<!--/V-->
+<!--V 'MVEL:ROLEUSER:role1'-->not matching role1<!--/V-->
+<!--V 'MVEL:ROLEUSER:role2'-->not matching role2<!--/V-->
+<!--V 'MVEL:ROLEUSER:role3'-->not matching role3<!--/V-->
+<!--V 'MVEL:ROLEUSER:userid1'-->not matching userid1<!--/V-->
+<!--V 'MVEL:ROLEUSER:userid2'-->not matching userid2<!--/V-->
+<!--V 'INPUT:authid'--><!--/V-->
+<!--B 'MVEL:ROLEUSER:login:[[ login == "gbevin" ]]'-->matching login<!--/B-->
+<!--B 'MVEL:ROLEUSER:password1:[[ password == "yeolpass" ]]'-->matching password1<!--/B-->
+<!--B 'MVEL:ROLEUSER:password2:[[ ["MD5:JJSy0mVyeMFG9f21yHQVyg==", "SHA:vraqAmRzbZbAWO0CQ2sO7IeIgZM="] contains password ]]'-->matching password2<!--/B-->
+<!--B 'MVEL:ROLEUSER:role1:[[ roles contains "admin" ]]'-->matching role1<!--/B-->
+<!--B 'MVEL:ROLEUSER:role2:[[ isInRole("maint") ]]'-->matching role2<!--/B-->
+<!--B 'MVEL:ROLEUSER:role3:[[ roles contains "maint" ]]'-->matching role3<!--/B-->
+<!--B 'MVEL:ROLEUSER:userid1:[[ 1 == getUserId() ]]'-->matching userid1<!--/B-->
+<!--B 'MVEL:ROLEUSER:userid2:[[ 3 == userId ]]'-->matching userid2<!--/B-->
+

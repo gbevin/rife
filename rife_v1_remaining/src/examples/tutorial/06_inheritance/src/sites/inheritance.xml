@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: inheritance.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<arrival destid="Home"/>
+
+	<group>
+		<!-- This global variable is available throughout the site to indicate
+		     whether an element's content should first be surrounded by frames
+		     or shown directly -->
+		<globalvar name="show_content"/>
+		
+		<!-- The element structure that creates the frameset of the site.
+			 It is meant to be be inherited from by all content elements that
+			 should be surrounded by frames. Automatically a main frameset will
+			 be created with a top navigation frame and the actual element
+			 content will be present in a bottom content frame.
+			 -->
+		<element id="FrameMain" file="frames/main.xml">
+			<flowlink srcexit="navigation" destid="FrameNavigation" inheritance="cancel"/>
+			<flowlink srcexit="content" destid="FrameMain">
+				<datalink srcoutput="show_content" destinput="show_content"/>
+			</flowlink>
+		</element>
+		
+		<element id="FrameNavigation" file="frames/navigation.xml" url="/navigation">
+			<flowlink srcexit="more" destid="More"/>
+			<flowlink srcexit="home" destid="Home"/>
+			<flowlink srcexit="standalone" destid="Standalone"/>
+		</element>
+		
+		<!-- The actual content elements of the site that will be surrounded
+			 by the frames when they're accessed at their mapping url -->
+		<element id="Home" extends="rife/template/print.xml" url="/home" inherits="FrameMain">
+			<property name="name">home</property>
+			<exit name="next"/>
+			
+			<flowlink srcexit="next" destid="More"/>
+		</element>
+		
+		<element id="More" extends="rife/template/print.xml" url="/more" inherits="FrameMain">
+			<property name="name">more</property>
+			<exit name="next"/>
+			
+			<flowlink srcexit="next" destid="Standalone"/>
+		</element>
+		
+		<!-- This element provides regular top-level content and just doesn't
+			 inherit from the frames structure -->
+		<element id="Standalone" extends="rife/template/print.xml" url="/standalone">
+			<property name="name">standalone</property>
+			<exit name="next"/>
+			
+			<flowlink srcexit="next" destid="Home"/>
+		</element>
+	</group>
+</site>

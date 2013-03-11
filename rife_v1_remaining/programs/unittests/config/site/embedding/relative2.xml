@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: relative2.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<element id="TOPLEVEL" file="element/embedding/relative.xml" url="/toplevel"/>
+	<element id="PARENT" file="element/embedding/parent2.xml" url="/parent"/>
+	<element id="EMBEDDED" file="element/embedding/embedded/relative2.xml" url="/embedded"/>
+</site>
+

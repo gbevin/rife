@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: numberguess.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+    <arrival destid="Game"/>
+    
+    <element id="Game" implementation="tutorial.numberguess.Game" url="/game">
+    
+		<submission name="performGuess">
+			<param name="guess"><default>-1</default></param>
+		</submission>
+		
+        <flowlink srcexit="start" destid="Game"/>
+		
+    </element>
+	
+</site>

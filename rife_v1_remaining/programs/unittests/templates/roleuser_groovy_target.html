@@ -1,0 +1,18 @@
+<!--V 'GROOVY:ROLEUSER:login'-->not matching login<!--/V-->
+<!--V 'GROOVY:ROLEUSER:password1'-->not matching password1<!--/V-->
+<!--V 'GROOVY:ROLEUSER:password2'-->not matching password2<!--/V-->
+<!--V 'GROOVY:ROLEUSER:role1'-->not matching role1<!--/V-->
+<!--V 'GROOVY:ROLEUSER:role2'-->not matching role2<!--/V-->
+<!--V 'GROOVY:ROLEUSER:role3'-->not matching role3<!--/V-->
+<!--V 'GROOVY:ROLEUSER:userid1'-->not matching userid1<!--/V-->
+<!--V 'GROOVY:ROLEUSER:userid2'-->not matching userid2<!--/V-->
+<!--V 'INPUT:authid'--><!--/V-->
+<!--B 'GROOVY:ROLEUSER:login:[[ login == "gbevin" ]]'-->matching login<!--/B-->
+<!--B 'GROOVY:ROLEUSER:password1:[[ password == "yeolpass" ]]'-->matching password1<!--/B-->
+<!--B 'GROOVY:ROLEUSER:password2:[[ [com.uwyn.rife.tools.StringEncryptor.MD5.encrypt("yeolpass"), com.uwyn.rife.tools.StringEncryptor.SHA.encrypt("yeolpass")].contains(user.password) ]]'-->matching password2<!--/B-->
+<!--B 'GROOVY:ROLEUSER:role1:[[ roles.contains("admin") ]]'-->matching role1<!--/B-->
+<!--B 'GROOVY:ROLEUSER:role2:[[ user.isInRole("maint") ]]'-->matching role2<!--/B-->
+<!--B 'GROOVY:ROLEUSER:role3:[[ user.roles.contains("maint") ]]'-->matching role3<!--/B-->
+<!--B 'GROOVY:ROLEUSER:userid1:[[ 1 == user.userId ]]'-->matching userid1<!--/B-->
+<!--B 'GROOVY:ROLEUSER:userid2:[[ 3 == userId ]]'-->matching userid2<!--/B-->
+

@@ -1,0 +1,6 @@
+<!B 'BLOCK1'>block 1 <!V 'VALUE1'/><!/B>
+<!B  'BLOCK2'>block 2 <!V 'VALUE2'/><!/B>
+<!B 'BLOCK3'>block 3 <!V  'VALUE3'/><!/B>
+<!B 'BLOCK4'>block 4 <!V 'VALUE4'/><!/B>
+<!V 'CONTENT'/>
+

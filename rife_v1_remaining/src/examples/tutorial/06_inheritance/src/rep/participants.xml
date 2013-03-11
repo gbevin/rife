@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: participants.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE rep SYSTEM "/dtd/rep.dtd">
+
+<rep>
+    <participant param="sites/inheritance.xml">ParticipantSite</participant>
+</rep>

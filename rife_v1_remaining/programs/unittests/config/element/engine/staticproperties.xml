@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: staticproperties.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE element SYSTEM "/dtd/element.dtd">
+
+<element implementation="com.uwyn.rife.engine.testelements.engine.StaticProperties">
+	<property name="property1">value1</property>
+	<property name="property2">value2</property>
+	<property name="property3">value3a</property>
+	<property name="property3">value3b</property>
+	<property name="property4"></property>
+	<property name="propertyboolean1">true</property>
+	<property name="propertyboolean2"/>
+	<property name="propertystring1">astring</property>
+	<property name="propertystring2"/>
+	<property name="propertyint1">38746873</property>
+	<property name="propertyint2"/>
+	<property name="propertylong1">3468364786</property>
+	<property name="propertylong2"/>
+	<property name="propertydouble1">9873434.4334</property>
+	<property name="propertydouble2"/>
+	<property name="propertyfloat1">23.12</property>
+	<property name="propertyfloat2"/>
+	<property name="propertyconfig">before-<config param="ENGINE_ELEMENT_CONFIG_VALUE"/>-after</property>
+</element>

@@ -1,0 +1,15 @@
+<html>
+	<head><title><!--V 'subtotal'--><!--/V--></title></head>
+	<body>
+		<form name="getanswer" action="[!V 'SUBMISSION:FORM:getanswer'/]" method="POST">
+			<!--V 'SUBMISSION:PARAMS:getanswer'/-->
+			<input name="answer" type="text" value="[!V 'PARAM:answer'][!/V]">
+			<input type="submit"/>
+		</form>
+		<form name="nocontinuations" action="[!V 'SUBMISSION:FORM:nocontinuations'/]" method="POST">
+			<!--V 'SUBMISSION:PARAMS:nocontinuations'/-->
+			<input name="answer" type="text" value="[!V 'PARAM:answer'][!/V]">
+			<input type="submit"/>
+		</form>
+	</body>
+</html>

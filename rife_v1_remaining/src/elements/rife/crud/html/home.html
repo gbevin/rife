@@ -1,0 +1,18 @@
+\<!--BV 'window_title'-->\<!--V 'L10N:window_title'-->window_title\<!--/V-->\<!--/BV-->
+\<!--BV 'page_title'-->\<!--V 'L10N:page_title-home'-->page_title-home\<!--/V-->\<!--/BV-->
+
+\<!--I '[!V 'crud_template_name-blueprint']rife.crud.html.common.blueprint[!/V]'/-->
+
+\<!--BV 'menu_area'-->\<!--V 'ELEMENT:[!V 'id_prefix'/].MENU'/-->\<!--/BV-->
+
+\<!--BV 'crud_content'-->
+	<p>\<!--V 'L10N:page_content-home'-->page_content-home\<!--/V--></p>
+	
+	<div class="context_buttons">
+		<form name="browse" action="\[!V 'EXIT:FORM:[!V 'exit_prefix'/][!V 'classname'/]-browse'/]" method="get">\<!--V 'EXIT:PARAMS:[!V 'exit_prefix'/][!V 'classname'/]-browse'/--><input name="submit" type="submit" value="\[!V 'L10N:button_label-browse']button_label-browse\[!/V]" /></form>&nbsp;
+		<form name="add" action="\[!V 'EXIT:FORM:[!V 'exit_prefix'/][!V 'classname'/]-add'/]" method="get">\<!--V 'EXIT:PARAMS:[!V 'exit_prefix'/][!V 'classname'/]-add'/--><input name="submit" type="submit" value="\[!V 'L10N:button_label-add']button_label-add\[!/V]" /></form>
+	</div>
+\<!--/BV-->
+
+\<!--BV 'document_attributes'--> onload="document.forms[0].submit.focus();"\<!--/BV-->
+

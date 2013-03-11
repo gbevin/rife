@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: $
+  -->
+
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+                        "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+<taglib>
+	<tlib-version>1.0</tlib-version>
+	<short-name>r</short-name>
+	<uri>http://rifers.org/template/xhtml</uri>
+	<display-name>RIFE Template</display-name>
+	<description>
+	</description>
+
+	<tag>
+		<name>v</name>
+		<tag-class></tag-class>
+		<tei-class></tei-class>
+		<body-content>tagdependent</body-content>
+		<description>A value placeholder can be filled in with content. If it contains any text, that will be used as the default content in case nothing has been filled into the placeholder.</description>
+		<attribute>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>The name of the value placeholder.</description>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>b</name>
+		<tag-class></tag-class>
+		<tei-class></tei-class>
+		<body-content>tagdependent</body-content>
+		<description>A block marks a piece of reusable content. The text insides the block will be stripped away automatically. By using the Template API methods, you can append or assign blocks to values or retrieve their content.</description>
+		<attribute>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>The name of the block marker.</description>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>bv</name>
+		<tag-class></tag-class>
+		<tei-class></tei-class>
+		<body-content>tagdependent</body-content>
+		<description>A block-value marks a piece of reusable content and automatically sets it as the default content of the value placeholder that has the same name. The text insides the block will be stripped away automatically. By using the Template API methods, you can append or assign blocks to values or retrieve their content.</description>
+		<attribute>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>The name of the block-value marker.</description>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>i</name>
+		<tag-class></tag-class>
+		<tei-class></tei-class>
+		<body-content>tagdependent</body-content>
+		<description>Includes the content of another template at this location. All the tags inside the included template will continue to function as if they were declared in the including template itself.</description>
+		<attribute>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>The name of the template that will be included.</description>
+		</attribute>
+	</tag>
+</taglib>

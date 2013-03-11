@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: inputs.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<globalvar name="globalvar">
+		<default>globalvalue</default>
+	</globalvar>
+	<globalvar name="overridden">
+		<default>globalvalue</default>
+	</globalvar>
+	
+	<element id="VALID" file="element/inputs/valid.xml" url="/inputs/valid"/>
+	<element id="VALID_INJECTION" file="element/inputs/valid_injection.xml" url="/inputs/valid_injection"/>
+	
+	<element id="TYPED" file="element/inputs/typed.xml" url="/inputs/typed"/>
+	
+	<element id="BEAN_NORMAL" file="element/inputs/bean_normal.xml" url="/inputs/bean/normal"/>
+	<element id="BEAN_PREFIX" file="element/inputs/bean_prefix.xml" url="/inputs/bean/prefix"/>
+	<element id="NAMED_BEAN_NORMAL" file="element/inputs/named_bean_normal.xml" url="/inputs/named_bean/normal"/>
+	<element id="NAMED_BEAN_PREFIX" file="element/inputs/named_bean_prefix.xml" url="/inputs/named_bean/prefix"/>
+	<element id="NAMED_BEAN_NORMAL_INJECTION" extends="element/inputs/named_bean_normal.xml" implementation="com.uwyn.rife.engine.testelements.inputs.NamedBeanNormalInjection" url="/inputs/named_bean/normal/injection"/>
+	<element id="NAMED_BEAN_PREFIX_INJECTION" extends="element/inputs/named_bean_prefix.xml" implementation="com.uwyn.rife.engine.testelements.inputs.NamedBeanPrefixInjection" url="/inputs/named_bean/prefix/injection"/>
+
+	<element id="GENERATED" file="element/inputs/generated.xml" url="/inputs/generated"/>
+	
+	<element id="INVALID" file="element/inputs/invalid.xml" url="/inputs/invalid"/>
+	
+	<element id="DEFAULT" file="element/inputs/defaults.xml" url="/inputs/defaults"/>
+	
+	<element id="TARGETCHILDTOPPARENT" file="element/inputs/targetchildtopparent.xml"/>
+	<element id="TARGETCHILDMIDDLEPARENT" file="element/inputs/targetchildmiddleparent.xml" inherits="TARGETCHILDTOPPARENT"/>
+	<element id="TARGETCHILD" file="element/inputs/targetchild.xml" url="/inputs/targetchild" inherits="TARGETCHILDMIDDLEPARENT"/>
+	
+	<element id="EXITSOURCE" file="element/inputs/exitsource.xml" url="/inputs/exitsource">
+		<flowlink srcexit="exit" destid="EXITTARGET"/>
+		<datalink srcoutput="exitoutput" destid="EXITTARGET" destinput="exitinput"/>
+	</element>
+	<element id="EXITTARGET" file="element/inputs/exittarget.xml" url="/inputs/exittarget"/>
+	
+	<element id="REFLEXIVESUBMISSION" file="element/inputs/reflexivesubmission.xml" url="/inputs/reflexivesubmission">
+		<datalink srcoutput="outputreflexive" destid="REFLEXIVESUBMISSION" destinput="inputreflexive"/>
+	</element>
+
+	<element id="PATHINFOSOURCE" url="/inputs/pathinfosource" implementation="com.uwyn.rife.engine.testelements.inputs.PathInfoSource">
+		<input name="switch"/>
+		
+		<flowlink srcexit="exit" destid="PATHINFOTARGET"/>
+		<datalink srcoutput="exitoutput1" destid="PATHINFOTARGET" destinput="exitinput1"/>
+		<datalink srcoutput="exitoutput2" destid="PATHINFOTARGET" destinput="exitinput2"/>
+		<datalink srcoutput="exitoutput3" destid="PATHINFOTARGET" destinput="exitinput3"/>
+		<datalink srcoutput="exitoutput4" destid="PATHINFOTARGET" destinput="exitinput4"/>
+		<datalink srcoutput="exitoutput5" destid="PATHINFOTARGET" destinput="exitinput5"/>
+	</element>
+	<element id="PATHINFOTARGET" url="/inputs/pathinfotarget/*" implementation="com.uwyn.rife.engine.testelements.inputs.PathInfoTarget">
+		<pathinfo mapping="myinput/$exitinput1/$exitinput2(\d+)/${exitinput3}([abc]{4})${exitinput4}([cd]{3})"/>
+		<pathinfo mapping="anotherinput/$exitinput2(\d+)$exitinput1/suffix"/>
+		<!-- <input name="exitinput1"/> : will be automatically created by the pathinfo mapping -->
+		<input name="exitinput2"/>
+		<input name="exitinput3"/>
+		<!-- <input name="exitinput4"/> : will be automatically created by the pathinfo mapping -->
+		<input name="exitinput5"/>
+	</element>
+	
+	<element id="PATHINFOREFLEXIVE" implementation="com.uwyn.rife.engine.testelements.inputs.PathInfoReflexive" url="/inputs/pathinforeflexive/*"> 
+		<pathinfo mapping="$id"/> 
+		<flowlink srcexit="myexit" destid="PATHINFOREFLEXIVE" redirect="true"/> 
+		<datalink srcoutput="id" destid="PATHINFOREFLEXIVE" destinput="id"/> 
+	</element>
+	
+	<element id="PATHINFOSTRICT1" implementation="com.uwyn.rife.engine.testelements.inputs.PathInfoStrict" url="/inputs/pathinfostrict/*" pathinfo="strict"> 
+		<pathinfo mapping="theid1/$id"/> 
+	</element>
+	
+	<element id="PATHINFOSTRICT2" implementation="com.uwyn.rife.engine.testelements.inputs.PathInfoStrict" url="/inputs/pathinfostrict/*" pathinfo="strict"> 
+		<pathinfo mapping="$id/theid2"/> 
+	</element>
+
+</site>

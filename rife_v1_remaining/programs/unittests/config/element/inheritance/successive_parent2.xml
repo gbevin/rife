@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: successive_parent2.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE element SYSTEM "/dtd/element.dtd">
+
+<element implementation="com.uwyn.rife.engine.testelements.inheritance.SuccessiveParent2">
+	<submission name="activatechildparent2">
+		<param name="activationparent2"/>
+	</submission>
+	
+	<input name="triggerparent2"/>
+	<output name="triggerparent2"/>
+	<childtrigger name="triggerparent2"/>
+</element>
+

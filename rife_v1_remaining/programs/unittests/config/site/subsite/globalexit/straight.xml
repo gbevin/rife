@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: straight.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<globalvar name="globalvar4">
+		<default>subsite value4</default>
+	</globalvar>
+	<globalexit name="globalexit3" destid="GLOBALDEST3"/>
+	
+	<element id="GLOBALDEST3" file="element/subsites/globalexit/straight/globaldesttarget.xml" url="globaldesttarget"/>
+
+	<element id="GLOBALDESTSOURCE" file="element/subsites/globalexit/straight/globaldestsource.xml" url="/globaldestsource"/>
+</site>
+

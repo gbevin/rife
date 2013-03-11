@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: defaults_source.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE element SYSTEM "/dtd/element.dtd">
+	
+<element implementation="com.uwyn.rife.engine.testelements.outputs.DefaultsSource">
+	<output name="output1">
+		<default>the first value</default>
+	</output>
+	<output name="output2">
+		<default>2rdb</default>
+		<default>2rda</default>
+		<default>2rdc</default>
+		<default>2rdd</default>
+	</output>
+	<output name="output3"/>
+	<output name="output4">
+		<default><config param="ENGINE_ELEMENT_CONFIG_VALUE"/></default>
+	</output>
+	<exit name="exit1"/>
+</element>
+

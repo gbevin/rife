@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss[!V 'namespaces'][!/V][!B 'namespace'] xmlns:[!V 'namespace_key'/]="[!V 'namespace_url'/]"[!/B] version="2.0">
+	<channel>
+		<title><!--V 'feed_title'--><!--/V--></title>
+		<link><!--V 'feed_link'--><!--/V--></link>
+		<description><!--V 'feed_description'--><!--/V--></description>
+		<language><!--V 'feed_language'--><!--/V--></language>
+		<copyright><!--V 'feed_copyright'--><!--/V--></copyright>
+		<pubDate><!--V 'feed_publishedDate'--><!--/V--></pubDate>
+		<managingEditor><!--V 'feed_author'--><!--/V--></managingEditor>
+		<!--V 'entries'--><!--/V-->
+		<!--B 'entry'-->
+			<item>
+				<title><!--V 'entry_title'--><!--/V--></title>
+				<link><!--V 'entry_link'--><!--/V--></link>
+				<description><!--V 'entry_content'--><!--/V--></description>
+				<pubDate><!--V 'entry_publishedDate'--><!--/V--></pubDate>
+				<author><!--V 'entry_author'--><!--/V--></author>
+				<guid><!--V 'entry_id'--><!--/V--></guid>
+			</item>
+		<!--/B-->
+	</channel>
+</rss>

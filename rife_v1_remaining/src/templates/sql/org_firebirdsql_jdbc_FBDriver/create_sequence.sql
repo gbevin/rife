@@ -1,0 +1,1 @@
+/*B 'QUERY'*/CREATE GENERATOR /*V 'NAME'-*//*-B*/

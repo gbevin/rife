@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: rep.dtd 3918 2008-04-14 17:35:35Z gbevin $
+  -  PUBLIC ID: -//Rifers.org//RIFE Rep 1.1//EN
+  -  SYSTEM ID: http://rifers.org/dtd/rep_1_1.dtd
+  -->
+
+<!ELEMENT rep			(participant | property)*>
+
+<!ELEMENT participant	(#PCDATA | config | participant | datasource | template)*>
+<!ATTLIST participant   name CDATA #IMPLIED
+						blocking (0|f|false|1|t|true) "false"
+                        param CDATA #IMPLIED>
+
+<!ELEMENT property		(#PCDATA | config | participant | datasource | template)*>
+<!ATTLIST property		name CDATA #REQUIRED>
+
+<!ELEMENT datasource	(#PCDATA | config | participant)*>
+
+<!ELEMENT template		(#PCDATA | config | participant)*>
+<!ATTLIST template		type CDATA #REQUIRED>
+
+<!ELEMENT config	    EMPTY>
+<!ATTLIST config	    param CDATA #REQUIRED>
+

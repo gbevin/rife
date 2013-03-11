@@ -1,0 +1,18 @@
+<paging>
+	<count><!--V 'NAV:RANGECOUNT'/--></count>
+	<first><!--V 'NAV:FIRSTRANGE'--><!--/V--></first>
+	<previous><!--V 'NAV:PREVIOUSRANGE'--><!--/V--></previous>
+	<next><!--V 'NAV:NEXTRANGE'--><!--/V--></next>
+	<last><!--V 'NAV:LASTRANGE'--><!--/V--></last>
+	<absolute><!--V 'NAV:ABSOLUTERANGES'--><!--/V--></absolute>
+	<!--B 'NAV:FIRSTRANGE'--><!--V 'EXIT:QUERY:change_offset'/--><!--/B-->
+	<!--B 'NAV:FIRSTRANGE:DISABLED'--><!--/B-->
+	<!--B 'NAV:PREVIOUSRANGE'--><!--V 'EXIT:QUERY:change_offset'/--><!--/B-->
+	<!--B 'NAV:PREVIOUSRANGE:DISABLED'--><!--/B-->
+	<!--B 'NAV:ABSOLUTERANGE'--><page value="[!V 'ABSOLUTERANGE_TEXT'/]"><!--V 'EXIT:QUERY:change_offset'/--></page><!--/B-->
+	<!--B 'NAV:ABSOLUTERANGE:DISABLED'--><page value="[!V 'ABSOLUTERANGE_TEXT'/]"/><!--/B-->
+	<!--B 'NAV:NEXTRANGE'--><!--V 'EXIT:QUERY:change_offset'/--><!--/B-->
+	<!--B 'NAV:NEXTRANGE:DISABLED'--><!--/B-->
+	<!--B 'NAV:LASTRANGE'--><!--V 'EXIT:QUERY:change_offset'/--><!--/B-->
+	<!--B 'NAV:LASTRANGE:DISABLED'--><!--/B-->
+</paging>

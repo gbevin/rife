@@ -1,0 +1,34 @@
+<html>
+	<head>
+		<title>Template where the exit form data is generated</title>
+	</head>
+
+	<body>
+		<h1>This is a template where the exit form data is are generated.</h1>
+
+		<form name="test1" action="<!--V 'EXIT:FORM:exit1'/-->">
+			<!--V 'EXIT:PARAMS:exit1'/-->
+			<input type="submit">
+		</form>
+
+		<form name="test2" action="<!--BV 'value1'--><!--V 'EXIT:FORM:exit2'/--><!--/BV--><!--V 'value1'/-->">
+			<!--BV 'value2'--><!--V 'EXIT:PARAMS:exit2'/--><!--/BV--><!--V 'value2'/-->
+			<input type="submit">
+		</form>
+		
+		<form name="test3" action="<!--V 'EXIT:FORM:exit3'/-->">
+			<!--V 'EXIT:PARAMS:exit3'/-->
+			<input type="submit">
+		</form>
+
+		<form name="test4" action="<!--V 'EXIT:FORM:@EXIT_NAME1'/-->">
+			<!--V 'EXIT:PARAMS:@com.uwyn.rife.engine.testelements.exits.GeneratedformSource.EXIT_NAME1'/-->
+			<input type="submit">
+		</form>
+
+		<form name="test5" action="<!--V 'EXIT:FORM:@com.uwyn.rife.engine.testelements.exits.GeneratedformSource.EXIT_NAME2'/-->">
+			<!--V 'EXIT:PARAMS:@EXIT_NAME2'/-->
+			<input type="submit">
+		</form>
+	</body>
+</html>

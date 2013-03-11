@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: test_xml2elementinfo2.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE element SYSTEM "/dtd/element.dtd">
+
+<element implementation="com.uwyn.rife.engine.testelements.outputs.Normal">
+	<!-- INPUTS -->
+	<input name="input1"/>
+	<input name="input2"/>
+	
+	<!-- OUTPUTS -->
+	<output name="output1"/>
+	
+	<!-- EXITS -->
+	<exit name="exit1"/>
+</element>
+

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: isolation.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<globalvar name="globalvar2">
+		<default>subsite value2</default>
+	</globalvar>
+
+	<globalexit name="globalexit3" destid="GLOBALDEST3"/>
+	
+	<element id="GLOBALDEST3" file="element/subsites/globalexit/isolation/globaldesttarget.xml" url="/globaldesttarget"/>
+
+	<element id="GLOBALDESTSOURCE" file="element/subsites/globalexit/isolation/globaldestsource.xml" url="/globaldestsource">
+		<datalink srcoutput="sourceoutput1" destid=".GLOBALDEST1" destinput="destinput1"/>
+		<datalink srcoutput="sourceoutput2" destid=".GLOBALDEST1" destinput="destinput2"/>
+		<datalink srcoutput="sourceoutput3" destid=".GLOBALDEST1" destinput="destinput3"/>
+	</element>
+</site>
+

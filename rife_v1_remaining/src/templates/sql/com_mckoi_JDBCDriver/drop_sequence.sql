@@ -1,0 +1,1 @@
+/*B 'QUERY'*/DROP SEQUENCE /*V 'NAME'-*//*-B*/

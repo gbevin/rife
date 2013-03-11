@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<title>Template where the submission urls are generated and parameters filled in</title>
+	</head>
+
+	<body>
+		<h1>This is a template where the submission urls are generated and parameters filled in.</h1>
+
+		<a href="<!--V 'SUBMISSION:QUERY:submission1'/-->">submission1</a>
+		
+		<form action="<!--V 'SUBMISSION:FORM:submission2'/-->" method="POST">
+			<!--V 'SUBMISSION:PARAMS:submission2'/-->
+			<input name="login" type="text" value="<!--V 'PARAM:login'--><!--/V-->">
+			<input name="password" type="password" value="<!--V 'PARAM:password'--><!--/V-->">
+			<input type="submit">
+		</form>
+		
+		<form action="<!--V 'SUBMISSION:FORM:submission3'/-->" method="POST">
+			<!--V 'SUBMISSION:PARAMS:submission3'/-->
+			<input name="login" type="text" value="<!--V 'PARAM:login'--><!--/V-->">
+			<input name="password" type="password" value="<!--V 'PARAM:password'--><!--/V-->">
+			<input type="submit">
+		</form>
+
+		<a href="<!--V 'SUBMISSION:QUERY:submission4'/-->">submission4</a>
+
+		<form action="<!--V 'SUBMISSION:FORM:@SUBMISSION_NAME1'/-->" method="POST">
+			<!--V 'SUBMISSION:PARAMS:@com.uwyn.rife.engine.testelements.submission.Generatedurl.SUBMISSION_NAME1'/-->
+			<input name="login" type="text" value="<!--V 'PARAM:login'--><!--/V-->">
+			<input name="password" type="password" value="<!--V 'PARAM:password'--><!--/V-->">
+			<input type="submit">
+		</form>
+
+		<a href="<!--V 'SUBMISSION:QUERY:@com.uwyn.rife.engine.testelements.submission.Generatedurl.SUBMISSION_NAME2'/-->">submission6</a>	
+	</body>
+</html>

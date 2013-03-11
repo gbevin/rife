@@ -1,0 +1,15 @@
+<html>
+	<head>
+		<title>Template with escaped short value tags</title>
+	</head>
+
+	<body>
+		\[! V 'VALUE1'/]
+		<h1>This is a template with escaped short value tags.</h1>
+		\\[!B 'BLOCK1']\\one\<!--V 'VALUE2'/-->two\\<!--V 'VALUE3'/-->three\[!/B]
+		\<!--B 'BLOCK2'-->three\[!V 'VALUE4'/]\<r:v  name="VALUE5" />\\<!--/B-->
+		\${v    BLOCK3  }\\<!--V 'VALUE6'/-->\<!--/B-->
+		<h2>Some more text.</h2>
+		\\<!--V 'VALUE7'/-->\\
+	</body>
+</html>

@@ -1,0 +1,2 @@
+<!V 'lines'/><!B 'line'>the first : <!V 'first'/>, the second : <!V 'second'/>
+<!/B>

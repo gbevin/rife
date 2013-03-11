@@ -1,0 +1,19 @@
+<html>
+<body>
+<!--V 'ERRORS:*'--><!--/V-->
+<!--B 'ERRORS:*'--><!--V 'ERRORS'/--><!--/B-->
+<!--B 'ERRORMESSAGE:*'--><!--V 'ERRORMESSAGE'/--><br /><!--/B-->
+		
+<form name="credentials" action="[!V 'SUBMISSION:FORM:credentials'/]" method="post">
+<!--V 'SUBMISSION:PARAMS:credentials'/-->
+<!--V 'FORM:INPUT:login'/-->
+<!--V 'FORM:SECRET:password'/-->
+<!--V 'FORM:CHECKBOX:remember'/-->
+<input type="submit" value="Login" />
+</form>
+
+</body>
+</html>
+<!--B 'UNEXPECTED:sessioncreation'-->An unexpected error occurred which prevented the session from being started.<!--/B-->
+<!--B 'INVALID:credentials'-->The login and password you provided are not valid.<!--/B-->
+

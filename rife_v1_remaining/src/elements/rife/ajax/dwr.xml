@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2006 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: dwr.xml 3877 2007-08-03 19:48:10Z gbevin $
+  -->
+
+<!DOCTYPE element SYSTEM "/dtd/element.dtd">
+
+<element implementation="com.uwyn.rife.engine.elements.DwrService">
+
+<!-- 
+  -  You can use this element as an embedded element also to have it
+  -  generate the required JavaScript include tags.
+  - 
+  -  Put the following properties inside  the embedded element tag:
+  - 
+  -  [!V 'ELEMENT:DwrDate]
+  -  names = NameFromDwrXml1,NameFromDwrXml2
+  -  includeUtil = true
+  -  [!/V]
+  -->
+
+	<property name="xmlConfiguratorPath">dwr.xml</property>
+	<property name="debug">true</property>
+</element>

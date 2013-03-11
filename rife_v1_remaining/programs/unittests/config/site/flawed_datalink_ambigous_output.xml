@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: flawed_datalink_ambigous_output.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<element id="ELEMENT1" file="xml/test_xml2elementinfo1.xml" url="/test/element1">
+		<datalink srcoutput="Output1" srcoutbean="Outbean1" snapback="1" destinput="Input1"/>
+	</element>
+	
+	<element id="ELEMENT2" file="xml/test_xml2elementinfo2.xml" url="/test/element2"/>
+</site>
+

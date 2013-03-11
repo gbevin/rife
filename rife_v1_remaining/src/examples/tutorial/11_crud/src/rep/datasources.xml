@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: datasources.xml 3953 2008-05-08 01:04:08Z gbevin $
+  -->
+
+<!DOCTYPE datasources SYSTEM "/dtd/datasources.dtd">
+
+<datasources>
+    <datasource name="derby">
+        <driver>org.apache.derby.jdbc.EmbeddedDriver</driver>
+        <url>jdbc:derby:../dbs/derby;create=true</url>
+        <user></user>
+        <password></password>
+        <poolsize>5</poolsize>
+    </datasource>
+	
+    <datasource name="pgsql">
+        <driver>org.postgresql.Driver</driver>
+        <url>jdbc:postgresql://localhost:5432/<config param="DATASOURCE_DATABASE"/></url>
+        <user><config param="DATASOURCE_USER"/></user>
+        <password><config param="DATASOURCE_PASSWORD"/></password>
+        <poolsize>5</poolsize>
+    </datasource>
+	
+    <datasource name="oracle">
+        <driver>oracle.jdbc.driver.OracleDriver</driver>
+        <url><config param="ORACLE_CONNECT"/></url>
+        <user><config param="DATASOURCE_USER"/></user>
+        <password><config param="DATASOURCE_PASSWORD"/></password>
+        <poolsize>5</poolsize>
+    </datasource>
+	
+    <datasource name="hsqldb">
+        <driver>org.hsqldb.jdbcDriver</driver>
+        <url>jdbc:hsqldb:.</url>
+        <user>sa</user>
+        <password></password>
+        <poolsize>5</poolsize>
+    </datasource>
+	
+    <datasource name="h2">
+        <driver>org.h2.Driver</driver>
+        <url>jdbc:h2:../dbs/h2/crud</url>
+        <user>sa</user>
+        <password></password>
+        <poolsize>5</poolsize>
+    </datasource>
+</datasources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: arrival_target.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<arrival destid="CHILD"/>
+
+	<!-- ARRIVAL WITH INHERITANCE IN SUBSITE -->
+	<element id="PARENT" file="element/inheritance/simple_parent.xml"/>
+	<element id="CHILD" file="element/inheritance/simple_child.xml" inherits="PARENT" url="/child"/>
+	
+</site>
+

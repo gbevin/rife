@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: continuations.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<arrival destid="call_submission"/>
+	
+	<element file="element/continuations/nopause.xml" url="nopause"/>
+	
+	<element file="element/continuations/simple.xml" url="simple"/>
+	
+	<element file="element/continuations/simple_interface.xml" url="simple_interface"/>
+	
+	<element file="element/continuations/null.xml" url="null"/>
+	
+	<element file="element/continuations/null_reference.xml" url="null_reference"/>
+	
+	<element file="element/continuations/null_conditional.xml" url="null_conditional"/>
+	
+	<element file="element/continuations/conditional.xml" url="conditional"/>
+	
+	<element file="element/continuations/membermethod.xml" url="membermethod"/>
+	
+	<element file="element/continuations/private_method.xml" url="private_method"/>
+	
+	<element file="element/continuations/synchronization.xml" url="synchronization"/>
+	
+	<element file="element/continuations/throw.xml" url="throw"/>
+	
+	<element file="element/continuations/trycatch.xml" url="trycatch"/>
+	
+	<element file="element/continuations/instanceof.xml" url="instanceof"/>
+	
+	<element file="element/continuations/innerclass.xml" url="innerclass"/>
+	
+	<element file="element/continuations/alltypes.xml" url="alltypes"/>
+	
+	<element file="element/continuations/submission_form.xml" url="submission/form"/>
+	
+	<element file="element/continuations/submission_query.xml" url="submission/query"/>
+	
+	<element file="element/continuations/step_back.xml" url="stepback"/>
+	
+	<element id="EXIT_FORM" file="element/continuations/exit_form.xml" url="exit/form">
+		<flowlink srcexit="getanswer" destid="EXIT_FORM"/>
+		<flowlink srcexit="nocontinuations" destid="EXIT_FORM" continuations="cancel"/>
+	</element>
+	
+	<element id="EXIT_QUERY" file="element/continuations/exit_query.xml" url="exit/query">
+		<flowlink srcexit="getanswer" destid="EXIT_QUERY"/>
+		<flowlink srcexit="nocontinuations" destid="EXIT_QUERY" continuations="cancel"/>
+	</element>
+	
+	<element id="PARENT" file="element/inheritance/simple_parent.xml"/>
+	<element id="CHILD" file="element/continuations/submission_form.xml" inherits="PARENT" url="inheritance"/>
+	
+	<element file="element/continuations/clone.xml" url="clone"/>
+	
+	<element file="element/continuations/noclone.xml" url="noclone"/>
+	
+	<element file="element/continuations/embedding.xml" url="embedding"/>
+	
+	<element id="EMBEDDING_EMBEDDED" file="element/engine/simple_html.xml"/>
+	
+	<element file="element/continuations/numberguess.xml" url="numberguess"/>
+	
+	<element id="SIMPLE_CALL_NOANSWER" file="element/continuations/simple_call.xml" url="no_answer">
+		<flowlink srcexit="exit" destid="simple_call_noanswer"/>
+	</element>
+	<element file="element/continuations/simple_call_noanswer.xml"/>
+	
+	<element id="SIMPLE_CALL" file="element/continuations/simple_call.xml" url="simple_call">
+		<flowlink srcexit="exit" destid="simple_call_exit"/>
+	</element>
+	<element file="element/continuations/simple_call_exit.xml"/>
+	
+	<element id="INHERITANCE_CALL_PARENT" file="element/continuations/inheritance_call_parent.xml">
+		<flowlink srcexit="exit" destid="INHERITANCE_CALL_ANSWER"/>
+	</element>
+	<element id="INHERITANCE_CALL_CHILD" inherits="INHERITANCE_CALL_PARENT" file="element/continuations/inheritance_call_child.xml" url="inheritance_call"/>
+	<element id="INHERITANCE_CALL_ANSWER" file="element/continuations/inheritance_call_answer.xml" url="inheritance_call_answer"/>
+	
+	<element file="element/continuations/chained_call1.xml" url="chained_call1">
+		<flowlink srcexit="exit1" destid="chained_call2"/>
+	</element>
+	<element file="element/continuations/chained_call2.xml" url="chained_call2">
+		<flowlink srcexit="exit2" destid="chained_call3"/>
+	</element>
+	<element file="element/continuations/chained_call3.xml" url="chained_call3"/>
+	
+	<element file="element/continuations/call_answer.xml" url="call_answer">
+		<flowlink srcexit="exit" destid="call_answer_exit"/>
+		<datalink srcoutput="somedata" destinput="somedata" destid="call_answer_exit"/>
+	</element>
+	<element file="element/continuations/call_answer_exit.xml"/>
+
+	<group>
+		<globalvar name="globalvar"/>
+		<element file="element/continuations/call_answer_globalvar.xml" url="call_answer_globalvar">
+			<flowlink srcexit="exit" destid="call_answer_globalvar_exit"/>
+		</element>
+		<element file="element/continuations/call_answer_globalvar_exit.xml"/>
+	</group>
+
+	<element file="element/continuations/call_submission.xml" url="call_submission">
+		<flowlink srcexit="exit" destid="call_submission_answer"/>
+	</element>
+	<element file="element/continuations/call_submission_answer.xml" url="call_submission_answer"/>
+
+	<element id="CALL_SUBMISSION_NOPAUSE" file="element/continuations/call_submission.xml" url="call_submission/nopause">
+		<flowlink srcexit="exit" destid="CALL_SUBMISSION_ANSWER_NOPAUSE"/>
+	</element>
+	<element id="CALL_SUBMISSION_ANSWER_NOPAUSE" file="element/continuations/call_submission_answer_nopause.xml" url="call_submission_answer/nopause"/>
+	
+	<group>
+		<globalvar name="global1">
+			<default>the first value</default>
+		</globalvar>
+		<globalvar name="global2">
+			<default>2rda</default>
+			<default>2rdd</default>
+			<default>2rdc</default>
+			<default>2rdb</default>
+		</globalvar>
+		<globalvar name="global3"/>
+		<globalvar name="global4">
+			<default><config param="ENGINE_ELEMENT_CONFIG_VALUE"/></default>
+		</globalvar>
+		
+		<element file="element/continuations/answer_without_call.xml" url="answer_without_call">
+		</element>
+	</group>
+	<element file="element/continuations/finally.xml" url="finally"/>
+</site>
+

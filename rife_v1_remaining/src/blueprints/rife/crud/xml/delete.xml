@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crud>
+	<method>delete</method>
+	<title>\<!--V 'L10N:window_title'-->window_title\<!--/V--></title>
+	<subtitle>\<!--V 'L10N:page_title-delete'-->page_title-delete\<!--/V--></subtitle>
+	\<!--V 'crud_content'/-->
+	\<!--BV 'crud_content'-->
+		<submit>\<!--V 'SUBMISSION:QUERY:confirm'/--></submit>
+		<fields>
+		<!--V 'fields'--><!--/V-->
+		<!--B 'field'-->
+			<field>
+				<!--V 'form_field'--><!--/V-->
+				<!--B 'form_field-generic'--><value>\<!--V '[!V 'property'/]'-->\<!--/V--></value><!--/B-->
+				<!--B 'form_field-url'--><value type="url">\<!--V '[!V 'property'/]'-->\<!--/V--></value><!--/B-->
+				<!--B 'form_field-email'--><value type="email">\<!--V '[!V 'property'/]'-->\<!--/V--></value><!--/B-->
+				<!--B 'form_field-text'--><value type="text">\<!--V '[!V 'property'/]'-->\<!--/V--></value><!--/B-->
+				<!--B 'form_field-xhtml'--><value type="xhtml">\<!--V '[!V 'property'/]'-->\<!--/V--></value><!--/B-->
+				<!--B 'form_field-image'--><value type="image"><url>\<!--V '[!V 'property'/]-src'-->\<!--/V--></url><width>\<!--V '[!V 'property'/]-width'-->\<!--/V--></width><height>\<!--V '[!V 'property'/]-height'-->\<!--/V--></height><size>\<!--V '[!V 'property'/]-size'-->\<!--/V--></size></value><!--/B-->
+				<!--B 'form_field-raw'--><value type="raw"><url>\<!--V '[!V 'property'/]-url'-->\<!--/V--></url><size>\<!--V '[!V 'property'/]-size'-->\<!--/V--></size></value><!--/B-->
+			</field>
+		<!--/B-->
+		</fields>
+	\<!--/BV-->
+	\<!--B 'crud_content_deleted'-->
+		<success/>
+	\<!--/B-->
+	<urls>
+		<home>\<!--V 'EXIT:QUERY:[!V 'exit_prefix'/][!V 'classname'/]-home'/--></home>
+		<add>\<!--V 'EXIT:QUERY:[!V 'exit_prefix'/][!V 'classname'/]-add'/--></add>
+		<browse>\<!--V 'EXIT:QUERY:[!V 'exit_prefix'/][!V 'classname'/]-browse'/--></browse>
+		<edit>\<!--V 'EXIT:QUERY:[!V 'exit_prefix'/][!V 'classname'/]-edit'/--></edit>
+		<delete>\<!--V 'EXIT:QUERY:[!V 'exit_prefix'/][!V 'classname'/]-delete'/--></delete>
+	</urls>
+</crud>

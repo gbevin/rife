@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: site.dtd 3930 2008-04-24 11:10:22Z gbevin $
+  -  PUBLIC ID: -//Rifers.org//RIFE Site 1.6.2//EN
+  -  SYSTEM ID: http://rifers.org/dtd/site_1_6_2.dtd
+  -->
+
+<!ELEMENT site			(globalvar | globalcookie | globalbean | globalexit | element | group | subsite | state | arrival | departure | property | errorhandler)*>
+<!ATTLIST site	    	fallbackid CDATA #IMPLIED>
+
+<!ELEMENT group			(globalvar | globalcookie | globalbean | globalexit | element | group | subsite | state | errorhandler)*>
+<!ATTLIST group			inherits CDATA #IMPLIED
+						pre CDATA #IMPLIED>
+
+<!ELEMENT state			(globalvar | globalcookie | globalbean | globalexit | element | group | subsite | state | arrival | departure | property | errorhandler)*>
+<!ATTLIST state			store CDATA #IMPLIED> <!-- by default the "query" and "session" state stores are supported -->
+
+<!ELEMENT globalvar		(default*)>
+<!ATTLIST globalvar	    name CDATA #REQUIRED>
+
+<!ELEMENT globalcookie	(default*)>
+<!ATTLIST globalcookie	name CDATA #REQUIRED>
+
+<!ELEMENT globalbean	EMPTY>
+<!ATTLIST globalbean	classname CDATA #REQUIRED
+						prefix CDATA #IMPLIED
+						name CDATA #IMPLIED
+						group CDATA #IMPLIED>
+
+<!ELEMENT globalexit	EMPTY>
+<!ATTLIST globalexit    name CDATA #REQUIRED
+						destid CDATA #IMPLIED
+						reflect (0|f|false|1|t|true) "false"
+						snapback (0|f|false|1|t|true) "false"
+						redirect (0|f|false|1|t|true) "false"
+						inheritance (preserve|cancel) "preserve"
+						embedding (preserve|cancel) "preserve"
+						continuations (preserve|cancel) "preserve">
+
+<!ELEMENT arrival		EMPTY>
+<!ATTLIST arrival    	destid CDATA #REQUIRED
+						redirect (0|f|false|1|t|true) "false">
+
+<!ELEMENT departure		EMPTY>
+<!ATTLIST departure    	srcid CDATA #REQUIRED>
+
+<!ELEMENT errorhandler	(type*)>
+<!ATTLIST errorhandler	destid CDATA #REQUIRED>
+
+<!ELEMENT type			EMPTY>
+<!ATTLIST type	    	classname CDATA #REQUIRED>
+
+<!ELEMENT subsite		(globalvar | globalcookie | globalbean | globalexit | element | group | subsite | state | arrival | departure | property | errorhandler)*>
+<!ATTLIST subsite		id ID #REQUIRED
+						file CDATA #IMPLIED
+						urlprefix CDATA #IMPLIED
+						inherits CDATA #IMPLIED
+						pre CDATA #IMPLIED>
+
+<!ELEMENT default		(#PCDATA | config)*>
+
+<!ELEMENT config	    EMPTY>
+<!ATTLIST config	    param CDATA #REQUIRED>
+
+<!ELEMENT element		(property | datalink | flowlink | autolink | exit | childtrigger | input | inbean | output | outbean | submission | incookie | outcookie | pathinfo)*>
+<!ATTLIST element		file CDATA #IMPLIED
+						id ID #IMPLIED
+						url CDATA #IMPLIED
+						inherits CDATA #IMPLIED
+						pre CDATA #IMPLIED
+						implementation CDATA #IMPLIED
+                        extends CDATA #IMPLIED
+                        contenttype CDATA #IMPLIED
+                        pathinfo (loose|strict) #IMPLIED>
+
+<!ELEMENT property		(#PCDATA | config | participant | datasource | template)*>
+<!ATTLIST property		name CDATA #REQUIRED>
+
+<!ELEMENT participant	(#PCDATA | config | participant | datasource | template)*>
+<!ATTLIST participant	name CDATA #REQUIRED>
+
+<!ELEMENT datasource	(#PCDATA | config | participant)*>
+
+<!ELEMENT template		(#PCDATA | config | participant)*>
+<!ATTLIST template		type CDATA #IMPLIED>
+
+<!ELEMENT datalink		EMPTY>
+<!ATTLIST datalink		srcoutput CDATA #IMPLIED
+						srcoutbean CDATA #IMPLIED
+						destid CDATA #IMPLIED
+						snapback (0|f|false|1|t|true) "false"
+						destinput CDATA #IMPLIED
+						destinbean CDATA #IMPLIED>
+
+<!ELEMENT flowlink		(datalink)*>
+<!ATTLIST flowlink		srcexit CDATA #REQUIRED
+						destid CDATA #IMPLIED
+						snapback (0|f|false|1|t|true) "false"
+						redirect (0|f|false|1|t|true) "false"
+						inheritance (preserve|cancel) "preserve"
+						embedding (preserve|cancel) "preserve"
+						continuations (preserve|cancel) "preserve">
+
+<!ELEMENT autolink		(datalink)*>
+<!ATTLIST autolink		srcexit CDATA #REQUIRED
+						destid CDATA #IMPLIED
+						redirect (0|f|false|1|t|true) "false"
+						inheritance (preserve|cancel) "preserve"
+						embedding (preserve|cancel) "preserve"
+						continuations (preserve|cancel) "preserve">
+
+<!ELEMENT exit			EMPTY>
+<!ATTLIST exit			name CDATA #REQUIRED>
+
+<!ELEMENT childtrigger	EMPTY>
+<!ATTLIST childtrigger	name CDATA #REQUIRED>
+
+<!ELEMENT input			(default*)>
+<!ATTLIST input			name CDATA #REQUIRED>
+
+<!ELEMENT inbean		EMPTY>
+<!ATTLIST inbean		classname CDATA #REQUIRED
+						prefix CDATA #IMPLIED
+						name CDATA #IMPLIED
+						group CDATA #IMPLIED>
+
+<!ELEMENT output		(default*)>
+<!ATTLIST output		name CDATA #REQUIRED>
+
+<!ELEMENT outbean		EMPTY>
+<!ATTLIST outbean		classname CDATA #REQUIRED
+						prefix CDATA #IMPLIED
+						name CDATA #IMPLIED
+						group CDATA #IMPLIED>
+
+<!ELEMENT submission	(param | bean | file)*>
+<!ATTLIST submission	name CDATA #REQUIRED
+						scope (local|global) "local"
+						continuations (preserve|cancel) "preserve">
+
+<!ELEMENT param			(default*)>
+<!ATTLIST param			name CDATA #IMPLIED
+						regexp CDATA #IMPLIED>
+
+<!ELEMENT bean			EMPTY>
+<!ATTLIST bean			classname CDATA #REQUIRED
+						prefix CDATA #IMPLIED
+						name CDATA #IMPLIED
+						group CDATA #IMPLIED>
+
+<!ELEMENT file			EMPTY>
+<!ATTLIST file		    name CDATA #IMPLIED
+						regexp CDATA #IMPLIED>
+
+<!ELEMENT incookie		(default?)>
+<!ATTLIST incookie		name CDATA #REQUIRED>
+
+<!ELEMENT outcookie		(default?)>
+<!ATTLIST outcookie		name CDATA #REQUIRED>
+
+<!ELEMENT pathinfo		EMPTY>
+<!ATTLIST pathinfo		mapping CDATA #REQUIRED>
+

@@ -1,0 +1,33 @@
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: engine_error_common.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+<errors>
+	<product>Uwyn RIFE <!--V 'RIFE_VERSION'/--></product>
+	<exceptions>
+		<!--V 'exceptions'--><!--/V-->
+		
+		<!--B 'stack_trace_line'-->
+				<frame>
+					<classname><!--V 'class_name'-->class_name<!--/V--></classname>
+					<methodname><!--V 'method_name'-->method_name<!--/V--></methodname>
+<!--V 'details'--><!--/V-->
+<!--B 'file_name'-->
+					<filename><!--V 'file_name'-->file_name<!--/V--></filename>
+<!--/B-->
+<!--B 'line_number'-->
+					<line><!--V 'line_number'-->line<!--/V--></line>
+<!--/B-->
+				</frame>
+		<!--/B-->
+		
+<!--B 'more_stack_trace'-->
+				<moreframes><!--V 'count'-->11<!--/V--></moreframes>
+<!--/B-->
+<!--B 'more_exceptions'-->
+		<moreexceptions/>
+<!--/B-->
+	</exceptions>
+	
+</errors>

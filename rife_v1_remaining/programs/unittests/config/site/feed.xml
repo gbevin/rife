@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: feed.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<element file="rife/feed/feedprovider.xml" id="RSS_CLASSPATH" url="/rss">
+		<property name="feedtype">rss_2.0</property>
+		<property name="classname">com.uwyn.rife.feed.SimpleEntryProvider</property>
+	</element>
+	<element file="rife/feed/feedprovider.xml" id="ATOM_CLASSPATH" url="/atom">
+		<property name="feedtype">atom_0.3</property>
+		<property name="classname">com.uwyn.rife.feed.SimpleEntryProvider</property>
+	</element>
+	<element file="rife/feed/feedprovider.xml" id="NAMESPACES_RSS_CLASSPATH" url="/namespaces_rss">
+		<property name="feedtype">rss_2.0</property>
+		<property name="classname">com.uwyn.rife.feed.NamespacesEntryProvider</property>
+	</element>
+	<element file="rife/feed/feedprovider.xml" id="NAMESPACES_ATOM_CLASSPATH" url="/namespaces_atom">
+		<property name="feedtype">atom_0.3</property>
+		<property name="classname">com.uwyn.rife.feed.NamespacesEntryProvider</property>
+	</element>
+</site>

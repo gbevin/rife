@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: authenticated.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE element SYSTEM "/dtd/element.dtd">
+
+<element>
+	<property name="template_name"></property>
+	<!--
+	<property name="template_type"></property>
+	<property name="template_encoding"></property>
+	-->
+	<property name="session_duration"></property>
+	<property name="submission_name">credentials</property>
+	<property name="authvar_name">authid</property>
+	<property name="authvar_type">input</property>
+	<property name="remembervar_name">rememberid</property>
+	<property name="prohibit_remember">false</property>
+	<property name="credentials_class">com.uwyn.rife.authentication.credentials.RoleUser</property>
+</element>

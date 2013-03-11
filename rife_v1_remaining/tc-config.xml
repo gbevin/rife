@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tc:tc-config xmlns:tc="http://www.terracotta.org/config">
+	<!--
+	  -  Server is colocated with client and DSO is listening on
+	  -  default port (9510).
+	  -->
+	<servers>
+		<server host="%i" name="sample"/>
+	</servers>
+		
+	<!--
+	  -  Configure DSO for 'development' mode;
+	  -  See the Terracotta DSO Guide for additional information.
+	  -->
+	<system>
+		<configuration-model>development</configuration-model>
+	</system>
+	
+	<clients>
+		<!--
+		  -  Tell DSO where to put the generated client logs
+		  -  See the Terracotta Configuration Guide and Reference for additional
+		  -  information.
+		  -->
+		<logs>logs/client-logs/%(webserver.log.name)</logs>
+		
+		<!-- Tell DSO to load the RIFE 1.6.0 module. -->
+		<modules>
+			<module name="clustered-rife-1.6.0" version="1.0.0"/>
+		</modules>
+	</clients>
+	<application>
+		<!--
+		  -  This should be updated to only include the classes and methods
+		  -  that have to be instrumented and auto-locked. The current
+		  -  expressions instruments everything, which is not recommended in
+		  -  a production setting.
+		  -->
+		<dso>
+			<instrumented-classes>
+				<include>
+					<class-expression>*..*</class-expression>
+				</include>
+			</instrumented-classes>
+			<locks>
+				<autolock>
+					<method-expression>* *..*.*(..)</method-expression>
+					<lock-level>write</lock-level>
+				</autolock>
+			</locks>
+		</dso>
+	</application>
+</tc:tc-config>

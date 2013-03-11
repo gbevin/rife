@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crud>
+	<method>add</method>
+	<title>\<!--V 'L10N:window_title'-->window_title\<!--/V--></title>
+	<subtitle>\<!--V 'L10N:page_title-add'-->page_title-add\<!--/V--></subtitle>
+	\<!--V 'crud_content'/-->
+	\<!--BV 'crud_content'-->
+		<!--I 'rife.crud.xml.form'/-->
+	\<!--/BV-->
+	\<!--B 'crud_content_added'-->
+		<success/>
+	\<!--/B-->
+	<urls>
+		<home>\<!--V 'EXIT:QUERY:[!V 'exit_prefix'/][!V 'classname'/]-home'/--></home>
+		<add>\<!--V 'EXIT:QUERY:[!V 'exit_prefix'/][!V 'classname'/]-add'/--></add>
+		<browse>\<!--V 'EXIT:QUERY:[!V 'exit_prefix'/][!V 'classname'/]-browse'/--></browse>
+	</urls>
+</crud>

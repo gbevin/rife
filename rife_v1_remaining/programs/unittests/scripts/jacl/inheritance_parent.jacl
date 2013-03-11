@@ -1,0 +1,9 @@
+proc childTriggered {name values} {
+	return 1
+}
+
+if [$element hasSubmission "activatechild"] {
+	$element setOutput "trigger" "ok"
+}
+
+$element print "<html><body><a href=\"[[$element getSubmissionQueryUrl "activatechild"] toString]\">activate child</a></body></html>"

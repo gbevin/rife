@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: add.html 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<title>Add a new friend to the database</title>
+	<style type="text/css">
+	.error_mark
+	{
+		background: #ffcccc;
+		color: #990000;
+		font-weight: bold;
+	}
+	.error_markalt
+	{
+		background: #ffaaaa;
+		color: #990000;
+		font-weight: bold;
+	}
+	.error_messages
+	{
+		background: #ffcccc;
+		color: #990000;
+		font-size: smaller;
+		margin: 5px;
+	}
+	.error_messagesalt
+	{
+		background: #ffaaaa;
+		color: #990000;
+		font-size: smaller;
+		margin: 5px;
+	}
+	</style>
+</head>
+
+<body>
+	<h3>Add a friend</h3>
+	
+	<r:v name="content"/>
+
+	<r:bv name="content">
+		<r:b name="ERROR:firstname">Provide a valid firstname.</r:b>
+		<r:b name="MANDATORY:lastname">The lastname has to be provided.</r:b>
+		<r:b name="WRONGLENGTH:lastname">The lastname is too long.</r:b>
+		<r:b name="MANDATORY:*">This field has to be filled in.</r:b>
+		<r:b name="WRONGLENGTH:url">The url is too long.</r:b>
+		<r:b name="INVALID:url">The url is invalid.</r:b>
+		
+		<r:b name="MARK:ERROR"> class="error_mark"</r:b>
+		<r:b name="MARK:ERROR:ALT"> class="error_markalt"</r:b>
+		<r:b name="ERRORMESSAGE:*"><r:v name="ERRORMESSAGE"/><br /></r:b>
+		
+		<r:b name="ERRORS:*">
+			<tr class="error_messages">
+				<td colspan="2"><r:v name="ERRORS"/></td>
+			</tr>
+		</r:b>
+		
+		<r:b name="ERRORS:description">
+			<tr class="error_messagesalt">
+				<td colspan="2"><r:v name="ERRORS"/></td>
+			</tr>
+		</r:b>
+		
+		<r:b name="ERRORS:firstname,lastname">
+			<tr class="error_messages">
+				<td colspan="2"><r:v name="ERRORS"/></td>
+			</tr>
+		</r:b>
+		
+		<r:b name="ERRORS:firstname">
+			<tr>
+				<td class="error_messages"><r:v name="ERRORS"/></td>
+				<td>&nbsp;</td>
+			</tr>
+		</r:b>
+		
+		<r:b name="ERRORS:lastname">
+			<tr>
+				<td>&nbsp;</td>
+				<td class="error_messages"><r:v name="ERRORS"/></td>
+			</tr>
+		</r:b>
+	
+		<form name="friend_data" action="${v SUBMISSION:FORM:friend_data/}" method="post">
+			<r:v name="SUBMISSION:PARAMS:friend_data"/>
+			
+			<table cellspacing="0" cellpadding="5" border="0">
+			<tr>
+				<td ${v MARK:firstname}${/v}><em>Firstname</em></td>
+				<td ${v MARK:lastname}${/v}><em>Lastname</em></td>
+			</tr>
+			<r:v name="ERRORS:firstname,lastname"></r:v>
+			<r:v name="ERRORS:firstname"></r:v>
+			<r:v name="ERRORS:lastname"></r:v>
+			<tr>
+				<td ${v MARK:firstname}${/v}>${v FORM:INPUT:firstname}size="30"${/v}</td>
+				<td ${v MARK:lastname}${/v}>${v FORM:INPUT:lastname}size="30"${/v}</td>
+			</tr>
+
+			<tr ${v MARK:ALT:description}${/v}>
+				<td colspan="2"><em>Description</em></td>
+			</tr>
+			<r:v name="ERRORS:description"></r:v>
+			<tr ${v MARK:ALT:description}${/v}>
+				<td colspan="2"><r:v name="FORM:TEXTAREA:description">cols="80" rows="6"</r:v></td>
+			</tr>
+
+			<tr ${v MARK:url}${/v}>
+				<td colspan="2"><em>Url</em></td>
+			</tr>
+			<r:v name="ERRORS:url"></r:v>
+			<tr ${v MARK:url}${/v}>
+				<td colspan="2"><r:v name="FORM:INPUT:url">size="80"</r:v></td>
+			</tr>
+			
+			</table>
+
+			<p><input type="submit" name="Add this friend." /></p>
+		</form>
+	</r:bv>
+	
+	<r:b name="content_added">
+		<p>The friend has been added.</p>
+	</r:b>
+	
+	<p><a href="${v EXIT:QUERY:menu/}">back to menu</a></p>
+</body>
+
+</html>

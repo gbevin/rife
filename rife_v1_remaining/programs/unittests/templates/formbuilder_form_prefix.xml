@@ -1,0 +1,18 @@
+<!--V 'FORM:INPUT:prefix_login'-->  <size>10</size> <!--/V-->
+<!--V 'FORM:SECRET:prefix_password'--><size>10</size>     <!--/V-->
+<!--V 'FORM:TEXTAREA:prefix_comment'--> <cols>10</cols> <rows>5</rows>   <!--/V-->
+<!--V 'FORM:RADIO:prefix_question'-->  <alt>sometext</alt> <!--/V-->
+<!--B 'FORM:LABEL:prefix_question:a0'-->answer0<!--/B-->
+<!--B 'FORM:LABEL:prefix_question:a1'-->answer1<!--/B-->
+<!--B 'FORM:LABEL:prefix_question:a2'-->answer2<!--/B-->
+<!--V 'FORM:CHECKBOX:prefix_options'-->  <alt>someblurp</alt> <!--/V-->
+<!--B 'FORM:LABEL:prefix_options:0'-->option0<!--/B-->
+<!--B 'FORM:LABEL:prefix_options:1'-->option1<!--/B-->
+<!--B 'FORM:LABEL:prefix_options:2'-->option2<!--/B-->
+<!--V 'FORM:CHECKBOX:prefix_invoice'-->  <alt>atext</alt> <!--/V-->I want an invoice
+<!--V 'FORM:SELECT:prefix_colors'--><size>3</size> <multiple>1</multiple><!--/V-->
+<!--B 'FORM:LABEL:prefix_colors:blue'-->blue spots<!--/B-->
+<!--B 'FORM:LABEL:prefix_colors:red'-->red spots<!--/B-->
+<!--B 'FORM:LABEL:prefix_colors:green'-->green spots<!--/B-->
+<!--V 'FORM:HIDDEN:prefix_hidden'-->  <id>thehiddenone</id> <!--/V-->
+<!--V 'FORM:SELECT:prefix_yourcolors'--><size>2</size> <multiple>1</multiple><!--/V-->

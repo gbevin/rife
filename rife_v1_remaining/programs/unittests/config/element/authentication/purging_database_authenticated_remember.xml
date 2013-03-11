@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: purging_database_authenticated_remember.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE element SYSTEM "/dtd/element.dtd">
+
+<element extends="rife/authenticated/database.xml">
+	<property name="datasource"><datasource><config param="purgingunittestsdatasource"/></datasource></property>
+
+	<property name="session_duration">2000</property>
+	<property name="session_purge_frequency">1</property>
+	<property name="session_purge_scale">1</property>
+
+	<property name="remember_duration">2000</property>
+	<property name="remember_purge_frequency">1</property>
+	<property name="remember_purge_scale">1</property>
+
+	<property name="template_name">authentication_remember</property>
+
+	<submission name="credentials">
+		<bean classname="com.uwyn.rife.authentication.credentials.RoleUser"/>
+	</submission>
+
+	<incookie name="rememberid"/>
+	<outcookie name="rememberid"/>
+	
+	<childtrigger name="authid"/>
+</element>
+

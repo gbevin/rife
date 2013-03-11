@@ -1,0 +1,455 @@
+/*
+ * Copyright 2005 Geert Bevin <gbevin[remove] at uwyn dot com>
+ * Licensed under the Apache License, Version 2.0 (the "License")
+ * $Id: crud.css 3954 2008-05-08 01:11:49Z gbevin $
+ */
+body {
+	color: #000000;
+	background-color: #ffffff;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 10pt;
+	margin: 0;
+	padding: 0
+}
+
+a {
+	color: #042d56;
+}
+
+a:visited {
+	color: #4b4b4b;
+}
+
+td {
+	font-family: arial, helvetica, sans-serif;
+	font-size: 10pt;
+}
+
+form {
+	margin: 0;
+	padding: 0;
+}
+
+input {
+	color: #000000;
+	border: 1px solid #000000;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 10pt;
+	padding: 0.15em;
+}
+
+.input_disabled {
+	background: #ffffff;
+	color: #999999;
+	border: 1px solid #999999;
+}
+
+input[type=submit] {
+	background: #eeeeff;
+	color: #000033;
+	border: 1px solid #000033;
+}
+
+input[type=submit].input_disabled {
+	background: #ffffff;
+	color: #999999;
+	border: 1px solid #999999;
+}
+
+input[type=reset] {
+	background: #eeeeff;
+}
+
+input:hover {
+	color: #003300;
+	background: #ffffdd;
+	border-color: #003300;
+}
+
+input:focus {
+	color: #003300;
+	background: #eeffdd;
+	border-color: #003300;
+}
+
+textarea {
+	color: #000033;
+	background: #eeeeff;
+	border: 1px solid #000033;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 10pt;
+	padding: 0.15em;
+}
+
+textarea:hover {
+	color: #003300;
+	background: #ffffdd;
+	border-color: #003300;
+}
+
+textarea:focus {
+	color: #003300;
+	background: #eeffdd;
+	border-color: #003300;
+}
+
+select {
+	color: #000033;
+	background: #eeeeff;
+	border: 1px solid #000033;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 10pt;
+	padding: 0.15em;
+}
+
+.logout {
+	color: #ffffaa;
+	font-size: 10pt;
+	text-decoration: none;
+}
+
+.logout:visited {
+	color: #ffffaa;
+}
+
+.logout:hover {
+	text-decoration: underline;
+}
+
+.error_table {
+	border: 0;
+	border-collapse: collapse;
+}
+
+.error_table td {
+	padding: 0.4em !important;
+	border: 1px solid #000000;
+}
+
+.error_table td td {
+	padding: 0 !important;
+}
+
+.error_title {
+	color: #ffffff;
+	background-color: #cc3333;
+	font-weight: bold;
+}
+
+.collapsed_table {
+	border: 0;
+	border-collapse: collapse;
+}
+
+.collapsed_table td {
+	padding: 0;
+}
+
+.product_title_area {
+	background-color: #042d56;
+	padding: 0.4em;
+}
+
+.product_title {
+	text-align: center;
+	color: #ffffff;
+	font-weight: bold;
+	font-size: 14pt;
+}
+
+.page_title_area {
+	background-color: #336666;
+	padding: 0.4em;
+}
+
+.page_title {
+	text-align: center;
+	color: #fffff0;
+	font-weight: bold;
+	font-size: 10pt;
+}
+
+.menu_area {
+	border-bottom: 1px solid #999999;
+	background-color: #dddddd;
+	text-align: left;
+	font: 9pt;
+	line-height: 1.5em;
+	padding: 0.15em;
+}
+
+.menu_item {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	background-color: #666666 !important;
+	white-space: nowrap;
+}
+
+.menu_item a {
+	border: 0.15em solid #666666;
+	background-color: #666666 !important;
+	color: #ffff00;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.menu_item a:hover {
+	text-decoration: underline;
+}
+
+.menu_item a:visited {
+	color: #ffff00;
+}
+
+.menu_item_active {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	background-color: #999999 !important;
+	white-space: nowrap;
+}
+
+.menu_item_active a {
+	border: 0.15em solid #999999;
+	background-color: #999999 !important;
+	color: #ffff00;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.menu_item_active a:hover {
+	text-decoration: underline;
+}
+
+.menu_item_active a:visited {
+	color: #ffff00;
+}
+
+.menu_item_highlight {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	background-color: #88aa88 !important;
+	white-space: nowrap;
+}
+
+.menu_item_highlight a {
+	border: 0.15em solid #88aa88;
+	background-color: #88aa88 !important;
+	color: #ffff00;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.menu_item_highlight a:hover {
+	text-decoration: underline;
+}
+
+.menu_item_highlight a:visited {
+	color: #ffff00;
+}
+
+.content_area {
+	margin: 1em;
+}
+
+.content {
+	width: 100%;
+}
+
+.context_buttons form {
+	display: inline;
+}
+
+.form_required {
+	color: #cc0000;
+	font-weight: bold;
+}
+
+td.form_label {
+	font-weight: bold;
+	padding-right: 0.5em;
+}
+
+.form_label {
+	font-weight: bold;
+}
+
+.form_field {
+	padding: 0;
+	margin: 0;
+	margin-bottom: 7px;
+}
+
+.form_field_error {
+	color: red;
+	font-weight: bold;
+	border: 1px solid red;
+	background: rgb(255, 220, 220);
+	padding: 4px;
+	margin-bottom: 2px;
+	margin-right: auto;
+	text-align: right;
+	vertical-align: bottom;
+	float: left;
+}
+
+.form_field_error input {
+	font-weight: normal;
+}
+
+.form_field_error textarea {
+	font-weight: normal;
+}
+
+.form_error_area {
+	color: red;
+	font-weight: bold;
+	border: 1px solid red;
+	background: rgb(255, 220, 220);
+	padding: 4px;
+	margin-bottom: 7px;
+	text-align: left;
+	vertical-align: bottom;
+}
+
+.form_legend {
+	font-style: italic;
+	font-size: 9pt;
+	color: #333333;
+}
+
+.form_help {
+	background-color: #eeeeee;
+	border: 1px solid #cccccc;
+	padding: 0.4em;
+	margin-bottom: 0.4em;
+}
+
+.browse_table {
+	border: 1px solid #666666;
+	background-color: #fffff0;
+	margin: 0;
+	padding: 0;
+}
+
+.browse_table th {
+	padding: 0.2em;
+}
+
+.browse_table th div {
+	border: 1px solid #666666;
+	background-color: #eeeeee;
+	padding: 0.15em 0.4em;
+	font-weight: bold;
+	font-size: 10pt;
+}
+
+.browse_table tr td {
+	padding: 0.15em 0.4em;
+	font-size: 10pt;
+	border-bottom: 1px solid #666666;
+}
+
+.browse_table table td {
+	border-bottom: 0 none;
+}
+
+.browse_table form {
+	display: inline;
+}
+
+.browse_table .column_content {
+	margin: 0 0.5em;
+}
+
+.copyright_area {
+	padding: 1em;
+}
+
+.copyright {
+}
+
+.success {
+	font-weight: bold;
+	color: #003300;
+}
+
+.warning {
+	font-weight: bold;
+	color: #990000;
+}
+
+.xhtmlpreview {
+	background-color: #ffffff;
+	border: 1px solid #999999;
+	padding: 0.4em;
+}
+
+.textpreview {
+	background-color: #ffffff;
+	border: 1px solid #999999;
+	padding: 0.4em;
+	font-family: monospace;
+}
+
+#association_header1 {
+	border: 1px solid #666666;
+	background-color: #99cc99;
+	padding: 0.15em 0.4em;
+	font-weight: bold;
+	font-size: 10pt;
+}
+
+.association_table1 {
+	width: 100%;
+	background-color: #cceecc;
+}
+
+.association_table1 td {
+	text-align: right;
+}
+
+#association_header2 {
+	border: 1px solid #666666;
+	background-color: #9999cc;
+	padding: 0.15em 0.4em;
+	font-weight: bold;
+	font-size: 10pt;
+}
+
+.association_table2 {
+	width: 100%;
+	background-color: #ccccee;
+}
+
+.association_table2 td {
+	text-align: right;
+}
+
+#association_header3 {
+	border: 1px solid #666666;
+	background-color: #cc9999;
+	padding: 0.15em 0.4em;
+	font-weight: bold;
+	font-size: 10pt;
+}
+
+.association_table3 {
+	width: 100%;
+	background-color: #eecccc;
+}
+
+.association_table3 td {
+	text-align: right;
+}
+
+.rangedtable .activerange {
+	font-weight: bold;
+	color: #042d56;
+}
+
+.rangedtable a {
+	color: #042d56;
+}

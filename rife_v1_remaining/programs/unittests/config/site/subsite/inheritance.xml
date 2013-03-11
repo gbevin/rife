@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: inheritance.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<element id="PARENT1" file="element/subsites/inheritance/parent1.xml"/>
+	<element id="PARENT2" file="element/subsites/inheritance/parent2.xml"/>
+	<element id="PARENT3" file="element/subsites/inheritance/parent3.xml" inherits="PARENT2"/>
+
+	<subsite id="SINGLE" file="site/subsite/inheritance/single.xml" urlprefix="/single"/>
+	
+	<subsite id="STACK" file="site/subsite/inheritance/stack.xml" urlprefix="/stack" inherits="PARENT1"/>
+	
+	<subsite id="REPEATEDSTACK" file="site/subsite/inheritance/stack.xml" urlprefix="/repeatedstack" inherits="PARENT3"/>
+	
+	<subsite id="PARENTSUBSITE" file="site/subsite/inheritance/parent.xml" urlprefix="/parent"/>
+	<subsite id="CHILDSUBSITE" file="site/subsite/inheritance/stack.xml" urlprefix="/parent/childsubsite" inherits="PARENTSUBSITE"/>
+	<element id="CHILDELEMENT" file="element/subsites/inheritance/stack/targetchild.xml" url="/parent/childelement" inherits="PARENTSUBSITE"/>
+</site>
+

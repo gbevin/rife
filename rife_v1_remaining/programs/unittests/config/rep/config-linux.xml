@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: config-linux.xml 3943 2008-04-27 09:09:02Z gbevin $
+  -->
+
+<!DOCTYPE config SYSTEM "/dtd/config.dtd">
+
+<config>
+	<param name="RIFE_HOME">/data/Workspace/rife/programs/unittests</param>
+	<param name="TEMPLATE_GENERATION_PATH"><value name="RIFE_HOME"/>/build/templates</param>
+	<param name="TEMP_PATH"><value name="RIFE_HOME"/>/tmp</param>
+	<param name="ORACLE_CONNECT">jdbc:oracle:thin:@localhost:1521:uwyn</param>
+	<param name="FIREBIRD_CONNECT">jdbc:firebirdsql:localhost/3050:/tmp/firebird.gdb</param>
+
+	<include file="rep/config-common.xml"/>
+</config>

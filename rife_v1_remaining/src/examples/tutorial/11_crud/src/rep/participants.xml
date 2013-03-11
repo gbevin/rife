@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: participants.xml 3953 2008-05-08 01:04:08Z gbevin $
+  -->
+
+<!DOCTYPE rep SYSTEM "/dtd/rep.dtd">
+
+<rep>
+	<property name="datasource"><datasource><config param="DATASOURCE_NAME"/></datasource></property>
+	
+    <participant param="rep/config.xml">ParticipantConfig</participant>
+    <participant param="rep/datasources.xml">ParticipantDatasources</participant>
+    <participant param="com.uwyn.rife.crud.samples.beans.Account" blocking="true">CreateCrudStructureParticipant</participant>
+    <participant param="Blog.groovy" blocking="true">CreateCrudStructureParticipant</participant>
+    <participant param="BlogJanino.janino" blocking="true">CreateCrudStructureParticipant</participant>
+    <participant param="com.uwyn.rife.crud.samples.beans.Category" blocking="true">CreateCrudStructureParticipant</participant>
+    <participant param="com.uwyn.rife.crud.samples.beans.Faq" blocking="true">CreateCrudStructureParticipant</participant>
+    <participant param="com.uwyn.rifecrudmodels.Newsitem" blocking="true">CreateCrudStructureParticipant</participant>
+    <participant param="com.uwyn.rife.crud.samples.beans.Regular" blocking="true">CreateCrudStructureParticipant</participant>
+    <participant param="com.uwyn.rife.crud.samples.beans.Test" blocking="true">CreateCrudStructureParticipant</participant>
+    <participant param="sites/main.xml">ParticipantSite</participant>
+</rep>

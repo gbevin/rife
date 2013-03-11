@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: gui_config.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE config SYSTEM "/dtd/config.dtd">
+
+<config>
+	<param name="L10N_DEFAULT_RESOURCEBUNDLE">localization/uwyn</param>
+	<param name="DRAG_TRANSPARENT">true</param>
+	<param name="DRAG_OUTLINE">false</param>
+	<param name="SCROLLING_FAST">true</param>
+	<param name="SCROLLING_OUTLINE">false</param>
+	<param name="GRID_SHOW">true</param>
+	<param name="GRID_SNAP">true</param>
+	<param name="GRID_SIZE">5</param>
+</config>

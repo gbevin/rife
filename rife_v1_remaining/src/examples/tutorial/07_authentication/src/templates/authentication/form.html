@@ -1,0 +1,17 @@
+<!--I 'authentication.error_area'/-->
+
+<form name="credentials" action="[!V 'SUBMISSION:FORM:credentials'/]" method="post">
+<!--V 'SUBMISSION:PARAMS:credentials'/-->
+<span[!V 'MARK:login'][!/V]>login</span><br />
+<!--V 'FORM:INPUT:login'--> size="18"<!--/V--><br />
+<span[!V 'MARK:password'][!/V]>pass</span><br />
+<!--V 'FORM:SECRET:password'--> size="18"<!--/V--><br />
+<input type="submit" value="Login" /><br />
+
+<p><b>visitor account</b></p>
+<p>login: <i>visitor</i><br />
+pass: <i>password</i></p>
+
+<p><b>admin account</b></p>
+<p>login: <i>admin</i><br />
+pass: <i>password</i></p>

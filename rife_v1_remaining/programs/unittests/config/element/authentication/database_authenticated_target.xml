@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: database_authenticated_target.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE element SYSTEM "/dtd/element.dtd">
+
+<element implementation="com.uwyn.rife.authentication.elements.testelements.DatabaseAuthenticatedTarget">
+	<exit name="reload"/>
+	<exit name="logout_template"/>
+	<submission name="logout_passthrough"/>
+	<exit name="logout_passthrough"/>
+</element>

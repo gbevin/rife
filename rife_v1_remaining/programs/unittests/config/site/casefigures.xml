@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: casefigures.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+
+	<!-- DATA TRANSFER -->
+	<element id="DATATRANSFERSOURCE" file="element/casefigures/datatransfer_source.xml" url="/datatransfer/source">
+		<flowlink srcexit="exit1" destid="DATATRANSFERDESTINATION1"/>
+		<flowlink srcexit="exit2" destid="DATATRANSFERDESTINATION2"/>
+		<datalink srcoutput="output1" destid="DATATRANSFERDESTINATION2" destinput="input2"/>
+		<datalink srcoutput="output2" destid="DATATRANSFERDESTINATION2" destinput="input1"/>
+		<datalink srcoutput="output3" destid="DATATRANSFERDESTINATION1" destinput="input2"/>
+		<datalink srcoutput="output4" destid="DATATRANSFERDESTINATION1" destinput="input1"/>
+	</element>
+	<element id="DATATRANSFERDESTINATION1" file="element/casefigures/datatransfer_destination1.xml" url="/datatransfer/destination1"/>
+	<element id="DATATRANSFERDESTINATION2" file="element/casefigures/datatransfer_destination2.xml" url="/datatransfer/destination2"/>
+	
+	<!-- EXIT SUBMISSIONS URL TRANSFER -->
+	<element id="URLTRANSFERSOURCEPARENT" file="element/casefigures/urltransfer_source_parent.xml" url="/urltransfer/source/parent"/>
+	<element id="URLTRANSFERSOURCE" file="element/casefigures/urltransfer_source.xml" url="/urltransfer/source" inherits="URLTRANSFERSOURCEPARENT">
+		<flowlink srcexit="exit" destid="URLTRANSFERDESTINATION"/>
+	</element>
+	<element id="URLTRANSFERDESTINATIONPARENT" file="element/casefigures/urltransfer_destination_parent.xml" url="/urltransfer/destination/parent"/>
+	<element id="URLTRANSFERDESTINATION" file="element/casefigures/urltransfer_destination.xml" url="/urltransfer/destination" inherits="URLTRANSFERDESTINATIONPARENT"/>
+</site>
+

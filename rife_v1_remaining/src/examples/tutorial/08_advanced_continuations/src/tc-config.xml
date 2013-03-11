@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tc:tc-config xmlns:tc="http://www.terracotta.org/config">
+	<!--
+	  -  Server is colocated with client and DSO is listening on
+	  -  default port (9510).
+	  -->
+	<servers>
+		<server host="%i" name="sample"/>
+	</servers>
+	
+	<!--
+	  -  Configure DSO for 'development' mode;
+	  -  See the Terracotta DSO Guide for additional information.
+	  -->
+	<system>
+		<configuration-model>development</configuration-model>
+	</system>
+	
+	<clients>
+		<logs>logs/client-logs/%(webserver.log.name)</logs>
+		
+		<modules>
+			<module name="clustered-rife-1.6.0" version="1.0.0"/>
+		</modules>
+	</clients>
+	
+	<application>
+		<dso>
+			<instrumented-classes>
+				<include>
+					<class-expression>Order*</class-expression>
+				</include>
+			</instrumented-classes>
+			<locks>
+				<autolock>
+					<method-expression>* Order*.*.*(..)</method-expression>
+					<lock-level>write</lock-level>
+				</autolock>
+			</locks>
+			<!--
+			  -  This example needs additional classes to be present in the
+			  -  Terracotta bootjar. You need to re-create the bootjar with the
+			  -  make-boot-jar script in the distribution before this example
+			  -  can be clustered.
+			  -  Note that some of the classes here are specific for the Sun JDK,
+			  -  with other JDKs they might be different and you might have to change
+			  -  this configuration section.
+			  -->
+			<additional-boot-jar-classes>
+				<include>java.lang.AbstractStringBuilder</include>
+				<include>java.lang.StringBuffer</include>
+				<include>java.text.DateFormat</include>
+				<include>java.text.DateFormatSymbols</include>
+				<include>java.text.DecimalFormat</include>
+				<include>java.text.DecimalFormatSymbols</include>
+				<include>java.text.DigitList</include>
+				<include>java.text.Format</include>
+				<include>java.text.NumberFormat</include>
+				<include>java.text.SimpleDateFormat</include>
+				<include>java.util.Calendar</include>
+				<include>java.util.Currency</include>
+				<include>java.util.GregorianCalendar</include>
+				<include>java.util.Locale</include>
+				<include>java.util.TimeZone</include>
+				<include>sun.util.calendar.AbstractCalendar</include>
+				<include>sun.util.calendar.BaseCalendar</include>
+				<include>sun.util.calendar.BaseCalendar$Date</include>
+				<include>sun.util.calendar.CalendarDate</include>
+				<include>sun.util.calendar.CalendarSystem</include>
+				<include>sun.util.calendar.Gregorian</include>
+				<include>sun.util.calendar.Gregorian$Date</include>
+				<include>sun.util.calendar.ZoneInfo</include>
+			</additional-boot-jar-classes>
+		</dso>
+	</application>
+</tc:tc-config>
+

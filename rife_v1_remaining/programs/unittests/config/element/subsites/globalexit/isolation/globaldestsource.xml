@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: globaldestsource.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE element SYSTEM "/dtd/element.dtd">
+
+<element implementation="com.uwyn.rife.engine.testelements.subsites.globalexit.isolation.GlobalDestSource">
+	<input name="sourceinput1"/>
+	<input name="sourceinput2">
+		<default>default input value 2</default>
+	</input>
+	<input name="sourceinput3"/>
+
+	<output name="sourceoutput1"/>
+	<output name="sourceoutput2"/>
+	<output name="sourceoutput3">
+		<default>default output value 3</default>
+	</output>
+</element>
+

@@ -1,0 +1,75 @@
+/*
+ * Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+ * Distributed under the terms of the GNU General Public License, v2 or later
+ * $Id: BlogJanino.janino 3951 2008-05-05 13:35:02Z gbevin $
+ */
+import com.uwyn.rife.cmf.MimeType;
+import com.uwyn.rife.config.RifeConfig;
+import com.uwyn.rife.site.ConstrainedBean;
+import com.uwyn.rife.site.ConstrainedProperty;
+import com.uwyn.rife.site.MetaData;
+import java.util.Calendar;
+import java.util.Date;
+
+public class BlogJanino extends MetaData
+{
+	private int		mId = -1;
+	private Date	mMoment = Calendar.getInstance().getTime();
+	private byte[]	mImage = null;
+	private String	mTitle = null;
+	private String	mBody = null;
+	private boolean	mDraft = false;
+	
+	public void activateMetaData()
+	{
+		addConstraint(new ConstrainedBean()
+			.defaultOrder("moment", ConstrainedBean.DESC)
+			.defaultOrder("title"));
+		
+		addConstraint(new ConstrainedProperty("id")
+			.editable(false)
+			.identifier(true));
+		addConstraint(new ConstrainedProperty("moment")
+			.listed(true)
+			.notNull(true)
+			.format(RifeConfig.Tools.getDefaultInputDateFormat()));
+		addConstraint(new ConstrainedProperty("image")
+			.listed(true)
+			.mimeType(MimeType.IMAGE_PNG)
+			.contentAttribute("width", 150)
+			.notNull(true)
+			.file(true));
+		addConstraint(new ConstrainedProperty("title")
+			.listed(true)
+			.notNull(true)
+			.notEmpty(true)
+			.maxLength(100));
+		addConstraint(new ConstrainedProperty("body")
+			.mimeType(MimeType.APPLICATION_XHTML)
+			.autoRetrieved(true)
+			.fragment(true)
+			.notNull(true)
+			.notEmpty(true));
+		addConstraint(new ConstrainedProperty("draft")
+			.notNull(true)
+			.defaultValue(false));
+	}
+	
+	public void		setId(int id)	{ mId = id; }
+	public int		getId() 		{ return mId; }
+	
+	public void		setMoment(Date moment)	{ mMoment = moment; }
+	public Date		getMoment()				{ return mMoment; }
+	
+	public void		setTitle(String title)	{ mTitle = title; }
+	public String	getTitle()				{ return mTitle; }
+	
+	public void		setBody(String body)	{ mBody = body; }
+	public String	getBody()				{ return mBody; }
+	
+	public void 	setImage(byte[] image)	{ mImage = image; }
+	public byte[]	getImage()				{ return mImage; }
+	
+	public void		setDraft(boolean draft)	{ mDraft = draft; }
+	public boolean	isDraft()				{ return mDraft; }
+}

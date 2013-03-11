@@ -1,0 +1,14 @@
+<html>
+	<head>
+		<title>Template with block tags that will be filtered</title>
+	</head>
+
+	<body>
+		<!--B 'FILTER1:BLOCK1a:CONST:BLOCK1b'-->default1<!--/B-->
+		<h1>This is a template with block tags that will be filtered.</h1>
+		<!--B 'FILTER1:BLOCK2a:CONST:BLOCK2b'-->default2<!--/B-->
+		<!--B 'FILTER1:BLOCK3a:CONST:BLOCK3b'--><!--/B-->
+		<!--B 'FILTER2:BLOCK1'--><!--/B--><!--B 'FILTER2:BLOCK2'-->default3<!--/B-->
+		<!--B 'CONST-FILTER3:BLOCK1'-->default4<!--/B--><!--B 'CONST-FILTER3:BLOCK2'--><!--/B-->
+	</body>
+</html>

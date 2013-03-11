@@ -1,0 +1,73 @@
+builder
+	.setFallback("ELEMENT4")
+	
+	.addGlobalExit("globalexit1","ELEMENT6")
+	.addGlobalExit("globalexit2", "SUBSITE.ELEMENT2")
+
+	.addGlobalVar("globalvar1", new String[] {"default1"})
+	.addGlobalVar("globalvar2")
+
+	.addGlobalBean("com.uwyn.rife.engine.testelements.submission.BeanImpl", "onemoreprefixgroup_", "globalbean1", "anothergroup")
+	.addGlobalBean("com.uwyn.rife.engine.testelements.submission.BeanImpl", null, null, "anothergroup")
+
+	.enterSubsiteDeclaration("janino/test_janino2sitesubsite.janino")
+		.setId("SUBSITE")
+		.setUrlPrefix("/subsite")
+		.enterSubsite()
+			.setInherits("ELEMENT4")
+		.leaveSubsite()
+	.leaveSubsiteDeclaration()
+
+	.enterGroup()
+		.setInherits("ELEMENT5")
+	
+		.addGlobalVar("globalvar4")
+	
+		.enterElement("janino/test_janino2elementinfo2.janino")
+			.setId("ELEMENT6")
+			.setUrl("/test/element6")
+			.setInherits("ELEMENT3")
+		.leaveElement()
+	
+		.enterElement("janino/test_janino2elementinfo3.janino")
+			.setUrl("/test/element7")
+		.leaveElement()
+	.leaveGroup()
+	
+	.enterElement("janino/test_janino2elementinfo1.janino")
+		.setId("ELEMENT1")
+		.setUrl("/test/element1")
+	
+		.addDataLink("output1", "ELEMENT2", "input1")
+		.addDataLink("output1", "ELEMENT2", "input2")
+		.addFlowLink("exit1", "ELEMENT2")
+		.addSnapbackFlowLink("exit2", false)
+		.addSnapbackDataLink("output2", "input2")
+		.enterFlowLink("exit3")
+			.destId("ELEMENT2")
+			.addDataLink("output3", "input1")
+		.leaveFlowLink()
+		.enterFlowLink("exit4")
+			.destId("ELEMENT2")
+			.addDataLink("output4", "input1")
+		.leaveFlowLink()
+	.leaveElement()
+		
+	.enterElement("janino/test_janino2elementinfo2.janino")
+		.setId("ELEMENT2")
+		.setInherits("ELEMENT3")
+		.setUrl("/test/element2")
+	.leaveElement()
+		
+	.enterElement("janino/test_janino2elementinfo3.janino")
+		.setId("ELEMENT3")
+	.leaveElement()
+		
+	.enterElement("janino/test_janino2elementinfo4.janino")
+		.setId("ELEMENT4")
+	.leaveElement()
+		
+	.enterElement("janino/test_janino2elementinfo5.janino")
+		.setId("ELEMENT5")
+	.leaveElement();
+

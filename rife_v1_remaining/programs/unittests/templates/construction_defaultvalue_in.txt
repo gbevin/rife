@@ -1,0 +1,2 @@
+<!BV 'VALUE2'>block 1 <!V 'VALUE1'/><!/BV>
+<!B 'BLOCK2'>block 2 <!V 'VALUE2'/><!/B>

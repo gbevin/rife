@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: unittests_memoryusers.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE credentials SYSTEM "/dtd/users.dtd">
+
+<credentials>
+	<user login="guest">
+		<password>guestpass</password>
+	</user>
+	<user login="gbevin">
+		<password>yeolpass</password>
+		<role>admin</role>
+		<role>maint</role>
+	</user>
+	<user login="guestencrypted">
+		<password>SHA:duH5g2aTTgh6206iakXKII5qs0A=</password>
+	</user>
+	<user login="gbevinencrypted">
+		<password>MD5:JJSy0mVyeMFG9f21yHQVyg==</password>
+		<role>admin</role>
+		<role>maint</role>
+	</user>
+	<user login="johndoe">
+		<password>thepassofbass</password>
+		<role>maint</role>
+	</user>
+</credentials>
+

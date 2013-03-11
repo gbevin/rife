@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: webservices_hessian.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<element id="BASIC" file="element/webservices/hessian/basic.xml" url="/basic"/>
+	<element id="ECHO" file="element/webservices/hessian/echo.xml" url="/echo"/>
+	<element id="ELEMENTSERVICE" file="element/webservices/hessian/elementservice.xml" url="/elementservice"/>
+
+	<group>
+		<globalvar name="authid"/>
+	
+		<element id="AUTH" file="element/webservices/hessian/auth.xml"/>
+
+		<element id="AUTHTARGET" file="element/webservices/hessian/auth_target.xml" url="/auth" inherits="AUTH"/>
+		<element id="ECHOAUTH" file="element/webservices/hessian/echo.xml" url="/echoauth" inherits="AUTH"/>
+	</group>
+</site>
+

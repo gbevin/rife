@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: datasources.dtd 3918 2008-04-14 17:35:35Z gbevin $
+  -  PUBLIC ID: -//Rifers.org//RIFE Datasources 1.1//EN
+  -  SYSTEM ID: http://rifers.org/dtd/datasources_1_1.dtd
+  -->
+
+<!ELEMENT datasources	(datasource)*>
+
+<!ELEMENT datasource	(((driver,url) | jndi),user?,password?,poolsize?)>
+<!ATTLIST datasource	name CDATA #REQUIRED>
+
+<!ELEMENT driver		(#PCDATA | config)*>
+
+<!ELEMENT jndi		(#PCDATA | config)*>
+
+<!ELEMENT url			(#PCDATA | config)*>
+
+<!ELEMENT user			(#PCDATA | config)*>
+
+<!ELEMENT password		(#PCDATA | config)*>
+
+<!ELEMENT poolsize		(#PCDATA | config)*>
+
+<!ELEMENT config		EMPTY>
+<!ATTLIST config		param CDATA #REQUIRED>
+

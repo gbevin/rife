@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  -  Copyright 2001-2008 Geert Bevin <gbevin[remove] at uwyn dot com>
+  -  Licensed under the Apache License, Version 2.0 (the "License")
+  -  $Id: soap_xfire.xml 3918 2008-04-14 17:35:35Z gbevin $
+  -->
+
+<!DOCTYPE site SYSTEM "/dtd/site.dtd">
+
+<site>
+	<element id="ECHO" file="element/soap/xfire/echo.xml" url="echo"/>
+
+	<element id="CALCULATOR" file="rife/soap/xfire.xml" url="calculator">
+		<property name="home-class">com.uwyn.rife.engine.testwebservices.soap.xfire.Calculator</property>
+		<property name="home-api">com.uwyn.rife.engine.testwebservices.soap.xfire.CalculatorApi</property>
+	</element>
+
+	<element id="ELEMENTSERVICE" file="rife/soap/xfire.xml" url="elementservice">
+		<property name="home-class">com.uwyn.rife.engine.testwebservices.soap.xfire.XFireElementService</property>
+		<property name="home-api">com.uwyn.rife.engine.testwebservices.soap.xfire.XFireElementServiceApi</property>
+
+		<input name="input1"/>
+		<input name="input2"/>
+		<input name="input3"/>
+	</element>
+
+
+	<group>
+		<globalvar name="authid"/>
+	
+		<element id="AUTH" file="element/soap/xfire/auth.xml"/>
+
+		<element id="AUTHTARGET" file="element/soap/xfire/auth_target.xml" url="/auth" inherits="AUTH"/>
+		<element id="ECHOAUTH" file="element/soap/xfire/echo.xml" url="/echoauth">
+			<property name="service-name">EchoAuth</property>
+		</element>
+	</group>
+</site>

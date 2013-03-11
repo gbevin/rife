@@ -1,0 +1,15 @@
+<html>
+	<head>
+		<title>Template with long escaped value tags</title>
+	</head>
+
+	<body>
+		\<!--	V 'VALUE1'-->\\default1\<!--/V-->
+		<h1>This is a template with long value tags.</h1>
+		<!--B  'BLOCK1'-->one\\<!--V   'VALUE2'-->default2\<!--/V-->two\<r:v   value="VALUE3"  >default3\\<!--/V-->three\<!--/B-->
+		\[!B 'BLOCK2']three[!V  'VALUE4']default4<!--/V-->\<!--V 'VALUE5'-->default5\[!/V]\[!/B]
+		\<!--B 'BLOCK3'--><!--V 'VALUE6'-->default6<!--/V-->[!/B]
+		<h2>Some more text.</h2>
+		${v VALUE7}default7${/v}
+	</body>
+</html>
