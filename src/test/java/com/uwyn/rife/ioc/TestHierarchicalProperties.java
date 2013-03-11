@@ -1,7 +1,6 @@
 /*
- * Copyright 2001-2008 Geert Bevin (gbevin[remove] at uwyn dot com)
+ * Copyright 2001-2013 Geert Bevin (gbevin[remove] at uwyn dot com)
  * Licensed under the Apache License, Version 2.0 (the "License")
- * $Id: TestHierarchicalProperties.java 3958 2008-05-26 12:04:14Z gbevin $
  */
 package com.uwyn.rife.ioc;
 
@@ -114,7 +113,7 @@ public class TestHierarchicalProperties extends TestCase
 		assertSame(property5, properties.get("non.identifier.name5"));
 		assertEquals("value1", properties.getValue("name1"));
 		assertNull(properties.getValue("name2"));
-		Integer default_value = new Integer(34);
+		Integer default_value = 34;
 		assertSame(default_value, properties.getValue("name2", default_value));
 		assertEquals("value3", properties.getValue("non.identifier.name3"));
 		assertEquals("value4", properties.getValue("name4"));
