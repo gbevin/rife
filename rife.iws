@@ -2,135 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/ANTLRErrorListener.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/ANTLRErrorStrategy.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/ANTLRFileStream.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/ANTLRInputStream.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/ATN.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/ATNConfig.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/ATNConfigSet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/ATNSimulator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/ATNState.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/misc/AbstractEqualityComparator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/tree/AbstractParseTreeVisitor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/ActionTransition.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/misc/Array2DHashSet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/ArrayPredictionContext.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/AtomTransition.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/BailErrorStrategy.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/BaseErrorListener.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/BasicBlockStartState.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/BasicState.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/BlockEndState.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/BlockStartState.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/BufferedTokenStream.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/CharStream.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/CommonToken.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/CommonTokenFactory.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/CommonTokenStream.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/ConsoleErrorListener.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/dfa/DFA.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/dfa/DFASerializer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/dfa/DFAState.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/DecisionState.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/DefaultErrorStrategy.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/DiagnosticErrorListener.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/misc/DoubleKeyMap.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/EmptyPredictionContext.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/EpsilonTransition.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/misc/EqualityComparator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/tree/ErrorNode.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/tree/ErrorNodeImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/FailedPredicateException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/misc/FlexibleHashMap.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/misc/GraphicsSupport.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/InputMismatchException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/misc/IntSet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/IntStream.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/misc/IntegerList.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/misc/IntegerStack.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/misc/Interval.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/misc/IntervalSet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/LL1Analyzer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/Lexer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/LexerATNConfig.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/LexerATNSimulator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/dfa/LexerDFASerializer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/LexerNoViableAltException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/misc/LogManager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/LoopEndState.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/misc/MultiMap.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/NoViableAltException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/misc/NotNull.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/NotSetTransition.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/misc/Nullable.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/misc/ObjectEqualityComparator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/OrderedATNConfigSet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/misc/OrderedHashSet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/misc/Pair.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/misc/ParseCancellationException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/tree/ParseTree.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/tree/ParseTreeListener.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/tree/ParseTreeProperty.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/tree/ParseTreeVisitor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/tree/ParseTreeWalker.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/Parser.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/ParserATNPathFinder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/ParserATNSimulator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/ParserRuleContext.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/PlusBlockStartState.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/PlusLoopbackState.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/PredicateTransition.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/PredictionContext.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/PredictionContextCache.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/PredictionMode.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/ProxyErrorListener.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/RangeTransition.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/RecognitionException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/Recognizer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/RuleContext.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/tree/RuleNode.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/RuleStartState.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/RuleStopState.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/RuleTransition.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/SemanticContext.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/SetTransition.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/SingletonPredictionContext.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/StarBlockStartState.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/StarLoopEntryState.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/StarLoopbackState.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/tree/SyntaxTree.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/antlr/TemplateLexer.g4" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/antlr/TemplateParser.g4" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/tree/TerminalNode.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/tree/TerminalNodeImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/misc/TestRig.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/Token.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/TokenFactory.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/TokenSource.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/TokenStream.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/TokenStreamRewriter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/TokensStartState.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/Transition.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/tree/Tree.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/tree/Trees.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/misc/Triple.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/UnbufferedCharStream.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/UnbufferedTokenStream.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/misc/Utils.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/atn/WildcardTransition.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/WritableToken.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/template/antlr/TemplateParsingListener.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/uwyn/rife/template/TestSuiteTemplate.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/templates/basic_gaps_snippets.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/rife_v1_remaining/programs/unittests/config/resources/test-utf8.txt" afterPath="$PROJECT_DIR$/src/test/resources/resources/test-utf8.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/rife_v1_remaining/programs/unittests/config/resources/test.txt" afterPath="$PROJECT_DIR$/src/test/resources/resources/test.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/rife_v1_remaining/src/unittests/com/uwyn/rife/resources/TestResourceFinderClasspath.java" afterPath="$PROJECT_DIR$/src/test/java/com/uwyn/rife/resources/TestResourceFinderClasspath.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/rife_v1_remaining/src/unittests/com/uwyn/rife/resources/TestSuiteResources.java" afterPath="$PROJECT_DIR$/src/test/java/com/uwyn/rife/resources/TestSuiteResources.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/resources/AbstractResourceFinder.java" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/resources/AbstractResourceFinder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/tools/ConciseLogFormatter.java" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/tools/ConciseLogFormatter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/tools/ExceptionUtils.java" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/tools/ExceptionUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/tools/FileUtils.java" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/tools/FileUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/tools/HttpUtils.java" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/tools/HttpUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/tools/RawFormatter.java" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/tools/RawFormatter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/resources/ResourceFinderClasspath.java" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/resources/ResourceFinderClasspath.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/resources/ResourceFinderDirectories.java" afterPath="$PROJECT_DIR$/src/main/java/com/uwyn/rife/resources/ResourceFinderDirectories.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/antlr/TemplateLexer.g4" afterPath="$PROJECT_DIR$/src/main/antlr/TemplateLexer.g4" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rife_v1_remaining/src/unittests/com/uwyn/rife/resources/TestResourceFinderDirectories.java" afterPath="$PROJECT_DIR$/rife_v1_remaining/src/unittests/com/uwyn/rife/resources/TestResourceFinderDirectories.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rife.iml" afterPath="$PROJECT_DIR$/rife.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rife.ipr" afterPath="$PROJECT_DIR$/rife.ipr" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rife.iws" afterPath="$PROJECT_DIR$/rife.iws" />
     </list>
     <ignored path="rife.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/a.java" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1363026360488" ignored="false" />
     <file path="/sample.java" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1362959246096" ignored="false" />
-    <file path="/Dummy.txt" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1363479548989" ignored="false" />
+    <file path="/Dummy.txt" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1363635798579" ignored="false" />
     <file path="/CompilationFailedException.java" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1362928961423" ignored="false" />
     <file path="/BeanUtilsException.java" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1362928996823" ignored="false" />
     <file path="/ConversionException.java" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1362929213642" ignored="false" />
@@ -162,7 +59,7 @@
     <file path="/Pair.java" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1362938331982" ignored="false" />
     <file path="/StoreXmlErrorException.java" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1362938448840" ignored="false" />
     <file path="/ModificationTimeErrorException.java" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1362938469046" ignored="false" />
-    <file path="/a.dummy" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1362960485204" ignored="false" />
+    <file path="/a.dummy" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1363564522969" ignored="false" />
     <file path="/TypesMethodVisitor.java" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1362939318789" ignored="false" />
     <file path="/Config.java" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1362951443997" ignored="false" />
     <file path="/CheckMethodAdapter.java" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1362942388224" ignored="false" />
@@ -187,12 +84,12 @@
     <file path="/BlockingParticipant.java" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1362956503744" ignored="false" />
     <file path="/BlockingRepositoryCleanup.java" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1362956763577" ignored="false" />
     <file path="/Rep.java" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1362956793638" ignored="false" />
-    <file path="/ResourceFinderDirectories.java" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1362958748185" ignored="false" />
+    <file path="/ResourceFinderDirectories.java" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1363564431628" ignored="false" />
     <file path="/ResourceFinderGroup.java" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1362957820374" ignored="false" />
     <file path="/ClasspathComponents.java" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1362958268799" ignored="false" />
     <file path="/ModificationTimeClasspath.java" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1362958688605" ignored="false" />
-    <file path="/FileUtils.java" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1362959122452" ignored="false" />
-    <file path="/HttpUtils.java" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1362959396532" ignored="false" />
+    <file path="/FileUtils.java" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1363565157140" ignored="false" />
+    <file path="/HttpUtils.java" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1363565220858" ignored="false" />
     <file path="/ImageWaiter.java" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1362959426848" ignored="false" />
     <file path="$PROJECT_DIR$/rife_v1_remaining/src/framework/com/uwyn/rife/cmf/dam/contentstores/textstoredrivers/oracle_jdbc_driver_OracleDriver.java" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1362959478309" ignored="false" />
     <file path="$PROJECT_DIR$/rife_v1_remaining/src/framework/com/uwyn/rife/cmf/dam/OrdinalManager.java" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1362959478309" ignored="false" />
@@ -249,7 +146,7 @@
     <file path="/TestSuiteIoc.java" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1362989059540" ignored="false" />
     <file path="/Template.g4" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1363035665187" ignored="false" />
     <file path="/TemplateParser.g4" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1363070594370" ignored="false" />
-    <file path="/build.gradle" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1363529149104" ignored="false" />
+    <file path="/build.gradle" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1363548787864" ignored="false" />
     <file path="$PROJECT_DIR$/build/test-results/TEST-com.uwyn.rife.tools.TestObjectUtils.xml" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1363529517781" ignored="false" />
     <file path="$PROJECT_DIR$/build/test-results/TEST-com.uwyn.rife.tools.TestPasswordGenerator.xml" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1363529517781" ignored="false" />
     <file path="$PROJECT_DIR$/build/test-results/TEST-com.uwyn.rife.datastructures.TestKeyValue.xml" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1363529517781" ignored="false" />
@@ -258,6 +155,14 @@
     <file path="$PROJECT_DIR$/build/test-results/TEST-com.uwyn.rife.tools.TestStringUtils.xml" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1363529517781" ignored="false" />
     <file path="$PROJECT_DIR$/build/test-results/TEST-com.uwyn.rife.tools.TestUniqueIDGenerator.xml" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1363529517781" ignored="false" />
     <file path="/TemplateLexer.g4" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1363529901519" ignored="false" />
+    <file path="/basic_gaps_snippets.html" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1363549435979" ignored="false" />
+    <file path="/TemplateParsingListener.java" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1363566946827" ignored="false" />
+    <file path="/TestSuiteTemplate.java" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1363565573521" ignored="false" />
+    <file path="/TestSuiteResources.java" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1363551607217" ignored="false" />
+    <file path="/ResourceFinderClasspath.java" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1363564345427" ignored="false" />
+    <file path="/ConciseLogFormatter.java" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1363564548568" ignored="false" />
+    <file path="/ExceptionUtils.java" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1363564621340" ignored="false" />
+    <file path="/RawFormatter.java" changelist="973d5aa3-81de-4fa4-aea1-1afd37b0adbb" time="1363565239263" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -272,6 +177,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -306,7 +212,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -316,19 +221,91 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="build.gradle" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.gradle">
+      <file leaf-file-name="TestSuiteTemplate.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/uwyn/rife/template/TestSuiteTemplate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="1" selection-start="1397" selection-end="1397" vertical-scroll-proportion="0.0">
+            <state line="43" column="67" selection-start="1959" selection-end="1959" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TemplateLexer.g4" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="basic_gaps_snippets.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/resources/templates/basic_gaps_snippets.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TemplateLexer.g4" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/antlr/TemplateLexer.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="21" selection-start="384" selection-end="384" vertical-scroll-proportion="0.22678186">
+            <state line="8" column="23" selection-start="255" selection-end="255" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TemplateParsingListener.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/uwyn/rife/template/antlr/TemplateParsingListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="29" column="56" selection-start="1003" selection-end="1003" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TemplateParser.g4" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/antlr/TemplateParser.g4">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="0" selection-start="404" selection-end="404" vertical-scroll-proportion="0.2663707">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConciseLogFormatter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/uwyn/rife/tools/ConciseLogFormatter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="61" column="0" selection-start="1897" selection-end="1897" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ExceptionUtils.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/uwyn/rife/tools/ExceptionUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="0" selection-start="734" selection-end="734" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FileUtils.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/uwyn/rife/tools/FileUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="512" column="28" selection-start="16948" selection-end="16948" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HttpUtils.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/uwyn/rife/tools/HttpUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="504" column="0" selection-start="15527" selection-end="15527" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RawFormatter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/uwyn/rife/tools/RawFormatter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="51" column="29" selection-start="1610" selection-end="1610" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -360,21 +337,21 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/test/java/com/uwyn/rife/datastructures/TestPair.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/uwyn/rife/datastructures/TestSuiteDatastructures.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/uwyn/rife/ioc/TestHierarchicalProperties.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/uwyn/rife/ioc/TestPropertyValueList.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/uwyn/rife/ioc/TestPropertyValueParticipant.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/uwyn/rife/ioc/TestSuiteIoc.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/antlr/v4/runtime/tree/Trees.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/antlr/v4/runtime/RuleContext.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/antlr/v4/runtime/misc/TestRig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/uwyn/rife/template/Template.g4" />
-        <option value="$PROJECT_DIR$/src/main/java/com/uwyn/rife/template/antlr/TemplateBaseListener.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/uwyn/rife/template/antlr/Template.g4" />
-        <option value="$PROJECT_DIR$/src/main/java/com/uwyn/rife/template/antlr/TemplateLexer.g4" />
-        <option value="$PROJECT_DIR$/src/main/java/com/uwyn/rife/template/antlr/TemplateParser.g4" />
-        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/test/java/com/uwyn/rife/template/TestSuiteTemplate/java.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/uwyn/rife/resources/TestResourceFinderDirectories.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/uwyn/rife/resources/TestSuiteResources.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/uwyn/rife/resources/TestResourceFinderClasspath.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/uwyn/rife/resources/AbstractResourceFinder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/uwyn/rife/tools/InputStreamUser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/uwyn/rife/resources/ResourceFinderDirectories.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/uwyn/rife/resources/ResourceFinderClasspath.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/uwyn/rife/tools/ConciseLogFormatter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/uwyn/rife/tools/ExceptionUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/uwyn/rife/tools/FileUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/uwyn/rife/tools/HttpUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/uwyn/rife/tools/RawFormatter.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/uwyn/rife/template/TestSuiteTemplate.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/uwyn/rife/template/antlr/TemplateParsingListener.java" />
         <option value="$PROJECT_DIR$/src/main/antlr/TemplateLexer.g4" />
       </list>
     </option>
@@ -432,14 +409,200 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="rife" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rife" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rife" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rife" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rife" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rife" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rife" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rife" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rife" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rife" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rife" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="template" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rife" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rife" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rife" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rife" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rife" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rife" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ioc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -512,7 +675,51 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rife" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="antlr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rife" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rife" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="antlr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rife" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rife" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rife_v1_remaining" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -530,43 +737,204 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rife" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rife" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="build" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="filtered-sources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="antlr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="project.structure.last.edited" value="Modules" />
+    <property name="OverrideImplement.combined" value="false" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.22886473" />
     <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="options.lastSelected" value="preferences.sourceCode.Java" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/rife_v1_remaining" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="FullScreen" value="true" />
     <property name="MemberChooser.showClasses" value="true" />
+    <property name="FullScreen" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/rife_v1_remaining/src/unittests/com/uwyn/rife/resources" />
+      <recent name="$PROJECT_DIR$/src/test/resources" />
+      <recent name="$PROJECT_DIR$/src/test/java/com/uwyn/rife" />
+      <recent name="$PROJECT_DIR$/src/main/antlr" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/uwyn/rife/template/antlr" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.uwyn.rife" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/antlr" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/uwyn/rife/template/antlr" />
-      <recent name="$PROJECT_DIR$/rife_v1_remaining/src/unittests/com/uwyn/rife/ioc" />
-      <recent name="$PROJECT_DIR$/rife_v1_remaining/src/unittests/com/uwyn/rife" />
-      <recent name="$PROJECT_DIR$/src/test/java/com/uwyn/rife" />
-    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.TestSuiteTemplate">
+    <configuration default="false" name="com.uwyn.rife in rife" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.uwyn.rife.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="rife" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.uwyn.rife" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="All in rife" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" runner="idea" />
+      <module name="rife" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Cover" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Cover" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="com.uwyn.rife.resources in rife" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.uwyn.rife.resources.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="rife" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.uwyn.rife.resources" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="TestResourceFinderClasspath" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.uwyn.rife.resources.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="rife" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.uwyn.rife.resources" />
+      <option name="MAIN_CLASS_NAME" value="com.uwyn.rife.resources.TestResourceFinderClasspath" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="TestSuiteTemplate" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.uwyn.rife.template.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="rife" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.uwyn.rife.template" />
+      <option name="MAIN_CLASS_NAME" value="com.uwyn.rife.template.TestSuiteTemplate" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
     <configuration default="true" type="GroovyScriptRunConfiguration" factoryName="Groovy">
       <module name="" />
       <setting name="path" value="" />
@@ -623,6 +991,13 @@
       </RunnerSettings>
       <method />
     </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Local" singleton="true">
+      <JSDebuggerConfigurationSettings>
+        <option name="engineId" value="embedded" />
+        <option name="fileUrl" />
+      </JSDebuggerConfigurationSettings>
+      <method />
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" runner="idea" />
       <module name="" />
@@ -644,14 +1019,22 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugSession" factoryName="Local" singleton="true">
-      <JSDebuggerConfigurationSettings>
-        <option name="engineId" value="embedded" />
-        <option name="fileUrl" />
-      </JSDebuggerConfigurationSettings>
-      <method />
-    </configuration>
-    <list size="0" />
+    <list size="5">
+      <item index="0" class="java.lang.String" itemvalue="JUnit.com.uwyn.rife in rife" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.All in rife" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.com.uwyn.rife.resources in rife" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.TestResourceFinderClasspath" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.TestSuiteTemplate" />
+    </list>
+    <recent_temporary>
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.TestSuiteTemplate" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.com.uwyn.rife in rife" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.All in rife" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.TestResourceFinderClasspath" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.com.uwyn.rife.resources in rife" />
+      </list>
+    </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
       <Port>5050</Port>
@@ -686,7 +1069,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <frame x="0" y="0" width="1680" height="1050" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -703,16 +1086,18 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24479803" sideWeight="0.6806723" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32878152" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17013463" sideWeight="0.6721311" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32786885" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="100" y="100" width="1480" height="850" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986537" sideWeight="0.6712185" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32878152" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31932774" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.328614" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3181818" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32983193" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -773,93 +1158,102 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/uwyn/rife/tools/InputStreamUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="4" selection-start="949" selection-end="949" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/uwyn/rife/resources/AbstractResourceFinder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="33" selection-start="1343" selection-end="1343" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/uwyn/rife/resources/ResourceFinder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="82" column="0" selection-start="3504" selection-end="3504" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/uwyn/rife/resources/ResourceFinderClasspath.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="89" column="0" selection-start="2881" selection-end="2881" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/uwyn/rife/resources/ResourceFinderDirectories.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="43" selection-start="448" selection-end="448" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/uwyn/rife/tools/ConciseLogFormatter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="0" selection-start="1897" selection-end="1897" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/uwyn/rife/tools/ExceptionUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="0" selection-start="734" selection-end="734" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/uwyn/rife/tools/FileUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="512" column="28" selection-start="16948" selection-end="16948" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/uwyn/rife/tools/HttpUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="504" column="0" selection-start="15527" selection-end="15527" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/uwyn/rife/tools/RawFormatter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="29" selection-start="1610" selection-end="1610" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/tree/ParseTreeWalker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="13" selection-start="1714" selection-end="1714" vertical-scroll-proportion="0.38812786" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/templates/basic_gaps_snippets.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/uwyn/rife/template/antlr/TemplateParsingListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="56" selection-start="1003" selection-end="1003" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/uwyn/rife/template/TestSuiteTemplate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="67" selection-start="1959" selection-end="1959" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/antlr/TemplateLexer.g4">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="1" selection-start="78" selection-end="78" vertical-scroll-proportion="0.0">
+        <state line="8" column="23" selection-start="255" selection-end="255" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/antlr/TemplateParser.g4">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="404" selection-end="404" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="1" selection-start="281" selection-end="281" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rife_v1_remaining/programs/unittests/templates/values.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="51" selection-end="51" vertical-scroll-proportion="0.016666668" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rife_v1_remaining/programs/unittests/templates/values_typed.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rife_v1_remaining/programs/unittests/templates/values_long_in.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rife_v1_remaining/programs/unittests/templates/values_long_out_content_1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/RuleContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="154" column="0" selection-start="5072" selection-end="5072" vertical-scroll-proportion="0.10714286" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/tree/Trees.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="0" selection-start="1785" selection-end="1785" vertical-scroll-proportion="0.23701298" />
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.7.0_13.jdk/Contents/Home/src.zip!/java/lang/Class.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3045" column="0" selection-start="124024" selection-end="124024" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/uwyn/rife/antlr4/runtime/misc/TestRig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="155" column="29" selection-start="5382" selection-end="5382" vertical-scroll-proportion="0.545045" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/antlr/TemplateParser.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="404" selection-end="404" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build/filtered-sources/com/uwyn/rife/template/antlr/TemplateLexer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="132" selection-end="132" vertical-scroll-proportion="0.064794816">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="1" selection-start="1397" selection-end="1397" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/antlr/TemplateLexer.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="21" selection-start="384" selection-end="384" vertical-scroll-proportion="0.22678186">
+        <state line="16" column="0" selection-start="404" selection-end="404" vertical-scroll-proportion="0.2663707">
           <folding />
         </state>
       </provider>

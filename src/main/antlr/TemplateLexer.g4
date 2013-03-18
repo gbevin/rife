@@ -6,7 +6,7 @@ package com.uwyn.rife.template.antlr;
 OPEN            :   '<!--'      -> pushMode(INSIDE) ;
 SLASH_OPEN      :   '<!--/'     -> pushMode(INSIDE) ;
 SEA_WS          :   (' '|'\t'|'\r'? '\n') ;
-TEXT            :   .+? ;
+TEXT            :   .+?;
 
 mode INSIDE;
 

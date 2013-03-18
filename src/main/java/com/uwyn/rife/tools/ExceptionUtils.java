@@ -16,21 +16,10 @@ public abstract class ExceptionUtils
         String stack_trace;
 
         StringWriter string_writer = new StringWriter();
-        PrintWriter print_writer = new PrintWriter(string_writer);
-
-        exception.printStackTrace(print_writer);
-
-        stack_trace = string_writer.getBuffer().toString();
-
-        print_writer.close();
-
-        try
+        try (PrintWriter print_writer = new PrintWriter(string_writer))
         {
-            string_writer.close();
-        }
-        // JDK 1.2.2 compatibility
-        catch (Throwable ignored)
-        {
+            exception.printStackTrace(print_writer);
+            stack_trace = string_writer.getBuffer().toString();
         }
 
         return stack_trace;

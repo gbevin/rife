@@ -5,8 +5,8 @@
 package com.uwyn.rife.resources;
 
 import com.uwyn.rife.resources.exceptions.ResourceFinderErrorException;
-import com.uwyn.rife.tools.exceptions.InnerClassException;
 import com.uwyn.rife.tools.InputStreamUser;
+import com.uwyn.rife.tools.exceptions.InnerClassException;
 
 import java.net.URL;
 

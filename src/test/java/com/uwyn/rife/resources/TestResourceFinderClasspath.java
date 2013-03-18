@@ -4,7 +4,6 @@
  */
 package com.uwyn.rife.resources;
 
-import com.uwyn.rife.config.Config;
 import com.uwyn.rife.resources.exceptions.ResourceFinderErrorException;
 import com.uwyn.rife.tools.ExceptionUtils;
 import com.uwyn.rife.tools.FileUtils;
@@ -13,50 +12,41 @@ import com.uwyn.rife.tools.exceptions.FileUtilsErrorException;
 import com.uwyn.rife.tools.exceptions.InnerClassException;
 import junit.framework.TestCase;
 
-import java.io.File;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class TestResourceFinderDirectories extends TestCase
+public class TestResourceFinderClasspath extends TestCase
 {
-    public TestResourceFinderDirectories(String name)
+    public TestResourceFinderClasspath(String name)
     {
         super(name);
     }
 
     public void testInstantiation()
     {
-        ResourceFinder resource_finder1 = new ResourceFinderDirectories(new File[]{new File(Config.getRepInstance().getString("RIFE_HOME") + File.separator + "config")});
-        ResourceFinder resource_finder2 = new ResourceFinderDirectories(new File[]{new File(Config.getRepInstance().getString("RIFE_HOME") + File.separator + "config")});
+        ResourceFinder resource_finder1 = ResourceFinderClasspath.getInstance();
+        ResourceFinder resource_finder2 = ResourceFinderClasspath.getInstance();
         assertNotNull(resource_finder1);
         assertNotNull(resource_finder2);
-        assertNotSame(resource_finder1, resource_finder2);
+        assertSame(resource_finder1, resource_finder2);
     }
 
     public void testGetUnknownResource()
     {
-        ResourceFinder resource_finder = new ResourceFinderDirectories(new File[]{
-                new File(Config.getRepInstance().getString("RIFE_HOME") + File.separator + "templates"),
-                new File(Config.getRepInstance().getString("RIFE_HOME") + File.separator + "config")});
-
+        ResourceFinder resource_finder = ResourceFinderClasspath.getInstance();
         assertNull(resource_finder.getResource("this/resource/doesnt/exist.txt"));
     }
 
     public void testGetResourceByName()
     {
-        ResourceFinder resource_finder = new ResourceFinderDirectories(new File[]{
-                new File(Config.getRepInstance().getString("RIFE_HOME") + File.separator + "templates"),
-                new File(Config.getRepInstance().getString("RIFE_HOME") + File.separator + "config")});
-
+        ResourceFinder resource_finder = ResourceFinderClasspath.getInstance();
         assertNotNull(resource_finder.getResource("resources/test.txt"));
     }
 
     public void testGetUnknownStreamByName()
     {
-        ResourceFinder resource_finder = new ResourceFinderDirectories(new File[]{
-                new File(Config.getRepInstance().getString("RIFE_HOME") + File.separator + "templates"),
-                new File(Config.getRepInstance().getString("RIFE_HOME") + File.separator + "config")});
+        ResourceFinder resource_finder = ResourceFinderClasspath.getInstance();
 
         try
         {
@@ -79,9 +69,7 @@ public class TestResourceFinderDirectories extends TestCase
 
     public void testGetUnknownStreamByResource()
     {
-        ResourceFinder resource_finder = new ResourceFinderDirectories(new File[]{
-                new File(Config.getRepInstance().getString("RIFE_HOME") + File.separator + "templates"),
-                new File(Config.getRepInstance().getString("RIFE_HOME") + File.separator + "config")});
+        ResourceFinder resource_finder = ResourceFinderClasspath.getInstance();
 
         try
         {
@@ -96,11 +84,7 @@ public class TestResourceFinderDirectories extends TestCase
                 }
             });
         }
-        catch (ResourceFinderErrorException e)
-        {
-            assertFalse(ExceptionUtils.getExceptionStackTrace(e), false);
-        }
-        catch (MalformedURLException e)
+        catch (ResourceFinderErrorException | MalformedURLException e)
         {
             assertFalse(ExceptionUtils.getExceptionStackTrace(e), false);
         }
@@ -108,9 +92,7 @@ public class TestResourceFinderDirectories extends TestCase
 
     public void testGetStreamByName()
     {
-        ResourceFinder resource_finder = new ResourceFinderDirectories(new File[]{
-                new File(Config.getRepInstance().getString("RIFE_HOME") + File.separator + "templates"),
-                new File(Config.getRepInstance().getString("RIFE_HOME") + File.separator + "config")});
+        ResourceFinder resource_finder = ResourceFinderClasspath.getInstance();
 
         try
         {
@@ -146,11 +128,9 @@ public class TestResourceFinderDirectories extends TestCase
         }
     }
 
-    public void testGetStreamByRkesource()
+    public void testGetStreamByResource()
     {
-        ResourceFinder resource_finder = new ResourceFinderDirectories(new File[]{
-                new File(Config.getRepInstance().getString("RIFE_HOME") + File.separator + "templates"),
-                new File(Config.getRepInstance().getString("RIFE_HOME") + File.separator + "config")});
+        ResourceFinder resource_finder = ResourceFinderClasspath.getInstance();
 
         URL resource = resource_finder.getResource("resources/test.txt");
         try
@@ -189,9 +169,7 @@ public class TestResourceFinderDirectories extends TestCase
 
     public void testGetUnknownContentByName()
     {
-        ResourceFinder resource_finder = new ResourceFinderDirectories(new File[]{
-                new File(Config.getRepInstance().getString("RIFE_HOME") + File.separator + "templates"),
-                new File(Config.getRepInstance().getString("RIFE_HOME") + File.separator + "config")});
+        ResourceFinder resource_finder = ResourceFinderClasspath.getInstance();
 
         try
         {
@@ -206,20 +184,14 @@ public class TestResourceFinderDirectories extends TestCase
 
     public void testGetUnknownContentByResource()
     {
-        ResourceFinder resource_finder = new ResourceFinderDirectories(new File[]{
-                new File(Config.getRepInstance().getString("RIFE_HOME") + File.separator + "templates"),
-                new File(Config.getRepInstance().getString("RIFE_HOME") + File.separator + "config")});
+        ResourceFinder resource_finder = ResourceFinderClasspath.getInstance();
 
         try
         {
             String content = resource_finder.getContent(new URL("file://this/resource/doesnt/exist.txt"));
             assertNull(content);
         }
-        catch (ResourceFinderErrorException e)
-        {
-            assertFalse(ExceptionUtils.getExceptionStackTrace(e), false);
-        }
-        catch (MalformedURLException e)
+        catch (ResourceFinderErrorException | MalformedURLException e)
         {
             assertFalse(ExceptionUtils.getExceptionStackTrace(e), false);
         }
@@ -227,9 +199,7 @@ public class TestResourceFinderDirectories extends TestCase
 
     public void testGetContentByName()
     {
-        ResourceFinder resource_finder = new ResourceFinderDirectories(new File[]{
-                new File(Config.getRepInstance().getString("RIFE_HOME") + File.separator + "templates"),
-                new File(Config.getRepInstance().getString("RIFE_HOME") + File.separator + "config")});
+        ResourceFinder resource_finder = ResourceFinderClasspath.getInstance();
 
         try
         {
@@ -253,9 +223,7 @@ public class TestResourceFinderDirectories extends TestCase
 
     public void testGetContentByResource()
     {
-        ResourceFinder resource_finder = new ResourceFinderDirectories(new File[]{
-                new File(Config.getRepInstance().getString("RIFE_HOME") + File.separator + "templates"),
-                new File(Config.getRepInstance().getString("RIFE_HOME") + File.separator + "config")});
+        ResourceFinder resource_finder = ResourceFinderClasspath.getInstance();
 
         URL resource = resource_finder.getResource("resources/test.txt");
         try
@@ -280,9 +248,7 @@ public class TestResourceFinderDirectories extends TestCase
 
     public void testGetContentByNameAndEncoding()
     {
-        ResourceFinder resource_finder = new ResourceFinderDirectories(new File[]{
-                new File(Config.getRepInstance().getString("RIFE_HOME") + File.separator + "templates"),
-                new File(Config.getRepInstance().getString("RIFE_HOME") + File.separator + "config")});
+        ResourceFinder resource_finder = ResourceFinderClasspath.getInstance();
 
         try
         {
@@ -307,9 +273,7 @@ public class TestResourceFinderDirectories extends TestCase
 
     public void testGetContentByResourceAndEncoding()
     {
-        ResourceFinder resource_finder = new ResourceFinderDirectories(new File[]{
-                new File(Config.getRepInstance().getString("RIFE_HOME") + File.separator + "templates"),
-                new File(Config.getRepInstance().getString("RIFE_HOME") + File.separator + "config")});
+        ResourceFinder resource_finder = ResourceFinderClasspath.getInstance();
 
         URL resource = resource_finder.getResource("resources/test-utf8.txt");
         try
@@ -335,9 +299,7 @@ public class TestResourceFinderDirectories extends TestCase
 
     public void testGetUnknownModificationTimeByName()
     {
-        ResourceFinder resource_finder = new ResourceFinderDirectories(new File[]{
-                new File(Config.getRepInstance().getString("RIFE_HOME") + File.separator + "templates"),
-                new File(Config.getRepInstance().getString("RIFE_HOME") + File.separator + "config")});
+        ResourceFinder resource_finder = ResourceFinderClasspath.getInstance();
 
         try
         {
@@ -352,20 +314,14 @@ public class TestResourceFinderDirectories extends TestCase
 
     public void testGetUnknownModificationTimeByResource()
     {
-        ResourceFinder resource_finder = new ResourceFinderDirectories(new File[]{
-                new File(Config.getRepInstance().getString("RIFE_HOME") + File.separator + "templates"),
-                new File(Config.getRepInstance().getString("RIFE_HOME") + File.separator + "config")});
+        ResourceFinder resource_finder = ResourceFinderClasspath.getInstance();
 
         try
         {
             long time = resource_finder.getModificationTime(new URL("file://this/resource/doesnt/exist.txt"));
             assertEquals(-1, time);
         }
-        catch (ResourceFinderErrorException e)
-        {
-            assertFalse(ExceptionUtils.getExceptionStackTrace(e), false);
-        }
-        catch (MalformedURLException e)
+        catch (ResourceFinderErrorException | MalformedURLException e)
         {
             assertFalse(ExceptionUtils.getExceptionStackTrace(e), false);
         }
@@ -373,9 +329,7 @@ public class TestResourceFinderDirectories extends TestCase
 
     public void testGetModificationTimeByName()
     {
-        ResourceFinder resource_finder = new ResourceFinderDirectories(new File[]{
-                new File(Config.getRepInstance().getString("RIFE_HOME") + File.separator + "templates"),
-                new File(Config.getRepInstance().getString("RIFE_HOME") + File.separator + "config")});
+        ResourceFinder resource_finder = ResourceFinderClasspath.getInstance();
 
         try
         {
@@ -390,9 +344,7 @@ public class TestResourceFinderDirectories extends TestCase
 
     public void testGetModificationTimeByResource()
     {
-        ResourceFinder resource_finder = new ResourceFinderDirectories(new File[]{
-                new File(Config.getRepInstance().getString("RIFE_HOME") + File.separator + "templates"),
-                new File(Config.getRepInstance().getString("RIFE_HOME") + File.separator + "config")});
+        ResourceFinder resource_finder = ResourceFinderClasspath.getInstance();
 
         URL resource = resource_finder.getResource("resources/test.txt");
         try

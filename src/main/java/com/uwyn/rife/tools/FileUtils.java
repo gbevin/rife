@@ -223,13 +223,9 @@ public abstract class FileUtils
         if (null == inputStream) throw new IllegalArgumentException("inputStream can't be null.");
         if (null == target) throw new IllegalArgumentException("target can't be null.");
 
-        try
+        try (FileOutputStream file_output_stream = new FileOutputStream(target))
         {
-            FileOutputStream file_output_stream = new FileOutputStream(target);
-
             copy(inputStream, file_output_stream);
-
-            file_output_stream.close();
         }
         catch (IOException e)
         {
@@ -243,13 +239,9 @@ public abstract class FileUtils
         if (null == source) throw new IllegalArgumentException("source can't be null.");
         if (null == outputStream) throw new IllegalArgumentException("outputStream can't be null.");
 
-        try
+        try (FileInputStream file_input_stream = new FileInputStream(source))
         {
-            FileInputStream file_input_stream = new FileInputStream(source);
-
             copy(file_input_stream, outputStream);
-
-            file_input_stream.close();
         }
         catch (IOException e)
         {
@@ -263,15 +255,11 @@ public abstract class FileUtils
         if (null == source) throw new IllegalArgumentException("source can't be null.");
         if (null == target) throw new IllegalArgumentException("target can't be null.");
 
-        try
+        try (FileInputStream file_input_stream = new FileInputStream(source);
+             FileOutputStream file_output_stream = new FileOutputStream(target))
         {
-            FileInputStream file_input_stream = new FileInputStream(source);
-            FileOutputStream file_output_stream = new FileOutputStream(target);
 
             copy(file_input_stream, file_output_stream);
-
-            file_output_stream.close();
-            file_input_stream.close();
         }
         catch (IOException e)
         {
@@ -284,22 +272,17 @@ public abstract class FileUtils
     {
         if (null == inputStream) throw new IllegalArgumentException("inputStream can't be null.");
 
-        try
+        byte[] buffer = new byte[1024];
+        try (ByteArrayOutputStream output_stream = new ByteArrayOutputStream(buffer.length);
+             InputStream input = inputStream)
         {
-            byte[] buffer = new byte[1024];
-            ByteArrayOutputStream output_stream = new ByteArrayOutputStream(buffer.length);
-
-            int return_value = inputStream.read(buffer);
+            int return_value = input.read(buffer);
 
             while (-1 != return_value)
             {
                 output_stream.write(buffer, 0, return_value);
-                return_value = inputStream.read(buffer);
+                return_value = input.read(buffer);
             }
-
-            output_stream.close();
-
-            inputStream.close();
 
             return output_stream;
         }
@@ -380,18 +363,19 @@ public abstract class FileUtils
         {
             URLConnection connection = source.openConnection();
             connection.setUseCaches(false);
-            InputStream input_stream = connection.getInputStream();
-            String content;
-            if (null == encoding)
+            try (InputStream input_stream = connection.getInputStream())
             {
-                content = readString(input_stream);
+                String content;
+                if (null == encoding)
+                {
+                    content = readString(input_stream);
+                }
+                else
+                {
+                    content = readString(input_stream, encoding);
+                }
+                return content;
             }
-            else
-            {
-                content = readString(input_stream, encoding);
-            }
-            input_stream.close();
-            return content;
         }
         catch (IOException e)
         {
@@ -408,10 +392,10 @@ public abstract class FileUtils
         {
             URLConnection connection = source.openConnection();
             connection.setUseCaches(false);
-            InputStream input_stream = connection.getInputStream();
-            byte[] content = readBytes(input_stream);
-            input_stream.close();
-            return content;
+            try (InputStream input_stream = connection.getInputStream())
+            {
+                return readBytes(input_stream);
+            }
         }
         catch (IOException e)
         {
@@ -430,9 +414,8 @@ public abstract class FileUtils
     {
         if (null == source) throw new IllegalArgumentException("source can't be null.");
 
-        try
+        try (FileInputStream file_input_stream = new FileInputStream(source))
         {
-            FileInputStream file_input_stream = new FileInputStream(source);
             String content;
             if (null == encoding)
             {
@@ -442,7 +425,6 @@ public abstract class FileUtils
             {
                 content = readString(file_input_stream, encoding);
             }
-            file_input_stream.close();
             return content;
         }
         catch (IOException e)
@@ -456,12 +438,9 @@ public abstract class FileUtils
     {
         if (null == source) throw new IllegalArgumentException("source can't be null.");
 
-        try
+        try (FileInputStream file_input_stream = new FileInputStream(source))
         {
-            FileInputStream file_input_stream = new FileInputStream(source);
-            byte[] content = readBytes(file_input_stream);
-            file_input_stream.close();
-            return content;
+            return readBytes(file_input_stream);
         }
         catch (IOException e)
         {
@@ -475,12 +454,10 @@ public abstract class FileUtils
         if (null == content) throw new IllegalArgumentException("content can't be null.");
         if (null == destination) throw new IllegalArgumentException("destination can't be null.");
 
-        try
+        try (FileOutputStream file_output_stream = new FileOutputStream(destination))
         {
-            FileOutputStream file_output_stream = new FileOutputStream(destination);
             file_output_stream.write(content);
             file_output_stream.flush();
-            file_output_stream.close();
         }
         catch (IOException e)
         {
@@ -494,15 +471,10 @@ public abstract class FileUtils
         if (null == content) throw new IllegalArgumentException("content can't be null.");
         if (null == destination) throw new IllegalArgumentException("destination can't be null.");
 
-        try
+        try (FileWriter file_writer = new FileWriter(destination))
         {
-            FileWriter file_writer;
-
-            file_writer = new FileWriter(destination);
-
             file_writer.write(content, 0, content.length());
             file_writer.flush();
-            file_writer.close();
         }
         catch (IOException e)
         {
@@ -538,110 +510,75 @@ public abstract class FileUtils
         if (null == source) throw new IllegalArgumentException("source can't be null.");
         if (null == destination) throw new IllegalArgumentException("destination can't be null.");
 
-        ZipFile zip_file;
         Enumeration entries;
-
-        try
+        try (ZipFile zip_file = new ZipFile(source))
         {
-            zip_file = new ZipFile(source);
+            entries = zip_file.entries();
+
+            while (entries.hasMoreElements())
+            {
+                ZipEntry entry;
+                String output_filename;
+                File output_file;
+                StringBuilder output_file_directoryname;
+                File output_file_directory;
+                byte[] buffer = new byte[1024];
+                int return_value;
+
+                entry = (ZipEntry)entries.nextElement();
+                try (InputStream input_stream = zip_file.getInputStream(entry))
+                {
+                    output_filename = destination.getAbsolutePath() + File.separator + entry.getName().replace('/', File.separatorChar);
+                    output_file = new File(output_filename);
+                    output_file_directoryname = new StringBuilder(output_file.getPath());
+                    output_file_directoryname.setLength(output_file_directoryname.length() - output_file.getName().length() - File.separator.length());
+                    output_file_directory = new File(output_file_directoryname.toString());
+                    if (!output_file_directory.exists())
+                    {
+                        if (!output_file_directory.mkdirs())
+                        {
+                            throw new FileUtilsErrorException("Couldn't create directory '" + output_file_directory.getAbsolutePath() + "' and its parents.");
+                        }
+                    }
+                    else
+                    {
+                        if (!output_file_directory.isDirectory())
+                        {
+                            throw new FileUtilsErrorException("Destination '" + output_file_directory.getAbsolutePath() + "' exists and is not a directory.");
+                        }
+                    }
+
+                    try (FileOutputStream file_output_stream = new FileOutputStream(output_filename))
+                    {
+                        try
+                        {
+                            return_value = input_stream.read(buffer);
+
+                            while (-1 != return_value)
+                            {
+                                file_output_stream.write(buffer, 0, return_value);
+                                return_value = input_stream.read(buffer);
+                            }
+                        }
+                        catch (IOException e)
+                        {
+                            throw new FileUtilsErrorException("Error while uncompressing entry '" + output_filename + "'.", e);
+                        }
+                    }
+                    catch (IOException e)
+                    {
+                        throw new FileUtilsErrorException("Error while creating the output stream for file '" + output_filename + "'.", e);
+                    }
+                }
+                catch (IOException e)
+                {
+                    throw new FileUtilsErrorException("Error while obtaining the inputstream for entry '" + entry.getName() + "'.", e);
+                }
+            }
         }
         catch (IOException e)
         {
             throw new FileUtilsErrorException("Error while creating the zipfile '" + source.getAbsolutePath() + "'.", e);
-        }
-        entries = zip_file.entries();
-
-        while (entries.hasMoreElements())
-        {
-            ZipEntry entry;
-            InputStream input_stream;
-            String output_filename;
-            File output_file;
-            StringBuilder output_file_directoryname;
-            File output_file_directory;
-            FileOutputStream file_output_stream;
-            byte[] buffer = new byte[1024];
-            int return_value;
-
-            entry = (ZipEntry)entries.nextElement();
-            try
-            {
-                input_stream = zip_file.getInputStream(entry);
-            }
-            catch (IOException e)
-            {
-                throw new FileUtilsErrorException("Error while obtaining the inputstream for entry '" + entry.getName() + "'.", e);
-            }
-
-            output_filename = destination.getAbsolutePath() + File.separator + entry.getName().replace('/', File.separatorChar);
-            output_file = new File(output_filename);
-            output_file_directoryname = new StringBuilder(output_file.getPath());
-            output_file_directoryname.setLength(output_file_directoryname.length() - output_file.getName().length() - File.separator.length());
-            output_file_directory = new File(output_file_directoryname.toString());
-            if (!output_file_directory.exists())
-            {
-                if (!output_file_directory.mkdirs())
-                {
-                    throw new FileUtilsErrorException("Couldn't create directory '" + output_file_directory.getAbsolutePath() + "' and its parents.");
-                }
-            }
-            else
-            {
-                if (!output_file_directory.isDirectory())
-                {
-                    throw new FileUtilsErrorException("Destination '" + output_file_directory.getAbsolutePath() + "' exists and is not a directory.");
-                }
-            }
-
-            try
-            {
-                file_output_stream = new FileOutputStream(output_filename);
-            }
-            catch (IOException e)
-            {
-                throw new FileUtilsErrorException("Error while creating the output stream for file '" + output_filename + "'.", e);
-            }
-
-            try
-            {
-                return_value = input_stream.read(buffer);
-
-                while (-1 != return_value)
-                {
-                    file_output_stream.write(buffer, 0, return_value);
-                    return_value = input_stream.read(buffer);
-                }
-            }
-            catch (IOException e)
-            {
-                throw new FileUtilsErrorException("Error while uncompressing entry '" + output_filename + "'.", e);
-            }
-
-            try
-            {
-                file_output_stream.close();
-            }
-            catch (IOException e)
-            {
-                throw new FileUtilsErrorException("Error while closing the output stream for file '" + output_filename + "'.", e);
-            }
-            try
-            {
-                input_stream.close();
-            }
-            catch (IOException e)
-            {
-                throw new FileUtilsErrorException("Error while closing the input stream for entry '" + entry.getName() + "'.", e);
-            }
-        }
-
-        try
-        {
-            zip_file.close();
-        }
-        catch (IOException e)
-        {
-            throw new FileUtilsErrorException("Error while closing the zipfile '" + source.getAbsolutePath() + "'.", e);
         }
     }
 

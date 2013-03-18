@@ -497,10 +497,11 @@ public abstract class HttpUtils
                 // send the form parameters
                 if (postParams != null)
                 {
-                    DataOutputStream out = new DataOutputStream(connection.getOutputStream());
-                    out.writeBytes(postParams.toString());
-                    out.flush();
-                    out.close();
+                    try (DataOutputStream out = new DataOutputStream(connection.getOutputStream()))
+                    {
+                        out.writeBytes(postParams.toString());
+                        out.flush();
+                    }
                 }
 
                 // download the connection content if that's needed

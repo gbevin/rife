@@ -1,7 +1,6 @@
 apply plugin: 'java'
-apply plugin: 'idea'
 
-sourceCompatibility = 1.7
+sourceCompatibility = 1.8
 version = '2.0'
 
 repositories {
@@ -20,11 +19,10 @@ dependencies {
 
 task antlrOutputDirCreate << { mkdir(generateGrammarSource.destination) }
 task generateGrammarSource(dependsOn: antlrOutputDirCreate, type: JavaExec) {
-    description = 'Generates Java sources from Antlr4 grammars.'
-
     ext {
         destination = "$buildDir/generated-sources/"
     }
+
     def antlrSource = 'src/main/antlr'
 
     inputs.dir file(antlrSource)
@@ -37,23 +35,20 @@ task generateGrammarSource(dependsOn: antlrOutputDirCreate, type: JavaExec) {
     args = ["-o", "${destination}/com/uwyn/rife/template/antlr", grammars.files].flatten()
 }
 
-task antlrMigrateDirCreate << { mkdir(antlrMigrate.destination) }
-task antlrMigrate(dependsOn: [antlrMigrateDirCreate, generateGrammarSource], type: Copy) {
+task antlrTemplateDirCreate << { mkdir(antlrTemplate.destination) }
+task antlrTemplate(dependsOn: [antlrTemplateDirCreate, generateGrammarSource], type: Copy) {
     ext {
         destination = "$buildDir/filtered-sources/"
     }
 
     from generateGrammarSource.destination
-    into antlrMigrate.destination
+    into antlrTemplate.destination
     filter { String line ->
         line.replaceAll("org.antlr.v4", "com.uwyn.rife.antlr4")
     }
 }
 
-task antlrTemplate(dependsOn: antlrMigrate) << {
-}
-
 compileJava {
     dependsOn antlrTemplate
-    source antlrMigrate.destination
+    source antlrTemplate.destination
 }

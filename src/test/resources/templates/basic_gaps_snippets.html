@@ -1,0 +1,58 @@
+<html>
+<body>
+
+<div id="content">
+    <!--gap pageContent/-->
+
+    <!--snip pageContent-->
+
+    <h2>Downloads</h2>
+
+    <div class="projects">
+        <!--gap projects/-->
+        <!--snip project-->
+        <a name="${gap anchor}${/gap}"></a>
+
+        <div class="project${gap select_project}${/gap}"><!--snip select_project--> select_project<!--/snip-->
+            <h3><a href="${gap exitQuery:downloads/}#${gap anchor}${/gap}"><!--gap name/--></a></h3>
+
+            <div class="project_description"><!--gap description/--></div>
+
+            <div class="releases">
+                <!--gap releases/-->
+                <!--snip release-->
+                <div class="release">
+                    <div class="release_version">version <!--gap version/--></div>
+                    <div class="release_moment"><!--gap momentFormatted/--></div>
+                    <div class="release_description"><!--gap description/--></div>
+
+                    <div class="releasetargets">
+                        <!--gap releases/-->
+                        <!--snip releasetarget-->
+                        <div class="releasetarget_name"><!--gap name/--></div>
+                        <div class="releasetarget_description"><!--gap description/--></div>
+
+                        <div class="releasefiles">
+                            <!--gap releasefiles/-->
+                            <!--snip releasefile-->
+                            <div class="releasefile"><a href="${gap exitQuery(download)/}" title="${gap url/}">
+                                <!--gap platform/--></a> (<!--gap size/-->)
+                            </div>
+                            <!--/snip-->
+                        </div>
+                        <!--snip-->
+                    </div>
+                </div>
+
+                <!--/snip-->
+            </div>
+        </div>
+
+        <!--/snip-->
+    </div>
+
+    <!--/snip-->
+
+</div>
+</body>
+</html>

@@ -55,9 +55,10 @@ public class ConciseLogFormatter extends Formatter
             try
             {
                 StringWriter sw = new StringWriter();
-                PrintWriter pw = new PrintWriter(sw);
-                record.getThrown().printStackTrace(pw);
-                pw.close();
+                try (PrintWriter pw = new PrintWriter(sw))
+                {
+                    record.getThrown().printStackTrace(pw);
+                }
                 sb.append(sw.toString());
             }
             catch (Exception ignored)

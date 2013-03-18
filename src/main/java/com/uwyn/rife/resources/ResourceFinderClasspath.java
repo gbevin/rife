@@ -8,9 +8,9 @@ import com.uwyn.rife.resources.exceptions.CantOpenResourceStreamException;
 import com.uwyn.rife.resources.exceptions.CantRetrieveResourceContentException;
 import com.uwyn.rife.resources.exceptions.ResourceFinderErrorException;
 import com.uwyn.rife.tools.FileUtils;
-import com.uwyn.rife.tools.exceptions.InnerClassException;
 import com.uwyn.rife.tools.InputStreamUser;
 import com.uwyn.rife.tools.exceptions.FileUtilsErrorException;
+import com.uwyn.rife.tools.exceptions.InnerClassException;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -83,33 +83,18 @@ public class ResourceFinderClasspath extends AbstractResourceFinder
             return null;
         }
 
-        InputStream stream = null;
         try
         {
             URLConnection connection = resource.openConnection();
             connection.setUseCaches(false);
-            stream = connection.getInputStream();
-            return (ResultType)user.useInputStream(stream);
+            try (InputStream stream = connection.getInputStream())
+            {
+                return (ResultType)user.useInputStream(stream);
+            }
         }
         catch (IOException e)
         {
             throw new CantOpenResourceStreamException(resource, e);
-        }
-        finally
-        {
-            if (stream != null)
-            {
-                try
-                {
-                    stream.close();
-                }
-                catch (IOException e)
-                {
-                    // couldn't close stream since it probably already has been
-                    // closed after an exception
-                    // proceed without reporting an error message.
-                }
-            }
         }
     }
 
