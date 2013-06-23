@@ -21,7 +21,7 @@ import java.util.HashMap;
  */
 public abstract class EnumClass<IdentifierType>
 {
-    private static HashMap<String, HashMap<Object, EnumClass>> sTypes = new HashMap<>();
+    private static HashMap<String, HashMap<Object, EnumClass>> types = new HashMap<>();
     protected IdentifierType identifier = null;
 
     protected EnumClass(IdentifierType identifier)
@@ -36,17 +36,17 @@ public abstract class EnumClass<IdentifierType>
 
     protected static Collection<?> getIdentifiers(Class<? extends EnumClass> type)
     {
-        return sTypes.get(type.getName()).keySet();
+        return types.get(type.getName()).keySet();
     }
 
     protected static Collection<? extends EnumClass> getMembers(Class<? extends EnumClass> type)
     {
-        return sTypes.get(type.getName()).values();
+        return types.get(type.getName()).values();
     }
 
     protected static <MemberType extends EnumClass> MemberType getMember(Class<MemberType> type, Object identifier)
     {
-        return (MemberType)sTypes.get(type.getName()).get(identifier);
+        return (MemberType)types.get(type.getName()).get(identifier);
     }
 
     protected final void registerType(Class klass, IdentifierType identifier)
@@ -57,14 +57,14 @@ public abstract class EnumClass<IdentifierType>
         String class_name = klass.getName();
         HashMap<Object, EnumClass> instances;
 
-        if (!sTypes.containsKey(class_name))
+        if (!types.containsKey(class_name))
         {
             instances = new HashMap<>();
-            sTypes.put(class_name, instances);
+            types.put(class_name, instances);
         }
         else
         {
-            instances = sTypes.get(class_name);
+            instances = types.get(class_name);
         }
         this.identifier = identifier;
         instances.put(this.identifier, this);

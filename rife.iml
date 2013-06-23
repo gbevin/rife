@@ -2,15 +2,6 @@
 <module relativePaths="true" type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$/build">
-      <sourceFolder url="file://$MODULE_DIR$/build/filtered-sources" isTestSource="false" />
-      <excludeFolder url="file://$MODULE_DIR$/build/classes" />
-      <excludeFolder url="file://$MODULE_DIR$/build/dependency-cache" />
-      <excludeFolder url="file://$MODULE_DIR$/build/libs" />
-      <excludeFolder url="file://$MODULE_DIR$/build/reports" />
-      <excludeFolder url="file://$MODULE_DIR$/build/test-results" />
-      <excludeFolder url="file://$MODULE_DIR$/build/tmp" />
-    </content>
     <content url="file://$MODULE_DIR$/rife_v1_remaining" />
     <content url="file://$MODULE_DIR$/src">
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />

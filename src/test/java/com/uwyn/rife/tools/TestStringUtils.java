@@ -7,6 +7,7 @@ package com.uwyn.rife.tools;
 import com.uwyn.rife.datastructures.DocumentPosition;
 import junit.framework.TestCase;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +41,7 @@ public class TestStringUtils extends TestCase
         assertEquals("%21abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVQXYZ0123456789-_.*%3D", StringUtils.encodeUrl("!abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVQXYZ0123456789-_.*="));
     }
 
-    public void testEncodeURLValue()
+    public void testEncodeURLValue() throws UnsupportedEncodingException
     {
         assertNull(StringUtils.encodeUrlValue(null));
         assertEquals("a+test+%26", StringUtils.encodeUrlValue("a test &"));
@@ -51,8 +52,8 @@ public class TestStringUtils extends TestCase
 
         assertFalse(StringUtils.doesUrlValueNeedDecoding("a+test+%26"));
         assertFalse(StringUtils.doesUrlValueNeedDecoding("%02%02YWJjZGVmw4zDjcOOw4/DkcOSw5PDlMOVw5bDmMOZw5rDm8Ocw5/DoMOhw6I%3D"));
-        assertTrue(StringUtils.doesUrlValueNeedDecoding(URLDecoder.decode("%02%02YWJjZGVmw4zDjcOOw4/DkcOSw5PDlMOVw5bDmMOZw5rDm8Ocw5/DoMOhw6I%3D")));
-        assertEquals("abcdefÌÍÎÏÑÒÓÔÕÖØÙÚÛÜßàáâ", StringUtils.decodeUrlValue(URLDecoder.decode("%02%02YWJjZGVmw4zDjcOOw4/DkcOSw5PDlMOVw5bDmMOZw5rDm8Ocw5/DoMOhw6I%3D")));
+        assertTrue(StringUtils.doesUrlValueNeedDecoding(URLDecoder.decode("%02%02YWJjZGVmw4zDjcOOw4/DkcOSw5PDlMOVw5bDmMOZw5rDm8Ocw5/DoMOhw6I%3D", "UTF-8")));
+        assertEquals("abcdefÌÍÎÏÑÒÓÔÕÖØÙÚÛÜßàáâ", StringUtils.decodeUrlValue(URLDecoder.decode("%02%02YWJjZGVmw4zDjcOOw4/DkcOSw5PDlMOVw5bDmMOZw5rDm8Ocw5/DoMOhw6I%3D", "UTF-8")));
     }
 
     public void testEncodeHtml()

@@ -13,7 +13,8 @@ public class TestSuiteDatastructures extends TestSuite
     {
         TestSuite suite = new TestSuite("Datastructures API test suite");
 
-        suite.addTestSuite(com.uwyn.rife.datastructures.TestKeyValue.class);
+// TODO
+//        suite.addTestSuite(com.uwyn.rife.datastructures.TestKeyValue.class);
         suite.addTestSuite(com.uwyn.rife.datastructures.TestPair.class);
 
         return suite;
