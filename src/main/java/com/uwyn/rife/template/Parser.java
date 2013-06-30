@@ -5,19 +5,18 @@
 package com.uwyn.rife.template;
 
 import com.uwyn.rife.datastructures.collections.primitives.ArrayIntList;
-
-import java.util.Arrays;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import com.uwyn.rife.datastructures.collections.primitives.IntList;
 
 enum TemplateToken
 {
     BEGIN_START, WHITESPACE, GAP
 }
 
-interface ParseCondition
+interface ParseCondition extends Cloneable
 {
     boolean isValid(int codePoint);
+
+    boolean isRepeatable();
 }
 
 class SingleChar implements ParseCondition
@@ -34,6 +33,12 @@ class SingleChar implements ParseCondition
     {
         return expected == codePoint;
     }
+
+    @Override
+    public boolean isRepeatable()
+    {
+        return false;
+    }
 }
 
 class Whitespace implements ParseCondition
@@ -42,6 +47,12 @@ class Whitespace implements ParseCondition
     public boolean isValid(int codePoint)
     {
         return Character.isWhitespace(codePoint);
+    }
+
+    @Override
+    public boolean isRepeatable()
+    {
+        return true;
     }
 }
 
@@ -52,6 +63,12 @@ class IdentifierStart implements ParseCondition
     {
         return Character.isJavaIdentifierStart(codePoint);
     }
+
+    @Override
+    public boolean isRepeatable()
+    {
+        return false;
+    }
 }
 
 class IdentitifierPart implements ParseCondition
@@ -61,113 +78,164 @@ class IdentitifierPart implements ParseCondition
     {
         return Character.isJavaIdentifierPart(codePoint);
     }
+
+    @Override
+    public boolean isRepeatable()
+    {
+        return true;
+    }
 }
 
-class ParseState
+class ParseStep
 {
-    private ParseCondition condition;
-    private TemplateToken token;
-    private SortedSet<ParseState> nextStates = new TreeSet<>();
+    final private ParseCondition condition;
+    private ParseStep nextStep;
 
-    ParseState()
+    ParseStep()
     {
         this.condition = null;
+        this.nextStep = null;
     }
 
-    ParseState(ParseCondition condition)
+    ParseStep(ParseCondition condition)
     {
         this.condition = condition;
-        this.token = null;
+        this.nextStep = null;
     }
 
-    ParseState next(ParseState next)
+    ParseStep next(ParseStep next)
     {
-        nextStates.add(next);
+        assert nextStep == null;
+
+        nextStep = next;
         return next;
     }
 
-    ParseState txt(String next)
+    ParseStep txt(String next)
     {
-        ParseState last = this;
+        ParseStep last = this;
         final int length = next.length();
         for (int cpi = 0; cpi < length; )
         {
             final int cp = next.codePointAt(cpi);
-            last = last.next(new ParseState(new SingleChar(cp)));
+            last = last.next(new ParseStep(new SingleChar(cp)));
             cpi += Character.charCount(cp);
         }
 
         return last;
     }
 
-    ParseState chr(char chr)
+    ParseStep chr(char chr)
     {
-        return next(new ParseState(new SingleChar(chr)));
+        return next(new ParseStep(new SingleChar(chr)));
     }
 
-    ParseState ws()
+    ParseStep ws()
     {
-        return next(new ParseState(new Whitespace()));
+        return next(new ParseStep(new Whitespace()));
+    }
+
+    ParseStep identifier()
+    {
+        return next(new ParseStep(new IdentifierStart())).next(new ParseStep(new IdentitifierPart()));
+    }
+
+    public ParseCondition getCondition()
+    {
+        return condition;
+    }
+
+    public ParseStep getNextStep()
+    {
+        return nextStep;
+    }
+}
+
+class ParseState
+{
+    private ParseStep current = null;
+    private ParseStep lastValid = null;
+    private boolean valid = true;
+
+    ParseState(ParseStep begin)
+    {
+        this.current = begin;
+    }
+
+    boolean process(int codePoint)
+    {
+        boolean result = true;
+
+        while (true)
+        {
+            if (current == null)
+            {
+                return false;
+            }
+
+            ParseStep step = current;
+            ParseCondition condition = step.getCondition();
+            if (condition.isValid(codePoint))
+            {
+                lastValid = current;
+
+                if (!condition.isRepeatable())
+                {
+                    current = current.getNextStep();
+                }
+                break;
+            }
+            else if (step == lastValid && condition.isRepeatable())
+            {
+                lastValid = null;
+                current = current.getNextStep();
+            }
+            else
+            {
+                lastValid = null;
+                valid = false;
+                result = false;
+                break;
+            }
+        }
+
+        return result;
+    }
+
+    boolean isValid()
+    {
+        return valid;
     }
 }
 
 public class Parser
 {
-    private ParseState beginStartStates;
-    private String[] beginStarts;
-    private String[] beginEnds;
+    private ParseStep begin;
 
     public Parser()
     {
-        beginStartStates = new ParseState();
-        beginStartStates.txt("<!--").ws().txt("gap").ws().identifier();
-        beginStarts = new String[]{"<!--", "${", "r=\"", "/*"};
-        beginEnds = new String[]{"-->", "}", "\"", "*/"};
-
-        int[][] beginStartsInts = new int[beginStarts.length][];
-
-        for (int i = 0; i < beginStarts.length; ++i)
-        {
-            String entry = beginStarts[i];
-
-            ArrayIntList ints = new ArrayIntList();
-            final int length = entry.length();
-            for (int cpi = 0; cpi < length; )
-            {
-                final int cp = entry.codePointAt(cpi);
-                ints.add(cp);
-                cpi += Character.charCount(cp);
-            }
-
-            beginStartsInts[i] = ints.toArray();
-        }
+        begin = new ParseStep();
+        begin.txt("<!--").ws().txt("gap").ws().identifier().ws().txt("/-->");
     }
 
     public Parsed parse(String content)
     {
         Parsed result = new Parsed(this);
-
-        int[] buffer = new int[20];
-        clearBuffer(buffer);
+        ParseState state = new ParseState(begin.getNextStep());
 
         final int length = content.length();
         for (int i = 0; i < length; )
         {
             final int cp = content.codePointAt(i);
 
+            if (!state.process(cp))
+            {
+                break;
+            }
+
             i += Character.charCount(cp);
         }
 
         return result;
-    }
-
-    private void clearBuffer(int[] buffer)
-    {
-        Arrays.fill(buffer, 0);
-    }
-
-    enum TOKENS
-    {
-        HTML_BEGIN_START
     }
 }

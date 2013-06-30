@@ -25,14 +25,13 @@ public class TestSuiteTemplate extends TestSuite
         {
             public Object useInputStream(InputStream stream) throws InnerClassException
             {
-
                 return null;
             }
         });
 
 //        suite.addTestSuite(com.uwyn.rife.template.TestTemplate.class);
 //        suite.addTestSuite(com.uwyn.rife.template.TestParsed.class);
-//        suite.addTestSuite(com.uwyn.rife.template.TestParser.class);
+        suite.addTestSuite(com.uwyn.rife.template.TestParser.class);
 //        suite.addTestSuite(com.uwyn.rife.template.TestTemplateFactory.class);
 
         return suite;
