@@ -4,12 +4,9 @@
  */
 package com.uwyn.rife.template;
 
-public class Parsed
+interface ParseCondition extends Cloneable
 {
-    private Parser parser;
+    boolean isValid(int codePoint);
 
-    Parsed(Parser parser)
-    {
-        this.parser = parser;
-    }
+    boolean isRepeatable();
 }

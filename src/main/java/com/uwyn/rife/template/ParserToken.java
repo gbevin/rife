@@ -4,12 +4,7 @@
  */
 package com.uwyn.rife.template;
 
-public class Parsed
+public enum ParserToken
 {
-    private Parser parser;
-
-    Parsed(Parser parser)
-    {
-        this.parser = parser;
-    }
+    GAP_SHORT, GAP_BEGIN, GAP_TERM, SNIP_BEGIN, SNIP_TERM, LOAD, NOTE_BEGIN, NOTE_TERM
 }
