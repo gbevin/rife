@@ -28,9 +28,9 @@ import java.util.*;
  */
 public class HierarchicalProperties
 {
-    private LinkedHashMap<String, PropertyValue> properties;
+    private Map<String, PropertyValue> properties;
     private HierarchicalProperties parent;
-    private LinkedHashSet<HierarchicalProperties> children;
+    private Set<HierarchicalProperties> children;
     private Set<String> cachedNames;
     private Set<String> cachedInjectableNames;
 
@@ -334,7 +334,7 @@ public class HierarchicalProperties
             properties = new LinkedHashMap<>();
         }
 
-        for (Map.Entry entry : ((Set<Map.Entry>)source.entrySet()))
+        for (Map.Entry entry : (Set<Map.Entry>)source.entrySet())
         {
             properties.put(String.valueOf(entry.getKey()), new PropertyValueObject(entry.getValue()));
         }
@@ -356,7 +356,7 @@ public class HierarchicalProperties
     {
         HierarchicalProperties current = this;
 
-        LinkedHashMap<String, PropertyValue> properties;
+        Map<String, PropertyValue> properties;
         while (true)
         {
             properties = current.properties;
@@ -395,7 +395,7 @@ public class HierarchicalProperties
         HierarchicalProperties current = this;
         PropertyValue result;
 
-        LinkedHashMap<String, PropertyValue> properties;
+        Map<String, PropertyValue> properties;
         while (true)
         {
             properties = current.properties;
@@ -646,7 +646,7 @@ public class HierarchicalProperties
         HierarchicalProperties current = this;
         Set<String> names = new LinkedHashSet<>();
 
-        LinkedHashMap<String, PropertyValue> properties;
+        Map<String, PropertyValue> properties;
         while (true)
         {
             properties = current.properties;
