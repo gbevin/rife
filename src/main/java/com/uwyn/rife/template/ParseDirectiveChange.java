@@ -4,9 +4,7 @@
  */
 package com.uwyn.rife.template;
 
-interface ParseCondition
+public interface ParseDirectiveChange
 {
-    boolean isValid(int codePoint);
-
-    boolean isRepeatable();
+    void applyDirective(ParseTrail trail);
 }

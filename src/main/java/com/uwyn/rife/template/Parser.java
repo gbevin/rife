@@ -4,6 +4,8 @@
  */
 package com.uwyn.rife.template;
 
+import static com.uwyn.rife.template.ParseSteps.ws;
+
 public class Parser
 {
     private ParseStep begin;
@@ -11,14 +13,14 @@ public class Parser
     public Parser()
     {
         begin = new ParseStep();
-        begin.txt("<!--").ws().txt("gap").ws().identifier().ws().txt("/-->").token(ParserToken.GAP_SHORT);
-        begin.txt("<!--").ws().txt("gap").ws().identifier().ws().txt("-->").token(ParserToken.GAP_BEGIN);
-        begin.txt("<!--/").ws().txt("gap").ws().txt("-->").token(ParserToken.GAP_TERM);
-        begin.txt("<!--").ws().txt("snip").ws().identifier().ws().txt("-->").token(ParserToken.SNIP_BEGIN);
-        begin.txt("<!--/").ws().txt("snip").ws().txt("-->").token(ParserToken.SNIP_TERM);
-        begin.txt("<!--").ws().txt("load").ws().identifier().ws().txt("/-->").token(ParserToken.LOAD);
-        begin.txt("<!--").ws().txt("note").ws().txt("-->").token(ParserToken.NOTE_BEGIN);
-        begin.txt("<!--/").ws().txt("note").ws().txt("-->").token(ParserToken.NOTE_TERM);
+        begin.txt("<!--").optional(ws()).txt("gap").ws().identifier().optional(ws()).txt("/-->").token(ParserToken.GAP_SHORT);
+        begin.txt("<!--").optional(ws()).txt("gap").ws().identifier().optional(ws()).txt("-->").token(ParserToken.GAP_BEGIN);
+        begin.txt("<!--/").optional(ws()).txt("gap").optional(ws()).txt("-->").token(ParserToken.GAP_TERM);
+        begin.txt("<!--").optional(ws()).txt("snip").ws().identifier().optional(ws()).txt("-->").token(ParserToken.SNIP_BEGIN);
+        begin.txt("<!--/").optional(ws()).txt("snip").optional(ws()).txt("-->").token(ParserToken.SNIP_TERM);
+        begin.txt("<!--").optional(ws()).txt("load").ws().identifier().optional(ws()).txt("/-->").token(ParserToken.LOAD);
+        begin.txt("<!--").optional(ws()).txt("note").optional(ws()).txt("-->").token(ParserToken.NOTE_BEGIN);
+        begin.txt("<!--/").optional(ws()).txt("note").optional(ws()).txt("-->").token(ParserToken.NOTE_TERM);
     }
 
     public Parsed parse(String content)

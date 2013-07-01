@@ -16,6 +16,6 @@ public class TestParser extends TestCase
     public void testInstantiation()
     {
         Parser p = new Parser();
-        p.parse("<!--   gap   identifier  /-->");
+        p.parse("<!--  gap   identifier  /-->");
     }
 }

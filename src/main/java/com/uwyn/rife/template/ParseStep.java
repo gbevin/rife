@@ -10,17 +10,32 @@ import java.util.List;
 class ParseStep
 {
     final private ParseCondition condition;
-    final private List<ParseStep> nextSteps = new ArrayList<>();
-    private ParserToken token = null;
+    final private List<ParseStep> nextSteps;
+    final private ParseDirectiveChange directive;
+    ParserToken token;
 
     ParseStep()
     {
         this.condition = null;
+        this.nextSteps = new ArrayList<>();
+        this.directive = null;
+        this.token = null;
     }
 
     ParseStep(ParseCondition condition)
     {
         this.condition = condition;
+        this.nextSteps = new ArrayList<>();
+        this.directive = null;
+        this.token = null;
+    }
+
+    ParseStep(ParseDirectiveChange directive)
+    {
+        this.condition = null;
+        this.nextSteps = new ArrayList<>();
+        this.directive = directive;
+        this.token = null;
     }
 
     ParseStep next(ParseStep next)
@@ -53,12 +68,17 @@ class ParseStep
 
     ParseStep chr(char chr)
     {
-        return next(new ParseStep(new SingleChar(chr)));
+        return next(ParseSteps.chr(chr));
     }
 
     ParseStep ws()
     {
-        return next(new ParseStep(new Whitespace()));
+        return next(ParseSteps.ws());
+    }
+
+    ParseStep optional(ParseStep step)
+    {
+        return next(new ParseStep(new EnterDirective(ParseDirective.OPTIONAL))).next(step).next(new ParseStep(new LeaveDirective(ParseDirective.OPTIONAL)));
     }
 
     ParseStep identifier()
@@ -79,5 +99,10 @@ class ParseStep
     ParserToken getToken()
     {
         return token;
+    }
+
+    ParseDirectiveChange getDirective()
+    {
+        return directive;
     }
 }

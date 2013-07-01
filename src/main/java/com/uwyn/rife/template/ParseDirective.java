@@ -4,9 +4,7 @@
  */
 package com.uwyn.rife.template;
 
-interface ParseCondition
+public enum ParseDirective
 {
-    boolean isValid(int codePoint);
-
-    boolean isRepeatable();
+    OPTIONAL
 }

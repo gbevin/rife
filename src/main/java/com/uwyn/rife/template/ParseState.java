@@ -33,11 +33,22 @@ class ParseState
         {
             while (true)
             {
-                ParseStep step = trail.current;
+                ParseStep step = trail.getCurrent();
+
+                // handle parse directives
+                ParseDirectiveChange directive = step.getDirective();
+                if (directive != null)
+                {
+                    directive.applyDirective(trail);
+                    advanceToNextSteps(trail, step);
+                    continue;
+                }
+
+                // handle parse conditions
                 ParseCondition condition = step.getCondition();
                 if (condition.isValid(codePoint))
                 {
-                    trail.lastValid = trail.current;
+                    trail.setLastValid(trail.getCurrent());
                     result |= true;
 
                     if (!condition.isRepeatable())
@@ -47,16 +58,17 @@ class ParseState
 
                     break;
                 }
-                else if (step == trail.lastValid && condition.isRepeatable())
+                else if (trail.hasDirective(ParseDirective.OPTIONAL) ||
+                         step == trail.getLastValid() && condition.isRepeatable())
                 {
-                    trail.lastValid = null;
+                    trail.setLastValid(null);
 
                     handleValidStep(trail, step);
                 }
                 else
                 {
-                    trail.lastValid = null;
-                    trail.current = null;
+                    trail.setLastValid(null);
+                    trail.setCurrent(null);
 
                     trails.remove(trail);
 
@@ -84,7 +96,7 @@ class ParseState
             ParseStep next = next_steps.get(i);
             if (0 == i)
             {
-                trail.current = next;
+                trail.setCurrent(next);
             }
             else
             {
@@ -92,32 +104,5 @@ class ParseState
             }
         }
     }
-
-    private class ParseTrail
-    {
-        private ParseStep current = null;
-        private ParseStep lastValid = null;
-        private List<ParserToken> tokens = new ArrayList<>();
-
-        ParseTrail(ParseStep start)
-        {
-            this.current = start;
-        }
-
-        void addToken(ParseStep step)
-        {
-            ParserToken token = step.getToken();
-            if (token != null)
-            {
-                tokens.add(token);
-            }
-        }
-
-        ParseTrail splitTrail(ParseStep step)
-        {
-            ParseTrail split = new ParseTrail(step);
-            split.tokens.addAll(tokens);
-            return split;
-        }
-    }
 }
+
